@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SocialNetworkRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,6 +53,16 @@ class SocialNetwork
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $updated_by;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Member::class, mappedBy="social_network")
+     */
+    private $members;
+
+    public function __construct()
+    {
+        $this->members = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +149,33 @@ class SocialNetwork
     public function setUpdatedBy(?string $updated_by): self
     {
         $this->updated_by = $updated_by;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Member[]
+     */
+    public function getMembers(): Collection
+    {
+        return $this->members;
+    }
+
+    public function addMember(Member $member): self
+    {
+        if (!$this->members->contains($member)) {
+            $this->members[] = $member;
+            $member->addSocialNetwork($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMember(Member $member): self
+    {
+        if ($this->members->removeElement($member)) {
+            $member->removeSocialNetwork($this);
+        }
 
         return $this;
     }

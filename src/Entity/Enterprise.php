@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EnterpriseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -96,6 +98,29 @@ class Enterprise
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $updated_by;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Certification::class, inversedBy="enterprises")
+     */
+    private $certification;
+
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="enterprise", cascade={"persist", "remove"})
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Document::class, mappedBy="enterprise")
+     */
+    private $documents;
+
+    
+
+    public function __construct()
+    {
+        $this->certification = new ArrayCollection();
+        $this->documents = new ArrayCollection();
+    }
     
     public function getId(): ?int
     {
@@ -293,6 +318,71 @@ class Enterprise
 
         return $this;
     }
+
+    /**
+     * @return Collection|Certification[]
+     */
+    public function getCertification(): Collection
+    {
+        return $this->certification;
+    }
+
+    public function addCertification(Certification $certification): self
+    {
+        if (!$this->certification->contains($certification)) {
+            $this->certification[] = $certification;
+        }
+
+        return $this;
+    }
+
+    public function removeCertification(Certification $certification): self
+    {
+        $this->certification->removeElement($certification);
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Document[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(Document $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->addEnterprise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(Document $document): self
+    {
+        if ($this->documents->removeElement($document)) {
+            $document->removeEnterprise($this);
+        }
+
+        return $this;
+    }
+
+    
 
     
 }

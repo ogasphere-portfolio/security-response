@@ -42,6 +42,11 @@ class Category
      */
     private $updated_by;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Announcement::class, inversedBy="category")
+     */
+    private $announcement;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Category
     public function setUpdatedBy(?string $updated_by): self
     {
         $this->updated_by = $updated_by;
+
+        return $this;
+    }
+
+    public function getAnnouncement(): ?Announcement
+    {
+        return $this->announcement;
+    }
+
+    public function setAnnouncement(?Announcement $announcement): self
+    {
+        $this->announcement = $announcement;
 
         return $this;
     }

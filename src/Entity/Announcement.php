@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AnnouncementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +58,39 @@ class Announcement
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $updated_by;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Certification::class, inversedBy="announcements")
+     */
+    private $certification;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Member::class, inversedBy="announcements")
+     */
+    private $member;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Specialization::class, inversedBy="announcements")
+     */
+    private $specialization;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="announcement")
+     */
+    private $document;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="announcement")
+     */
+    private $category;
+
+    public function __construct()
+    {
+        $this->certification = new ArrayCollection();
+        $this->member = new ArrayCollection();
+        $this->specialization = new ArrayCollection();
+        $this->category = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -154,6 +189,120 @@ class Announcement
     public function setUpdatedBy(?string $updated_by): self
     {
         $this->updated_by = $updated_by;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Certification[]
+     */
+    public function getCertification(): Collection
+    {
+        return $this->certification;
+    }
+
+    public function addCertification(Certification $certification): self
+    {
+        if (!$this->certification->contains($certification)) {
+            $this->certification[] = $certification;
+        }
+
+        return $this;
+    }
+
+    public function removeCertification(Certification $certification): self
+    {
+        $this->certification->removeElement($certification);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Member[]
+     */
+    public function getMember(): Collection
+    {
+        return $this->member;
+    }
+
+    public function addMember(Member $member): self
+    {
+        if (!$this->member->contains($member)) {
+            $this->member[] = $member;
+        }
+
+        return $this;
+    }
+
+    public function removeMember(Member $member): self
+    {
+        $this->member->removeElement($member);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Specialization[]
+     */
+    public function getSpecialization(): Collection
+    {
+        return $this->specialization;
+    }
+
+    public function addSpecialization(Specialization $specialization): self
+    {
+        if (!$this->specialization->contains($specialization)) {
+            $this->specialization[] = $specialization;
+        }
+
+        return $this;
+    }
+
+    public function removeSpecialization(Specialization $specialization): self
+    {
+        $this->specialization->removeElement($specialization);
+
+        return $this;
+    }
+
+    public function getDocument(): ?Document
+    {
+        return $this->document;
+    }
+
+    public function setDocument(?Document $document): self
+    {
+        $this->document = $document;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+            $category->setAnnouncement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        if ($this->category->removeElement($category)) {
+            // set the owning side to null (unless already changed)
+            if ($category->getAnnouncement() === $this) {
+                $category->setAnnouncement(null);
+            }
+        }
 
         return $this;
     }

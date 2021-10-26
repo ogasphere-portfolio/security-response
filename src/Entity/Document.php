@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DocumentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -61,6 +63,29 @@ class Document
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $updated_by;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Member::class, mappedBy="document")
+     */
+    private $member;
+    
+
+    /**
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="document")
+     */
+    private $announcement;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Enterprise::class, inversedBy="documents")
+     */
+    private $enterprise;
+
+    public function __construct()
+    {
+        $this->member = new ArrayCollection();
+        $this->enterprise = new ArrayCollection();
+        $this->announcement = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -171,6 +196,90 @@ class Document
     public function setUpdatedBy(?string $updated_by): self
     {
         $this->updated_by = $updated_by;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Member[]
+     */
+    public function getMember(): Collection
+    {
+        return $this->member;
+    }
+
+    public function addMember(Member $member): self
+    {
+        if (!$this->member->contains($member)) {
+            $this->member[] = $member;
+            $member->setDocument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMember(Member $member): self
+    {
+        if ($this->member->removeElement($member)) {
+            // set the owning side to null (unless already changed)
+            if ($member->getDocument() === $this) {
+                $member->setDocument(null);
+            }
+        }
+
+        return $this;
+    }    
+
+    /**
+     * @return Collection|Announcement[]
+     */
+    public function getAnnouncement(): Collection
+    {
+        return $this->announcement;
+    }
+
+    public function addAnnouncement(Announcement $announcement): self
+    {
+        if (!$this->announcement->contains($announcement)) {
+            $this->announcement[] = $announcement;
+            $announcement->setDocument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnouncement(Announcement $announcement): self
+    {
+        if ($this->announcement->removeElement($announcement)) {
+            // set the owning side to null (unless already changed)
+            if ($announcement->getDocument() === $this) {
+                $announcement->setDocument(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Enterprise[]
+     */
+    public function getEnterprise(): Collection
+    {
+        return $this->enterprise;
+    }
+
+    public function addEnterprise(Enterprise $enterprise): self
+    {
+        if (!$this->enterprise->contains($enterprise)) {
+            $this->enterprise[] = $enterprise;
+        }
+
+        return $this;
+    }
+
+    public function removeEnterprise(Enterprise $enterprise): self
+    {
+        $this->enterprise->removeElement($enterprise);
 
         return $this;
     }

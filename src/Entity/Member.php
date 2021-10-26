@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MemberRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -77,6 +79,39 @@ class Member
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $updated_by;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Announcement::class, mappedBy="member")
+     */
+    private $announcements;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=SocialNetwork::class, inversedBy="members")
+     */
+    private $social_network;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Specialization::class, inversedBy="members")
+     */
+    private $specialization;
+
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="member", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="member")
+     */
+    private $document;
+
+    public function __construct()
+    {
+        $this->announcements = new ArrayCollection();
+        $this->social_network = new ArrayCollection();
+        $this->specialization = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -225,6 +260,105 @@ class Member
     public function setUpdatedBy(?string $updated_by): self
     {
         $this->updated_by = $updated_by;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Announcement[]
+     */
+    public function getAnnouncements(): Collection
+    {
+        return $this->announcements;
+    }
+
+    public function addAnnouncement(Announcement $announcement): self
+    {
+        if (!$this->announcements->contains($announcement)) {
+            $this->announcements[] = $announcement;
+            $announcement->addMember($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnouncement(Announcement $announcement): self
+    {
+        if ($this->announcements->removeElement($announcement)) {
+            $announcement->removeMember($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SocialNetwork[]
+     */
+    public function getSocialNetwork(): Collection
+    {
+        return $this->social_network;
+    }
+
+    public function addSocialNetwork(SocialNetwork $socialNetwork): self
+    {
+        if (!$this->social_network->contains($socialNetwork)) {
+            $this->social_network[] = $socialNetwork;
+        }
+
+        return $this;
+    }
+
+    public function removeSocialNetwork(SocialNetwork $socialNetwork): self
+    {
+        $this->social_network->removeElement($socialNetwork);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Specialization[]
+     */
+    public function getSpecialization(): Collection
+    {
+        return $this->specialization;
+    }
+
+    public function addSpecialization(Specialization $specialization): self
+    {
+        if (!$this->specialization->contains($specialization)) {
+            $this->specialization[] = $specialization;
+        }
+
+        return $this;
+    }
+
+    public function removeSpecialization(Specialization $specialization): self
+    {
+        $this->specialization->removeElement($specialization);
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDocument(): ?Document
+    {
+        return $this->document;
+    }
+
+    public function setDocument(?Document $document): self
+    {
+        $this->document = $document;
 
         return $this;
     }

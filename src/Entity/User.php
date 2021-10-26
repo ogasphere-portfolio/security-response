@@ -53,6 +53,21 @@ class User
      */
     private $updated_by;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Enterprise::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $enterprise;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="user")
+     */
+    private $role;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Member::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $member;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +155,57 @@ class User
     public function setUpdatedBy(string $updated_by): self
     {
         $this->updated_by = $updated_by;
+
+        return $this;
+    }
+
+    public function getEnterprise(): ?Enterprise
+    {
+        return $this->enterprise;
+    }
+
+    public function setEnterprise(?Enterprise $enterprise): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($enterprise === null && $this->enterprise !== null) {
+            $this->enterprise->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($enterprise !== null && $enterprise->getUser() !== $this) {
+            $enterprise->setUser($this);
+        }
+
+        $this->enterprise = $enterprise;
+
+        return $this;
+    }
+
+    public function getRole(): ?Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(?Role $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    public function getMember(): ?Member
+    {
+        return $this->member;
+    }
+
+    public function setMember(Member $member): self
+    {
+        // set the owning side of the relation if necessary
+        if ($member->getUser() !== $this) {
+            $member->setUser($this);
+        }
+
+        $this->member = $member;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CertificationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,22 @@ class Certification
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $updated_by;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Enterprise::class, mappedBy="certification")
+     */
+    private $enterprises;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Announcement::class, mappedBy="certification")
+     */
+    private $announcements;
+
+    public function __construct()
+    {
+        $this->enterprises = new ArrayCollection();
+        $this->announcements = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +138,60 @@ class Certification
     public function setUpdatedBy(?string $updated_by): self
     {
         $this->updated_by = $updated_by;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Enterprise[]
+     */
+    public function getEnterprises(): Collection
+    {
+        return $this->enterprises;
+    }
+
+    public function addEnterprise(Enterprise $enterprise): self
+    {
+        if (!$this->enterprises->contains($enterprise)) {
+            $this->enterprises[] = $enterprise;
+            $enterprise->addCertification($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnterprise(Enterprise $enterprise): self
+    {
+        if ($this->enterprises->removeElement($enterprise)) {
+            $enterprise->removeCertification($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Announcement[]
+     */
+    public function getAnnouncements(): Collection
+    {
+        return $this->announcements;
+    }
+
+    public function addAnnouncement(Announcement $announcement): self
+    {
+        if (!$this->announcements->contains($announcement)) {
+            $this->announcements[] = $announcement;
+            $announcement->addCertification($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnouncement(Announcement $announcement): self
+    {
+        if ($this->announcements->removeElement($announcement)) {
+            $announcement->removeCertification($this);
+        }
 
         return $this;
     }
