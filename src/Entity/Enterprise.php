@@ -30,7 +30,7 @@ class Enterprise
     private $business_name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string",length=255)
      */
     private $siret_number;
 
@@ -40,17 +40,17 @@ class Enterprise
     private $address;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $address_more;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $zip_code;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $phone_number;
 
@@ -70,7 +70,7 @@ class Enterprise
     private $longitude;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $contact_mail;
 
@@ -151,12 +151,12 @@ class Enterprise
         return $this;
     }
 
-    public function getSiretNumber(): ?int
+    public function getSiretNumber(): ?string
     {
         return $this->siret_number;
     }
 
-    public function setSiretNumber(int $siret_number): self
+    public function setSiretNumber(string $siret_number): self
     {
         $this->siret_number = $siret_number;
 
@@ -187,12 +187,12 @@ class Enterprise
         return $this;
     }
 
-    public function getZipCode(): ?int
+    public function getZipCode(): ?string
     {
         return $this->zip_code;
     }
 
-    public function setZipCode(int $zip_code): self
+    public function setZipCode(string $zip_code): self
     {
         $this->zip_code = $zip_code;
 
