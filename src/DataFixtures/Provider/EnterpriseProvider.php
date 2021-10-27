@@ -10,7 +10,7 @@ class EnterpriseProvider extends \Faker\Provider\Base {
      * @return string
      */
     public function enterpriseTitle() :string {
-        $enterprise = [
+        $enterpriseName = [
             'ZENDATA',
             'Stormshield',
             'Nomios',
@@ -18,13 +18,13 @@ class EnterpriseProvider extends \Faker\Provider\Base {
             'Sysdream',
             'Akerva',
             'Novatim',
-            'Akerva',
+            'NovaSys',
             'Tehtris',
             'Ozon',
         ];
 
         // renvoie un nom d'entreprise au hasard dans le tableau ci dessus grace à mt_rand()
-        return $enterprise[mt_rand(0, count($enterprise) - 1)];
+        return $enterpriseName[mt_rand(0, count($enterpriseName) - 1)];
     }
     
 }

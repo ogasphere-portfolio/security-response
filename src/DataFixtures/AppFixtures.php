@@ -16,7 +16,7 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
         $faker->addProvider(new EnterpriseProvider($faker));
 
-        for($i = 1; $i <= 10; $i++) {
+        for($i = 0; $i <= 9; $i++) {
             $enterprise = new Enterprise();
             $enterprise->setBusinessName($faker->unique()->enterpriseTitle())
                         ->setSiretNumber($faker->siret())
@@ -32,3 +32,4 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 }
+
