@@ -1,0 +1,102 @@
+.body {
+    font-family: 'Alegreya Sans', sans-serif;
+}
+
+.mt-6 {
+    margin-top: 100px;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h4 {
+    padding: 1em;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+#logo-name {
+    color: #0052ff;
+}
+
+#home-top img {
+    width: 40%;
+    height: auto;
+}
+
+#home-top {
+    align-items: center;
+    justify-content: space-around;
+}
+
+#home-top-left {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#home-register {
+    height: 300px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #0051b6;
+    color: white;
+}
+
+#home-register button {
+    background-color: white;
+    padding: 1em 2.5em;
+    font-size: 1.5em;
+    border-radius: 10px;
+}
+
+#home-register button:hover {
+    background-color: white;
+    padding: 1em 2.5em;
+    font-size: 1.5em;
+    color: #0052ff;
+}
+
+.nav-link {
+    color: #050f19;
+}
+
+.nav-link:hover {
+    color: #0052ff;
+}
+
+#nav-inscription {
+    background-color: #0052ff;
+    border-radius: 6px;
+}
+
+#nav-inscription:hover {
+    background-color: #4b48a7;
+    border-radius: 6px;
+}
+
+#nav-inscription a {
+    color: white;
+}
+
+li.nav-item {
+    margin: 0px 15px;
+}
+
+.card.shadow-sm.border.border-5 {
+    height: 300px;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
