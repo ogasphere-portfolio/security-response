@@ -24,10 +24,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $email;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="user")
-     */
-    private $role;
+    
 
     /**
      * @ORM\Column(type="json")
@@ -45,17 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
     
-    public function getRole(): ?Role
-    {
-        return $this->role;
-    }
-
-    public function setRole(?Role $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
+    
     
     /**
      * @see UserInterface
