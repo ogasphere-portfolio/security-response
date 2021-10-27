@@ -38,6 +38,15 @@ class EnterpriseController extends AbstractController
         ]);
     }
     
+    /**
+     * @Route("/", name="list_by_city")
+     */
+    public function findAllWithCity($enterprises): Response
+    {
+        return $this->render('enterprise/list.html.twig', [
+            'enterprise_list' => $enterprises,
+        ]);
+    }
 
 }
 
