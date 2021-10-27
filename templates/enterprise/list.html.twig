@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des entreprises{% endblock %}
+
+{% block body %}
+<main>
+
+        <section class="py-5 text-center container mt-">
+            <div class="d-flex py-lg-5">
+                <div class="mx-auto">
+                    <h1 class="fw-bold text-start">Trouvez des experts proches de chez vous</h1>                    
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 text-center container mt-">
+            <div class="d-flex" id="home-register">
+                <div class="col-lg-6 col-md-8 " id="home-register-left">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Entrez une ville" aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Chercher</button>
+                    </form>                    
+                </div>
+            </div>
+        </section>
+        
+        
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow-sm border border-5">
+                            <h4 class="text-center">Liste des experts dans la ville : Paris</h4>
+                            <div class="card-body">
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+                            </div>
+                        </div>
+                    </div>               
+                </div>
+            </div>
+        </div>
+
+    </main>
+{% endblock %}
