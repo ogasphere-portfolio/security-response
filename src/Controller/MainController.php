@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * Affiche 3 séries au hasard
+     * Home page
      * 
      * @Route("/", name="homepage")
      */
