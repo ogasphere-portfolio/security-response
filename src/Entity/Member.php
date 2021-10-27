@@ -97,7 +97,7 @@ class Member
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="member", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 
