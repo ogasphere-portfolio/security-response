@@ -20,7 +20,7 @@ class EnterpriseController extends AbstractController
      */
     public function list(): Response
     {
-        return $this->render('enterprise/index.html.twig', [
+        return $this->render('enterprise/list.html.twig', [
             'controller_name' => 'EnterpriseController',
         ]);
     }
@@ -30,15 +30,23 @@ class EnterpriseController extends AbstractController
      */
     public function read($id,EnterpriseRepository $EnterpriseRepository ): Response
     { 
-        // TODO récupérer trois séries au hasard avec le repository
-        $enterprise = $EnterpriseRepository->findBy($id);
-        
-
-        return $this->render('tv_show/list.html.twig', [
-            'enterprise_list' => $enterprise,
+       
+        $enterprise = $EnterpriseRepository->find($id);
+      
+        return $this->render('enterprise/read.html.twig', [
+            'enterprise_read' => $enterprise,
         ]);
     }
     
+    /**
+     * @Route("/", name="list_by_city")
+     */
+    public function findAllWithCity($enterprises): Response
+    {
+        return $this->render('enterprise/list.html.twig', [
+            'enterprise_list' => $enterprises,
+        ]);
+    }
 
 }
 

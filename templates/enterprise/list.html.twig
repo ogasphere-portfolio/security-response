@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des entreprises{% endblock %}
+
+{% block body %}
+<main>
+
+        <section class="py-5 text-center container mt-">
+            <div class="d-flex py-lg-5">
+                <div class="mx-auto">
+                    <h1 class="fw-bold text-start">Trouvez des experts proches de chez vous</h1>                    
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 text-center container mt-">
+            <div class="d-flex" id="home-register">
+                <div class="col-lg-6 col-md-8 " id="home-register-left">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Entrez le nom de la ville (exemple : Paris)" aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Chercher</button>
+                    </form>                    
+                </div>
+            </div>
+        </section>
+        
+        
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow-sm border border-5" id="enterprises-result">
+                            <h4 class="text-center">Liste des experts dans la ville : Paris</h4>
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">An item</li>
+                                        <li class="list-group-item">A second item</li>
+                                        <li class="list-group-item">A third item</li>
+                                        <li class="list-group-item">A fourth item</li>
+                                        <li class="list-group-item">And a fifth one</li>
+                                    </ul>
+                                </div>
+                        </div>
+                    </div>               
+                </div>
+            </div>
+        </div>
+
+    </main>
+{% endblock %}

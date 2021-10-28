@@ -19,6 +19,28 @@ class EnterpriseRepository extends ServiceEntityRepository
         parent::__construct($registry, Enterprise::class);
     }
 
+
+    public function findAllWithCity(string $city): Enterprise
+    {
+        $entityManager = $this->getEntityManager();
+
+        $select = " SELECT t ";
+        $from = " FROM App\Entity\Enterprise e ";
+        $where = " WHERE e.city = :city ";
+
+        $dqlQuery = $select . $from . $where;
+
+        dd($dqlQuery);
+        
+        // on va utiliser le DQL ( Doctrine Query Language)
+        $query = $entityManager->createQuery(
+            $dqlQuery
+        )->setParameter('city', $city);
+
+        // returns the selected TvShow Object
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Enterprise[] Returns an array of Enterprise objects
     //  */

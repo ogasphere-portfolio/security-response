@@ -7,6 +7,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
+
+
+ 
+// Exemples annotations pour une recherche fullText sur les champs business_name,siret_number,zip_code,phone_number et city
+//
+// @ORM\Table(name="enterprise", indexes={@ORM\Index(columns={"business_name","siret_number","zip_code","phone_number","city"})}, flags={"fulltext"})})
+
+
+
 /**
  * @ORM\Entity(repositoryClass=EnterpriseRepository::class)
  */
