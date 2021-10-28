@@ -51,6 +51,7 @@ class Announcement
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * 
      */
     private $created_by;
 

@@ -45,7 +45,7 @@ class AppFixtures extends Fixture
           $manager->persist($member);
 
          }
-
+        $usersList = [];
         for($i = 0; $i <= 9; $i++) {
             $user = new User();
             $user->setEmail($faker->email())
@@ -53,12 +53,14 @@ class AppFixtures extends Fixture
                  ->setCreatedAt(new \DateTimeImmutable());
                         
          $manager->persist($user);
-
+           
+            $usersList[] = $user;
         }
 
         for($i = 0; $i <= 9; $i++) {
             $announcement = new Announcement();
             $announcement->setTitle($faker->sentence())
+                         // ->setCreatedBy($usersList[mt_rand(0, count($usersList) - 1)])
                             ->setDescription($faker->paragraphs(2, true))
                             ->setStatus($faker->numberBetween(0, 1))
                             ->setCreatedAt(new \DateTimeImmutable());
