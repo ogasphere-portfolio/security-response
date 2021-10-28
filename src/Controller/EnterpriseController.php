@@ -49,7 +49,7 @@ class EnterpriseController extends AbstractController
         // Use the method searchByCity in EnterpriseRepository to search enterprise by city
         $resultByCity = $EnterpriseRepository->searchByCity($searchEnterprise);
 
-        // return $this->redirectToRoute('enterprise_list');
+        return $this->redirectToRoute('enterprise_list');
                     
         return $this->renderForm('enterprise/list.html.twig', [
             'result_form' => $resultByCity,
