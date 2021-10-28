@@ -64,7 +64,7 @@ class AppFixtures extends Fixture
                 ->setSiretNumber($faker->siret())
                 ->setAddress($faker->streetAddress())
                 ->setCity($faker->city())
-                // ->setUser($userList)
+                ->setUser($userList[$i])
                 ->setZipCode($faker->postcode())
                 ->setCreatedAt(new \DateTimeImmutable());
 
