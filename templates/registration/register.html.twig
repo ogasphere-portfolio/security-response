@@ -7,12 +7,12 @@
 <main>
 
     <div class="container " id="form-register">
-        {% for flashError in app.flashes('verify_email_error') %}
-            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-        {% endfor %}
+       
         <div class="mt-6">
-            <h1>Register</h1>
-
+            <h1>Inscription</h1>
+            {% for flashError in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger text-nowrap " role="alert">{{ flashError }}</div>
+             {% endfor %}
             {{ form_start(registrationForm) }}
                 {{ form_row(registrationForm.email) }}
                 {{ form_row(registrationForm.plainPassword, {
