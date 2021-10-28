@@ -29,7 +29,7 @@ class AppFixtures extends Fixture
                 ->setIsVerified(true);
             $manager->persist($user);
 
-            $userList = $user;
+            $userList[] = $user;
         }
 
         for ($i = 0; $i <= 9; $i++) {
@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
                 ->setPicture($faker->word())
                 ->setGender($faker->numberBetween(0, 1))
                 ->setCity($faker->city())
-                //->setUser($userList)
+                ->setUser($userList[$i])
                 ->setJobStatus($faker->numberBetween(0, 1))
                 ->setCreatedAt(new \DateTimeImmutable());
             $manager->persist($member);
@@ -64,9 +64,9 @@ class AppFixtures extends Fixture
                 ->setSiretNumber($faker->siret())
                 ->setAddress($faker->streetAddress())
                 ->setCity($faker->city())
+                // ->setUser($userList)
                 ->setZipCode($faker->postcode())
-                ->setCreatedAt(new \DateTimeImmutable())
-                ->setUser($userList);
+                ->setCreatedAt(new \DateTimeImmutable());
 
             $manager->persist($enterprise);
         }
