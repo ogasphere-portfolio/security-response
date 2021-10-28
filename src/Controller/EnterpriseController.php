@@ -43,12 +43,17 @@ class EnterpriseController extends AbstractController
      */
     public function searchEnterprise(Request $request, EnterpriseRepository $EnterpriseRepository): Response
     {
+        // Recover the input in the search bar enterprise
         $searchEnterprise = $request->request->get('searchEnterprise');
 
+        // Use the method searchByCity in EnterpriseRepository to search enterprise by city
         $resultByCity = $EnterpriseRepository->searchByCity($searchEnterprise);
+
+        // return $this->redirectToRoute('enterprise_list');
                     
         return $this->renderForm('enterprise/list.html.twig', [
-            'search_form' => $resultByCity
+            'result_form' => $resultByCity,
+            'search_form' => $searchEnterprise
         ]);
     }
 

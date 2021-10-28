@@ -20,7 +20,8 @@
                     <form class="d-flex" method="POST">
                         <input name="searchEnterprise" class="form-control me-2" type="search" placeholder="Entrez le nom de la ville (exemple : Paris)" aria-label="Search">
                         <button class="btn btn-outline-primary" type="submit">Chercher</button>
-                    </form>  
+                    </form> 
+
                 </div>
             </div>
         </section>
@@ -30,18 +31,26 @@
 
                 <div class="row">
                     <div class="col">
+
+                        {% if search_form %}
                         <div class="card shadow-sm border border-5" id="enterprises-result">
-                            <h4 class="text-center">Liste des experts dans la ville : Paris</h4>
+                            <h4 class="text-center">Liste des experts dans la ville : {{ search_form }}</h4>
                                 <div class="card-body">
+                                {% if result_form  %}
                                     <ul class="list-group">
-                                        <li class="list-group-item">An item</li>
-                                        <li class="list-group-item">A second item</li>
-                                        <li class="list-group-item">A third item</li>
-                                        <li class="list-group-item">A fourth item</li>
-                                        <li class="list-group-item">And a fifth one</li>
+                                        {% for result in result_form %}
+                                        <li class="list-group-item">{{ result.BusinessName }}</li>
+                                        {% endfor %}
                                     </ul>
+                                {% else %}
+                                    <ul class="list-group">
+                                        <p>Pas d'entreprises trouvées.</p>
+                                    </ul>
+                                {% endif %}
                                 </div>
                         </div>
+                        {% endif %}
+
                     </div>               
                 </div>
             </div>
