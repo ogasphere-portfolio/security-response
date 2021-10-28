@@ -50,8 +50,8 @@ class AppFixtures extends Fixture
             $user = new User();
             $user->setEmail($faker->email())
                  ->setPassword($faker->password())
-                 ->setCreatedAt(new \DateTimeImmutable());
-                        
+                 ->setCreatedAt(new \DateTimeImmutable())
+                 ->setIsVerified(true)  ;
          $manager->persist($user);
 
         }

@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+{% for message in app.flashes('sucess') %}
+        <div class="alert alert-sucess" role="alert">{{ message }}</div>
+{% endfor %}
 <main>
 
         <section class="py-5 text-center container mt-">
