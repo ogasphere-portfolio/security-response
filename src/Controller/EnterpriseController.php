@@ -6,7 +6,7 @@ use App\Repository\EnterpriseRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Les annotations de routes au niveau de la classe servent de préfixe à toutes les routes définies dans celle ci
@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class EnterpriseController extends AbstractController
 {
     /**
-     * @Route("/", name="list")
+     * @Route("/", name="list", methods={"GET"})
      */
     public function list(): Response
     {
@@ -37,14 +37,18 @@ class EnterpriseController extends AbstractController
             'enterprise_read' => $enterprise,
         ]);
     }
-    
+
     /**
-     * @Route("/", name="list_by_city")
+     * @Route("/", name="search_enterprise", methods={"POST"})
      */
-    public function findAllWithCity($enterprises): Response
+    public function searchEnterprise(Request $request, EnterpriseRepository $EnterpriseRepository): Response
     {
-        return $this->render('enterprise/list.html.twig', [
-            'enterprise_list' => $enterprises,
+        $searchEnterprise = $request->request->get('searchEnterprise');
+
+        $resultByCity = $EnterpriseRepository->searchByCity($searchEnterprise);
+                    
+        return $this->renderForm('enterprise/list.html.twig', [
+            'search_form' => $resultByCity
         ]);
     }
 

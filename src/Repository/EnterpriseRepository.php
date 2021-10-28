@@ -20,22 +20,20 @@ class EnterpriseRepository extends ServiceEntityRepository
     }
 
 
-    public function findAllWithCity(string $city): Enterprise
+    public function searchByCity(string $city): array
     {
         $entityManager = $this->getEntityManager();
 
-        $select = " SELECT t ";
+        $select = " SELECT e ";
         $from = " FROM App\Entity\Enterprise e ";
-        $where = " WHERE e.city = :city ";
+        $where = " WHERE e.city like :city ";
 
         $dqlQuery = $select . $from . $where;
-
-        dd($dqlQuery);
         
         // on va utiliser le DQL ( Doctrine Query Language)
         $query = $entityManager->createQuery(
             $dqlQuery
-        )->setParameter('city', $city);
+        )->setParameter('city', '%' . $city . '%');
 
         // returns the selected TvShow Object
         return $query->getResult();
