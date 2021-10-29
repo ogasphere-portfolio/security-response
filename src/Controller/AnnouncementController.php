@@ -21,4 +21,17 @@ class AnnouncementController extends AbstractController
             'announcement_list' => $announcementRepository->findAll()
         ]);
     }
+
+    /**
+     *
+     * @Route("/{id}", name="read")
+     */
+    public function read($id, AnnouncementRepository $announcementRepository): Response
+    {
+        $announcement = $announcementRepository->find($id);
+      
+        return $this->render('announcement/read.html.twig', [
+            'announcement_read' => $announcement,
+        ]);
+    }
 }
