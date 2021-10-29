@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<br>
+<br>
+<br>
+	{{dump(app.user)}}
+	<div class="container">
+
+		{{ form_start(enterprise_form) }}
+
+		{{ form_errors(enterprise_form) }}
+        
+		{{ form_row(enterprise_form.business_name) }}
+		{{ form_row(enterprise_form.logo) }}
+		{{ form_row(enterprise_form.siret_number) }}
+		{{ form_row(enterprise_form.address) }}
+		{{ form_row(enterprise_form.address_more) }}
+		{{ form_row(enterprise_form.city) }}
+		{# {{ form_row(enterprise_form.user)}} #}
+
+		
+
+		<button type="submit" class="btn btn-primary mt-4">
+		submit
+    </button>
+		{{ form_end(enterprise_form) }}
+	</div>
+{% endblock %}
