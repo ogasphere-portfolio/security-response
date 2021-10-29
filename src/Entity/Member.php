@@ -96,7 +96,7 @@ class Member
     private $specialization;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="member", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $user;

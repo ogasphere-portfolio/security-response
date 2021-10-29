@@ -84,7 +84,7 @@ class Announcement
      * @ORM\OneToMany(targetEntity=Category::class, mappedBy="announcement")
      */
     private $category;
-
+    
     public function __construct()
     {
         $this->certification = new ArrayCollection();
