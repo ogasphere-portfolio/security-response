@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EnterpriseRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -115,7 +116,7 @@ class Enterprise
     private $certification;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="enterprise", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      */
     private $user;
 
@@ -130,6 +131,12 @@ class Enterprise
     {
         $this->certification = new ArrayCollection();
         $this->documents = new ArrayCollection();
+        $this->created_at = new DateTimeImmutable();
+    }
+
+    public function __toString() 
+    {
+        return $this->business_name;
     }
     
     public function getId(): ?int
