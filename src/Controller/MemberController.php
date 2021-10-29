@@ -51,30 +51,28 @@ class MemberController extends AbstractController
     {
         $member = new Member();
 
-        // on créé un formulaire vierge (sans données initiales car l'objet fournit est vide)
+       
         $memberForm = $this->createForm(MemberType::class, $member);
 
-        // Après avoir été affiché le handleRequest nous permettra
-        // de faire la différence entre un affichage de formulaire (en GET) 
-        // et une soumission de formulaire (en POST)
-        // Si un formulaire a été soumis, il rempli l'objet fournit lors de la création
         $memberForm->handleRequest($request);
 
-        // l'objet de formulaire a vérifié si le formulaire a été soumis grace au HandleRequest
-        // l'objet de formulaire vérifie si le formulaire est valide (token csrf mais pas que)
-        if ($memberForm->isSubmitted() && $memberForm->isValid()) {
+            if ($memberForm->isSubmitted() && $memberForm->isValid()) {
 
            
-            $entityManager = $this->getDoctrine()->getManager();
+                $member = $memberForm->getData();
 
-            $entityManager->persist($member);
-            $entityManager->flush();
+                // On associe le user connecté à la question
+                $member->setUser($this->getUser());
+    
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($member);
+                $entityManager->flush();
+    
+                $this->addFlash('success', "Le membre `{$member->getFirstName()}` à été ajouté");
+    
+                return $this->redirectToRoute('member_list', ['id' => $member->getId()]);
 
-            // pour opquaste 
-            $this->addFlash('success', "Le membre `{$member->getFirstName()}` à été ajouté");
-
-            // redirection
-            return $this->redirectToRoute('member_list');
+           
         }
 
         // on fournit ce formulaire à notre vue

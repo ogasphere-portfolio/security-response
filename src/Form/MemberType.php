@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Member;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MemberType extends AbstractType
@@ -12,7 +13,7 @@ class MemberType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstName', null, [
+            ->add('firstname', null, [
             "label" => "First Name",
             ])
             ->add('lastname')
@@ -29,7 +30,6 @@ class MemberType extends AbstractType
             ->add('announcements')
             ->add('social_network')
             ->add('specialization')
-            ->add('user')
             ->add('document')
         ;
     }
