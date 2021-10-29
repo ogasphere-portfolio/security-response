@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\MemberRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MemberRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=MemberRepository::class)
@@ -111,6 +112,7 @@ class Member
         $this->announcements = new ArrayCollection();
         $this->social_network = new ArrayCollection();
         $this->specialization = new ArrayCollection();
+        $this->created_at = new DateTimeImmutable();
     }
 
     public function getId(): ?int
