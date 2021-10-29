@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Member;
+use App\Form\MemberType;
 use App\Repository\MemberRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,9 +28,10 @@ class MemberController extends AbstractController
             'controller_name' => 'MemberController',
         ]);
     }
+
      /**
      * 
-     * @Route("/{id}", name="read")
+     * @Route("/edit/{id}", name="read")
      */
     public function read($id,MemberRepository $MemberRepository ): Response
     { 
