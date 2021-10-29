@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce{% endblock %}
+
+{% block body %}
+<main>
+
+        <section class="py-5 text-center container mt-">
+            <div class="d-flex py-lg-5">
+                <div class="mx-auto">
+                    <h1 class="fw-bold text-start">Détail de l'annonce</h1>                    
+                </div>
+            </div>
+        </section>
+
+                <h2>Titre: </h2>
+                  <thead>
+                      <tr>
+                          <th scope="col">{{ announcement_read.title }}</th>                       
+                      </tr>
+                  </thead>
+                <h2>Description: </h2>
+                  <thead>
+                      <tr>
+                          <th scope="col">{{ announcement_read.description }}</th>                
+                      </tr>
+                  </thead>
+                
+    </main>
+{% endblock %}

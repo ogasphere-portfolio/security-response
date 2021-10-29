@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de mes annonces{% endblock %}
+
+{% block body %}
+<main>
+
+        <section class="py-5 text-center container mt-">
+            <div class="d-flex py-lg-5">
+                <div class="mx-auto">
+                    <h1 class="fw-bold text-start">Liste de mes annonces</h1>                    
+                </div>
+            </div>
+        </section>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date de création</th>  
+            </tr>
+        </thead>
+            <tbody>
+                {% for announcement in announcement_list %}
+                <tr>
+                    <th scope="row">{{ announcement.id }}</th>                
+                    <td>{{ announcement.title }}</td>
+                    <td>{{ announcement.description }}</td>
+                    <td>{{ announcement.createdAt|date("d/m/Y") }}</td>                 
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>          
+    </main>
+{% endblock %}

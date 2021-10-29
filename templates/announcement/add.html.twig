@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce{% endblock %}
+
+{% block body %}
+<main>
+
+        <section class="py-5 text-center container mt-">
+            <div class="d-flex py-lg-5">
+                <div class="mx-auto">
+                    <h1 class="fw-bold text-start">Détail de l'annonce</h1>                    
+                </div>
+            </div>
+        </section>
+
+               {{ form_start(announcement_form) }}
+
+                
+                {{ form_row(announcement_form.title) }}
+                {{ form_row(announcement_form.description) }}
+
+                <button type="submit" class="btn btn-primary mt-4">Create</button>
+
+              {{ form_end(announcement_form) }}
+                
+    </main>
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AnnouncementRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -84,13 +85,14 @@ class Announcement
      * @ORM\OneToMany(targetEntity=Category::class, mappedBy="announcement")
      */
     private $category;
-
+    
     public function __construct()
     {
         $this->certification = new ArrayCollection();
         $this->member = new ArrayCollection();
         $this->specialization = new ArrayCollection();
         $this->category = new ArrayCollection();
+        $this->created_at = new DateTimeImmutable();
     }
 
     public function __toString() 
@@ -154,6 +156,7 @@ class Announcement
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
+        
     }
 
     public function setCreatedAt(\DateTimeImmutable $created_at): self
