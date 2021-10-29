@@ -33,9 +33,18 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ url('enterprise_list') }}">Trouver une entreprise</a>
                         </li>
+
+                        {% if app.user %}
+                        <span class="text">( {{ app.user.email }} )</span>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+                        </li>
+                        {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
                         </li>
+                        {% endif %}
+
                         <li class="nav-item" id="nav-inscription">
                             <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
                         </li>
