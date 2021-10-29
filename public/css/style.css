@@ -105,14 +105,14 @@ li.nav-item {
 #form-register {
 
     margin: 0 auto;
-    width: 100px;
+    width: 400px;
 }
 
 
 
 .form-signin
 {
-    max-width: 330px;
+    max-width: 400px;
     padding: 15px;
     margin: 0 auto;
 }

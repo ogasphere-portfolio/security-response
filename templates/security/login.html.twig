@@ -4,10 +4,10 @@
 
 {% block body %}
 <main>
-    <div class="container">
+    <div class="container mt-6">
         <div class="row">
             <div class="col-sm-6 col-md-12 col-md-offset-4">
-                <h1 class="text-center login-title">Sign in to continue to Bootsnipp</h1>
+              
                 <div class="account-wall">
         
                     <form method="post" class="form-signin">
@@ -17,15 +17,15 @@
 
                         {% if app.user %}
                             <div class="mb-3">
-                                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                vous étes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">deconnexion</a>
                             </div>
                         {% endif %}
 
-                        <h1 class="h3 mb-4 font-weight-normal">Please sign in</h1>
+                        <h1 class="h3 mb-4 font-weight-normal">Connectez-vous</h1>
                         <label for="inputEmail">Email</label>
                        
                             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-                            <label for="inputPassword">Password</label>
+                            <label for="inputPassword">mot de passe</label>
                             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
                             <input type="hidden" name="_csrf_token"
@@ -44,17 +44,17 @@
                         #}
 
                         <button class="btn btn-lg btn-primary" type="submit">
-                            Sign in
+                            connexion
                         </button>
                         <label class="checkbox pull-left">
                     <input type="checkbox" value="remember-me">
-                    Remember me
+                    Rappelez-vous de moi
                 </label>
                
                 </form>
                     </form>
             </div>
-            <a href="#" class="text-center new-account">Create an account </a>
+            <a href="{{ path('app_register') }}" class="text-center new-account">Créer un compte</a>
         </div>
     </div>
 </div>
