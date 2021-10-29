@@ -18,10 +18,22 @@ class EnterpriseController extends AbstractController
     /**
      * @Route("/", name="list", methods={"GET"})
      */
-    public function list(): Response
+    public function list(Request $request, EnterpriseRepository $EnterpriseRepository): Response
     {
+        // Recover the input in the search bar enterprise
+        $searchEnterprise = $request->query->get('searchEnterprise');
+
+        if ($searchEnterprise != null) {
+            // Use the method searchByCity in EnterpriseRepository to search enterprise by city
+            $resultByCity = $EnterpriseRepository->searchByCity($searchEnterprise);
+
+        } else {
+            $resultByCity = null;
+        }
+
         return $this->render('enterprise/list.html.twig', [
-            'controller_name' => 'EnterpriseController',
+            'result_form' => $resultByCity,
+            'search_form' => $searchEnterprise
         ]);
     }
      /**
@@ -35,25 +47,6 @@ class EnterpriseController extends AbstractController
       
         return $this->render('enterprise/read.html.twig', [
             'enterprise_read' => $enterprise,
-        ]);
-    }
-
-    /**
-     * @Route("/", name="search_enterprise", methods={"POST"})
-     */
-    public function searchEnterprise(Request $request, EnterpriseRepository $EnterpriseRepository): Response
-    {
-        // Recover the input in the search bar enterprise
-        $searchEnterprise = $request->request->get('searchEnterprise');
-
-        // Use the method searchByCity in EnterpriseRepository to search enterprise by city
-        $resultByCity = $EnterpriseRepository->searchByCity($searchEnterprise);
-
-        // return $this->redirectToRoute('enterprise_list');
-                    
-        return $this->renderForm('enterprise/list.html.twig', [
-            'result_form' => $resultByCity,
-            'search_form' => $searchEnterprise
         ]);
     }
 

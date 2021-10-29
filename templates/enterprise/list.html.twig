@@ -17,7 +17,7 @@
             <div class="d-flex" id="home-register">
                 <div class="col-lg-6 col-md-8 " id="home-register-left">
                 
-                    <form class="d-flex" method="POST">
+                    <form class="d-flex" method="GET">
                         <input name="searchEnterprise" class="form-control me-2" type="search" placeholder="Entrez le nom de la ville (exemple : Paris)" aria-label="Search">
                         <button class="btn btn-outline-primary" type="submit">Chercher</button>
                     </form> 
@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col">
 
-                        {% if search_form is defined %}
+                        {% if search_form != null %}
                         <div class="card shadow-sm border border-5" id="enterprises-result">
                             <h4 class="text-center">Liste des experts dans la ville : {{ search_form }}</h4>
                                 <div class="card-body">
