@@ -37,7 +37,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
-
+    
+    public function __construct()
+    {
+        $this->setUpdatedAt(new \DateTimeImmutable('now'));    
+        
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTimeImmutable('now'));
+        }
+        if ($this->getUpdatedAt() === null) {
+            $this->setUpdatedAt(new \DateTimeImmutable('now'));
+        }
+      
+    }
     public function getId(): ?int
     {
         return $this->id;

@@ -82,6 +82,14 @@ class Document
 
     public function __construct()
     {
+        $this->setUpdatedAt(new \DateTimeImmutable('now'));    
+        
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTimeImmutable('now'));
+        }
+        if ($this->getUpdatedAt() === null) {
+            $this->setUpdatedAt(new \DateTimeImmutable('now'));
+        }
         $this->member = new ArrayCollection();
         $this->enterprise = new ArrayCollection();
         $this->announcement = new ArrayCollection();

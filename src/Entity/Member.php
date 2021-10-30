@@ -108,6 +108,14 @@ class Member
 
     public function __construct()
     {
+        $this->setUpdatedAt(new \DateTimeImmutable('now'));    
+        
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTimeImmutable('now'));
+        }
+        if ($this->getUpdatedAt() === null) {
+            $this->setUpdatedAt(new \DateTimeImmutable('now'));
+        }
         $this->announcements = new ArrayCollection();
         $this->social_network = new ArrayCollection();
         $this->specialization = new ArrayCollection();

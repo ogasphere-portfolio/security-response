@@ -61,6 +61,14 @@ class Certification
 
     public function __construct()
     {
+        $this->setUpdatedAt(new \DateTimeImmutable('now'));    
+        
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTimeImmutable('now'));
+        }
+        if ($this->getUpdatedAt() === null) {
+            $this->setUpdatedAt(new \DateTimeImmutable('now'));
+        }
         $this->enterprises = new ArrayCollection();
         $this->announcements = new ArrayCollection();
     }
