@@ -50,9 +50,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->setUpdatedAt(new \DateTimeImmutable('now'));    
         
-        if ($this->getCreatedAt() === null) {
-            $this->setCreatedAt(new \DateTimeImmutable('now'));
-        }
         if ($this->getUpdatedAt() === null) {
             $this->setUpdatedAt(new \DateTimeImmutable('now'));
         }

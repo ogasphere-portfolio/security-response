@@ -10,9 +10,16 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AppFixtures extends Fixture
 {
+    protected $slugger;
+
+    public function __construct(SluggerInterface $slugger)
+    {
+        $this->slugger = $slugger;
+    }
     public function load(ObjectManager $manager): void
     {
 
@@ -58,6 +65,7 @@ class AppFixtures extends Fixture
                 ->setAddress($faker->streetAddress())
                 ->setCity($faker->city())
                 ->setUser($userList[$i])
+                ->setSlug(strtolower($this->slugger->slug($enterprise->getBusinessName())))
                 ->setZipCode($faker->postcode())
                 ->setCreatedAt(new \DateTimeImmutable());
 
@@ -74,6 +82,7 @@ class AppFixtures extends Fixture
                 ->setDescription($faker->paragraphs(2, true))
                 ->setStatus($faker->numberBetween(0, 1))
                 ->addMember($memberList[$i])
+                ->setSlug((strtolower($this->slugger->slug($announcement->getTitle()))))
                 ->setCreatedAt(new \DateTimeImmutable());
 
             $manager->persist($announcement);
