@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
+
+use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AnnouncementRepository;
 use DateTimeImmutable;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=AnnouncementRepository::class)
@@ -88,6 +89,14 @@ class Announcement
     
     public function __construct()
     {
+        $this->setUpdatedAt(new \DateTimeImmutable('now'));    
+        
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTimeImmutable('now'));
+        }
+        if ($this->getUpdatedAt() === null) {
+            $this->setUpdatedAt(new \DateTimeImmutable('now'));
+        }
         $this->certification = new ArrayCollection();
         $this->member = new ArrayCollection();
         $this->specialization = new ArrayCollection();
