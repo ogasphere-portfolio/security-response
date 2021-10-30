@@ -72,7 +72,7 @@ class CategoryController extends AbstractController
             $category->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
-            $this->addFlash('success', "Category `{$category->getName()}` udpated successfully");
+            $this->addFlash('success', "Category {$category->getName()} udpated successfully");
 
             return $this->redirectToRoute('backoffice_category_browse');
         }

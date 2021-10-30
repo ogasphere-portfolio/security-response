@@ -107,7 +107,7 @@ class AnnouncementController extends AbstractController
             $entityManager->flush();
 
 
-            $this->addFlash('success', "Announcement `{$announcement->getTitle()}` created successfully");
+            $this->addFlash('success', "Announcement {$announcement->getTitle()} created successfully");
 
 
             return $this->redirectToRoute('backoffice_announcement_browse');

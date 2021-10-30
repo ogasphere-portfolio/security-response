@@ -107,7 +107,7 @@ class CertificationController extends AbstractController
             $entityManager->flush();
 
 
-            $this->addFlash('success', "Certification `{$certification->getName()}` created successfully");
+            $this->addFlash('success', "Certification {$certification->getName()} created successfully");
 
 
             return $this->redirectToRoute('backoffice_certification_browse');

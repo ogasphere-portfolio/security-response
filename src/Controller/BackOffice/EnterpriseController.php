@@ -107,7 +107,7 @@ class EnterpriseController extends AbstractController
             $entityManager->flush();
 
 
-            $this->addFlash('success', "Enterprise `{$enterprise->getBusinessName()}` created successfully");
+            $this->addFlash('success', "Enterprise {$enterprise->getBusinessName()} created successfully");
 
 
             return $this->redirectToRoute('backoffice_enterprise_browse');
