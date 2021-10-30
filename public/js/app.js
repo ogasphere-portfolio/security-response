@@ -13,6 +13,19 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(map);
 
 // ajout d'un markeur
+// todo récuperer les données longitude et lattitude dans le ul du template  pour afficher les marqueurs
+var lis=document.getElementsByClassName('list-group-item');
+console.log(lis);
+for(var i=0; i<lis.length; i++)
+  {
+    
+  var li=lis[i].innerHTML();
+  
+  }
+
 var marker = L.marker([48.833, 2.333]).addTo(map);
+
+
+
 // ajout d'un popup
 marker.bindPopup('<h3> Paris, France. </h3>');
