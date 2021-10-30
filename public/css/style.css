@@ -1,7 +1,10 @@
 .body {
     font-family: 'Alegreya Sans', sans-serif;
+  
 }
-
+body{
+    background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
+}
 .mt-6 {
     margin-top: 100px;
 }
@@ -64,7 +67,9 @@ h4 {
     font-size: 1.5em;
     color: #0052ff;
 }
-
+.navbar{
+    background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
+}
 .nav-link {
     color: #050f19;
 }
