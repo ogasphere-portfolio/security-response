@@ -26,9 +26,9 @@ class CategoryController extends AbstractController
      */
     public function browse(CategoryRepository $categoryRepository): Response
     {
-        // on fournit ce formulaire à notre vue
+
         return $this->render('backoffice/category/browse.html.twig', [
-            'category_list' => $categoryRepository->findAll()
+            'category_browse' => $categoryRepository->findAll()
         ]);
     }
 
@@ -37,24 +37,22 @@ class CategoryController extends AbstractController
      */
     public function read(Request $request, Category $category): Response
     {
-        // on créé un formulaire avec l'objet récupéré
-        // on modifie dynamiquement (dans le controleur) les options du formulaire
-        // pour désactiver tous les champs
+
         $categoryForm = $this->createForm(CategoryType::class, $category, [
             'disabled' => 'disabled'
         ]);
 
         $categoryForm
             ->add('createdAt', null, [
-            'widget' => 'single_text',
-        ])
+                'widget' => 'single_text',
+            ])
             ->add('updatedAt', null, [
-            'widget' => 'single_text',
-        ]);
+                'widget' => 'single_text',
+            ]);
 
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/category/read.html.twig', [
-            'category_form' => $categoryForm->createView(),
+            'form' => $categoryForm->createView(),
             'category' => $category,
         ]);
     }
@@ -70,7 +68,7 @@ class CategoryController extends AbstractController
 
         if ($categoryForm->isSubmitted() && $categoryForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            
+
             $category->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
@@ -79,9 +77,9 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('backoffice_category_browse');
         }
 
-        // on fournit ce formulaire à notre vue
+
         return $this->render('backoffice/category/add.html.twig', [
-            'category_form' => $categoryForm->createView(),
+            'form' => $categoryForm->createView(),
             'category' => $category,
             'page' => 'edit',
         ]);
@@ -93,35 +91,31 @@ class CategoryController extends AbstractController
     {
         $category = new Category();
 
-        // on créé un formulaire vierge (sans données initiales car l'objet fournit est vide)
+
         $categoryForm = $this->createForm(CategoryType::class, $category);
 
-        // Après avoir été affiché le handleRequest nous permettra
-        // de faire la différence entre un affichage de formulaire (en GET) 
-        // et une soumission de formulaire (en POST)
-        // Si un formulaire a été soumis, il rempli l'objet fournit lors de la création
+
         $categoryForm->handleRequest($request);
 
-        // l'objet de formulaire a vérifié si le formulaire a été soumis grace au HandleRequest
-        // l'objet de formulaire vérifie si le formulaire est valide (token csrf mais pas que)
+
         if ($categoryForm->isSubmitted() && $categoryForm->isValid()) {
 
-            // on ne demande l'entityManager que si on en a besoin
+
             $entityManager = $this->getDoctrine()->getManager();
 
             $entityManager->persist($category);
             $entityManager->flush();
 
-            // pour opquast 
+
             $this->addFlash('success', "Category `{$category->getName()}` created successfully");
 
-            // redirection
+
             return $this->redirectToRoute('backoffice_category_browse');
         }
 
-        // on fournit ce formulaire à notre vue
+
         return $this->render('backoffice/category/add.html.twig', [
-            'category_form' => $categoryForm->createView(),
+            'form' => $categoryForm->createView(),
             'page' => 'create',
         ]);
     }
@@ -138,6 +132,4 @@ class CategoryController extends AbstractController
 
         return $this->redirectToRoute('backoffice_category_browse');
     }
-
-
 }
