@@ -10,7 +10,9 @@
 
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
-
+    {% for message in app.flashes('success') %}
+            <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% endfor %}
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href="{{ '/var/www/html/Apothéose/projet-security-response/src/Controller/MemberController.php'|file_link(0) }}">src/Controller/MemberController.php</a></code></li>

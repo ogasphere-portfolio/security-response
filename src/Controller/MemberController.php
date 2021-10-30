@@ -20,18 +20,18 @@ class MemberController extends AbstractController
 {
     
     /**
-     * @Route("/", name="list")
+     * @Route("/", name="browse")
      */
-    public function list(): Response
+    public function browse(): Response
     {
-        return $this->render('member/list.html.twig', [
+        return $this->render('member/browse.html.twig', [
             'controller_name' => 'MemberController',
         ]);
     }
 
      /**
      * 
-     * @Route("/edit/{id}", name="read")
+     * @Route("/read/{id}", name="read")
      */
     public function read($id,MemberRepository $MemberRepository ): Response
     { 
@@ -43,6 +43,33 @@ class MemberController extends AbstractController
         ]);
     }
     
+    /**
+     * @Route("/edit/{id}", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     */
+    public function edit(Request $request, Member $member): Response
+    {
+        $memberForm = $this->createForm(MemberType::class, $member);
+
+        $memberForm->handleRequest($request);
+
+        if ($memberForm->isSubmitted() && $memberForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            
+            
+            $entityManager->flush();
+
+            $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()}  à été modifié");
+
+            return $this->redirectToRoute('member_browse');
+        }
+
+        
+        return $this->render('member/add.html.twig', [
+            'form' => $memberForm->createView(),
+            'member' => $member,
+            'page' => 'edit',
+        ]);
+    }
      /**
      * 
      * @Route("/add", name="add", methods={"GET", "POST"})
@@ -68,7 +95,7 @@ class MemberController extends AbstractController
                 $entityManager->persist($member);
                 $entityManager->flush();
     
-                $this->addFlash('success', "Le membre `{$member->getFirstName()}` à été ajouté");
+                $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()} à été ajouté");
     
                 return $this->redirectToRoute('member_list', ['id' => $member->getId()]);
 
