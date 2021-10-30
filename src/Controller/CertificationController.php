@@ -6,14 +6,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+/**
+     * @Route("/certifications", name="certification_")
+     */
 class CertificationController extends AbstractController
 {
     /**
-     * @Route("/certification", name="certification")
+     * @Route("/", name="browse")
      */
-    public function index(): Response
+    public function browse(): Response
     {
-        return $this->render('certification/index.html.twig', [
+        return $this->render('certification/browse.html.twig', [
             'controller_name' => 'CertificationController',
         ]);
     }

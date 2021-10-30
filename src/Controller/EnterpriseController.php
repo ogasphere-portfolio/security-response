@@ -18,9 +18,9 @@ use Symfony\Component\HttpFoundation\Request;
 class EnterpriseController extends AbstractController
 {
     /**
-     * @Route("/", name="list", methods={"GET"})
+     * @Route("/", name="browse", methods={"GET"})
      */
-    public function list(Request $request, EnterpriseRepository $EnterpriseRepository): Response
+    public function browse(Request $request, EnterpriseRepository $EnterpriseRepository): Response
     {
         // Recover the input in the search bar enterprise
         $searchEnterprise = $request->query->get('searchEnterprise');
@@ -33,7 +33,7 @@ class EnterpriseController extends AbstractController
             $resultByCity = null;
         }
 
-        return $this->render('enterprise/list.html.twig', [
+        return $this->render('enterprise/browse.html.twig', [
             'result_form' => $resultByCity,
             'search_form' => $searchEnterprise
         ]);
@@ -65,7 +65,7 @@ class EnterpriseController extends AbstractController
 
         // return $this->redirectToRoute('enterprise_list');
 
-        return $this->renderForm('enterprise/list.html.twig', [
+        return $this->renderForm('enterprise/browse.html.twig', [
             'result_form' => $resultByCity,
             'search_form' => $searchEnterprise
         ]);

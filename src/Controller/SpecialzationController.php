@@ -6,14 +6,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+/**
+     * @Route("/specialisations", name="specializtion_")
+     */
 class SpecialzationController extends AbstractController
 {
     /**
-     * @Route("/specialzation", name="specialzation")
+     * @Route("/", name="browse")
      */
-    public function index(): Response
+    public function browse(): Response
     {
-        return $this->render('specialzation/index.html.twig', [
+        return $this->render('specialzation/browse.html.twig', [
             'controller_name' => 'SpecialzationController',
         ]);
     }

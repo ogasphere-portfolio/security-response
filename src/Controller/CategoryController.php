@@ -8,14 +8,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
+/**
+     * @Route("/categories", name="category_")
+     */
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/category", name="category")
+     * @Route("/", name="browse")
      */
-    public function index(): Response
+    public function browse(): Response
     {
-        return $this->render('category/index.html.twig', [
+        return $this->render('category/browse.html.twig', [
             'controller_name' => 'CategoryController',
         ]);
     }

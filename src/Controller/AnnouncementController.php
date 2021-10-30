@@ -16,11 +16,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AnnouncementController extends AbstractController
 {
     /**
-     * @Route("/", name="list")
+     * @Route("/", name="browse")
      */
-    public function list(AnnouncementRepository $announcementRepository): Response
+    public function browse(AnnouncementRepository $announcementRepository): Response
     {
-        return $this->render('announcement/list.html.twig', [
+        return $this->render('announcement/browse.html.twig', [
             'announcement_list' => $announcementRepository->findAll()
         ]);
     }
