@@ -35,7 +35,7 @@ class EnterpriseRepository extends ServiceEntityRepository
             $dqlQuery
         )->setParameter('city', '%' . $city . '%');
 
-        // returns the selected TvShow Object
+        // returns the selected Enterprise Object
         return $query->getResult();
     }
 

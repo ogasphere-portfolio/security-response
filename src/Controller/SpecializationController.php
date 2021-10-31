@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
      * @Route("/specialisations", name="specializtion_")
      */
-class SpecialzationController extends AbstractController
+class SpecializationController extends AbstractController
 {
     /**
      * @Route("/", name="browse")
