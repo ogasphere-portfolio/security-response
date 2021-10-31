@@ -8,6 +8,7 @@ use App\Entity\Category;
 use App\Entity\Certification;
 use App\Entity\Enterprise;
 use App\Entity\Member;
+use App\Entity\Specialization;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -76,6 +77,17 @@ class AppFixtures extends Fixture
             //$enterpriseList[] = $enterprise;
         }
 
+        $specializationList = [];
+        for ($i = 0; $i <= 9; $i++) {
+            $specialization = new Specialization();
+            $specialization->setName($faker->word())
+                          ->setSlug((strtolower($this->slugger->slug($specialization->getName()))))
+                          ->setCreatedAt(new \DateTimeImmutable());
+
+            $manager->persist($specialization);
+
+            $specializationList[] = $specialization;
+        }
 
         $announcementList = [];
         for ($i = 0; $i <= 9; $i++) {
@@ -84,6 +96,8 @@ class AppFixtures extends Fixture
                 ->setDescription($faker->paragraphs(2, true))
                 ->setStatus($faker->numberBetween(0, 1))
                 ->addMember($memberList[$i])
+                ->addSpecialization($specializationList[])
+                //->addCategory($categoryList[])
                 ->setSlug((strtolower($this->slugger->slug($announcement->getTitle()))))
                 ->setCreatedAt(new \DateTimeImmutable());
 
@@ -92,7 +106,7 @@ class AppFixtures extends Fixture
             $announcementList[] = $announcement;
         }
 
-        //$categoryList = [];
+        $categoryList = [];
         for ($i = 0; $i <= 9; $i++) {
             $category = new Category();
             $category->setName($faker->word())
@@ -101,8 +115,11 @@ class AppFixtures extends Fixture
 
             $manager->persist($category);
 
-            //$categoryList[] = $category;
+            $categoryList[] = $category;
         }
+
+       
+
 
         //$certificationList = [];
         for ($i = 0; $i <= 9; $i++) {
@@ -115,6 +132,8 @@ class AppFixtures extends Fixture
 
             //$certificationList[] = $certification;
         }
+
+        
 
        
 
