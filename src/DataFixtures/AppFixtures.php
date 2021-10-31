@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\DataFixtures\Provider\EnterpriseProvider;
 use App\Entity\Announcement;
+use App\Entity\Category;
 use App\Entity\Enterprise;
 use App\Entity\Member;
 use App\Entity\User;
@@ -75,7 +76,7 @@ class AppFixtures extends Fixture
         }
 
 
-        //$announcementList = [];
+        $announcementList = [];
         for ($i = 0; $i <= 9; $i++) {
             $announcement = new Announcement();
             $announcement->setTitle($faker->sentence())
@@ -87,7 +88,19 @@ class AppFixtures extends Fixture
 
             $manager->persist($announcement);
 
-            //$announcementList[] = $announcement;
+            $announcementList[] = $announcement;
+        }
+
+        //$categoryList = [];
+        for ($i = 0; $i <= 9; $i++) {
+            $category = new Category();
+            $category->setName($faker->word())
+                     ->setAnnouncement($announcementList[$i])
+                     ->setCreatedAt(new \DateTimeImmutable());
+
+            $manager->persist($category);
+
+            //$categoryList[] = $category;
         }
 
        
