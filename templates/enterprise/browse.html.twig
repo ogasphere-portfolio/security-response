@@ -34,9 +34,8 @@
 					<div class="col">
 
 						{% if search_form != null %}
-							<div class="card shadow-sm border border-5" id="enterprises-result">
-								<h4 class="text-center">Liste des experts dans la ville :
-									{{ search_form }}</h4>
+							<div class="shadow-sm border border-5" id="enterprises-result">
+								<h4 class="text-center">Liste des experts dans la ville : {{ search_form }}</h4>
 								<div class="container h-100">
 									<div class="row h-100">
 										<aside class="col-12 col-md-4 p-0 ">
@@ -55,9 +54,11 @@
 																			<br>
 																			{{ result.zipcode }}
 																			{{ result.city }}
-																			<br>
-																			{{ result.latitude }}
-																			{{ result.longitude }}
+																			<br> <p class = "invisible">
+                                                                                {{ result.latitude }}
+																			    {{ result.longitude }}
+                                                                                </p>
+																			
 
 																		</li>
 																	{% endfor %}
