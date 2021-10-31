@@ -20,12 +20,12 @@ const app = {
 
     // ajout d'un markeur
     // todo récuperer les données longitude et lattitude dans le ul du template  pour afficher les marqueurs
-    var lis=document.querySelectorAll('list-group-item');
-    console.log(lis);
-    for(var i = 0; i < lis.length; i++)
+    var listPos=document.querySelectorAll('list-group-item');
+    console.log(listPos);
+    for(var i = 0; i < listPos.length; i++)
       {
         
-      var li= lis[i].innerHTML();
+      var li= listPos[i].innerHTML();
       
       }
 

@@ -1,75 +1,98 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des entreprises{% endblock %}
+{% block title %}Liste des entreprises
+{% endblock %}
 
 {% block body %}
-<main>
+	<main>
 
-        <section class="py-5 text-center container mt-">
-            <div class="d-flex py-lg-5">
-                <div class="mx-auto">
-                    <h1 class="fw-bold text-start">Trouvez des experts proches de chez vous</h1>                    
-                </div>
-            </div>
-        </section>
+		<section class="py-5 text-center container mt-">
+			<div class="d-flex py-lg-5">
+				<div class="mx-auto">
+					<h1 class="fw-bold text-start">Trouvez des experts proches de chez vous</h1>
+				</div>
+			</div>
+		</section>
 
-        <section class="py-5 text-center container mt-">
-            <div class="d-flex" id="home-register">
-                <div class="col-lg-6 col-md-8 " id="home-register-left">
-                
-                    <form class="d-flex" method="GET">
-                        <input name="searchEnterprise" class="form-control me-2" type="search" placeholder="Entrez le nom de la ville (exemple : Paris)" aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Chercher</button>
-                    </form> 
+		<section class="py-5 text-center container mt-">
+			<div class="d-flex" id="home-register">
+				<div class="col-lg-6 col-md-8 " id="home-register-left">
 
-                </div>
-            </div>
-        </section>
-                
-        <div class="album py-5 bg-light">
-            <div class="container">
+					<form class="d-flex" method="GET">
+						<input name="searchEnterprise" class="form-control me-2" type="search" placeholder="Entrez le nom de la ville (exemple : Paris)" aria-label="Search">
+						<button class="btn btn-outline-primary" type="submit">Chercher</button>
+					</form>
 
-                <div class="row">
-                    <div class="col">
+				</div>
+			</div>
+		</section>
 
-                        {% if search_form != null %}
-                        <div class="card shadow-sm border border-5" id="enterprises-result">
-                            <h4 class="text-center">Liste des experts dans la ville : {{ search_form }}</h4>
-                                <div class="card-body">
-                                {% if result_form  %}
-                                    <ul class="list-group">
-                                        {% for result in result_form %}
-                                        <li class="list-group-item">
-                                            {{ result.BusinessName }}
-                                            <br>{{ result.address }}
-                                            <br> {{ result.zipcode }} {{ result.city }}
-                                            <br> {{ result.latitude }} {{ result.longitude }}
-                                           
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                {% else %}
-                                    <ul class="list-group">
-                                        <p>Pas d'entreprises trouvées.</p>
-                                    </ul>
-                                {% endif %}
-                                </div>
-                        </div>
-                        {% endif %}
+		<div class="album py-5 bg-light">
+			<div class="container">
 
-                    </div>               
-                </div>
-            </div>
-        </div>
-        <div id="map_enterprise">
-        
-        
-        </div>
-    </main>
-    
-    
+				<div class="row">
+					<div class="col">
+
+						{% if search_form != null %}
+							<div class="card shadow-sm border border-5" id="enterprises-result">
+								<h4 class="text-center">Liste des experts dans la ville :
+									{{ search_form }}</h4>
+								<div class="container h-100">
+									<div class="row h-100">
+										<aside class="col-12 col-md-4 p-0 ">
+											<nav class="navbar navbar-expand navbar-dark  flex-md-column  align-items-start">
+
+												<ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+													<li class="nav-item">
+														<a class="nav-link pl-0" href="#">Menu 1</a>
+														<div class="card-body">
+															{% if result_form  %}
+																<ul class="list-group">
+																	{% for result in result_form %}
+																		<li class="list-group-item">
+																			{{ result.BusinessName }}
+																			<br>{{ result.address }}
+																			<br>
+																			{{ result.zipcode }}
+																			{{ result.city }}
+																			<br>
+																			{{ result.latitude }}
+																			{{ result.longitude }}
+
+																		</li>
+																	{% endfor %}
+																</ul>
+															{% else %}
+																<ul class="list-group">
+																	<p>Pas d'entreprises trouvées.</p>
+																</ul>
+															{% endif %}
+														</div>
+														<!-- Insérez ici le reste de votre menu -->
+													</li>
+												</ul>
+
+											</nav>
+										</aside>
+										<main class="col">
+											<div id="map_enterprise"></div>
+										</main>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</main>
+
+
 {% endblock %}
- {% block javascripts %}
-     
-     <script src="{{ asset('js/app.js') }}"></script>
-    {% endblock %}
+{% block javascripts %}
+
+	<script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}
