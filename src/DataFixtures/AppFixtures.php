@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\DataFixtures\Provider\EnterpriseProvider;
 use App\Entity\Announcement;
 use App\Entity\Category;
+use App\Entity\Certification;
 use App\Entity\Enterprise;
 use App\Entity\Member;
 use App\Entity\User;
@@ -101,6 +102,18 @@ class AppFixtures extends Fixture
             $manager->persist($category);
 
             //$categoryList[] = $category;
+        }
+
+        //$certificationList = [];
+        for ($i = 0; $i <= 9; $i++) {
+            $certification = new Certification();
+            $certification->setName($faker->word())
+                          ->setSlug((strtolower($this->slugger->slug($certification->getName()))))
+                          ->setCreatedAt(new \DateTimeImmutable());
+
+            $manager->persist($certification);
+
+            //$certificationList[] = $certification;
         }
 
        
