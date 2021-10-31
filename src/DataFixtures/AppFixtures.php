@@ -89,6 +89,19 @@ class AppFixtures extends Fixture
             $specializationList[] = $specialization;
         }
 
+        $certificationList = [];
+        for ($i = 0; $i <= 9; $i++) {
+            $certification = new Certification();
+            $certification->setName($faker->word())
+                          ->setSlug((strtolower($this->slugger->slug($certification->getName()))))
+                          ->setCreatedAt(new \DateTimeImmutable());
+
+            $manager->persist($certification);
+
+            $certificationList[] = $certification;
+        }
+
+
         $announcementList = [];
         for ($i = 0; $i <= 9; $i++) {
             $announcement = new Announcement();
@@ -96,8 +109,9 @@ class AppFixtures extends Fixture
                 ->setDescription($faker->paragraphs(2, true))
                 ->setStatus($faker->numberBetween(0, 1))
                 ->addMember($memberList[$i])
-                ->addSpecialization($specializationList[])
+                ->addSpecialization($specializationList[$i])
                 //->addCategory($categoryList[])
+                ->addCertification($certificationList[$i])
                 ->setSlug((strtolower($this->slugger->slug($announcement->getTitle()))))
                 ->setCreatedAt(new \DateTimeImmutable());
 
@@ -121,18 +135,7 @@ class AppFixtures extends Fixture
        
 
 
-        //$certificationList = [];
-        for ($i = 0; $i <= 9; $i++) {
-            $certification = new Certification();
-            $certification->setName($faker->word())
-                          ->setSlug((strtolower($this->slugger->slug($certification->getName()))))
-                          ->setCreatedAt(new \DateTimeImmutable());
-
-            $manager->persist($certification);
-
-            //$certificationList[] = $certification;
-        }
-
+        
         
 
        
