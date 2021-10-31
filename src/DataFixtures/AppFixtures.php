@@ -29,7 +29,7 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
         $faker->addProvider(new EnterpriseProvider($faker));
 
-        
+
         $userList = [];
         for ($i = 0; $i <= 9; $i++) {
             $user = new User();
@@ -43,6 +43,18 @@ class AppFixtures extends Fixture
             $userList[] = $user;
         }
 
+        $specializationList = [];
+        for ($i = 0; $i <= 9; $i++) {
+            $specialization = new Specialization();
+            $specialization->setName($faker->word())
+                ->setSlug((strtolower($this->slugger->slug($specialization->getName()))))
+                ->setCreatedAt(new \DateTimeImmutable());
+
+            $manager->persist($specialization);
+
+            $specializationList[] = $specialization;
+        }
+
         $memberList = [];
         for ($i = 0; $i <= 9; $i++) {
             $member = new Member();
@@ -53,13 +65,26 @@ class AppFixtures extends Fixture
                 ->setGender($faker->numberBetween(0, 1))
                 ->setCity($faker->city())
                 ->setUser($userList[$i])
+                ->addSpecialization($specializationList[$i])
                 ->setJobStatus($faker->numberBetween(0, 1))
                 ->setCreatedAt(new \DateTimeImmutable());
             $manager->persist($member);
 
             $memberList[] = $member;
         }
-        
+
+        $certificationList = [];
+        for ($i = 0; $i <= 9; $i++) {
+            $certification = new Certification();
+            $certification->setName($faker->word())
+                ->setSlug((strtolower($this->slugger->slug($certification->getName()))))
+                ->setCreatedAt(new \DateTimeImmutable());
+
+            $manager->persist($certification);
+
+            $certificationList[] = $certification;
+        }
+
         //$enterpriseList = [];
         for ($i = 0; $i <= 9; $i++) {
             $enterprise = new Enterprise();
@@ -68,6 +93,7 @@ class AppFixtures extends Fixture
                 ->setAddress($faker->streetAddress())
                 ->setCity($faker->city())
                 ->setUser($userList[$i])
+                ->addCertification($certificationList[$i])
                 ->setSlug(strtolower($this->slugger->slug($enterprise->getBusinessName())))
                 ->setZipCode($faker->postcode())
                 ->setCreatedAt(new \DateTimeImmutable());
@@ -76,31 +102,6 @@ class AppFixtures extends Fixture
 
             //$enterpriseList[] = $enterprise;
         }
-
-        $specializationList = [];
-        for ($i = 0; $i <= 9; $i++) {
-            $specialization = new Specialization();
-            $specialization->setName($faker->word())
-                          ->setSlug((strtolower($this->slugger->slug($specialization->getName()))))
-                          ->setCreatedAt(new \DateTimeImmutable());
-
-            $manager->persist($specialization);
-
-            $specializationList[] = $specialization;
-        }
-
-        $certificationList = [];
-        for ($i = 0; $i <= 9; $i++) {
-            $certification = new Certification();
-            $certification->setName($faker->word())
-                          ->setSlug((strtolower($this->slugger->slug($certification->getName()))))
-                          ->setCreatedAt(new \DateTimeImmutable());
-
-            $manager->persist($certification);
-
-            $certificationList[] = $certification;
-        }
-
 
         $announcementList = [];
         for ($i = 0; $i <= 9; $i++) {
@@ -124,25 +125,22 @@ class AppFixtures extends Fixture
         for ($i = 0; $i <= 9; $i++) {
             $category = new Category();
             $category->setName($faker->word())
-                     ->setAnnouncement($announcementList[$i])
-                     ->setCreatedAt(new \DateTimeImmutable());
+                ->setAnnouncement($announcementList[$i])
+                ->setCreatedAt(new \DateTimeImmutable());
 
             $manager->persist($category);
 
             $categoryList[] = $category;
         }
 
-       
 
 
-        
-        
 
-       
+
+
+
+
 
         $manager->flush();
     }
-
-
-
 }
