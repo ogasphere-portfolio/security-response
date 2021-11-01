@@ -6,25 +6,31 @@
 {% endfor %}
 <main>
 
-        <section class="py-5 text-center container mt-">
+        <section class="py-5 text-center container">
             <div class="d-flex py-lg-5" id="home-top">
                 <div class="col-lg-6 col-md-8 mx-auto" id="home-top-left">
                     <h1 class="fw-bold text-start">Les experts en sécurité informatique proches de chez vous</h1>
-                    <p class="text-start">Security Response vous permet d'améliorer la sécurité de votre système d'information en vous proposant des experts proches de votre entreprise. <br>
-                    Entrez le nom d'un ville pour trouvez dès maintenant des professionels compétants pour vous aider.</p>
-                    <form class="d-flex" method="GET" action="/entreprises">
-                        <input name="searchEnterprise" class="form-control me-2" type="search" placeholder="Entrez une ville" aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Chercher</button>
-                    </form>
-                    
+                    <p class="text-start">Security Response vous permet d'<strong>améliorer la sécurité de votre système</strong> d'information en vous proposant des experts proches de votre entreprise. <br>
+                    <br>
+                    <strong>Trouvez dès maintenant des professionels compétants pour vous aider.</strong></p>
                 </div>
             
              <img src="./img/security-concept.png" alt="">
 
             </div>
+            <div class="w-50 mx-auto">
+                <form class="d-flex" method="GET" action="/entreprises">
+                    <input name="searchEnterprise" class="form-control me-2" type="search" placeholder="Rechercher le nom d'une ville" aria-label="Search">
+                    <button class="d-flex btn btn-outline-primary" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                    Rechercher</button>
+                </form>
+            </div>
         </section>
 
-        <section class="py-5 text-center container mt-">
+        <section class="py-5 text-center container">
             <div class="d-flex" id="home-register">
                 <div class="col-lg-6 col-md-8 " id="home-register-left">
                     <h3 class="fw-bold text-start">Protégez-vous des attaques en vous inscrivant sur la plateforme</h3>                    
