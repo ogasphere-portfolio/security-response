@@ -18,7 +18,7 @@
         </ul> 
         </section>
 
-               {{ form_start(announcement_form) }}
+               {{ form_start(announcement_form, {attr: {novalidate: 'novalidate'}}) }}
 
                 
                 {{ form_row(announcement_form.title) }}
