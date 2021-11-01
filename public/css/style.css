@@ -209,3 +209,57 @@ li.nav-item {
 .icon-home {
     width: 10%;
 }
+
+/* Mobile S CSS*/
+@media (max-width: 320px)
+{
+   .logo-img {
+       display: none;
+   }
+
+   li#nav-inscription.nav-item {
+       width: 90px;
+   }
+
+   .img-security-concept {
+       display: none;
+   }
+
+}
+
+/* Mobile M CSS*/
+@media (max-width: 375px)
+{
+    .logo-img {
+        display: none;
+    }
+
+   li#nav-inscription.nav-item {
+       width: 90px;
+   }
+
+   #logo-name {
+       width: 75%;
+   }
+
+}
+
+/* Tablet CSS*/
+@media (max-width: 768px)
+{
+
+   li#nav-inscription.nav-item {
+       width: 90px;
+   }
+
+}
+
+/* Laptop CSS*/
+@media (max-width: 992px)
+{
+
+   a.nav-link {
+       padding-left: 0;
+   }
+
+}
