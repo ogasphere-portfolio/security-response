@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AnnouncementRepository;
 use DateTimeImmutable;
@@ -28,11 +28,18 @@ class Announcement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Merci de saisir le titre de l'annonce !!!")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank(message="Merci de saisir la description de l'annonce !!!")
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 300,
+     *      minMessage = "Veuillez saisir un minimum de {{ limit }} charactères !!!",
+     * )
      */
     private $description;
 
