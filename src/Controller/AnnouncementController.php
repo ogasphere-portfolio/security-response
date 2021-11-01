@@ -21,7 +21,7 @@ class AnnouncementController extends AbstractController
     public function browse(AnnouncementRepository $announcementRepository): Response
     {
         return $this->render('announcement/browse.html.twig', [
-            'announcement_list' => $announcementRepository->findAll()
+            'announcement_browse' => $announcementRepository->findAll()
         ]);
     }
 
@@ -65,7 +65,7 @@ class AnnouncementController extends AbstractController
             $entityManager->flush();
             
             // redirection
-            return $this->redirectToRoute('announcement_list');
+            return $this->redirectToRoute('announcement_browse');
         }
 
         // on fournit ce formulaire à notre vue
