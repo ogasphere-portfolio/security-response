@@ -48,16 +48,13 @@
 															{% if result_form  %}
 																<ul class="list-group">
 																	{% for result in result_form %}
-																		<li class="list-group-item">
+																		<li class="list-group-item" data-geo="[{{ result.latitude }},{{ result.longitude }}]">
 																			{{ result.BusinessName }}
 																			<br>{{ result.address }}
 																			<br>
 																			{{ result.zipcode }}
 																			{{ result.city }}
-																			<br> <p class = "invisible">
-                                                                                {{ result.latitude }}
-																			    {{ result.longitude }}
-                                                                                </p>
+																			
 																			
 
 																		</li>
