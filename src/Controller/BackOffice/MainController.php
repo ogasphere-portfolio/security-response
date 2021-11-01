@@ -18,7 +18,7 @@ class MainController extends AbstractController
      */
     public function browse(): Response
     {
-        return $this->render('backoffice/home_admin.html.twig', [
+        return $this->render('backoffice/main/home.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
