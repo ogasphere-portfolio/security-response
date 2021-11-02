@@ -25,7 +25,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/", name="browse", methods={"GET"})
-     * @IsGranted("ROLE_USER_BROWSE")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function browse(UserRepository $userRepository): Response
     {
