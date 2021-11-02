@@ -31,7 +31,8 @@ class UserController extends AbstractController
     {
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/user/browse.html.twig', [
-            'user_list' => $userRepository->findAll()
+            'user_list' => $userRepository->findAll(),
+            'controller_name' => 'BackOffice/UserController'
         ]);
     }
 

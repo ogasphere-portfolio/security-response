@@ -1,9 +1,6 @@
-.body {
-    font-family: 'Alegreya Sans', sans-serif;
-  
-}
 body{
     background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
+    font-family: 'Montserrat', sans-serif;
 }
 
 #map_enterprise {
@@ -15,7 +12,7 @@ body{
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 h4 {
@@ -30,8 +27,22 @@ h4 {
     user-select: none;
 }
 
-#logo-name {
-    color: #0052ff;
+#logo-name strong {
+    color: #0051b6;
+}
+
+.btn-outline-primary {
+    color: #0051b6;
+    border-color: #0051b6;
+}
+
+.btn-outline-primary:hover {
+    background-color: #006fc5;
+    border-color: #006fc5;
+}
+
+.logo-img {
+    width: 6%;
 }
 
 #home-top img {
@@ -57,6 +68,7 @@ h4 {
     justify-content: space-around;
     background-color: #0051b6;
     color: white;
+    border-radius: 10px;
 }
 
 #home-register button {
@@ -70,26 +82,27 @@ h4 {
     background-color: white;
     padding: 1em 2.5em;
     font-size: 1.5em;
-    color: #0052ff;
+    color: #006fc5;
 }
+
 .navbar{
     background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
 }
-.nav-link {
+.navbar-light .navbar-nav .nav-link {
     color: #050f19;
 }
 
-.nav-link:hover {
-    color: #0052ff;
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #006fc5;
 }
 
 #nav-inscription {
-    background-color: #0052ff;
+    background-color: #0051b6;
     border-radius: 6px;
 }
 
 #nav-inscription:hover {
-    background-color: #4b48a7;
+    background-color: #006fc5;
     border-radius: 6px;
 }
 
@@ -111,14 +124,11 @@ li.nav-item {
     }
 }
 
-
 #form-register {
 
     margin: 0 auto;
     width: 400px;
 }
-
-
 
 .form-signin
 {
@@ -194,4 +204,63 @@ li.nav-item {
 {
     display: block;
     margin-top: 10px;
+}
+
+.icon-home {
+    width: 10%;
+}
+
+/* Mobile S CSS*/
+@media (max-width: 320px)
+{
+   .logo-img {
+       display: none;
+   }
+
+   li#nav-inscription.nav-item {
+       width: 90px;
+   }
+
+   .img-security-concept {
+       display: none;
+   }
+
+}
+
+/* Mobile M CSS*/
+@media (max-width: 375px)
+{
+    .logo-img {
+        display: none;
+    }
+
+   li#nav-inscription.nav-item {
+       width: 90px;
+   }
+
+   #logo-name {
+       width: 75%;
+   }
+
+}
+
+/* Tablet CSS*/
+@media (max-width: 768px)
+{
+
+   li#nav-inscription.nav-item {
+       width: 90px;
+   }
+
+
+}
+
+/* Laptop CSS*/
+@media (max-width: 992px)
+{
+
+   a.nav-link {
+       padding-left: 0;
+   }
+
 }

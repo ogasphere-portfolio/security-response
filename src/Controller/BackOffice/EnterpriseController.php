@@ -28,7 +28,8 @@ class EnterpriseController extends AbstractController
     {
 
         return $this->render('backoffice/enterprise/browse.html.twig', [
-            'enterprise_browse' => $enterpriseRepository->findAll()
+            'enterprise_browse' => $enterpriseRepository->findAll(),
+            'controller_name' => 'BackOffice/EnterpriseController'
         ]);
     }
 
