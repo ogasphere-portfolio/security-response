@@ -32,6 +32,7 @@ const app = {
       let nom = item.textContent;
       let geoloc = JSON.parse(item.dataset.geo);
       var marker = L.marker(geoloc).addTo(map).bindPopup(nom);
+      marker.bindTooltip(nom).openTooltip();
       pointsList.push(geoloc);
       console.log(nom);
 
