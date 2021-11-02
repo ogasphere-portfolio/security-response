@@ -91,7 +91,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register/membre", name="app_register_member")
      */
-    public function membre(Request $request ): Response
+    public function registerMembre(Request $request ): Response
     {
         $member = new Member();
         $form = $this->createForm(MemberType::class, $member);
@@ -99,13 +99,17 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $memberUser = $form->getData();
-
-            $memberUser->setUser($this->getUser());
+            $user = new User;
             
+            //$user->setUser($this->getUser());
+
+
+            
+            $toto = $member->getUser();
+            $memberUser = $form->getData($toto);
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($member);
+            $entityManager->persist($memberUser);
             $entityManager->flush();
 
             
