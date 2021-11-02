@@ -14,15 +14,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
+    private $token;
 
-    public function __construct(EmailVerifier $emailVerifier)
+    public function __construct(EmailVerifier $emailVerifier, TokenStorageInterface $token)
     {
         $this->emailVerifier = $emailVerifier;
+        $this->token = $token;
     }
 
     /**
@@ -57,7 +60,7 @@ class RegistrationController extends AbstractController
             // );
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('app_register_member');
         }
 
         return $this->render('registration/register.html.twig', [
@@ -91,20 +94,21 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register/membre", name="app_register_member")
      */
-    public function registerMembre(Request $request ): Response
+    public function registerMembre(Request $request): Response
     {
         $member = new Member();
         $form = $this->createForm(MemberType::class, $member);
         $form->handleRequest($request);
 
+        dump($this->token);
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $user = new User;
             
+            $user = $this->token->getToken()->getUser();
             //$user->setUser($this->getUser());
 
-            $toto = $member->getUser();
-            $memberUser = $form->getData($toto);
+            
+            $memberUser = $form->getData($user);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($memberUser);
@@ -114,6 +118,7 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('homepage');
         }
+
 
         return $this->render('registration/register-member.html.twig', [
             'registrationForm' => $form->createView(),

@@ -7,14 +7,18 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 
 class MemberType extends AbstractType
 {
+
+    
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('firstname', null, [
-            "label" => "First Name",
+                "label" => "First Name",
             ])
             ->add('lastname')
             // ->add('slug')

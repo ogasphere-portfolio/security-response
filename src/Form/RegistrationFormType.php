@@ -49,6 +49,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('member', MemberType::class)
 
             // ->add('roles')
             

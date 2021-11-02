@@ -27,8 +27,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $email;
 
-    
-
     /**
      * @ORM\Column(type="json")
      */
@@ -44,6 +42,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Member::class, cascade={"persist", "remove"})
+     */
+    private $userMember;
 
     
     public function __construct()
@@ -260,6 +263,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getUserMember(): ?Member
+    {
+        return $this->userMember;
+    }
+
+    public function setUserMember(?Member $userMember): self
+    {
+        $this->userMember = $userMember;
 
         return $this;
     }
