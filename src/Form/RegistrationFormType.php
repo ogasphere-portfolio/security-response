@@ -54,6 +54,7 @@ class RegistrationFormType extends AbstractType
             // De base il est pas en required 
             // TODO: Vérifier qu'il l'est bien pas
             ->add('userMember', MemberType::class)
+            ->add('userEnterprise', EnterpriseType::class)
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class, 
                 // instead of being set onto the object directly,
