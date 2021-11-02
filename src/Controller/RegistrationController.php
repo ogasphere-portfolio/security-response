@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Member;
 use App\Entity\User;
+use App\Form\MemberType;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -37,7 +39,7 @@ class RegistrationController extends AbstractController
             $user->setPassword(
             $userPasswordHasherInterface->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
 
@@ -46,13 +48,13 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('secu.response@gmail.com', 'Security Response Bot'))
-                    ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
+            // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            //     (new TemplatedEmail())
+            //         ->from(new Address('secu.response@gmail.com', 'Security Response Bot'))
+            //         ->to($user->getEmail())
+            //         ->subject('Please Confirm your Email')
+            //         ->htmlTemplate('registration/confirmation_email.html.twig')
+            // );
             // do anything else you need here, like send an email
 
             return $this->redirectToRoute('homepage');
@@ -83,5 +85,36 @@ class RegistrationController extends AbstractController
         $this->addFlash('success', 'Your email address has been verified.');
 
         return $this->redirectToRoute('homepage');
+    }
+
+
+    /**
+     * @Route("/register/membre", name="app_register_member")
+     */
+    public function membre(Request $request ): Response
+    {
+        $member = new Member();
+        $form = $this->createForm(MemberType::class, $member);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            $memberUser = $form->getData();
+
+            $memberUser->setUser($this->getUser());
+            
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($member);
+            $entityManager->flush();
+
+            
+
+            return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render('registration/register-member.html.twig', [
+            'registrationForm' => $form->createView(),
+        ]);
     }
 }
