@@ -5,16 +5,29 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\IsFalse;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationFormType extends AbstractType
 {
+
+    public static function getSubscribedEvents(): array
+    {
+        // Tells the dispatcher that you want to listen on the form.PRE_SUBMIT
+        // event and that the onPreSubmit method should be called.
+        return [FormEvents::PRE_SUBMIT => 'onPreSubmit'];
+    }
+
+ 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -27,8 +40,20 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            
-            
+
+            ->add('membershipType', ChoiceType::class, [
+                'mapped' => false,
+                'choices'  => [
+                    'Membre' => 'member',
+                    'Entreprise' => 'entreprise',
+                ],
+                'expanded' => true,
+                'multiple' => false,
+                'label' => 'Choisissez votre type de compte',
+            ])
+            // De base il est pas en required 
+            // TODO: Vérifier qu'il l'est bien pas
+            ->add('userMember', MemberType::class)
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class, 
                 // instead of being set onto the object directly,
@@ -49,11 +74,31 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('member', MemberType::class)
+          
 
             // ->add('roles')
             
             ;
+    }
+
+    public function onPreSubmit(FormEvent $event) {
+        $user = $event->getData();
+        $form = $event->getForm();
+
+        // Vérifier la valeur du radio
+        // si 'est member on indique le champ userMember (ou plutôt le sous form) est requis.
+        if($user['membershipType'] === 'member') {
+            $form->add('userMember', MemberType::class, [
+                'constraints'   => [
+                    new NotBlank([
+                        'message' => 'Merci de choisir zf zef '
+                    ]),
+                ]
+            ]);
+        }
+
+        // pareil pour entreprise
+        
     }
 
     public function configureOptions(OptionsResolver $resolver): void
