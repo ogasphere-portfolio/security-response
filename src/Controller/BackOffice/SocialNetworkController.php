@@ -28,7 +28,8 @@ class SocialNetworkController extends AbstractController
     {
 
         return $this->render('backoffice/socialNetwork/browse.html.twig', [
-            'socialNetwork_browse' => $socialNetworkRepository->findAll()
+            'socialNetwork_browse' => $socialNetworkRepository->findAll(),
+            'controller_name' => 'BackOffice/SocialNetworkController'
         ]);
     }
 

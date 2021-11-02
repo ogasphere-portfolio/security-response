@@ -25,13 +25,14 @@ class UserController extends AbstractController
 
     /**
      * @Route("/", name="browse", methods={"GET"})
-     * @IsGranted("ROLE_USER_BROWSE")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function browse(UserRepository $userRepository): Response
     {
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/user/browse.html.twig', [
-            'user_list' => $userRepository->findAll()
+            'user_list' => $userRepository->findAll(),
+            'controller_name' => 'BackOffice/UserController'
         ]);
     }
 

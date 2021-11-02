@@ -28,7 +28,8 @@ class DocumentController extends AbstractController
     {
 
         return $this->render('backoffice/document/browse.html.twig', [
-            'document_browse' => $documentRepository->findAll()
+            'document_browse' => $documentRepository->findAll(),
+            'controller_name' => 'BackOffice/DocumentController'
         ]);
     }
 

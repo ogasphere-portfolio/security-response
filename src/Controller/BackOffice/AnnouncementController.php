@@ -28,7 +28,8 @@ class AnnouncementController extends AbstractController
     {
 
         return $this->render('backoffice/announcement/browse.html.twig', [
-            'announcement_browse' => $announcementRepository->findAll()
+            'announcement_browse' => $announcementRepository->findAll(),
+            'controller_name' => 'BackOffice/AnnouncementController'
         ]);
     }
 
