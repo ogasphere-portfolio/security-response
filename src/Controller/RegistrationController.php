@@ -103,8 +103,6 @@ class RegistrationController extends AbstractController
             
             //$user->setUser($this->getUser());
 
-
-            
             $toto = $member->getUser();
             $memberUser = $form->getData($toto);
 
