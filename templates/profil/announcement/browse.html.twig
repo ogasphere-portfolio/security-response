@@ -1,0 +1,97 @@
+{% extends 'profil/base_profil.html.twig' %}
+
+{% block title %}Liste de mes annonces{% endblock %}
+
+{% block body %}
+<header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+                    <ul class="navbar-nav">                
+                        <li class="nav-item" id="nav-inscription">
+                            <a class="nav-link" href="{{ path('announcement_browse') }}">Les annonces</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('announcement_browse') }}">Mon profil</a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+                        </li>                                       
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<main>
+        <div >            
+            ( {{ app.user.email }} )
+        </div>
+
+        <div>
+            <h1>Bienvenue dans votre espace Entreprise</h1>
+        </div>
+
+        <div class="testnoir">
+            <h2>Mon compte</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Infos de connexion</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes coordonnées</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes certifications</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Supprimer mon compte</a>
+                    </li>
+                </ul>
+
+            <h2>Mes annonces</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a class="nav-link" aria-current="page" href="{{ url('announcement_add') }}">Créer une annonce</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Gérer mes annonces</a>
+                    </li>
+                </ul>
+        </div>
+       
+
+        <section class="testnoir py-5 text-center container mt-">
+            <div class="d-flex py-lg-5">
+                <div class="mx-auto">
+                    <h1 class="fw-bold">Liste de mes annonces</h1>  
+                        <div>
+                <div class="testrouge">
+                    <table class="">            
+                            <tbody>
+                                
+                                {% for announcement in announcement_browse %}
+                                <tr>   
+                                    <td>{{ announcement.title }}</td>
+                                    <td>{{ announcement.description }}</td>
+                                    <td>{{ announcement.createdAt|date("d/m/Y") }}</td>
+                                </tr>
+                                {% endfor %}
+                                
+                                
+                            </tbody>
+                    </table>  
+                </div>        
+        </main>
+    </div>                  
+                </div>
+            </div>
+        </section>
+
+        <ul class="navbar-nav me-4 mb-md-0">
+            <li class="nav-item">
+                <a class="btn btn-primary" aria-current="page" href="{{ url('announcement_add') }}">Ajouter une annonce</a>
+            </li>
+        </ul>            
+    
+{% endblock %}

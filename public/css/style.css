@@ -264,3 +264,15 @@ li.nav-item {
    }
 
 }
+
+.testnoir{
+    border: solid;
+}
+
+.testrouge{
+    border: solid red;   
+}
+
+.testbleu{
+    border: solid blue;    
+}
