@@ -4,7 +4,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>
-			{% block title %}Administration Security Response{% endblock %}
+			{% block title %}Administration Security Response
+			{% endblock %}
 		</title>
 
 		<!-- Google Font: Source Sans Pro -->
@@ -43,7 +44,7 @@
 
 			<!-- Preloader -->
 			<div class="preloader flex-column justify-content-center align-items-center">
-				<img class="animation__shake" src="{{asset('assets/adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+				<img class="animation__shake" src="{{ asset("img/logo.svg") }}" alt="AdminLTELogo" height="60" width="60">
 			</div>
 
 			<!-- Navbar -->
@@ -64,53 +65,80 @@
 					</li>
 				</ul>
 
-			{# 	{{ include('backoffice/_partials/_right_navbar_links.html.twig') }} #}
+				{# 	{{ include('backoffice/_partials/_right_navbar_links.html.twig') }} #}
 
 			</nav>
 			<!-- /.navbar -->
 
 
 			{{ include('backoffice/_partials/_sidebar_menu.html.twig') }}
+			<!-- Content Wrapper. Contains page content -->
+			<div
+				class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<div class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1 class="m-0">Bienvenue dans l'administration de Security Response</h1>
+							</div>
+							<!-- /.col -->
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-right">
+									<li class="breadcrumb-item">
+										<a href="{{ path('backoffice_browse') }}">Home</a>
+									</li>
+									<li class="breadcrumb-item active">Dashboard v1</li>
+								</ol>
+							</div>
+							<!-- /.col -->
+						</div>
+						<!-- /.row -->
+					</div>
+					<!-- /.container-fluid -->
+				</div>
+				<!-- /.content-header -->
 
-			{% block body %}{% endblock %}
-    	
-      {{ include('backoffice/_partials/_footer.html.twig') }}
-			
-		<!-- ./wrapper -->
+				{% block body %}{% endblock %}
 
-		<!-- jQuery -->
-		<script src="{{asset('assets/adminlte/plugins/jquery/jquery.min.js')}}"></script>
-		<!-- jQuery UI 1.11.4 -->
-		<script src="{{asset('assets/adminlte/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-		<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-		<script>
-			$.widget.bridge('uibutton', $.ui.button)
-		</script>
-		<!-- Bootstrap 4 -->
-		<script src="{{asset('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-		<!-- ChartJS -->
-		<script src="{{asset('assets/adminlte/plugins/chart.js/Chart.min.js')}}"></script>
-		<!-- Sparkline -->
-		<script src="{{asset('assets/adminlte/plugins/sparklines/sparkline.js')}}"></script>
-		<!-- JQVMap -->
-		<script src="{{asset('assets/adminlte/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-		<script src="{{asset('assets/adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
-		<!-- jQuery Knob Chart -->
-		<script src="{{asset('assets/adminlte/dist/js/adminlte.js')}}plugins/jquery-knob/jquery.knob.min.js"></script>
-		<!-- daterangepicker -->
-		<script src="{{asset('assets/adminlte/plugins/moment/moment.min.js')}}"></script>
-		<script src="{{asset('assets/adminlte/plugins/daterangepicker/daterangepicker.js')}}"></script>
-		<!-- Tempusdominus Bootstrap 4 -->
-		<script src="{{asset('assets/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-		<!-- Summernote -->
-		<script src="{{asset('assets/adminlte/plugins/summernote/summernote-bs4.min.js')}}"></script>
-		<!-- overlayScrollbars -->
-		<script src="{{asset('assets/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
-		<!-- AdminLTE App -->
-		<script src="{{asset('assets/adminlte/dist/js/adminlte.js')}}"></script>
-		<!-- AdminLTE for demo purposes -->
-		<script src="{{asset('assets/adminlte/dist/js/demo.js')}}"></script>
-		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-		<script src="{{asset('assets/adminlte/dist/js/pages/dashboard.js')}}"></script>
+				{{ include('backoffice/_partials/_footer.html.twig') }}
+
+				<!-- ./wrapper -->
+
+				<!-- jQuery --><script src="{{asset('assets/adminlte/plugins/jquery/jquery.min.js')}}"> </script>
+				<!-- jQuery UI 1.11.4 -->
+				<script src="{{asset('assets/adminlte/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+				<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+				<script>
+					$.widget.bridge('uibutton', $.ui.button)
+				</script>
+				<!-- Bootstrap 4 -->
+				<script src="{{asset('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+				<!-- ChartJS -->
+				<script src="{{asset('assets/adminlte/plugins/chart.js/Chart.min.js')}}"></script>
+				<!-- Sparkline -->
+				<script src="{{asset('assets/adminlte/plugins/sparklines/sparkline.js')}}"></script>
+				<!-- JQVMap -->
+				<script src="{{asset('assets/adminlte/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+				<script src="{{asset('assets/adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+				<!-- jQuery Knob Chart -->
+				<script src="{{asset('assets/adminlte/dist/js/adminlte.js')}}plugins/jquery-knob/jquery.knob.min.js"></script>
+				<!-- daterangepicker -->
+				<script src="{{asset('assets/adminlte/plugins/moment/moment.min.js')}}"></script>
+				<script src="{{asset('assets/adminlte/plugins/daterangepicker/daterangepicker.js')}}"></script>
+				<!-- Tempusdominus Bootstrap 4 -->
+				<script src="{{asset('assets/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+				<!-- Summernote -->
+				<script src="{{asset('assets/adminlte/plugins/summernote/summernote-bs4.min.js')}}"></script>
+				<!-- overlayScrollbars -->
+				<script src="{{asset('assets/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+				<!-- AdminLTE App -->
+				<script src="{{asset('assets/adminlte/dist/js/adminlte.js')}}"></script>
+				<!-- AdminLTE for demo purposes -->
+				<script src="{{asset('assets/adminlte/dist/js/demo.js')}}"></script>
+				<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+				<script src="{{asset('assets/adminlte/dist/js/pages/dashboard.js')}}"></script>
+			</body>
+		</html>
 	</body>
 </html>
