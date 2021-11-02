@@ -135,6 +135,9 @@ li.nav-item {
     display: none;
 }
 /* TODO : faire pareil pour entreprise */
+#registration_form_userEnterprise {
+    display: none;
+}
 
 .form-signin
 {
