@@ -67,10 +67,10 @@
                                             <tbody>
                                                 
                                                 {% for announcement in announcement_browse %}
-                                                <tr>   
-                                                    <td>{{ announcement.title }}</td>
-                                                    <td>{{ announcement.description }}</td>
-                                                    <td>{{ announcement.createdAt|date("d/m/Y") }}</td>
+                                                <tr class="d-flex flex-column w-75 mx-auto py-3">   
+                                                    <td class="py-1"><strong>{{ announcement.title }}</strong></td>
+                                                    <td class="py-1">{{ announcement.description }}</td>
+                                                    <td class="py-1">{{ announcement.createdAt|date("d/m/Y") }}</td>
                                                 </tr>
                                                 {% endfor %}
                                                 
@@ -84,12 +84,5 @@
             </section>
         </div>
     </div>
-</main>
-
-        <ul class="navbar-nav me-4 mb-md-0">
-            <li class="nav-item">
-                <a class="btn btn-primary" aria-current="page" href="{{ url('announcement_add') }}">Ajouter une annonce</a>
-            </li>
-        </ul>            
-    
+</main>     
 {% endblock %}
