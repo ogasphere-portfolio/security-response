@@ -13,10 +13,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if app.request.get('_route') == 'announcement_browse' %}active{% endif %}" href="{{ path('announcement_browse') }}">Mon profil</a>
-                        </li>                        
-                        <li class="nav-item">
-                            <a class="nav-link {% if app.request.get('_route') == 'app_logout' %}active{% endif %}" href="{{ path('app_logout') }}">Se déconnecter</a>
-                        </li>                                       
+                        </li>                             
                     </ul>
                 </div>
             </div>
@@ -24,70 +21,68 @@
     </header>
 
 <main>
-    <div class="d-flex">
-        <div class="mt-4">            
-            ( {{ app.user.email }} )
-        </div>
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row">
+            <div class="d-flex mt-4 text-center mx-auto">
+                <h1>Bienvenue dans votre espace Entreprise</h1>
+            </div>
+        </div> 
+        <div class="d-flex flex-column flex-md-row mt-4">
+            <div class="mt-4">
+                <h2>Mon compte</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Infos de connexion</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes coordonnées</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes certifications</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Supprimer mon compte</a>
+                        </li>
+                    </ul>
 
-        <div class="Container text-center mt-4">
-            <h1>Bienvenue dans votre espace Entreprise</h1>
-        </div>
-    </div> 
-    <div class="d-flex mt-4">
-        <div class="mt-4">
-            <h2>Mon compte</h2>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Infos de connexion</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes coordonnées</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes certifications</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Supprimer mon compte</a>
-                    </li>
-                </ul>
+                <h2>Mes annonces</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a class="nav-link" aria-current="page" href="{{ url('announcement_add') }}">Créer une annonce</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Gérer mes annonces</a>
+                        </li>
+                    </ul>
+            </div>
+        
 
-            <h2>Mes annonces</h2>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('announcement_add') }}">Créer une annonce</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Gérer mes annonces</a>
-                    </li>
-                </ul>
-        </div>
-       
-
-        <section class="text-center container mt-4">
-            <div class="d-flex">
-                <div class="mx-auto">
-                    <h1 class="fw-bold">Liste de mes annonces</h1>  
-                        <div>
+            <section class="text-center container mt-4">
+                <div class="d-flex">
+                    <div class="mx-auto">
+                        <h1 class="fw-bold">Liste de mes annonces</h1>  
                             <div>
-                                <table class="mt-4">            
-                                        <tbody>
-                                            
-                                            {% for announcement in announcement_browse %}
-                                            <tr>   
-                                                <td>{{ announcement.title }}</td>
-                                                <td>{{ announcement.description }}</td>
-                                                <td>{{ announcement.createdAt|date("d/m/Y") }}</td>
-                                            </tr>
-                                            {% endfor %}
-                                            
-                                            
-                                        </tbody>
-                                </table>  
-                            </div>        
-                        </div>
-                </div>
-            </div>                  
-        </section>
+                                <div>
+                                    <table class="mt-4">            
+                                            <tbody>
+                                                
+                                                {% for announcement in announcement_browse %}
+                                                <tr>   
+                                                    <td>{{ announcement.title }}</td>
+                                                    <td>{{ announcement.description }}</td>
+                                                    <td>{{ announcement.createdAt|date("d/m/Y") }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                                
+                                                
+                                            </tbody>
+                                    </table>  
+                                </div>        
+                            </div>
+                    </div>
+                </div>                  
+            </section>
+        </div>
     </div>
 </main>
 
