@@ -210,6 +210,11 @@ li.nav-item {
     width: 10%;
 }
 
+.profile-heading {
+    width: 250px;
+}
+
+
 /* Mobile S CSS*/
 @media (max-width: 320px)
 {
@@ -265,6 +270,4 @@ li.nav-item {
 
 }
 
-.testnoir {
-    border: solid;
-}
+
