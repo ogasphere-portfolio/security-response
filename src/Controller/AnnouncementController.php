@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
-     * @Route("/annonces", name="announcement_")
+     * @Route("/profil", name="announcement_")
      */
 class AnnouncementController extends AbstractController
 {
@@ -20,7 +20,7 @@ class AnnouncementController extends AbstractController
      */
     public function browse(AnnouncementRepository $announcementRepository): Response
     {
-        return $this->render('announcement/browse.html.twig', [
+        return $this->render('profil/announcement/browse.html.twig', [
             'announcement_browse' => $announcementRepository->findAll()
         ]);
     }
@@ -33,7 +33,7 @@ class AnnouncementController extends AbstractController
     {
         $announcement = $announcementRepository->find($id);
       
-        return $this->render('announcement/read.html.twig', [
+        return $this->render('profil/announcement/read.html.twig', [
             'announcement_read' => $announcement,
         ]);
     }
@@ -69,7 +69,7 @@ class AnnouncementController extends AbstractController
         }
 
         // on fournit ce formulaire à notre vue
-        return $this->render('announcement/add.html.twig', [
+        return $this->render('profil/announcement/add.html.twig', [
             'announcement_form' => $announcementForm->createView()
         ]);
     }

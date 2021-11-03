@@ -198,6 +198,11 @@ h4 {
     width: 10%;
 }
 
+.profile-heading {
+    width: 250px;
+}
+
+
 /* Mobile S CSS*/
 @media (max-width: 320px)
 {
@@ -252,3 +257,5 @@ h4 {
    }
 
 }
+
+

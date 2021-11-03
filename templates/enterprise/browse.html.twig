@@ -54,7 +54,7 @@
 																<ul class="list-group">
 																	{% for result in result_form %}
 																		<li class="list-group-item my-3" data-geo="[{{ result.latitude }},{{ result.longitude }}]">
-																			<strong>{{ result.BusinessName }}</strong>
+																			<strong id ="business_name">{{ result.BusinessName }}</strong>
 																			<br>{{ result.address }}
 																			<br>
 																			{{ result.zipcode }}
