@@ -8,7 +8,7 @@ const userEnterpriseFormPart = document.getElementById('registration_form_userEn
 console.log(userMembershipTypeChoices);
 userMembershipTypeChoices.forEach(function(item) {
     item.addEventListener('click', function(e) {
-        if(e.currentTarget.value === 'entreprise') {
+        if(e.currentTarget.value === 'enterprise') {
             userMemberFormPart.style.display = 'none';
             // TODO: Montrer les champs de l'entreprise
             userEnterpriseFormPart.style.display = 'block';

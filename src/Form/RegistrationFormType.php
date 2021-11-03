@@ -27,9 +27,11 @@ class RegistrationFormType extends AbstractType
         return [FormEvents::PRE_SUBMIT => 'onPreSubmit'];
     }
 
- 
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
+
         $builder
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [
@@ -45,7 +47,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'choices'  => [
                     'Membre' => 'member',
-                    'Entreprise' => 'entreprise',
+                    'Entreprise' => 'enterprise',
                 ],
                 'expanded' => true,
                 'multiple' => false,
@@ -53,16 +55,18 @@ class RegistrationFormType extends AbstractType
             ])
             // De base il est pas en required 
             // TODO: Vérifier qu'il l'est bien pas
-            ->add('userMember', MemberType::class , [
+            ->add('userMember', MemberType::class, [
                 'label' => false,
+                'required' => false,
             ])
 
-            ->add('userEnterprise', EnterpriseType::class , [
+            ->add('userEnterprise', EnterpriseType::class, [
                 'label' => false,
+                'required' => false,
             ])
 
             ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class, 
+                'type' => PasswordType::class,
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
@@ -81,30 +85,44 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-          
+
 
             // ->add('roles')
-            
-            ;
+
+        ;
+
+
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, [$this, 'conditional']);
     }
 
-    public function onPreSubmit(FormEvent $event) {
+
+    public function conditional(FormEvent $event)
+    {
         $user = $event->getData();
         $form = $event->getForm();
 
         // Vérifier la valeur du radio
         // si 'est member on indique le champ userMember (ou plutôt le sous form) est requis.
-        if($user['membershipType'] === 'member') {
+        if ($user['membershipType'] === 'member') {
             $form->add('userMember', MemberType::class, [
-                'constraints'   => [
-                    new NotBlank([
-                        'message' => 'Merci de choisir zf zef '
-                    ]),
-                ]
+                'label' => false,
+                'required' => true,
             ]);
+            unset($user['userEnterprise']);
+            $event->setData($user);
         }
 
         // pareil pour entreprise
+
+        if ($user['membershipType'] === 'enterprise') {
+            $form->add('userEnterprise', EnterpriseType::class, [
+                'label' => false,
+                'required' => true,
+            ]);
+            unset($user['userMember']);
+            $event->setData($user);
+        }
+
         
     }
 

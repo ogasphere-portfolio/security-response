@@ -44,12 +44,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $isVerified = false;
 
     /**
-     * @ORM\OneToOne(targetEntity=Member::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Member::class, inversedBy="user", cascade={"persist", "remove"})
      */
     private $userMember;
 
     /**
-     * @ORM\OneToOne(targetEntity=Enterprise::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Enterprise::class, inversedBy="user", cascade={"persist", "remove"})
      */
     private $userEnterprise;
 
