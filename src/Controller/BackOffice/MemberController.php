@@ -28,7 +28,7 @@ class MemberController extends AbstractController
     {
 
         return $this->render('backoffice/member/browse.html.twig', [
-            'member_browse' => $memberRepository->findAll(),
+            'member_list' => $memberRepository->findAll(),
             'controller_name' => 'BackOffice/MemberController'
         ]);
     }
