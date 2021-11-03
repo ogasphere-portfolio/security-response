@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
-     * @Route("/profil", name="announcement_")
+     * @Route("/annonces", name="announcement_")
      */
 class AnnouncementController extends AbstractController
 {
