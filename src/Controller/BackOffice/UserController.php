@@ -3,7 +3,7 @@
 namespace App\Controller\BackOffice;
 
 use App\Entity\User;
-use App\Form\UserType;
+use App\Form\BackOffice\UserType;
 use App\Repository\UserRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,18 +31,19 @@ class UserController extends AbstractController
     {
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/user/browse.html.twig', [
-            'user_list' => $userRepository->findAll()
+            'user_list' => $userRepository->findAll(),
+            'controller_name' => 'BackOffice/UserController'
         ]);
     }
 
     /**
     * @Route("/api", name="api_browse", methods={"GET"})
     */
-    public function api_browse(UserRepository $userRepository): Response
+    /* public function api_browse(UserRepository $userRepository): Response
     {
         // on fournit ce formulaire à notre vue
         return $this->json($userRepository->findAll());
-    }
+    } */
 
     /**
      * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
@@ -57,14 +58,7 @@ class UserController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-        $userForm
-            ->add('createdAt', null, [
-            'widget' => 'single_text',
-        ])
-            ->add('updatedAt', null, [
-            'widget' => 'single_text',
-        ]);
-
+       
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/user/read.html.twig', [
             'user_form' => $userForm->createView(),
@@ -81,7 +75,7 @@ class UserController extends AbstractController
         $userForm = $this->createForm(UserType::class, $user);
 
         $userForm->handleRequest($request);
-// dd($userForm);
+
         if ($userForm->isSubmitted() && $userForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             
@@ -98,7 +92,7 @@ class UserController extends AbstractController
             // dd($user);
             $entityManager->flush();
 
-            $this->addFlash('success', "User `{$user->getPseudo()}` udpated successfully");
+            $this->addFlash('success', "User `{$user->getEmail()}` udpated successfully");
 
             return $this->redirectToRoute('backoffice_user_browse');
         }
@@ -119,7 +113,7 @@ class UserController extends AbstractController
             'first_options'  => ['label' => 'Password'],
             'second_options' => ['label' => 'Repeat Password'],
         ]);
-
+        
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/user/add.html.twig', [
             'user_form' => $userForm->createView(),
@@ -168,7 +162,7 @@ class UserController extends AbstractController
             $entityManager->flush();
 
             // pour opquast 
-            $this->addFlash('success', "User `{$user->getPseudo()}` created successfully");
+            $this->addFlash('success', "User `{$user->getEmail()}` created successfully");
 
             // redirection
             return $this->redirectToRoute('backoffice_user_browse');

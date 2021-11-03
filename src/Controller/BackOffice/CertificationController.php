@@ -28,7 +28,8 @@ class CertificationController extends AbstractController
     {
 
         return $this->render('backoffice/certification/browse.html.twig', [
-            'certification_browse' => $certificationRepository->findAll()
+            'certification_browse' => $certificationRepository->findAll(),
+            'controller_name' => 'BackOffice/CertificationController'
         ]);
     }
 

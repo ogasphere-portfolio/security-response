@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{% for message in app.flashes('success') %}
-        <div class="alert alert-success" role="alert">{{ message }}</div>
-{% endfor %}
-<main>
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ message }}</div>
+	{% endfor %}
+	<main>
 
         <section class="py-5 text-center container">
             <div class="d-flex py-lg-5" id="home-top">
@@ -12,7 +12,7 @@
                     <h1 class="fw-bold text-start">Les experts en sécurité informatique proches de chez vous</h1>
                     <p class="text-start">Security Response vous permet d'<strong>améliorer la sécurité de votre système</strong> d'information en vous proposant des experts proches de votre entreprise. <br>
                     <br>
-                    <strong>Trouvez dès maintenant des professionels compétants pour vous aider.</strong></p>
+                    <strong>Trouver dès maintenant des professionnels compétants pour vous aider.</strong></p>
                 </div>
             
              <img class="img-security-concept" src="{{ asset("img/security-concept.png") }}" alt="security concept">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="d-flex flex-column justify-content-around w-50 mx-auto">
                     <h2>Le constat de la cybersécurité en France</h2>
-                    <p>Dans les 12 derniers moins, <strong>80% des entreprises françaises</strong>ont constaté <strong>au moins une cyber-attaque</strong></p>
+                    <p>Dans les 12 derniers moins, <strong>80% des entreprises françaises</strong> ont constaté <strong>au moins une cyber-attaque</strong></p>
                     <p><strong>59% de ces attaques ont un impact direct</strong> sur les entrprises : ralentissement de leur production, indisponibilité de leur site etc</p>
                     <p>Les <strong>données sensibles</strong> des entreprises seraient la <strong>cible principale</strong> de ces attaques</p>
                 </div>
@@ -90,11 +90,13 @@
                     
                 </div>
             </div>
-        </div>
+        
+		</section>
 
-    </main>
-    {# Bloc destiné à recevoir le javascript spécifique à la page #}
-    {% block javascripts %}
-   
-    {% endblock %}
+
+		
+
+	</main>
+	{# Bloc destiné à recevoir le javascript spécifique à la page #}
+	{% block javascripts %}{% endblock %}
 {% endblock %}

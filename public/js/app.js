@@ -1,9 +1,7 @@
 const app = {
 
   init: function () {
-    console.log('app.init');
-
-
+   
     var posParis = [48.833, 2.333];
     // création de la map
     var map = L.map('map_enterprise').setView(posParis, 7);
@@ -26,15 +24,18 @@ const app = {
 
   dysplayMarker: function (map) {
     // creation des marqueurs et popup
+    
+    
     let pointsList = [];
     for (let item of document.querySelectorAll('.list-group>li')) {
       // item est le noeud DOM d'un <li>
-      let nom = item.textContent;
-      let geoloc = JSON.parse(item.dataset.geo);
+      var name = item.querySelector('#business_name')
+      var nom = item.textContent;
+      var geoloc = JSON.parse(item.dataset.geo);
       var marker = L.marker(geoloc).addTo(map).bindPopup(nom);
+      marker.bindTooltip(name.textContent).openTooltip();
       pointsList.push(geoloc);
-      console.log(nom);
-
+     
     }
     // réglage de la partie visible
     if (pointsList.length > 0)

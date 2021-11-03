@@ -6,7 +6,7 @@
 <main>
     <div class="container mt-6">
         <div class="row">
-            <div class="col-sm-6 col-md-12 col-md-offset-4">
+            <div class="col-md-6 w-md-75 mx-auto">
               
                 <div class="account-wall">
         
@@ -28,37 +28,25 @@
                             <label for="inputPassword">mot de passe</label>
                             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-                            <input type="hidden" name="_csrf_token"
-                                value="{{ csrf_token('authenticate') }}"
-                            >
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                        
-                        {#
-                            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                            See https://symfony.com/doc/current/security/remember_me.html
-
                             <div class="checkbox mb-3">
                                 <label>
-                                    <input type="checkbox" name="_remember_me"> Remember me
+                                    <input type="checkbox" name="remember-me"> Se souvenir de moi
                                 </label>
                             </div>
-                        #}
+                       
 
                         <button class="btn btn-lg btn-primary" type="submit">
                             connexion
                         </button>
-                        <label class="checkbox pull-left">
-                    <input type="checkbox" value="remember-me">
-                    Rappelez-vous de moi
-                </label>
                
-                </form>
                     </form>
+                </div>
+                <a href="{{ path('app_register') }}" class="text-center new-account text-decoration-none fw-bold">Créer un compte</a>
             </div>
-            <a href="{{ path('app_register') }}" class="text-center new-account">Créer un compte</a>
         </div>
     </div>
-</div>
-   
-
+</main>
 
 {% endblock %}

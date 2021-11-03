@@ -28,7 +28,8 @@ class SpecializationController extends AbstractController
     {
 
         return $this->render('backoffice/specialization/browse.html.twig', [
-            'specialization_browse' => $specializationRepository->findAll()
+            'specialization_browse' => $specializationRepository->findAll(),
+            'controller_name' => 'BackOffice/SpecializationController'
         ]);
     }
 
