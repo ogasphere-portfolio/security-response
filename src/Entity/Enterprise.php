@@ -116,7 +116,7 @@ class Enterprise
     private $certification;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class,  mappedBy="userEnterprise", cascade={"persist", "remove"})
      */
     private $user;
 

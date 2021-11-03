@@ -1,4 +1,10 @@
 {
+    "almasaeed2010/adminlte": {
+        "version": "v2.4.3"
+    },
+    "composer/installers": {
+        "version": "v1.12.0"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.4"
     },

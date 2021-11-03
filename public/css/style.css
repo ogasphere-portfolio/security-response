@@ -118,6 +118,24 @@ h4 {
     }
 }
 
+<<<<<<< HEAD
+#form-register {
+
+    margin: 0 auto;
+    width: 400px;
+}
+
+/* On cache les champs de member à l'inscription tant qu'on a pas cocher member*/
+#registration_form_userMember {
+    display: none;
+}
+/* TODO : faire pareil pour entreprise */
+#registration_form_userEnterprise {
+    display: none;
+}
+
+=======
+>>>>>>> develop
 .form-signin
 {
     max-width: 400px;
