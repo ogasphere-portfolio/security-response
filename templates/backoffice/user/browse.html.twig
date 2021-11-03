@@ -1,9 +1,15 @@
 {% extends 'base_admin.html.twig' %}
 
+{% block title %}User list {{ parent() }}{% endblock %}
+
+
 {% block body %}
 	{% for message in app.flashes('success') %}
 		<div class="alert alert-success" role="alert">{{ message }}</div>
 	{% endfor %}
+	{% block backoffice_menu %}
+    {% include "backoffice/user/_menu.html.twig" %}
+{% endblock %}
 	<!-- Main content -->
 	<section
 		class="content">
@@ -20,7 +26,8 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Email</th>
-							<th scope="col">Actions</th>
+							<th scope="col">Roles</th>
+							<th scope="col"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -29,6 +36,20 @@
 								<th scope="row">{{ user.id }}</th>
 
 								<td>{{ user.email }}</td>
+								<td>{% for role in user.roles %}
+										{% if role == "ROLE_USER" %}
+											Utilsateur
+										{% elseif role == "ROLE_ADMIN" %}
+											Administrateur
+										{% elseif  role == "ROLE_MEMBE" %}
+											Membre
+										{% elseif role == "ROLE_ENTERPRISE" %} 
+											Entreprise
+										{% endif %}
+											
+										{% endfor %}
+								</td>
+								
 								<td class="project-actions text-right">
 									<a
 										class="btn btn-success" href="{{ url('backoffice_user_read', {"id": user.id}) }}" title="Read" alt="Read">
