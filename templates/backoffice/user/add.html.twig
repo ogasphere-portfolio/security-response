@@ -34,6 +34,8 @@
     {{ form_row(user_form.email) }}
     {{ form_row(user_form.password) }}
     {{ form_row(user_form.roles) }}
+    {{ form_row(user_form.isVerified) }}
+
 
     <button type="submit" class="btn btn-primary mt-4">
     {% if 'backoffice_user_add' == app.request.get('_route') %}
