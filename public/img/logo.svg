@@ -1,0 +1,36 @@
+<svg width="183" height="221" fill="none" xmlns="http://www.w3.org/2000/svg" style=""><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none"/>
+
+
+
+
+
+
+
+
+<defs>
+<linearGradient id="paint0_linear_3:44" x1="0.5000151709769097" y1="0" x2="0.5000151709769097" y2="1">
+<stop stop-color="#6221FC"/>
+<stop offset="1" stop-color="#4100C4"/>
+</linearGradient>
+<linearGradient id="paint1_linear_3:44" x1="0.7955564312687585" y1="0.125003694855091" x2="0.0044447750708577925" y2="0.7272663598544676">
+<stop stop-color="#6221FC"/>
+<stop offset="1" stop-color="#4100C4"/>
+</linearGradient>
+<linearGradient id="paint2_linear_3:44" x1="0.20444397214656287" y1="0.125003694855091" x2="0.9955562205331011" y2="0.7272663598544676">
+<stop stop-color="#6221FC"/>
+<stop offset="1" stop-color="#4100C4"/>
+</linearGradient>
+<linearGradient id="paint3_linear_3:44" x1="0.5" y1="0" x2="0.5" y2="1">
+<stop stop-color="#5DF9F7"/>
+<stop offset="1" stop-color="#0D98FC"/>
+</linearGradient>
+<linearGradient id="paint4_linear_3:44" x1="0.5000052065998596" y1="0" x2="0.5000052065998596" y2="1">
+<stop stop-color="#5DF9F7"/>
+<stop offset="1" stop-color="#0D98FC"/>
+</linearGradient>
+<linearGradient id="paint5_linear_3:44" x1="0.4999985058656268" y1="0" x2="0.4999985058656268" y2="1">
+<stop stop-color="#6221FC"/>
+<stop offset="1" stop-color="#4100C4"/>
+</linearGradient>
+</defs>
+<g class="currentLayer" style=""><title>Layer 1</title><path d="M148.952 60.7144V149.762L182.143 169.191V60.7144H148.952Z" fill="#0051b6" id="svg_1" class="" fill-opacity="1"/><path d="M91.0714 182.952L148.952 149.762L182.143 169.191L91.0714 221V182.952Z" fill="#006fc5" id="svg_2" class="" transform="matrix(1, 0, 0, 1, 0, 0) matrix(1, 0, 0, 1, 0, 0)" fill-opacity="1"/><path d="M91.0714 182.952L33.1905 149.762L0 169.191L91.0714 221V182.952Z" fill="#006fc5" id="svg_3" class="" transform="matrix(1, 0, 0, 1, 0, 0)" fill-opacity="1"/><path d="M90.54508769512177,0 L32.66408336162567,33.19049835205078 V149.76199340820312 L90.54508769512177,115.76200103759766 V0 z" fill="#889cd6" fill-opacity="1" id="svg_4" class="" opacity="1" stroke-width="0"/><path d="M91.59771931171417,0 L149.47831165790558,33.19049835205078 V149.76199340820312 L91.59771931171417,115.76200103759766 V0 z" fill="#d1d7ef" fill-opacity="1" id="svg_5" class="" stroke-width="0"/><path d="M148.952 149.762L91.0714 115.762V182.952L148.952 149.762Z" fill="#F6F8FE" id="svg_6"/><path d="M33.1905 149.762L91.0714 115.762V182.952L33.1905 149.762Z" fill="white" id="svg_7"/><path d="M33.1905 60.7144V149.762L0 169.191V60.7144H33.1905Z" fill="#0051b6" id="svg_8" class="" transform="matrix(1, 0, 0, 1, 0, 0)" fill-opacity="1"/></g></svg>
