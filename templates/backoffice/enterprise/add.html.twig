@@ -1,0 +1,58 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}
+    {% if page == 'create' %}
+    New enterprise
+    {% else %}
+    enterprise {{ enterprise.businessname }}
+    {% endif %}
+{% endblock %}
+
+{% block backoffice_menu %}
+    {% include "backoffice/enterprise/_menu.html.twig" %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+{% for message in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ message }}</div>
+	{% endfor %}
+<h1> 
+    {% if page == 'create' %}
+        New enterprise
+    {% else %}
+        Update {{ enterprise.businessname }}
+    {% endif %}
+</h1>
+<div class="text-end">
+</div>
+
+{{ form_start(enterprise_form) }}
+
+    {{ form_errors(enterprise_form) }}
+    {{ form_row(enterprise_form.business_name) }}
+    {{ form_row(enterprise_form.siret_number) }}
+    {{ form_row(enterprise_form.address) }}
+    {{ form_row(enterprise_form.zip_code) }}
+    {{ form_row(enterprise_form.city) }}
+    {{ form_row(enterprise_form.phone_number) }}
+    {{ form_row(enterprise_form.contact_mail) }}
+    {{ form_row(enterprise_form.latitude) }}
+    {{ form_row(enterprise_form.longitude) }}
+    {{ form_row(enterprise_form.address_more) }}
+    {{ form_row(enterprise_form.logo) }}
+
+
+    <button type="submit" class="btn btn-primary mt-4">
+    {% if 'backoffice_enterprise_add' == app.request.get('_route') %}
+    Create
+    {% else %}
+    Update
+    {% endif %}
+    </button>
+
+{{ form_end(enterprise_form) }} 
+
+</div>
+{% endblock %}
