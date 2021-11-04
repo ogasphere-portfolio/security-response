@@ -18,11 +18,14 @@ class ProfileController extends AbstractController
     /**
      * @Route("/entreprise/{id}", name="enterprise", methods={"GET"})
      */
-    public function enterpriseHome(Request $request, EnterpriseRepository $enterpriseRepository): Response
+    public function enterpriseHome(EnterpriseRepository $enterpriseRepository): Response
     {
-        
+        $userId = $this->getUser()->getId();
+        $user = $this->getUser();
+
         return $this->render('profile/enterprise/home.html.twig', [
-            'enterprise' => $enterpriseRepository,
+            'enterprise' => $userId,
+            'repository' => $enterpriseRepository
         ]);
     }
 
