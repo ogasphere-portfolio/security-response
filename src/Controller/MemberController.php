@@ -6,6 +6,7 @@ use App\Entity\Member;
 use App\Form\MemberType;
 use App\Repository\MemberRepository;
 use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -113,5 +114,18 @@ class MemberController extends AbstractController
             'form' => $memberForm->createView(),
             'page' => 'create',
         ]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     */
+    public function delete(Member $member, EntityManagerInterface $entityManager): Response
+    {
+        $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()} à été supprimé");
+
+        $entityManager->remove($member);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('homepage');
     }
 }

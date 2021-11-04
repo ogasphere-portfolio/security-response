@@ -41,7 +41,7 @@
                                                 
                                                 {% for member in member_browse %}                                                
                                                     <li class="list-group">
-                                                        <a class="nav-link fs-6" aria-current="page" href="{{ url('member_browse') }}">{{ member.firstname }} {{ member.lastname }}</a>
+                                                        <a class="nav-link fs-6" aria-current="page" href="{{ url('member_read', {"id": member.id}) }}">{{ member.firstname }} {{ member.lastname }}</a>
                                                 {% endfor %}
                                                 
                                                 
