@@ -26,7 +26,7 @@ class MemberType extends AbstractType
                 'class' => Announcement::class,
                 'multiple' => true,
                 'choice_label' => 'title',
-                'choices' => Announcement->getAnnouncemnts()
+              
             ])
             /*   ->add('created_at')
             ->add('updated_at')
