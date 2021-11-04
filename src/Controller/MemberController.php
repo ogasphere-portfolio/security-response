@@ -23,7 +23,7 @@ class MemberController extends AbstractController
 {
     
     /**
-     * @Route("/", name="browse")
+     * @Route("/liste", name="browse")
      */
     public function browse(MemberRepository $memberRepository): Response
     {
@@ -34,7 +34,7 @@ class MemberController extends AbstractController
 
      /**
      * 
-     * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function read($id, MemberRepository $MemberRepository, User $user ): Response
     { 
@@ -55,7 +55,7 @@ class MemberController extends AbstractController
     }
     
     /**
-     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * @Route("/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Member $member): Response
     {
@@ -121,7 +121,7 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/delete", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/delete", name="delete", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function delete(Member $member, EntityManagerInterface $entityManager): Response
     {

@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProfileController extends AbstractController
 {
     /**
-     * @Route("/entreprise/{id}", name="enterprise", methods={"GET"})
+     * @Route("/entreprise", name="enterprise", methods={"GET"})
      */
     public function enterpriseHome(EnterpriseRepository $enterpriseRepository): Response
     {
@@ -29,7 +29,7 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/membre/{id}", name="member")
+     * @Route("/membre", name="member", methods={"GET"})
      */
     public function memberHome(MemberRepository $memberRepository): Response
     {
