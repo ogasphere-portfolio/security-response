@@ -47,13 +47,13 @@
 
                         {% if app.user.userMember == null %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('profile_enterprise', {id: app.user.id}) }}">                       
+                            <a class="nav-link" href="{{ path('profile_enterprise', {id: app.user.userEnterprise.id}) }}">                       
                             <span class="text">Mon profil</span>
                             </a>
                         </li>
                         {% elseif app.user.userMember != null %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('profile_member', {id: app.user.id}) }}">                       
+                            <a class="nav-link" href="{{ path('profile_member', {id: app.user.userMember.id}) }}">                       
                             <span class="text">Mon profil</span>
                             </a>
                         </li>

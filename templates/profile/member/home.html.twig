@@ -17,16 +17,16 @@
                     <h4 class="px-0 py-2 text-center">Mon compte</h4>
                         <ul class="list-group mx-3">
                             <li class="list-group">
-                                <a class="nav-link fs-6" aria-current="page" href="{{ url('announcement_browse') }}">Infos de connexion</a>
+                                <a class="nav-link fs-6" aria-current="page" href="{{ url('member_browse', {"id": app.user.userMember.id}) }}">Infos de connexion</a>
                             </li>
                             <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes coordonnées</a>
+                                <a class="nav-link" aria-current="page" href="{{ url('member_read', {"id": app.user.userMember.id}) }}">Mes coordonnées</a>
                             </li>
                             <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes certifications</a>
+                                <a class="nav-link" aria-current="page" href="{{ url('member_browse', {"id": app.user.userMember.id}) }}">Mes spécialisations</a>
                             </li>
                             <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Supprimer mon compte</a>
+                                <a class="nav-link" aria-current="page" href="{{ url('member_delete', {"id": app.user.userMember.id}) }}">Supprimer mon compte</a>
                             </li>
                         </ul>
                 </div>

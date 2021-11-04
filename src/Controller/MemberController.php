@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Member;
+use App\Entity\User;
 use App\Form\MemberType;
 use App\Repository\MemberRepository;
 use DateTime;
@@ -35,16 +36,19 @@ class MemberController extends AbstractController
      * 
      * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      */
-    public function read($id, MemberRepository $MemberRepository ): Response
+    public function read($id, MemberRepository $MemberRepository, User $user ): Response
     { 
        
-        $member = $MemberRepository->find($id);
+        $member = $this->getUser();
+        $member->getUserMember()->getGender();
+
+        dd($member);
 
         $memberForm = $this->createForm(MemberType::class, $member, [
             'disabled' => 'disabled'
         ]);
 
-        return $this->render('member/read.html.twig', [
+        return $this->render('profile/member/read.html.twig', [
             'member_form' => $memberForm->createView(),
             'member' => $member,
         ]);
@@ -71,7 +75,7 @@ class MemberController extends AbstractController
         }
 
         
-        return $this->render('member/add.html.twig', [
+        return $this->render('profile/member/add.html.twig', [
             'member_form' => $memberForm->createView(),
             'member' => $member,
             'page' => 'edit',
@@ -110,7 +114,7 @@ class MemberController extends AbstractController
         }
 
         // on fournit ce formulaire à notre vue
-        return $this->render('/member/add.html.twig', [
+        return $this->render('profile/member/add.html.twig', [
             'form' => $memberForm->createView(),
             'page' => 'create',
         ]);
