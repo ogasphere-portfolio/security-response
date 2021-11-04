@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Enterprise;
 use App\Entity\Member;
 use App\Repository\EnterpriseRepository;
+use App\Repository\MemberRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,18 +29,14 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/member/{id}", name="member")
+     * @Route("/membre/{id}", name="member")
      */
-    public function memberHome(Request $request, Member $member): Response
+    public function memberHome(MemberRepository $memberRepository): Response
     {
-        $memberForm = $this->createForm(MemberType::class, $member);
-
-        $memberForm->handleRequest($request);
+        $userMember = $this->getUser();
 
         return $this->render('profile/member/home.html.twig', [
-            'controller_name' => 'ProfileController',
-            'form' => $memberForm->createView(),
-               
+            'member' => $userMember,
         ]);
     }
 }
