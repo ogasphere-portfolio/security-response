@@ -34,7 +34,7 @@ class EnterpriseController extends AbstractController
     }
 
     /**
-     * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function read(Request $request, Enterprise $enterprise): Response
     {
@@ -43,23 +43,23 @@ class EnterpriseController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-        $enterpriseForm
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ]);
+        // $enterpriseForm
+        //     ->add('createdAt', null, [
+        //         'widget' => 'single_text',
+        //     ])
+        //     ->add('updatedAt', null, [
+        //         'widget' => 'single_text',
+        //     ]);
 
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/enterprise/read.html.twig', [
-            'form' => $enterpriseForm->createView(),
+            'enterprise_form' => $enterpriseForm->createView(),
             'enterprise' => $enterprise,
         ]);
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Enterprise $enterprise): Response
     {
@@ -122,7 +122,7 @@ class EnterpriseController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/delete/", name="delete", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function delete(Enterprise $enterprise, EntityManagerInterface $entityManager): Response
     {
