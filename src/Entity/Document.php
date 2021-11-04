@@ -99,6 +99,10 @@ class Document
     {
         return $this->id;
     }
+    public function __toString() 
+    {
+        return $this->title;
+    }
 
     public function getTitle(): ?string
     {

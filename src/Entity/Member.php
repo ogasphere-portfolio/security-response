@@ -122,6 +122,10 @@ class Member
         $this->specialization = new ArrayCollection();
         $this->created_at = new DateTimeImmutable();
     }
+    public function __toString() 
+    {
+        return $this->firstname;
+    }
 
     public function getId(): ?int
     {

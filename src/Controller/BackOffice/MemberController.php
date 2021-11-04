@@ -3,7 +3,7 @@
 namespace App\Controller\BackOffice;
 
 use App\Entity\Member;
-use App\Form\MemberType;
+use App\Form\BackOffice\MemberType;
 use App\Repository\MemberRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Date;
 
 /**
- * @Route("/backoffice/member", name="backoffice_member_")
+ * @Route("/backoffice/membre", name="backoffice_member_")
  * @IsGranted("IS_AUTHENTICATED_FULLY")
  */
 class MemberController extends AbstractController
@@ -28,13 +28,13 @@ class MemberController extends AbstractController
     {
 
         return $this->render('backoffice/member/browse.html.twig', [
-            'member_browse' => $memberRepository->findAll(),
+            'member_list' => $memberRepository->findAll(),
             'controller_name' => 'BackOffice/MemberController'
         ]);
     }
 
     /**
-     * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function read(Request $request, Member $member): Response
     {
@@ -43,13 +43,7 @@ class MemberController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-        $memberForm
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ]);
+        
 
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/member/read.html.twig', [
@@ -59,7 +53,7 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Member $member): Response
     {

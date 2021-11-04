@@ -43,14 +43,14 @@ class EnterpriseController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-        $enterpriseForm
+       /*  $enterpriseForm
             ->add('createdAt', null, [
                 'widget' => 'single_text',
             ])
             ->add('updatedAt', null, [
                 'widget' => 'single_text',
             ]);
-
+ */
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/enterprise/read.html.twig', [
             'form' => $enterpriseForm->createView(),
