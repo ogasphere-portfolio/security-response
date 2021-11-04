@@ -6,6 +6,7 @@ use App\Entity\Enterprise;
 use App\Form\EnterpriseType;
 use App\Repository\EnterpriseRepository;
 use DateTimeImmutable;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -132,15 +133,28 @@ var_dump($resultByCity);
             $entityManager->flush();
 
             //  opquast 
-            $this->addFlash('success', "enterprise `{$enterprise->getBusinessName()}` created successfully");
+            $this->addFlash('success', "L'enterprise `{$enterprise->getBusinessName()}` a été ajouté");
 
             // redirection
-            return $this->redirectToRoute('enterprise_list');
+            return $this->redirectToRoute('enterprise_browse');
         }
 
         return $this->render('enterprise/add.html.twig', [
             'enterprise_form' => $enterpriseForm->createView(),
             'page' => 'create',
         ]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     */
+    public function delete(Enterprise $enterprise, EntityManagerInterface $entityManager): Response
+    {
+        $this->addFlash('success', "L'entreprise {$enterprise->getBusinessName()} à été supprimé");
+
+        $entityManager->remove($enterprise);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('homepage');
     }
 }
