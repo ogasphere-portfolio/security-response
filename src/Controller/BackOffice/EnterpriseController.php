@@ -28,38 +28,30 @@ class EnterpriseController extends AbstractController
     {
 
         return $this->render('backoffice/enterprise/browse.html.twig', [
-            'enterprise_browse' => $enterpriseRepository->findAll(),
-            'controller_name' => 'BackOffice/EnterpriseController'
+            'enterprise_list' => $enterpriseRepository->findAll()
+
         ]);
     }
 
     /**
-     * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      */
-    public function read(Request $request, Enterprise $enterprise): Response
+    public function read(Enterprise $enterprise): Response
     {
 
         $enterpriseForm = $this->createForm(EnterpriseType::class, $enterprise, [
             'disabled' => 'disabled'
         ]);
 
-        /*  $enterpriseForm
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ]);
- */
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/enterprise/read.html.twig', [
-            'form' => $enterpriseForm->createView(),
+            'enterprise_form' => $enterpriseForm->createView(),
             'enterprise' => $enterprise,
         ]);
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Enterprise $enterprise): Response
     {
@@ -80,7 +72,7 @@ class EnterpriseController extends AbstractController
 
 
         return $this->render('backoffice/enterprise/add.html.twig', [
-            'form' => $enterpriseForm->createView(),
+            'enterprise_form' => $enterpriseForm->createView(),
             'enterprise' => $enterprise,
             'page' => 'edit',
         ]);
@@ -116,13 +108,13 @@ class EnterpriseController extends AbstractController
 
 
         return $this->render('backoffice/enterprise/add.html.twig', [
-            'form' => $enterpriseForm->createView(),
+            'enterprise_form' => $enterpriseForm->createView(),
             'page' => 'create',
         ]);
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/delete/", name="delete", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function delete(Enterprise $enterprise, EntityManagerInterface $entityManager): Response
     {
