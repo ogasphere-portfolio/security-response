@@ -20,7 +20,7 @@ class MemberType extends AbstractType
             ->add('gender')
             ->add('city')
             ->add('job_status')
-          /*   ->add('created_at')
+            /*   ->add('created_at')
             ->add('updated_at')
             ->add('created_by')
             ->add('updated_by')
@@ -28,8 +28,7 @@ class MemberType extends AbstractType
             ->add('social_network')
             
             ->add('user')
-            ->add('document') */
-        ;
+            ->add('document') */;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

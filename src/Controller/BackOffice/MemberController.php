@@ -43,7 +43,7 @@ class MemberController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-        
+
 
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/member/read.html.twig', [

@@ -20,7 +20,7 @@ class Member
      */
     private $id;
 
-   
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -109,8 +109,8 @@ class Member
 
     public function __construct()
     {
-        $this->setUpdatedAt(new \DateTimeImmutable('now'));    
-        
+        $this->setUpdatedAt(new \DateTimeImmutable('now'));
+
         if ($this->getCreatedAt() === null) {
             $this->setCreatedAt(new \DateTimeImmutable('now'));
         }
@@ -122,7 +122,7 @@ class Member
         $this->specialization = new ArrayCollection();
         $this->created_at = new DateTimeImmutable();
     }
-    public function __toString() 
+    public function __toString()
     {
         return $this->firstname;
     }
@@ -132,7 +132,7 @@ class Member
         return $this->id;
     }
 
-  
+
 
     public function getFirstname(): ?string
     {
