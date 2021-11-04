@@ -33,16 +33,41 @@ class RegistrationFormType extends AbstractType
 
 
         $builder
-            ->add('email')
-            ->add('agreeTerms', CheckboxType::class, [
+            ->add('email',null, [
+                'label'=> 'Adresse email *',
+                'required' => true,
+            ])
+            // ->add('agreeTerms', CheckboxType::class, [
+            //     'mapped' => false,
+            //     'constraints' => [
+            //         new IsTrue([
+            //             'message' => 'You should agree to our terms.',
+            //         ]),
+            //     ],
+            // ])
+
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'required' => true,
+                // instead of being set onto the object directly,
+                // this is read and encoded in the controller
                 'mapped' => false,
+                'first_options'  => ['label' => 'Mot de passe *'],
+                'second_options' => ['label' => 'Répéter le mot de passe *'],
+
+                'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                    new NotBlank([
+                        'message' => 'Minimum huit caractères, une lettre, un chiffre et un caractère spécial.',
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 4096,
                     ]),
                 ],
             ])
-
             ->add('membershipType', ChoiceType::class, [
                 'mapped' => false,
                 'choices'  => [
@@ -65,26 +90,6 @@ class RegistrationFormType extends AbstractType
                 'required' => false,
             ])
 
-            ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'mapped' => false,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
-                'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
-            ])
 
 
             // ->add('roles')

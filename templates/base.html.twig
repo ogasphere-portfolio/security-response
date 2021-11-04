@@ -41,9 +41,16 @@
                         </li>
 
                         {% if app.user %}
-                        <a href="{{ url('announcement_browse') }}">                       
-                       <span class="text">{{ app.user.email }}</span>
-                       </a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('announcement_browse') }}">Les annonces</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('profile_enterprise', {id: app.user.id}) }}">                       
+                            <span class="text">Mon profil</span>
+                            </a>
+                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('app_logout') }}">Se déconnecter</a>
                         </li>
@@ -54,6 +61,7 @@
                         <li class="nav-item" id="nav-inscription">
                             <a class="nav-link" href="{{ url('app_register') }}">Inscription</a>
                         </li>
+                        
                         {% endif %}                        
                     </ul>
                 </div>
