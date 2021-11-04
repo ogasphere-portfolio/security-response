@@ -28,8 +28,8 @@ class AnnouncementController extends AbstractController
     {
 
         return $this->render('backoffice/announcement/browse.html.twig', [
-            'announcement_browse' => $announcementRepository->findAll(),
-            'controller_name' => 'BackOffice/AnnouncementController'
+            'announcement_list' => $announcementRepository->findAll(),
+            
         ]);
     }
 
@@ -43,17 +43,9 @@ class AnnouncementController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-        $announcementForm
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ]);
-
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/announcement/read.html.twig', [
-            'form' => $announcementForm->createView(),
+            'announcement_form' => $announcementForm->createView(),
             'announcement' => $announcement,
         ]);
     }
@@ -80,7 +72,7 @@ class AnnouncementController extends AbstractController
 
 
         return $this->render('backoffice/announcement/add.html.twig', [
-            'form' => $announcementForm->createView(),
+            'announcement_form' => $announcementForm->createView(),
             'announcement' => $announcement,
             'page' => 'edit',
         ]);
@@ -116,7 +108,7 @@ class AnnouncementController extends AbstractController
 
 
         return $this->render('backoffice/announcement/add.html.twig', [
-            'form' => $announcementForm->createView(),
+            'announcement_form' => $announcementForm->createView(),
             'page' => 'create',
         ]);
     }
