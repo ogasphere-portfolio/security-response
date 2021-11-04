@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 /**
  * Les annotations de routes au niveau de la classe servent de préfixe à toutes les routes définies dans celle ci
  * 
- * @Route("/members", name="member_")
+ * @Route("/membre", name="member_")
 */
 class MemberController extends AbstractController
 {
@@ -22,24 +22,29 @@ class MemberController extends AbstractController
     /**
      * @Route("/", name="browse")
      */
-    public function browse(): Response
+    public function browse(MemberRepository $memberRepository): Response
     {
         return $this->render('member/browse.html.twig', [
-            'controller_name' => 'MemberController',
+            'member_browse' => $memberRepository->findAll()
         ]);
     }
 
      /**
      * 
-     * @Route("/read/{id}", name="read")
+     * @Route("/read/{id}", name="read", methods={"GET"})
      */
-    public function read($id,MemberRepository $MemberRepository ): Response
+    public function read($id, MemberRepository $MemberRepository ): Response
     { 
        
         $member = $MemberRepository->find($id);
-      
+
+        $memberForm = $this->createForm(MemberType::class, $member, [
+            'disabled' => 'disabled'
+        ]);
+
         return $this->render('member/read.html.twig', [
-            'member_read' => $member,
+            'member_form' => $memberForm->createView(),
+            'member' => $member,
         ]);
     }
     

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil membre{% endblock %}
+
+{% block body %}
+
+{{ form(member_form) }}
+
+<main>
+        <section class="py-5 text-center container mt-">
+            <div class="d-flex py-lg-5">
+                <div class="mx-auto">
+                    <h1 class="fw-bold text-start">Mon profil</h1>                    
+                </div>
+            </div>
+        </section>    
+
+                
+                  {% for members in member %}                 
+                      <ul class="navbar-nav me-4 mb-md-0">
+                        <li class="nav-item">
+                            <a class="btn btn-primary" href="{{ url('member_edit', {"id": member.id}) }}" title="Edit" alt="Edit">Modifier</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary" href="{{ url('member_delete', {"id": member.id}) }}" title="Delete" alt="Delete">Supprimer</a>
+                        </li>
+                      </ul>                  
+                  {% endfor %}
+    </main>
+
+{% endblock %}
