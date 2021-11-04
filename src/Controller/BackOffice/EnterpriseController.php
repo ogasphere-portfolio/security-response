@@ -80,7 +80,7 @@ class EnterpriseController extends AbstractController
 
 
         return $this->render('backoffice/enterprise/add.html.twig', [
-            'form' => $enterpriseForm->createView(),
+            'enterprise_form' => $enterpriseForm->createView(),
             'enterprise' => $enterprise,
             'page' => 'edit',
         ]);

@@ -4,7 +4,7 @@
     {% if page == 'create' %}
     New enterprise
     {% else %}
-    enterprise {{ enterprise.Email }}
+    enterprise {{ enterprise.businessname }}
     {% endif %}
 {% endblock %}
 
@@ -22,7 +22,7 @@
     {% if page == 'create' %}
         New enterprise
     {% else %}
-        Update {{ enterprise.Email }}
+        Update {{ enterprise.businessname }}
     {% endif %}
 </h1>
 <div class="text-end">
