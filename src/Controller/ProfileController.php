@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Enterprise;
 use App\Entity\Member;
+use App\Entity\User;
 use App\Repository\EnterpriseRepository;
 use App\Repository\MemberRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/profil", name="profile_")
@@ -31,9 +33,11 @@ class ProfileController extends AbstractController
     /**
      * @Route("/membre", name="member", methods={"GET"})
      */
-    public function memberHome(MemberRepository $memberRepository): Response
+    public function memberHome(Security $security): Response
     {
-        $userMember = $this->getUser();
+        $userMember = $security->getUser();
+
+        // dd($userMember);
 
         return $this->render('profile/member/home.html.twig', [
             'member' => $userMember,

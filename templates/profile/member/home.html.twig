@@ -8,7 +8,7 @@
     <div class="container">
         <div class="d-flex flex-column flex-md-row">
             <div class="d-flex mt-4 text-center mx-auto">
-                <h1>Bienvenue dans votre espace Membre</h1>
+                <h1 class="fw-bold">Bienvenue dans votre espace Membre</h1>
             </div>
         </div> 
         <div class="d-flex flex-column flex-md-row mt-5">
@@ -17,16 +17,16 @@
                     <h4 class="px-0 py-2 text-center">Mon compte</h4>
                         <ul class="list-group mx-3">
                             <li class="list-group">
-                                <a class="nav-link fs-6" aria-current="page" href="{{ url('member_browse', {"id": app.user.userMember.id}) }}">Infos de connexion</a>
+                                <a class="nav-link fs-6" aria-current="page" href="{{ url('profile_member') }}">Infos de connexion</a>
                             </li>
                             <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="{{ url('member_read', {"id": app.user.userMember.id}) }}">Mes coordonnées</a>
+                                <a class="nav-link" aria-current="page" href="{{ url('profile_member') }}">Mes coordonnées</a>
                             </li>
                             <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="{{ url('member_browse', {"id": app.user.userMember.id}) }}">Mes spécialisations</a>
+                                <a class="nav-link" aria-current="page" href="{{ url('profile_member') }}">Mes spécialisations</a>
                             </li>
                             <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="{{ url('member_delete', {"id": app.user.userMember.id}) }}">Supprimer mon compte</a>
+                                <a class="nav-link" aria-current="page" href="{{ url('profile_member') }}">Supprimer mon compte</a>
                             </li>
                         </ul>
                 </div>
@@ -37,18 +37,12 @@
             <section class="text-center container mt-4">
                 <div class="d-flex">
                     <div class="mx-auto">
-                        <h2 class="fw-bold">Mes annonces favorites</h2>  
-                            <div>
-                                <div>
-                                    <table class="mt-4">            
-                                            <tbody>
-                                                
-                                                
-                                                
-                                            </tbody>
-                                    </table>  
-                                </div>        
-                            </div>
+                        <h2>Mes paramètres</h2>
+
+                        <div>
+                            {# {{ form(member_form) }}       #}
+                        </div>
+
                     </div>
                 </div>                  
             </section>

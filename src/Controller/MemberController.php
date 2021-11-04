@@ -32,27 +32,6 @@ class MemberController extends AbstractController
         ]);
     }
 
-     /**
-     * 
-     * @Route("/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
-     */
-    public function read($id, MemberRepository $MemberRepository, User $user ): Response
-    { 
-       
-        $member = $this->getUser();
-        $member->getUserMember()->getGender();
-
-        dd($member);
-
-        $memberForm = $this->createForm(MemberType::class, $member, [
-            'disabled' => 'disabled'
-        ]);
-
-        return $this->render('profile/member/read.html.twig', [
-            'member_form' => $memberForm->createView(),
-            'member' => $member,
-        ]);
-    }
     
     /**
      * @Route("/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
