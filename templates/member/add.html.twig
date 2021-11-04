@@ -42,12 +42,8 @@
     
     
 
-    <button type="submit" class="btn btn-primary mt-4">
-    {% if 'member_add' == app.request.get('_route') %}
-    Create
-    {% else %}
-    Modifier
-    {% endif %}
+   <button type="submit" class="btn btn-primary mt-4">
+		Modifier
     </button>
 
 {{ form_end(member_form) }} 
