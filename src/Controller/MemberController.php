@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 /**
  * Les annotations de routes au niveau de la classe servent de préfixe à toutes les routes définies dans celle ci
  * 
- * @Route("/membre", name="member_")
+ * @Route("/profil/membre", name="member_")
 */
 class MemberController extends AbstractController
 {

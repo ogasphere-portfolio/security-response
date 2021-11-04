@@ -28,7 +28,7 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/member/{id}", name="member")
+     * @Route("/membre/{id}", name="member")
      */
     public function memberHome(Request $request, Member $member): Response
     {

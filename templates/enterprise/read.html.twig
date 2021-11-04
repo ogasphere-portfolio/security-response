@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil entreprise{% endblock %}
+
+{% block body %}
+<main>
+        <section class="py-5 text-center container mt-">
+            <div class="d-flex py-lg-5">
+                <div class="mx-auto">
+                    <h1 class="fw-bold text-start">Mon profil</h1>                    
+                </div>
+            </div>
+        </section>    
+
+        <ul class="navbar-nav me-4 mb-md-0">
+            <li class="nav-item">
+                <a class="btn btn-primary" aria-current="page" href="{{ url('enterprise_browse') }}">Retour</a>
+            </li>
+        </ul>
+
+{{ form(enterprise_form) }}
+                
+
+        <ul class="navbar-nav me-4 mb-md-0">
+            <li class="nav-item">
+                <a class="btn btn-primary" href="{{ url('enterprise_browse', {"id": enterprise.id}) }}" title="Edit" alt="Edit">Modifier</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary" href="{{ url('enterprise_browse', {"id": enterprise.id}) }}" title="Delete" alt="Delete">Supprimer</a>
+            </li>
+        </ul> 
+
+    </main>
+
+
+
+{% endblock %}

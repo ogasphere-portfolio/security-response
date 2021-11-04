@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Enterprise;
 use App\Form\EnterpriseType;
 use App\Repository\EnterpriseRepository;
+use DateTimeImmutable;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Les annotations de routes au niveau de la classe servent de préfixe à toutes les routes définies dans celle ci
  * 
- * @Route("/entreprises", name="enterprise_")
+ * @Route("/profil/entreprise", name="enterprise_")
  */
 class EnterpriseController extends AbstractController
 {
@@ -38,19 +39,6 @@ class EnterpriseController extends AbstractController
             'search_form' => $searchEnterprise
         ]);
     }
-    /**
-     * 
-     * @Route("edit/{id}", name="read")
-     */
-    public function read($id, EnterpriseRepository $EnterpriseRepository): Response
-    {
-
-        $enterprise = $EnterpriseRepository->find($id);
-
-        return $this->render('enterprise/read.html.twig', [
-            'enterprise_read' => $enterprise,
-        ]);
-    }
 
     /**
      * @Route("/", name="search_enterprise", methods={"POST"})
@@ -71,6 +59,52 @@ var_dump($resultByCity);
         ]);
     }
 
+    /**
+     * 
+     * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
+     */
+    public function read($id, EnterpriseRepository $EnterpriseRepository): Response
+    {
+
+        $enterprise = $EnterpriseRepository->find($id);
+
+        $enterpriseForm = $this->createForm(EnterpriseType::class, $enterprise, [
+            'disabled' => 'disabled'
+        ]);
+
+        return $this->render('enterprise/read.html.twig', [
+            'enterprise_form' => $enterpriseForm->createView(),
+            'enterprise' => $enterprise,
+        ]);
+    }    
+
+    /**
+     * @Route("/edit/{id}", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     */
+    public function edit(Request $request, Enterprise $enterprise): Response
+    {
+        $enterpriseForm = $this->createForm(EnterpriseType::class, $enterprise);
+
+        $enterpriseForm->handleRequest($request);
+
+        if ($enterpriseForm->isSubmitted() && $enterpriseForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            
+            $enterprise->setUpdatedAt(new DateTimeImmutable());
+            $entityManager->flush();
+
+            $this->addFlash('success', "L'entreprise {$enterprise->getBusinessName()} à été modifié");
+
+            return $this->redirectToRoute('enterprise_browse');
+        }
+
+        
+        return $this->render('enterprise/add.html.twig', [
+            'enterprise_form' => $enterpriseForm->createView(),
+            'enterprise' => $enterprise,
+            'page' => 'edit',
+        ]);
+    }
 
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
