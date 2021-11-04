@@ -250,6 +250,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setMember(Member $member): self
     {
+        // unset the owning side of the relation if necessary
+        if ($member === null && $this->member !== null) {
+            $this->member->setUser(null);
+        }
         // set the owning side of the relation if necessary
         if ($member->getUser() !== $this) {
             $member->setUser($this);
