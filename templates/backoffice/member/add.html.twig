@@ -4,7 +4,7 @@
     {% if page == 'create' %}
     Nouveau Membre
     {% else %}
-    Membre {{ form.firstname }} {{ form.lastname }}
+    Membre {{ member.firstname }} {{ member.lastname }}
     {% endif %}
 {% endblock %}
 
@@ -20,7 +20,7 @@
     {% if page == 'create' %}
        Nouveau Membre
     {% else %}
-        Modification {{ form.firstname }} {{ form.lastname }}
+        Modification {{ member.firstname }} {{ member.lastname }}
     {% endif %}
 </h1>
 <div class="text-end">
@@ -43,7 +43,7 @@
     {% if 'backoffice_member_add' == app.request.get('_route') %}
     Ajouter
     {% else %}
-    Mdofier
+    Modifier
     {% endif %}
     </button>
 

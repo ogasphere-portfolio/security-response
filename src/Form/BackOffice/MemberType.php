@@ -3,8 +3,10 @@
 namespace App\Form\BackOffice;
 
 use App\Entity\Member;
+use App\Entity\Announcement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MemberType extends AbstractType
@@ -20,6 +22,12 @@ class MemberType extends AbstractType
             ->add('gender')
             ->add('city')
             ->add('job_status')
+            ->add('announcements', EntityType::class, [
+                'class' => Announcement::class,
+                'multiple' => true,
+                'choice_label' => 'title',
+              
+            ])
             /*   ->add('created_at')
             ->add('updated_at')
             ->add('created_by')

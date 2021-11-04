@@ -174,7 +174,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/delete", name="delete", methods={"GET"}, requirements={"id"="\d+"})
      * @IsGranted("ROLE_USER_DELETE")
      */
     public function delete(User $user, EntityManagerInterface $entityManager): Response
