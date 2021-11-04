@@ -88,6 +88,11 @@ class Announcement
      * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="announcement")
      */
     private $document;
+      /**
+     * @ORM\ManyToOne(targetEntity=Enterprise::class, inversedBy="announcement")
+     */
+    
+     private $enterprise;
 
      /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="announcement")
@@ -302,33 +307,30 @@ class Announcement
         return $this;
     }
 
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategory(): Collection
+    public function getEnterprise(): ?Enterprise
+    {
+        return $this->enterprise;
+    }
+
+    public function setEnterprise(?Enterprise $enterprise): self
+    {
+        $this->enterprise = $enterprise;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
 
-    public function addCategory(Category $category): self
+    public function setCategory(?Category $category): self
     {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-            $category->setAnnouncement($this);
-        }
+        $this->category = $category;
 
         return $this;
     }
+    
 
-    public function removeCategory(Category $category): self
-    {
-        if ($this->category->removeElement($category)) {
-            // set the owning side to null (unless already changed)
-            if ($category->getAnnouncement() === $this) {
-                $category->setAnnouncement(null);
-            }
-        }
-
-        return $this;
-    }
+    
 }
