@@ -89,8 +89,8 @@ class Announcement
      */
     private $document;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="announcement")
+     /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="announcement")
      */
     private $category;
     

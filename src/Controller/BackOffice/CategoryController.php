@@ -34,7 +34,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function read(Request $request, Category $category): Response
     {
@@ -59,7 +59,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Category $category): Response
     {
@@ -122,7 +122,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/delete", name="delete", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function delete(Category $category, EntityManagerInterface $entityManager): Response
     {

@@ -41,9 +41,9 @@ class Category
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $updated_by;
-
+    
     /**
-     * @ORM\ManyToOne(targetEntity=Announcement::class, inversedBy="category")
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="category")
      */
     private $announcement;
     public function __construct()
@@ -62,11 +62,7 @@ class Category
     {
         return $this->id;
     }
-    public function __toString() 
-    {
-        return $this->name;
-    }
-    
+
     public function getName(): ?string
     {
         return $this->name;
