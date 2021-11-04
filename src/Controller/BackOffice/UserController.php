@@ -46,7 +46,7 @@ class UserController extends AbstractController
     } */
 
     /**
-     * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      * @IsGranted("ROLE_USER_READ")
      * */
     public function read(Request $request, User $user): Response
@@ -67,7 +67,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      * @IsGranted("ROLE_USER_EDIT")
      */
     public function edit(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response

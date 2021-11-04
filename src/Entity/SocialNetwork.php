@@ -76,7 +76,10 @@ class SocialNetwork
     {
         return $this->id;
     }
-
+    public function __toString() 
+    {
+        return $this->name;
+    }
     public function getSlug(): ?string
     {
         return $this->slug;

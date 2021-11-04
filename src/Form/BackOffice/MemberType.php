@@ -14,21 +14,21 @@ class MemberType extends AbstractType
         $builder
             ->add('firstname')
             ->add('lastname')
-            ->add('slug')
+            /* ->add('slug') */
             ->add('description')
             ->add('picture')
             ->add('gender')
             ->add('city')
             ->add('job_status')
-            ->add('created_at')
+          /*   ->add('created_at')
             ->add('updated_at')
             ->add('created_by')
             ->add('updated_by')
             ->add('announcements')
             ->add('social_network')
-            ->add('specialization')
+            
             ->add('user')
-            ->add('document')
+            ->add('document') */
         ;
     }
 
