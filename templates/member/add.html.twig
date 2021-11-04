@@ -13,30 +13,33 @@
 {% block body %}
 <div class="container mt-6">
 
-
-
 <h1> 
     {% if page == 'create' %}
         Nouveau Membre
     {% else %}
-        Update {{ member.firstName }} {{ member.lastName }}
+        Modifier {{ member.firstName }} {{ member.lastName }}
     {% endif %}
 </h1>
 <div class="text-end">
 </div>
 
-{{ form_start(form) }}
+<ul class="navbar-nav me-4 mb-md-0">
+    <li class="nav-item">
+        <a class="btn btn-primary" aria-current="page" href="{{ url('member_browse') }}">Retour</a>
+    </li>
+</ul> 
+
+{{ form_start(member_form) }}
 
 
-    {{ form_errors(form) }}
-    {{ form_row(form.firstname) }}
-    {{ form_row(form.lastname) }}
-    {{ form_row(form.gender) }}
-    {{ form_row(form.city) }}
-    {{ form_row(form.job_status) }}
-    
-    {{ form_row(form.specialization) }}
-    {{ form_row(form.announcements) }}
+    {{ form_errors(member_form) }}
+    {{ form_row(member_form.firstname) }}
+    {{ form_row(member_form.lastname) }}
+    {{ form_row(member_form.gender) }}
+    {{ form_row(member_form.city) }}
+    {{ form_row(member_form.job_status) }}    
+    {{ form_row(member_form.specialization) }}
+    {{ form_row(member_form.description) }}
     
     
 
@@ -44,11 +47,11 @@
     {% if 'member_add' == app.request.get('_route') %}
     Create
     {% else %}
-    Update
+    Modifier
     {% endif %}
     </button>
 
-{{ form_end(form) }} 
+{{ form_end(member_form) }} 
 
 </div>
 {% endblock %}

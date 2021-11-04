@@ -39,11 +39,9 @@
                                     <table class="mt-4">            
                                             <tbody>
                                                 
-                                                {% for member in member_browse %}
-                                                <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
-                                                    <td class="py-1"><strong>{{ member.firstname }}</strong></td>
-                                                    <td class="py-1">{{ member.lastname }}</td>                                                    
-                                                </tr>
+                                                {% for member in member_browse %}                                                
+                                                    <li class="list-group">
+                                                        <a class="nav-link fs-6" aria-current="page" href="{{ url('member_browse') }}">{{ member.firstname }} {{ member.lastname }}</a>
                                                 {% endfor %}
                                                 
                                                 

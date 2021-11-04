@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Member;
 use App\Form\MemberType;
 use App\Repository\MemberRepository;
+use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,7 +32,7 @@ class MemberController extends AbstractController
 
      /**
      * 
-     * @Route("/read/{id}", name="read", methods={"GET"})
+     * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function read($id, MemberRepository $MemberRepository ): Response
     { 
@@ -60,7 +61,7 @@ class MemberController extends AbstractController
         if ($memberForm->isSubmitted() && $memberForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             
-            
+            $member->setUpdatedAt(new DateTime());
             $entityManager->flush();
 
             $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()}  à été modifié");
@@ -70,7 +71,7 @@ class MemberController extends AbstractController
 
         
         return $this->render('member/add.html.twig', [
-            'form' => $memberForm->createView(),
+            'member_form' => $memberForm->createView(),
             'member' => $member,
             'page' => 'edit',
         ]);
@@ -102,7 +103,7 @@ class MemberController extends AbstractController
     
                 $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()} à été ajouté");
     
-                return $this->redirectToRoute('member_list', ['id' => $member->getId()]);
+                return $this->redirectToRoute('member_browse', ['id' => $member->getId()]);
 
            
         }

@@ -3,9 +3,6 @@
 {% block title %}Profil membre{% endblock %}
 
 {% block body %}
-
-{{ form(member_form) }}
-
 <main>
         <section class="py-5 text-center container mt-">
             <div class="d-flex py-lg-5">
@@ -15,17 +12,26 @@
             </div>
         </section>    
 
+        <ul class="navbar-nav me-4 mb-md-0">
+            <li class="nav-item">
+                <a class="btn btn-primary" aria-current="page" href="{{ url('member_browse') }}">Retour</a>
+            </li>
+        </ul>
+
+{{ form(member_form) }}
                 
-                  {% for members in member %}                 
-                      <ul class="navbar-nav me-4 mb-md-0">
-                        <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ url('member_edit', {"id": member.id}) }}" title="Edit" alt="Edit">Modifier</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ url('member_delete', {"id": member.id}) }}" title="Delete" alt="Delete">Supprimer</a>
-                        </li>
-                      </ul>                  
-                  {% endfor %}
+
+        <ul class="navbar-nav me-4 mb-md-0">
+            <li class="nav-item">
+                <a class="btn btn-primary" href="{{ url('member_edit', {"id": member.id}) }}" title="Edit" alt="Edit">Modifier</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary" href="{{ url('member_edit', {"id": member.id}) }}" title="Delete" alt="Delete">Supprimer</a>
+            </li>
+        </ul> 
+
     </main>
+
+
 
 {% endblock %}
