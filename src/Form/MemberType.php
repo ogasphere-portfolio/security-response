@@ -18,25 +18,34 @@ class MemberType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstname', null, [
-                "label" => "First Name",
+        ->add('gender', ChoiceType::class, [
+            'choices'  => [
+                'Monsieur' => 1,
+                'Madame' => 2,
+                
+                //'No' => false,
+            ],
+            'expanded' => true,
+            'multiple' => false,
+            'label' => false,
+            'label_attr' =>[
+                'class' => 'radio-inline'
+            ]
             ])
-            ->add('lastname')
+            ->add('firstname', null, [
+                "label" => "Prénom *",
+            ])
+            ->add('lastname', null, [
+                "label" => "Nom de famille *",
+            ])
             // ->add('slug')
             ->add('description')
             // ->add('picture')
-            ->add('gender', ChoiceType::class, [
-                'choices'  => [
-                    'Monsieur' => 1,
-                    'Madame' => 2,
-                    //'No' => false,
-                ],
-                'expanded' => true,
-                'multiple' => false,
-                'label' => 'Choisissez votre type de compte',
-                ])
-            ->add('city')
+            ->add('city',null, [
+                'label' => 'Ville *'
+            ])
             ->add('job_status', ChoiceType::class, [
+                "label" => "Statut profession *",
                 'choices'  => [
                     'En poste' => 1,
                     'Recherche' => 2,
@@ -51,7 +60,7 @@ class MemberType extends AbstractType
             // ->add('updated_by')
             // ->add('announcements')
             // ->add('social_network')
-            ->add('specialization')
+            //->add('specialization')
             //->add('document')
         ;
     }
