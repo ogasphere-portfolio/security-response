@@ -82,7 +82,7 @@ class Member
     private $updated_by;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Announcement::class, mappedBy="member")
+     * @ORM\ManyToMany(targetEntity=Announcement::class, mappedBy="member", cascade={"persist", "remove"}))
      */
     private $announcements;
 

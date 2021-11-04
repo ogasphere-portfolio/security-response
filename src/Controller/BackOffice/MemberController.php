@@ -57,8 +57,10 @@ class MemberController extends AbstractController
      */
     public function edit(Request $request, Member $member): Response
     {
+        $member->getAnnouncements(); //get the annoucements of the member
         $memberForm = $this->createForm(MemberType::class, $member);
-
+       
+       
         $memberForm->handleRequest($request);
 
         if ($memberForm->isSubmitted() && $memberForm->isValid()) {
@@ -67,7 +69,7 @@ class MemberController extends AbstractController
             $member->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
-            $this->addFlash('success', "Member {$member->getFirstname()} {$member->getLastname()} udpated successfully");
+            $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()} à été modifié");
 
             return $this->redirectToRoute('backoffice_member_browse');
         }

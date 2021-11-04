@@ -25,6 +25,7 @@ class MemberType extends AbstractType
             ->add('announcements', EntityType::class, [
                 'class' => Announcement::class,
                 'multiple' => true,
+                'expanded' => true,
                 'choice_label' => 'title',
               
             ])
