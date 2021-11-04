@@ -36,20 +36,13 @@ class EnterpriseController extends AbstractController
     /**
      * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      */
-    public function read(Request $request, Enterprise $enterprise): Response
+    public function read( Enterprise $enterprise): Response
     {
 
         $enterpriseForm = $this->createForm(EnterpriseType::class, $enterprise, [
             'disabled' => 'disabled'
         ]);
 
-        // $enterpriseForm
-        //     ->add('createdAt', null, [
-        //         'widget' => 'single_text',
-        //     ])
-        //     ->add('updatedAt', null, [
-        //         'widget' => 'single_text',
-        //     ]);
 
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/enterprise/read.html.twig', [
