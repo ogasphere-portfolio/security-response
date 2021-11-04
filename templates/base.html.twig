@@ -41,7 +41,7 @@
                         </li>
 
                         {% if app.user %}
-                        <a href="">                       
+                        <a href="{{ path('profile_enterprise', {id: app.user.id}) }}">                       
                        <span class="text">{{ app.user.email }}</span>
                        </a>
                         <li class="nav-item">

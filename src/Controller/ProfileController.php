@@ -20,12 +20,10 @@ class ProfileController extends AbstractController
      */
     public function enterpriseHome(EnterpriseRepository $enterpriseRepository): Response
     {
-        $userId = $this->getUser()->getId();
-        $user = $this->getUser();
+        $userEnterprise = $this->getUser();
 
         return $this->render('profile/enterprise/home.html.twig', [
-            'enterprise' => $userId,
-            'repository' => $enterpriseRepository
+            'enterprise' => $userEnterprise,
         ]);
     }
 
