@@ -82,7 +82,7 @@ class Member
     private $updated_by;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Announcement::class, mappedBy="member")
+     * @ORM\ManyToMany(targetEntity=Announcement::class, mappedBy="members")
      */
     private $announcements;
 
@@ -278,7 +278,7 @@ class Member
         return $this;
     }
 
-    
+
 
     /**
      * @return Collection|SocialNetwork[]

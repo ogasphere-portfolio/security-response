@@ -77,7 +77,7 @@ class Announcement
     /**
      * @ORM\ManyToMany(targetEntity=Member::class, inversedBy="announcements")
      */
-    private $member;
+    private $members;
 
     /**
      * @ORM\ManyToMany(targetEntity=Specialization::class, inversedBy="announcements")
@@ -250,15 +250,15 @@ class Announcement
     /**
      * @return Collection|Member[]
      */
-    public function getMember(): Collection
+    public function getMembers(): Collection
     {
-        return $this->member;
+        return $this->members;
     }
 
     public function addMember(Member $member): self
     {
-        if (!$this->member->contains($member)) {
-            $this->member[] = $member;
+        if (!$this->members->contains($member)) {
+            $this->members[] = $member;
             
         }
         
