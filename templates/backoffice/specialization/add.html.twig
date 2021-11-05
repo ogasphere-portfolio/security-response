@@ -1,0 +1,52 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}
+    {% if page == 'create' %}
+    New enterprise
+    {% else %}
+    enterprise {{ specialization.name }}
+    {% endif %}
+{% endblock %}
+
+{% block backoffice_menu %}
+    {% include "backoffice/specialization/_menu.html.twig" %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+{% for message in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ message }}</div>
+	{% endfor %}
+<h1> 
+    {% if page == 'create' %}
+        New specialization
+    {% else %}
+        Update {{ specialization.name }}
+    {% endif %}
+</h1>
+<div class="text-end">
+</div>
+
+{{ form_start(specialization_form) }}
+
+    {{ form_errors(specialization_form) }}
+    {{ form_row(specialization_form.name) }}
+    {{ form_row(specialization_form.slug) }}
+    {{ form_row(specialization_form.announcements) }}
+    {{ form_row(specialization_form.members) }}
+    
+
+
+    <button type="submit" class="btn btn-primary mt-4">
+    {% if 'backoffice_specialization_add' == app.request.get('_route') %}
+    Create
+    {% else %}
+    Update
+    {% endif %}
+    </button>
+
+{{ form_end(specialization_form) }} 
+
+</div>
+{% endblock %}

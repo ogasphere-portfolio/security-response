@@ -40,6 +40,16 @@ class UserType extends AbstractType
             ])
             ->add('password')
             ->add('isVerified')
+
+            ->add('userMember', MemberType::class, [
+                'label' => false,
+                'required' => false,
+            ])
+
+            ->add('userEnterprise', EnterpriseType::class, [
+                'label' => false,
+                'required' => false,
+            ])
         ;
     }
 

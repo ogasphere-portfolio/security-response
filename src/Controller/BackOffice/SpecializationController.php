@@ -28,8 +28,7 @@ class SpecializationController extends AbstractController
     {
 
         return $this->render('backoffice/specialization/browse.html.twig', [
-            'specialization_browse' => $specializationRepository->findAll(),
-            'controller_name' => 'BackOffice/SpecializationController'
+            'specialization_list' => $specializationRepository->findAll(),
         ]);
     }
 
@@ -43,17 +42,9 @@ class SpecializationController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-        $specializationForm
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ]);
-
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/specialization/read.html.twig', [
-            'form' => $specializationForm->createView(),
+            'specialization_form' => $specializationForm->createView(),
             'specialization' => $specialization,
         ]);
     }
@@ -80,7 +71,7 @@ class SpecializationController extends AbstractController
 
 
         return $this->render('backoffice/specialization/add.html.twig', [
-            'form' => $specializationForm->createView(),
+            'specialization_form' => $specializationForm->createView(),
             'specialization' => $specialization,
             'page' => 'edit',
         ]);
@@ -116,7 +107,7 @@ class SpecializationController extends AbstractController
 
 
         return $this->render('backoffice/specialization/add.html.twig', [
-            'form' => $specializationForm->createView(),
+            'specialization_form' => $specializationForm->createView(),
             'page' => 'create',
         ]);
     }
