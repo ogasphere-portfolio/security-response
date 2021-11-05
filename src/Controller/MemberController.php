@@ -32,7 +32,6 @@ class MemberController extends AbstractController
             'member_browse' => $memberRepository->findAll()
         ]);
     }
-
     
     /**
      * @Route("/edit/connexion", name="edit_connexion", methods={"GET", "POST"})
@@ -54,19 +53,14 @@ class MemberController extends AbstractController
 
             $this->addFlash('success', "Les infos de connexions ont été modifiées");
 
-            return $this->redirectToRoute('profile_member');
+            return $this->redirectToRoute('member_edit_connexion');
         }
         
-        $member = $userMember->getUserMember();
 
-        $memberForm = $this->createForm(MemberType::class, $member, [
-            'disabled' => 'disabled'
-        ]);
-
-        return $this->render('profile/member/home.html.twig', [
+        return $this->render('profile/member/editConnexion.html.twig', [
             'user_form' => $memberForm->createView(),
-            'member_form' => $memberForm->createView(),
             'member' => $security,
+            'page' => 'edit',
         ]);
     }
 

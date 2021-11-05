@@ -42,22 +42,8 @@ class ProfileController extends AbstractController
         $userMember->getUserMember()->getFirstName();
 
         $member = $userMember->getUserMember();
-        
-
-        $userForm = $this->createForm(UserType::class, $userMember, [
-            'disabled' => 'disabled'
-        ]);
-
-        // create a form with recovered object
-        // modify dynamically (inside the controller) the form options
-        // to disabled all fields
-        $memberForm = $this->createForm(MemberType::class, $member, [
-            'disabled' => 'disabled'
-        ]);
 
         return $this->render('profile/member/home.html.twig', [
-            'user_form' => $userForm->createView(),
-            'member_form' => $memberForm->createView(),
             'member' => $userMember,
         ]);
     }

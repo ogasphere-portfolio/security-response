@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Espace membre{% endblock %}
+{% block title %}Espace membre - Edition{% endblock %}
 
 {% block body %}
 
@@ -53,17 +53,14 @@
                                             <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
                                                 <td class="d-flex justify-content-between py-1">
                                                     <h5><strong>Infos de connexion</strong></h5>
-                                                    <a class="btn btn-primary" href="{{ url('member_edit_connexion') }}" title="EditConnexion" alt="Edit">Modifier</a>
+                                                    <a class="btn btn-primary" href="{{ url('profile_member') }}">Retour</a>
                                                 </td>
                                                 <td class="py-1">
-                                                    <div class="mb-3">
-                                                        <div class="mb-3"><strong>Email :</strong></div>
-                                                        <p>{{ app.user }}</p>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <div class="mb-3"><strong>Password :</strong></div>
-                                                        <p>********</p>
-                                                    </div>
+                                                <form action="{{ path('member_edit_connexion') }}" method="POST">
+                                                    {{ form_row(user_form.email) }}
+                                                    {{ form_row(user_form.password) }}
+                                                    <input class="btn btn-primary" type="submit" name="EditConnexion"> 
+                                                </form>
                                                 </td>
                                             </tr>
 
