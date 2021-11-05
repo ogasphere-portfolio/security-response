@@ -16,10 +16,10 @@ class AnnouncementType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('status')
-            ->add('created_at')
+        /*     ->add('created_at')
             ->add('updated_at')
             ->add('created_by')
-            ->add('updated_by')
+            ->add('updated_by') */
             ->add('certification')
             ->add('member')
             ->add('specialization')

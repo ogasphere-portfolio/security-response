@@ -2,7 +2,7 @@
 
 {% block title %}
     {% if page == 'create' %}
-    Nouveau Membre
+    Nouvelle certification
     {% else %}
     Certification : {{ certification.name }}
     {% endif %}
@@ -18,7 +18,7 @@
 	{% endfor %}
 <h1> 
     {% if page == 'create' %}
-       Nouveau Membre
+        Nouvelle certification
     {% else %}
         Modification {{ certification.name }}
     {% endif %}
@@ -34,7 +34,7 @@
    
  
     <button type="submit" class="btn btn-primary mt-4">
-    {% if 'backoffice_member_add' == app.request.get('_route') %}
+    {% if 'backoffice_certification_add' == app.request.get('_route') %}
     Ajouter
     {% else %}
     Modifier
