@@ -62,6 +62,11 @@ class CertificationController extends AbstractController
 
         if ($certificationForm->isSubmitted() && $certificationForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            
+            
+            foreach ($certification->getEnterprises() as $enterprise) {
+                $enterprise->addCertification($certification);
+            }
 
             $certification->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
