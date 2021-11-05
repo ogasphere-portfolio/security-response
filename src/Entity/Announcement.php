@@ -88,13 +88,13 @@ class Announcement
      * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="announcement")
      */
     private $document;
-      /**
+
+    /**
      * @ORM\ManyToOne(targetEntity=Enterprise::class, inversedBy="announcement")
      */
-    
-     private $enterprise;
+    private $enterprise;
 
-     /**
+    /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="announcement")
      */
     private $category;

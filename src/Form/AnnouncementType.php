@@ -2,6 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Certification;
+use App\Entity\Member;
+use App\Entity\Specialization;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,9 +20,24 @@ class AnnouncementType extends AbstractType
             ->add('description')
             ->add('slug') 
             ->add('status')
-            ->add('certification')
-            ->add('member')
-            ->add('specialization') 
+            ->add('certification',EntityType::class,[
+                'class' => Certification::class,
+                'multiple' => true,
+                'expanded' => true,
+                'choice_label' => 'name',
+            ])
+            ->add('member',EntityType::class,[
+                'class' => Member::class,
+                'multiple' => true,
+                'expanded' => true,
+                'choice_label' => 'firstname',
+            ])
+            ->add('specialization',EntityType::class,[
+                'class' => Specialization::class,
+                'multiple' => true,
+                'expanded' => true,
+                'choice_label' => 'name',
+            ]) 
             ->add('document')          
         ;
     }
