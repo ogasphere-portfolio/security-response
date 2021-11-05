@@ -3,7 +3,7 @@
 namespace App\Controller\BackOffice;
 
 use App\Entity\Announcement;
-use App\Form\AnnouncementType;
+use App\Form\BackOffice\AnnouncementType;
 use App\Repository\AnnouncementRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
