@@ -43,20 +43,28 @@
 								<td>{{ member.picture }}</td>
 								<td>{{ member.lastname }}</td>
 								<td>{{ member.firstname }}</td>
-                                <td>{% for genre in member.gender %}
-										{% if genre == 1 %}
-											feminim
-										{% elseif genre == 2 %}
-											Masculin
-										{% elseif  genre == 3 %}
-											Autre
-										
-										{% endif %}
-										
-									{% endfor %}
+                                <td>	
+									{% if member.gender == 1 %}
+										feminim
+									{% elseif member.gender == 2 %}
+										Masculin
+									{% elseif  member.gender == 3 %}
+										Autre
+									
+									{% endif %}
 								</td> 
+								
 								<td>
-                                
+								
+								{% if member.jobStatus == 1 %}
+										En poste
+									{% elseif member.jobStatus == 2 %}
+										Disponible
+									{% elseif  member.jobStatus == 3 %}
+										Etudiant
+									
+									{% endif %}
+                                </td> 
                                 
 										
 									

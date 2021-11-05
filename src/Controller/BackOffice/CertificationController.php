@@ -3,7 +3,7 @@
 namespace App\Controller\BackOffice;
 
 use App\Entity\Certification;
-use App\Form\CertificationType;
+use App\Form\BackOffice\CertificationType;
 use App\Repository\CertificationRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,7 +28,7 @@ class CertificationController extends AbstractController
     {
 
         return $this->render('backoffice/certification/browse.html.twig', [
-            'certification_browse' => $certificationRepository->findAll(),
+            'certification_list' => $certificationRepository->findAll(),
             'controller_name' => 'BackOffice/CertificationController'
         ]);
     }
@@ -43,14 +43,7 @@ class CertificationController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-        $certificationForm
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ]);
-
+        
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/certification/read.html.twig', [
             'form' => $certificationForm->createView(),
