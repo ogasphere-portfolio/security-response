@@ -267,7 +267,7 @@ class Announcement
 
     public function removeMember(Member $member): self
     {
-        $this->member->removeElement($member);
+        $this->members->removeElement($member);
         
         return $this;
     }

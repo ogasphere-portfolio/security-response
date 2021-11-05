@@ -68,6 +68,7 @@ class MemberController extends AbstractController
         if ($memberForm->isSubmitted() && $memberForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
+            // Permet de sauvegarder les annonces des membres
             foreach ($member->getAnnouncements() as $announce) {
                 $announce->addMember($member);
             }
