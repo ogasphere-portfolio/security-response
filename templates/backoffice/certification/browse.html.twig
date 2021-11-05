@@ -1,20 +1,92 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
-{% block title %}Hello CertificationController!{% endblock %}
+{% block title %}User list {{ parent() }}{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ message }}</div>
+	{% endfor %}
+	{% block backoffice_menu %}
+   
+{% endblock %}
+	<!-- Main content -->
+	<section
+		class="content">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		<!-- Default box -->
+		<div class="card">
+			<div class="card-header row ">
+				<h3 class="card-title col-6 ">Liste des membres</h3>
+				 <div class="col-6 text-right"> {% include "backoffice/certification/_menu.html.twig" %}</div>
+			</div>
+			
+			<div class="card-body p-0">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/Apothéose/projet-security-response/src/Controller/BackOffice/CertificationController.php'|file_link(0) }}">src/Controller/BackOffice/CertificationController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/Apothéose/projet-security-response/templates/back_office/certification/index.html.twig'|file_link(0) }}">templates/back_office/certification/index.html.twig</a></code></li>
-    </ul>
-</div>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+                            <th scope="col">Certification</th>
+						    <th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for certification in certification_list %}
+							<tr>
+								<th scope="row">{{ certification.id }}</th>
+
+								<td>{{ certification.name }}</td>
+								
+                                
+										
+									
+								<td class="project-actions text-right">
+									<a
+										class="btn btn-success" href="{{ url('backoffice_certification_read', {"id": certification.id}) }}" title="Read" alt="Read">
+										{# images récupérées sur bootstrap icons https://icons.getbootstrap.com/ #}
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
+											<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+										</svg>
+									</a>
+									<a class="btn btn-primary" href="{{ url('backoffice_certification_edit', {"id": certification.id}) }}" title="Edit" alt="Edit">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewbox="0 0 16 16">
+											<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+										</svg>
+									</a>
+									<div class="btn-group" role="group">
+									<div class="dropdown">
+										<button id="btnGroupDrop1" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Delete" alt="Delete">
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewbox="0 0 16 16">
+												<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+												<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+											</svg>
+										</button>
+										<ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+											<li>
+												<a class="dropdown-item" href="{{ url('backoffice_certification_delete', {"id": certification.id}) }}">Yes I am sure !</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#">Nope</a>
+											</li>
+										</ul>
+									</div>
+									</div>
+
+									
+
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+					
+				</div>
+				<!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+
+		</section>
+		<!-- /.content -->
+	</div>
+	{% block javascripts %}{% endblock %}
 {% endblock %}

@@ -126,7 +126,7 @@ class Enterprise
     private $documents;
 
      /**
-     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="announcement")
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="enterprise")
      */
     private $announcement;
 
@@ -179,7 +179,7 @@ class Enterprise
 
         return $this;
     }
-
+    
     public function getSiretNumber(): ?string
     {
         return $this->siret_number;
@@ -423,7 +423,7 @@ class Enterprise
     {
         if (!$this->announcement->contains($announcement)) {
             $this->announcement[] = $announcement;
-            $announcement->setAnnouncement($this);
+            $announcement->setEnterprise($this);
         }
 
         return $this;
@@ -433,13 +433,15 @@ class Enterprise
     {
         if ($this->announcement->removeElement($announcement)) {
             // set the owning side to null (unless already changed)
-            if ($announcement->getAnnouncement() === $this) {
-                $announcement->setAnnouncement(null);
+            if ($announcement->getEnterprise() === $this) {
+                $announcement->setEnterprise(null);
             }
         }
 
         return $this;
     }
+
+    
 
     
 
