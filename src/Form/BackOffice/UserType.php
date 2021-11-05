@@ -17,8 +17,8 @@ class UserType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [
-                new NotBlank([
-                    'message' => "Merci de saisir une adresse email"
+                    new NotBlank([
+                        'message' => "Merci de saisir une adresse email"
                     ])
                 ],
                 'required' => true,
@@ -27,7 +27,7 @@ class UserType extends AbstractType
                 ]
 
             ])
-            ->add('roles', ChoiceType::class, [              
+            ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Utilisateur' => 'ROLE_USER',
                     'Membre' => 'ROLE_MEMBER',
@@ -41,15 +41,15 @@ class UserType extends AbstractType
             ->add('password')
             ->add('isVerified')
 
-            ->add('userMember', MemberType::class, [
-                'label' => false,
-                'required' => false,
-            ])
+            // ->add('userMember', MemberType::class, [
+            //     'label' => false,
+            //     'required' => false,
+            // ])
 
-            ->add('userEnterprise', EnterpriseType::class, [
-                'label' => false,
-                'required' => false,
-            ])
+            // ->add('userEnterprise', EnterpriseType::class, [
+            //     'label' => false,
+            //     'required' => false,
+            // ])
         ;
     }
 
@@ -60,31 +60,9 @@ class UserType extends AbstractType
         ]);
     }
     public function getDefaultOptions()
-{
-    return array(
-        'roles' => null
-    );
-}
-
-private function refactorRoles($originRoles)
-{
-    $roles = array();
-    $rolesAdded = array();
-
-    // Add herited roles
-    foreach ($originRoles as $roleParent => $rolesHerit) {
-        $tmpRoles = array_values($rolesHerit);
-        $rolesAdded = array_merge($rolesAdded, $tmpRoles);
-        $roles[$roleParent] = array_combine($tmpRoles, $tmpRoles);
+    {
+        return array(
+            'roles' => null
+        );
     }
-    // Add missing superparent roles
-    $rolesParent = array_keys($originRoles);
-    foreach ($rolesParent as $roleParent) {
-        if (!in_array($roleParent, $rolesAdded)) {
-            $roles['-----'][$roleParent] = $roleParent;
-        }
-    }
-
-    return $roles;
-}
 }
