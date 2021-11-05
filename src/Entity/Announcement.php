@@ -262,14 +262,14 @@ class Announcement
             $this->member[] = $member;
             
         }
-        $member->addAnnouncement($this);
+        
         return $this;
     }
 
     public function removeMember(Member $member): self
     {
         $this->member->removeElement($member);
-        $member->removeAnnouncement($this);
+        
         return $this;
     }
 

@@ -43,7 +43,7 @@ class Category
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $updated_by;
-    
+   
     /**
      * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="category")
      */
