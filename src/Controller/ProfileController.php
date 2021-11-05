@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Enterprise;
 use App\Entity\Member;
 use App\Entity\User;
+use App\Form\BackOffice\UserType;
 use App\Form\MemberType;
 use App\Repository\EnterpriseRepository;
 use App\Repository\MemberRepository;
+use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,6 +42,11 @@ class ProfileController extends AbstractController
         $userMember->getUserMember()->getFirstName();
 
         $member = $userMember->getUserMember();
+        
+
+        $userForm = $this->createForm(UserType::class, $userMember, [
+            'disabled' => 'disabled'
+        ]);
 
         // create a form with recovered object
         // modify dynamically (inside the controller) the form options
@@ -49,8 +56,10 @@ class ProfileController extends AbstractController
         ]);
 
         return $this->render('profile/member/home.html.twig', [
+            'user_form' => $userForm->createView(),
             'member_form' => $memberForm->createView(),
             'member' => $userMember,
         ]);
     }
+
 }

@@ -51,15 +51,22 @@
                                 <table class="mt-4">            
                                         <tbody>
                                             <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
-                                                <td class="py-1"><strong>Infos de connexion</strong></td>
-                                                <td class="py-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur facere praesentium voluptatem? Temporibus exercitationem facilis atque quos odio labore at provident, in tempora iste consectetur sunt dolore sit. Nobis, delectus.</td>
-                                                <td class="py-1"><em>test</em></td>
+                                                <td class="d-flex justify-content-between py-1">
+                                                    <strong>Infos de connexion</strong>
+                                                    <a class="btn btn-primary" href="{{ url('member_edit_connexion') }}" title="EditConnexion" alt="Edit">Modifier</a>
+                                                </td>
+                                                <td class="py-1">
+                                                    {{ form_row(user_form.email) }}
+                                                    {{ form_row(user_form.password) }}
+                                                </td>
                                             </tr>
 
                                             <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
-                                                <td class="py-1"><strong>Mes informations personnelles</strong></td>
-                                                <td class="py-1">{{ form(member_form) }}</td>
-                                                <td class="py-1"><em>test</em></td>
+                                                <td class="d-flex justify-content-between py-1">
+                                                    <strong>Mes informations personnelles</strong>
+                                                    <a class="btn btn-primary" href="{{ url('member_edit_perso') }}" title="EditPerso" alt="Edit">Modifier</a>
+                                                </td>
+                                                <td class="py-1">{{ form(member_form) }}</td>                                                
                                             </tr>
 
                                             <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
