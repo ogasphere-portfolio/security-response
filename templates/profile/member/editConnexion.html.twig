@@ -56,11 +56,12 @@
                                                     <a class="btn btn-primary" href="{{ url('profile_member') }}">Retour</a>
                                                 </td>
                                                 <td class="py-1">
-                                                <form action="{{ path('member_edit_connexion') }}" method="POST">
+                                               
+                                                    {{ form_start(user_form) }}
                                                     {{ form_row(user_form.email) }}
-                                                    {{ form_row(user_form.password) }}
                                                     <input class="btn btn-primary" type="submit" name="EditConnexion"> 
-                                                </form>
+                                                    {{ form_end(user_form) }}
+                                                
                                                 </td>
                                             </tr>
 

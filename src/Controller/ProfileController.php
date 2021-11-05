@@ -44,7 +44,7 @@ class ProfileController extends AbstractController
         $member = $userMember->getUserMember();
 
         return $this->render('profile/member/home.html.twig', [
-            'member' => $userMember,
+            'member' => $member,
         ]);
     }
 

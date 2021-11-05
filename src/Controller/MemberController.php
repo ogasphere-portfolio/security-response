@@ -4,10 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Member;
 use App\Entity\User;
-use App\Form\BackOffice\UserType;
+use App\Form\UserType;
 use App\Form\MemberType;
 use App\Repository\MemberRepository;
 use DateTime;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,7 +37,7 @@ class MemberController extends AbstractController
     /**
      * @Route("/edit/connexion", name="edit_connexion", methods={"GET", "POST"})
      */
-    public function editConnexion(Request $request, Security $security, UserType $userType): Response
+    public function editConnexion(Request $request, Security $security): Response
     {
         $userMember = $security->getUser();
         $userMember->getUserMember()->getFirstName();
@@ -46,9 +47,8 @@ class MemberController extends AbstractController
         $memberForm->handleRequest($request);
 
         if ($memberForm->isSubmitted() && $memberForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->getDoctrine()->getManager();            
             
-            $userMember->setUpdatedAt(new DateTime());
             $entityManager->flush();
 
             $this->addFlash('success', "Les infos de connexions ont été modifiées");
@@ -56,7 +56,6 @@ class MemberController extends AbstractController
             return $this->redirectToRoute('member_edit_connexion');
         }
         
-
         return $this->render('profile/member/editConnexion.html.twig', [
             'user_form' => $memberForm->createView(),
             'member' => $security,
