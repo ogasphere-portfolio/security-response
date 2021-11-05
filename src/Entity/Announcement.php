@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\ORM\Mapping as ORM;
-use App\Repository\AnnouncementRepository;
 use DateTimeImmutable;
+use App\Repository\AnnouncementRepository;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AnnouncementRepository::class)
@@ -88,16 +88,16 @@ class Announcement
      * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="announcement")
      */
     private $document;
-
-    /**
+     /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="announcement")
+     */
+    private $category;
+      /**
      * @ORM\ManyToOne(targetEntity=Enterprise::class, inversedBy="announcement")
      */
     private $enterprise;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="announcement")
-     */
-    private $category;
+    
     
     public function __construct()
     {
@@ -259,15 +259,16 @@ class Announcement
     {
         if (!$this->member->contains($member)) {
             $this->member[] = $member;
+            
         }
-
+        
         return $this;
     }
 
     public function removeMember(Member $member): self
     {
         $this->member->removeElement($member);
-
+        
         return $this;
     }
 

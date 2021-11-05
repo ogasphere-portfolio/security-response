@@ -44,15 +44,14 @@
 								<td>{{ member.lastname }}</td>
 								<td>{{ member.firstname }}</td>
                                 <td>{% for genre in member.gender %}
-									{% if genre == 1 %}
-										feminim
-									{% elseif genre == 2 %}
-										En recherche d'emploi
-									{% elseif  genre == 3 %}
-										En stage
-									{% elseif genre == 4 %} 
-										Etudiant
-									{% endif %}
+										{% if genre == 1 %}
+											feminim
+										{% elseif genre == 2 %}
+											Masculin
+										{% elseif  genre == 3 %}
+											Autre
+										
+										{% endif %}
 										
 									{% endfor %}
 								</td> 

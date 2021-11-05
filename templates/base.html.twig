@@ -69,8 +69,13 @@
                         <li class="nav-item" id="nav-inscription">
                             <a class="nav-link" href="{{ url('app_register') }}">Inscription</a>
                         </li>
-                        
-                        {% endif %}                        
+                       
+                        {% endif %}   
+                        <li class="nav-item">
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a class="nav-link" href="{{ path('backoffice_browse') }}">Administation</a>
+                            {% endif %}
+                        </li>                     
                     </ul>
                 </div>
             </div>
