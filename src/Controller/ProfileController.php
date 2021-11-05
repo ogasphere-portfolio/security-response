@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Enterprise;
 use App\Entity\Member;
 use App\Entity\User;
+use App\Form\MemberType;
 use App\Repository\EnterpriseRepository;
 use App\Repository\MemberRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,7 +39,17 @@ class ProfileController extends AbstractController
         $userMember = $security->getUser();
         $userMember->getUserMember()->getFirstName();
 
+        $member = $userMember->getUserMember();
+
+        // create a form with recovered object
+        // modify dynamically (inside the controller) the form options
+        // to disabled all fields
+        $memberForm = $this->createForm(MemberType::class, $member, [
+            'disabled' => 'disabled'
+        ]);
+
         return $this->render('profile/member/home.html.twig', [
+            'member_form' => $memberForm->createView(),
             'member' => $userMember,
         ]);
     }
