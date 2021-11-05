@@ -1,0 +1,56 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}
+    {% if page == 'create' %}
+    New annoucement
+    {% else %}
+    annoucement {{ announcement.title }}
+    {% endif %}
+{% endblock %}
+
+{% block backoffice_menu %}
+    {% include "backoffice/annoucement/_menu.html.twig" %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+{% for message in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ message }}</div>
+	{% endfor %}
+<h1> 
+    {% if page == 'create' %}
+        New annoucement
+    {% else %}
+        Update {{ announcement.title }}
+    {% endif %}
+</h1>
+<div class="text-end">
+</div>
+
+{{ form_start(announcement_form) }}
+
+    {{ form_errors(announcement_form) }}
+    {{ form_row(announcement_form.title) }}
+    {{ form_row(announcement_form.slug) }}
+    {{ form_row(announcement_form.description) }}
+    {{ form_row(announcement_form.status) }}
+    {{ form_row(announcement_form.certification) }}
+    {{ form_row(announcement_form.member) }}
+    {{ form_row(announcement_form.specialization) }}
+    {{ form_row(announcement_form.document) }}
+    
+
+
+    <button type="submit" class="btn btn-primary mt-4">
+    {% if 'backoffice_annoucement_add' == app.request.get('_route') %}
+    Create
+    {% else %}
+    Update
+    {% endif %}
+    </button>
+
+{{ form_end(announcement_form) }} 
+
+</div>
+{% endblock %}

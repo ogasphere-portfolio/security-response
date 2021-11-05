@@ -95,8 +95,7 @@ class Announcement
       /**
      * @ORM\ManyToOne(targetEntity=Enterprise::class, inversedBy="announcement")
      */
-    
-     private $enterprise;
+    private $enterprise;
 
     
     
