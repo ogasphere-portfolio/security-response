@@ -24,13 +24,13 @@ class EnterpriseType extends AbstractType
             ->add('longitude')
             ->add('contact_mail')
             ->add('city')
-            ->add('created_at')
-            ->add('updated_at')
-            ->add('created_by')
-            ->add('updated_by')
+            // ->add('created_at')
+            // ->add('updated_at')
+            // ->add('created_by')
+            // ->add('updated_by')
             ->add('certification')
             ->add('user')
-            ->add('documents')
+            // ->add('documents')
         ;
     }
 
