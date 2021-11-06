@@ -62,7 +62,7 @@ class AppFixtures extends Fixture
             $member = new Member();
             $member->setFirstname($faker->firstName())
                 ->setLastname($faker->lastName())
-                ->setSlug((strtolower($this->slugger->slug($member->getFirstname()))))
+                ->setSlug((strtolower($this->slugger->slug($member->getFirstname(). '-' .$member->getLastname()))))
                 ->setDescription($faker->text())
                 ->setPicture($faker->word())
                 ->setGender($faker->numberBetween(0, 1))
