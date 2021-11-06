@@ -446,8 +446,4 @@ class Enterprise
     
 
     
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> feature/adminLte
