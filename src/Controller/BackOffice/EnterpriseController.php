@@ -3,7 +3,7 @@
 namespace App\Controller\BackOffice;
 
 use App\Entity\Enterprise;
-use App\Form\EnterpriseType;
+use App\Form\BackOffice\EnterpriseType;
 use App\Repository\EnterpriseRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;

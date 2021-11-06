@@ -19,8 +19,8 @@ class UserType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [
-                new NotBlank([
-                    'message' => "Merci de saisir une adresse email"
+                    new NotBlank([
+                        'message' => "Merci de saisir une adresse email"
                     ])
                 ],
                 'required' => true,
@@ -29,7 +29,7 @@ class UserType extends AbstractType
                 ]
 
             ])
-            ->add('roles', ChoiceType::class, [              
+            ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Utilisateur' => 'ROLE_USER',
                     'Membre' => 'ROLE_MEMBER',

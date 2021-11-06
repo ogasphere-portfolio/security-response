@@ -17,7 +17,7 @@
 		<!-- Default box -->
 		<div class="card">
 			<div class="card-header row ">
-				<h3 class="card-title col-6 ">Liste des entreprises</h3>
+				<h2 class="card-title col-6 ">Liste des entreprises</h3>
 				 <div class="col-6 text-right"> {% include "backoffice/enterprise/_menu.html.twig" %}</div>
 			</div>
 			
@@ -28,6 +28,7 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Nom de l'entreprise</th>
+							<th scope="col">User</th>
                             <th scope="col">Siret de l'entreprise</th>
 							<th scope="col">Adresse</th>
                             {# <th scope="col">Adresse more</th> #}
@@ -47,6 +48,7 @@
 								<th scope="row">{{ enterprise.id }}</th>
 
 								<td>{{ enterprise.businessname }}</td>
+								<td>{{ enterprise.user }}</td>
 								<td>{{ enterprise.siretNumber }}</td>
 								<td>{{ enterprise.address }}</td>
                                 {# <td>{{ enterprise.addressmore }}</td> #}
@@ -57,19 +59,6 @@
                                 <td>{{ enterprise.latitude }}</td>
                                 <td>{{ enterprise.longitude }}</td>
 
-                                {# <td>{% for genre in enterprise.gender %}
-									{% if genre == 1 %}
-										feminim
-									{% elseif genre == 2 %}
-										En recherche d'emploi
-									{% elseif  genre == 3 %}
-										En stage
-									{% elseif genre == 4 %} 
-										Etudiant
-									{% endif %}
-										
-									{% endfor %}
-								</td>  #}
 								<td>
                                 
                                 
