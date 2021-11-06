@@ -57,21 +57,28 @@ class MemberController extends AbstractController
      */
     public function edit(Request $request, Member $member): Response
     {
-        $member->getAnnouncements(); //get the annoucements of the member
+
+
+        // $member->getAnnouncements(); //get the annoucements of the member
         $memberForm = $this->createForm(MemberType::class, $member);
-       
-       
+
+
         $memberForm->handleRequest($request);
 
         if ($memberForm->isSubmitted() && $memberForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            // Permet de sauvegarder les annonces des membres
+            foreach ($member->getAnnouncements() as $announce) {
+                $announce->addMember($member);
+            }
 
             $member->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
             $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()} à été modifié");
 
-            return $this->redirectToRoute('backoffice_member_browse');
+            return $this->redirectToRoute('backoffice_member_edit', ['id' => $member->getId()]);
         }
 
 

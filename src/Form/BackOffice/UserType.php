@@ -53,17 +53,10 @@ class UserType extends AbstractType
                 'second_options' => ['label' => 'Repeat Password'],
             ])
         
+            
             ->add('isVerified')
 
-            // ->add('userMember', MemberType::class, [
-            //     'label' => false,
-            //     'required' => false,
-            // ])
-
-            // ->add('userEnterprise', EnterpriseType::class, [
-            //     'label' => false,
-            //     'required' => false,
-            // ])
+            
         ;
     }
 

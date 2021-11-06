@@ -21,7 +21,7 @@ class AnnouncementType extends AbstractType
             ->add('created_by')
             ->add('updated_by') */
             ->add('certification')
-            ->add('member')
+            ->add('members')
             ->add('specialization')
             ->add('document')
         ;
