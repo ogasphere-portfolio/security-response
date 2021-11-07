@@ -21,8 +21,8 @@
 		{{ form_row(enterprise_form.zip_code) }}
 		{{ form_row(enterprise_form.phone_number) }}
 		{{ form_row(enterprise_form.contact_mail) }}
-		{# {{ form_row(enterprise_form.user)}} #}
-
+		{{ form_widget(enterprise_form.longitude, {'attr': {'class': 'invisible'}}) }}
+		{{ form_widget(enterprise_form.latitude, {'attr': {'class': 'invisible'}}) }}
 		
 
 		<button type="submit" class="btn btn-primary mt-4">
