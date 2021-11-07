@@ -26,10 +26,12 @@ class ProfileController extends AbstractController
          */
         $user = $this->getUser()->getUserEnterprise();
         $annonces = $user->getAnnouncement();
+        $certifications = $user->getCertification();
 
         return $this->render('profile/enterprise/home.html.twig', [
             'enterprise' => $user,
             'annonces' => $annonces,
+            'certifications' => $certifications,
         ]);
     }
 
