@@ -70,18 +70,23 @@
 			<div class="card-header">
 				<h3 class="card-title">
 					<i class="fas fa-edit"></i>
-					Vertical Tabs Examples
+					Bienvenue dans votre espace Entreprise
 				</h3>
 			</div>
 			<div class="card-body">
-				<h4>Left Sided</h4>
+				
 				<div class="row">
 					<div class="col-5 col-sm-3">
+					<h4 class="px-0 py-2 text-left fw-bold">Mon compte</h4>
+						<h6 class="px-0 py-2 text-left">{{ app.user }}</h6>
 						<div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
-							<a class="nav-link" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab" aria-controls="vert-tabs-home" aria-selected="false">Home</a>
-							<a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab" aria-controls="vert-tabs-profile" aria-selected="false">Profile</a>
-							<a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab" aria-controls="vert-tabs-messages" aria-selected="false">Annonces</a>
-							<a class="nav-link active" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="true">Settings</a>
+							<a class="nav-link active" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab" aria-controls="vert-tabs-home" aria-selected="false">Infos de connexion</a>
+							<a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab" aria-controls="vert-tabs-profile" aria-selected="false">Mes coordonnées</a>
+							<a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab" aria-controls="vert-tabs-messages" aria-selected="false">Mes Certifications</a>
+							<a class="nav-link" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="true">Supprimer mon compte</a>
+							<br><h4 class="px-0 py-2 text-left fw-bold">Mes annonces</h4>
+							<a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab" aria-controls="vert-tabs-messages" aria-selected="false">Créer une annonce</a>
+							<a class="nav-link" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="true">Gérer mes annonces</a>
 						</div>
 					</div>
 					<div class="col-7 col-sm-9">
