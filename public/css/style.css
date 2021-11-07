@@ -105,7 +105,12 @@ h4 {
     color: #FFFFFF;
 }
 
- /*.nav-button {
+.team {
+    background-color: #006fc5;
+    border-radius: 6px;    
+}
+
+/*.nav-button {
     background-color: #0051b6;   
     border-radius: 6px;
 }
