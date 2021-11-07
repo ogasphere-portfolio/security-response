@@ -94,19 +94,30 @@ h4 {
     color: #006fc5;
 }
 
-#nav-inscription {
-    background-color: #0051b6;
+.nav-button .nav-link.active{
+    background-color: #0051b6;   
+    border-radius: 6px;   
+}
+
+.nav-button .nav-link.active:hover {
+    background-color: #006fc5;
+    border-radius: 6px;
+    color: #FFFFFF;
+}
+
+ /*.nav-button {
+    background-color: #0051b6;   
     border-radius: 6px;
 }
 
-#nav-inscription:hover {
+.nav-button:hover {
     background-color: #006fc5;
     border-radius: 6px;
 }
 
-#nav-inscription a {
+.nav-button a {
     color: white;
-}
+}*/
 
 .card.shadow-sm.border.border-5 {
     height: 300px;
