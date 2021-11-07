@@ -33,7 +33,7 @@
 							<th scope="col">Adresse</th>
                             <th scope="col">Numéro de téléphone</th>
                             <th scope="col">Mail de contact</th>
-                            <th scope="col">Coordonnées Gps</th>
+                            <th scope="col">Certifications</th>
                            
                             <th scope="col"></th>
 						</tr>
@@ -52,10 +52,14 @@
                                 
                                 <td>{{ enterprise.phonenumber }}</td>
                                 <td>{{ enterprise.contactmail }}</td>
-                                <td>{{ enterprise.latitude }} <br>{{ enterprise.longitude }}</td>
+                                <td>								
+									{% for certification in enterprise.certification %}
+									{{certification.name}} <br>
+								{% endfor %}	
+								</td>
                                
 
-								<td>
+								
                                 
                                 
 										
