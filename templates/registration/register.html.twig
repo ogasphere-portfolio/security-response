@@ -21,9 +21,9 @@
                             {# {{ form_row(registrationForm.agreeTerms) }}   #}
                             {{ form_row(registrationForm.membershipType) }}
                             {{ form_row(registrationForm.userMember) }}
-                            {{ form_row(registrationForm.userEnterprise) }}
-                            
-                            
+                            {{ form_widget(registrationForm.userEnterprise.latitude, {'attr': {'class': 'invisible'}}) }}
+                            {{ form_widget(registrationForm.userEnterprise.longitude, {'attr': {'class': 'invisible'}}) }}                               
+                            {{ form_row(registrationForm.userEnterprise) }}   
 
                         <div class="col-12">
                             <button class="btn btn-lg btn-primary" type="submit">S'inscrire</button>

@@ -73,7 +73,7 @@ class MemberController extends AbstractController
                 $announce->addMember($member);
             }
 
-            $member->setUpdatedAt(new DateTimeImmutable());
+            
             $entityManager->flush();
 
             $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()} à été modifié");

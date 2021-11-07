@@ -182,7 +182,7 @@ class Announcement
 
     public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
-        $this->created_at = $created_at;
+        $this->created_at = $created_at;$member->setUpdatedAt(new DateTimeImmutable());
 
         return $this;
     }
