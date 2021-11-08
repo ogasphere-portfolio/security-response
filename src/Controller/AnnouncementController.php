@@ -73,7 +73,12 @@ class AnnouncementController extends AbstractController
     public function add(Request $request, Security $security): Response
     {
         $announcement = new Announcement();
-
+        /**
+        * @var User
+        */
+        $enterprise = $security->getUser();
+        $enterprise->getUserEnterprise()->getBusinessName();
+        $userEnterprise = $enterprise->getUserEnterprise();
         // on créé un formulaire vierge (sans données initiales car l'objet fournit est vide)
         $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
 
@@ -87,16 +92,7 @@ class AnnouncementController extends AbstractController
         // l'objet de formulaire vérifie si le formulaire est valide (token csrf mais pas que)
         if ($announcementForm->isSubmitted() && $announcementForm->isValid()) {
 
-            $data = $announcementForm->getData();
-            
-
-        /**
-         * @var User
-         */
-            $enterprise=$security->getUser();
-            $enterprise->getUserEnterprise()->getBusinessName();
-            //dd($enterprise); 
-            
+            $announcement->setEnterprise($userEnterprise);
             // on ne demande l'entityManager que si on en a besoin
             $entityManager = $this->getDoctrine()->getManager();
 
