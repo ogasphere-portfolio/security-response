@@ -28,13 +28,12 @@ class SpecializationController extends AbstractController
     {
 
         return $this->render('backoffice/specialization/browse.html.twig', [
-            'specialization_browse' => $specializationRepository->findAll(),
-            'controller_name' => 'BackOffice/SpecializationController'
+            'specialization_list' => $specializationRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function read(Request $request, Specialization $specialization): Response
     {
@@ -43,23 +42,15 @@ class SpecializationController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-        $specializationForm
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ]);
-
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/specialization/read.html.twig', [
-            'form' => $specializationForm->createView(),
+            'specialization_form' => $specializationForm->createView(),
             'specialization' => $specialization,
         ]);
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Specialization $specialization): Response
     {
@@ -80,7 +71,7 @@ class SpecializationController extends AbstractController
 
 
         return $this->render('backoffice/specialization/add.html.twig', [
-            'form' => $specializationForm->createView(),
+            'specialization_form' => $specializationForm->createView(),
             'specialization' => $specialization,
             'page' => 'edit',
         ]);
@@ -116,13 +107,13 @@ class SpecializationController extends AbstractController
 
 
         return $this->render('backoffice/specialization/add.html.twig', [
-            'form' => $specializationForm->createView(),
+            'specialization_form' => $specializationForm->createView(),
             'page' => 'create',
         ]);
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/delete", name="delete", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function delete(Specialization $specialization, EntityManagerInterface $entityManager): Response
     {

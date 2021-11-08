@@ -30,8 +30,6 @@ class RegistrationFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-
-
         $builder
             ->add('email',null, [
                 'label'=> 'Adresse email *',

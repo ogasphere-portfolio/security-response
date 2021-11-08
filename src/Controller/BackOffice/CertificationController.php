@@ -3,7 +3,7 @@
 namespace App\Controller\BackOffice;
 
 use App\Entity\Certification;
-use App\Form\CertificationType;
+use App\Form\BackOffice\CertificationType;
 use App\Repository\CertificationRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,13 +28,13 @@ class CertificationController extends AbstractController
     {
 
         return $this->render('backoffice/certification/browse.html.twig', [
-            'certification_browse' => $certificationRepository->findAll(),
+            'certification_list' => $certificationRepository->findAll(),
             'controller_name' => 'BackOffice/CertificationController'
         ]);
     }
 
     /**
-     * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function read(Request $request, Certification $certification): Response
     {
@@ -43,14 +43,7 @@ class CertificationController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-        $certificationForm
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ]);
-
+        
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/certification/read.html.twig', [
             'form' => $certificationForm->createView(),
@@ -59,7 +52,7 @@ class CertificationController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Certification $certification): Response
     {
@@ -69,6 +62,11 @@ class CertificationController extends AbstractController
 
         if ($certificationForm->isSubmitted() && $certificationForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            
+            
+            foreach ($certification->getEnterprises() as $enterprise) {
+                $enterprise->addCertification($certification);
+            }
 
             $certification->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
@@ -122,7 +120,7 @@ class CertificationController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}delete", name="delete", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function delete(Certification $certification, EntityManagerInterface $entityManager): Response
     {

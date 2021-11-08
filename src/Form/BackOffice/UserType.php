@@ -4,11 +4,13 @@ namespace App\Form\BackOffice;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class UserType extends AbstractType
 {
@@ -17,8 +19,8 @@ class UserType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [
-                new NotBlank([
-                    'message' => "Merci de saisir une adresse email"
+                    new NotBlank([
+                        'message' => "Merci de saisir une adresse email"
                     ])
                 ],
                 'required' => true,
@@ -27,7 +29,7 @@ class UserType extends AbstractType
                 ]
 
             ])
-            ->add('roles', ChoiceType::class, [              
+            ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Utilisateur' => 'ROLE_USER',
                     'Membre' => 'ROLE_MEMBER',
@@ -38,8 +40,23 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'label' => 'Rôles'
             ])
-            ->add('password')
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class, 
+                'required' => true,
+    
+                // comme on veut appliquer des règles de gestion non standard
+                // on précise à symfony que cette valeur ne correspond à aucun 
+                // champ de notre objet
+                //!\ il faudra gérer la valeur saisie dans le controleur
+                'mapped' => false,
+                'first_options'  => ['label' => 'Password'],
+                'second_options' => ['label' => 'Repeat Password'],
+            ])
+        
+            
             ->add('isVerified')
+
+            
         ;
     }
 
@@ -56,25 +73,5 @@ class UserType extends AbstractType
     );
 }
 
-private function refactorRoles($originRoles)
-{
-    $roles = array();
-    $rolesAdded = array();
 
-    // Add herited roles
-    foreach ($originRoles as $roleParent => $rolesHerit) {
-        $tmpRoles = array_values($rolesHerit);
-        $rolesAdded = array_merge($rolesAdded, $tmpRoles);
-        $roles[$roleParent] = array_combine($tmpRoles, $tmpRoles);
-    }
-    // Add missing superparent roles
-    $rolesParent = array_keys($originRoles);
-    foreach ($rolesParent as $roleParent) {
-        if (!in_array($roleParent, $rolesAdded)) {
-            $roles['-----'][$roleParent] = $roleParent;
-        }
-    }
-
-    return $roles;
-}
 }

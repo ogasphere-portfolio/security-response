@@ -26,10 +26,17 @@ class ProfileController extends AbstractController
      */
     public function enterpriseHome(EnterpriseRepository $enterpriseRepository): Response
     {
-        $userEnterprise = $this->getUser();
+        /**
+         * @var User
+         */
+        $user = $this->getUser()->getUserEnterprise();
+        $annonces = $user->getAnnouncement();
+        $certifications = $user->getCertification();
 
         return $this->render('profile/enterprise/home.html.twig', [
-            'enterprise' => $userEnterprise,
+            'enterprise' => $user,
+            'annonces' => $annonces,
+            'certifications' => $certifications,
         ]);
     }
 

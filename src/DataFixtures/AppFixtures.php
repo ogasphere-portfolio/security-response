@@ -30,18 +30,7 @@ class AppFixtures extends Fixture
         $faker->addProvider(new EnterpriseProvider($faker));
 
 
-        $userList = [];
-        for ($i = 0; $i <= 9; $i++) {
-            $user = new User();
-            $user->setEmail($faker->email())
-                ->setPassword($faker->password())
-                ->setRoles([$faker->word()])
-                ->setCreatedAt(new \DateTimeImmutable())
-                ->setIsVerified(true);
-            $manager->persist($user);
-
-            $userList[] = $user;
-        }
+       
 
         $specializationList = [];
         for ($i = 0; $i <= 9; $i++) {
@@ -55,23 +44,7 @@ class AppFixtures extends Fixture
             $specializationList[] = $specialization;
         }
 
-        $memberList = [];
-        for ($i = 0; $i <= 9; $i++) {
-            $member = new Member();
-            $member->setFirstname($faker->firstName())
-                ->setLastname($faker->lastName())
-                ->setDescription($faker->text())
-                ->setPicture($faker->word())
-                ->setGender($faker->numberBetween(0, 1))
-                ->setCity($faker->city())
-                ->setUser($userList[$i])
-                ->addSpecialization($specializationList[$i])
-                ->setJobStatus($faker->numberBetween(0, 1))
-                ->setCreatedAt(new \DateTimeImmutable());
-            $manager->persist($member);
-
-            $memberList[] = $member;
-        }
+        
 
         $certificationList = [];
         for ($i = 0; $i <= 9; $i++) {
@@ -84,24 +57,38 @@ class AppFixtures extends Fixture
 
             $certificationList[] = $certification;
         }
-
-        //$enterpriseList = [];
+        $memberList = [];
         for ($i = 0; $i <= 9; $i++) {
-            $enterprise = new Enterprise();
-            $enterprise->setBusinessName($faker->unique()->enterpriseTitle())
-                ->setSiretNumber($faker->siret())
-                ->setAddress($faker->streetAddress())
+            $member = new Member();
+            $member->setFirstname($faker->firstName())
+                ->setLastname($faker->lastName())
+                ->setSlug((strtolower($this->slugger->slug($member->getFirstname(). '-' .$member->getLastname()))))
+                ->setDescription($faker->text())
+                ->setPicture($faker->word())
+                ->setGender($faker->numberBetween(0, 1))
                 ->setCity($faker->city())
-                ->setUser($userList[$i])
-                ->addCertification($certificationList[$i])
-                ->setSlug(strtolower($this->slugger->slug($enterprise->getBusinessName())))
-                ->setZipCode($faker->postcode())
+                // ->setUser($userList[$i])
+                // ->addAnnouncement($announcementList[$i])
+                ->addSpecialization($specializationList[$i])
+                ->setJobStatus($faker->numberBetween(0, 1))
+                ->setCreatedAt(new \DateTimeImmutable());
+            $manager->persist($member);
+
+            $memberList[] = $member;
+        }
+        
+        $categoryList = [];
+        for ($i = 0; $i <= 9; $i++) {
+            $category = new Category();
+            $category->setName($faker->word())
+                //->setAnnouncement($announcementList[$i])
                 ->setCreatedAt(new \DateTimeImmutable());
 
-            $manager->persist($enterprise);
+            $manager->persist($category);
 
-            //$enterpriseList[] = $enterprise;
+            $categoryList[] = $category;
         }
+
 
         $announcementList = [];
         for ($i = 0; $i <= 9; $i++) {
@@ -109,9 +96,9 @@ class AppFixtures extends Fixture
             $announcement->setTitle($faker->sentence())
                 ->setDescription($faker->paragraphs(2, true))
                 ->setStatus($faker->numberBetween(0, 1))
-                ->addMember($memberList[$i])
+                // ->addMember($memberList[$i])
                 ->addSpecialization($specializationList[$i])
-                //->addCategory($categoryList[])
+                ->setCategory($categoryList[$i])
                 ->addCertification($certificationList[$i])
                 ->setSlug((strtolower($this->slugger->slug($announcement->getTitle()))))
                 ->setCreatedAt(new \DateTimeImmutable());
@@ -121,18 +108,45 @@ class AppFixtures extends Fixture
             $announcementList[] = $announcement;
         }
 
-        $categoryList = [];
+        $enterpriseList = [];
         for ($i = 0; $i <= 9; $i++) {
-            $category = new Category();
-            $category->setName($faker->word())
-                ->setAnnouncement($announcementList[$i])
+            $enterprise = new Enterprise();
+            $enterprise->setBusinessName($faker->unique()->enterpriseTitle())
+                ->setSiretNumber($faker->siret())
+                ->setAddress($faker->streetAddress())
+                ->setCity($faker->city())
+                //->setUser($userList[$i])
+                ->setPhoneNumber($faker->serviceNumber())
+                ->setLatitude($faker->latitude())
+                ->setLongitude($faker->longitude())
+                ->setContactMail($faker->email())
+                ->addCertification($certificationList[$i])
+                ->addAnnouncement($announcementList[$i])
+                ->setSlug(strtolower($this->slugger->slug($enterprise->getBusinessName())))
+                ->setZipCode($faker->postcode())
                 ->setCreatedAt(new \DateTimeImmutable());
 
-            $manager->persist($category);
+            $manager->persist($enterprise);
 
-            $categoryList[] = $category;
+            $enterpriseList[] = $enterprise;
         }
 
+       
+
+        $userList = [];
+        for ($i = 0; $i <= 9; $i++) {
+            $user = new User();
+            $user->setEmail($faker->email())
+                ->setPassword($faker->password())
+                ->setRoles([$faker->word()])
+                ->setUserMember($memberList[$i])
+                ->setUserEnterprise($enterpriseList[$i])
+                ->setCreatedAt(new \DateTimeImmutable())
+                ->setIsVerified(true);
+            $manager->persist($user);
+
+            $userList[] = $user;
+        }
 
 
 

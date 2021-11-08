@@ -11,6 +11,7 @@ class EnterpriseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // dd($options);
         $builder
             // ->add('slug')
             ->add('business_name',null, [
@@ -33,8 +34,12 @@ class EnterpriseType extends AbstractType
                 'label'=> 'Numéro de téléphone'
             ])
             ->add('logo')
-            // ->add('latitude')
-            // ->add('longitude')
+             ->add('latitude',null,[
+                 'attr' => ['class' => 'tinymce, hide-coordinates'],
+             ])
+             ->add('longitude', null, [
+                 'attr' => ['class' => 'hide-coordinates']
+             ])
             ->add('contact_mail',null, [
                 'label'=> 'Mail de contact'
             ])

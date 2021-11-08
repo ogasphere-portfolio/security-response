@@ -20,7 +20,7 @@ class Member
      */
     private $id;
 
-   
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -82,7 +82,7 @@ class Member
     private $updated_by;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Announcement::class, mappedBy="member")
+     * @ORM\ManyToMany(targetEntity=Announcement::class, mappedBy="members")
      */
     private $announcements;
 
@@ -109,8 +109,8 @@ class Member
 
     public function __construct()
     {
-        $this->setUpdatedAt(new \DateTimeImmutable('now'));    
-        
+        $this->setUpdatedAt(new \DateTimeImmutable('now'));
+
         if ($this->getCreatedAt() === null) {
             $this->setCreatedAt(new \DateTimeImmutable('now'));
         }
@@ -122,13 +122,17 @@ class Member
         $this->specialization = new ArrayCollection();
         $this->created_at = new DateTimeImmutable();
     }
+    public function __toString()
+    {
+        return $this->firstname;
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-  
+
 
     public function getFirstname(): ?string
     {
@@ -274,32 +278,7 @@ class Member
         return $this;
     }
 
-    /**
-     * @return Collection|Announcement[]
-     */
-    public function getAnnouncements(): Collection
-    {
-        return $this->announcements;
-    }
 
-    public function addAnnouncement(Announcement $announcement): self
-    {
-        if (!$this->announcements->contains($announcement)) {
-            $this->announcements[] = $announcement;
-            $announcement->addMember($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAnnouncement(Announcement $announcement): self
-    {
-        if ($this->announcements->removeElement($announcement)) {
-            $announcement->removeMember($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|SocialNetwork[]
@@ -369,6 +348,33 @@ class Member
     public function setDocument(?Document $document): self
     {
         $this->document = $document;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Announcement[]
+     */
+    public function getAnnouncements(): Collection
+    {
+        return $this->announcements;
+    }
+
+    public function addAnnouncement(Announcement $announcement): self
+    {
+        if (!$this->announcements->contains($announcement)) {
+            $this->announcements[] = $announcement;
+            $announcement->addMember($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnouncement(Announcement $announcement): self
+    {
+        if ($this->announcements->removeElement($announcement)) {
+            $announcement->removeMember($this);
+        }
 
         return $this;
     }

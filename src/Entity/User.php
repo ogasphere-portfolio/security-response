@@ -68,8 +68,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
     
-    
-    
+    public function __toString() 
+    {
+        return $this->email;
+    }
+
     /**
      * @see UserInterface
      */
@@ -81,10 +84,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return array_unique($roles);
     }
-    public function __toString() 
-    {
-        return $this->email;
-    }
+    
     
     public function setRoles(array $roles): self
     {
@@ -298,5 +298,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->userEnterprise = $userEnterprise;
 
         return $this;
+    }
+
+    public function getIsVerified(): ?bool
+    {
+        return $this->isVerified;
     }
 }

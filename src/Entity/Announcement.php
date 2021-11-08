@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\ORM\Mapping as ORM;
-use App\Repository\AnnouncementRepository;
 use DateTimeImmutable;
+use App\Repository\AnnouncementRepository;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AnnouncementRepository::class)
@@ -77,7 +77,7 @@ class Announcement
     /**
      * @ORM\ManyToMany(targetEntity=Member::class, inversedBy="announcements")
      */
-    private $member;
+    private $members;
 
     /**
      * @ORM\ManyToMany(targetEntity=Specialization::class, inversedBy="announcements")
@@ -88,11 +88,16 @@ class Announcement
      * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="announcement")
      */
     private $document;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="announcement")
+     /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="announcement")
      */
     private $category;
+      /**
+     * @ORM\ManyToOne(targetEntity=Enterprise::class, inversedBy="announcement")
+     */
+    private $enterprise;
+
+    
     
     public function __construct()
     {
@@ -177,7 +182,7 @@ class Announcement
 
     public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
-        $this->created_at = $created_at;
+        $this->created_at = $created_at;$member->setUpdatedAt(new DateTimeImmutable());
 
         return $this;
     }
@@ -245,24 +250,25 @@ class Announcement
     /**
      * @return Collection|Member[]
      */
-    public function getMember(): Collection
+    public function getMembers(): Collection
     {
-        return $this->member;
+        return $this->members;
     }
 
     public function addMember(Member $member): self
     {
-        if (!$this->member->contains($member)) {
-            $this->member[] = $member;
+        if (!$this->members->contains($member)) {
+            $this->members[] = $member;
+            
         }
-
+        
         return $this;
     }
 
     public function removeMember(Member $member): self
     {
-        $this->member->removeElement($member);
-
+        $this->members->removeElement($member);
+        
         return $this;
     }
 
@@ -302,33 +308,30 @@ class Announcement
         return $this;
     }
 
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategory(): Collection
+    public function getEnterprise(): ?Enterprise
+    {
+        return $this->enterprise;
+    }
+
+    public function setEnterprise(?Enterprise $enterprise): self
+    {
+        $this->enterprise = $enterprise;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
 
-    public function addCategory(Category $category): self
+    public function setCategory(?Category $category): self
     {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-            $category->setAnnouncement($this);
-        }
+        $this->category = $category;
 
         return $this;
     }
+    
 
-    public function removeCategory(Category $category): self
-    {
-        if ($this->category->removeElement($category)) {
-            // set the owning side to null (unless already changed)
-            if ($category->getAnnouncement() === $this) {
-                $category->setAnnouncement(null);
-            }
-        }
-
-        return $this;
-    }
+    
 }

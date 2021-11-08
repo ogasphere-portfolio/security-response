@@ -125,7 +125,10 @@ class Enterprise
      */
     private $documents;
 
-    
+     /**
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="enterprise")
+     */
+    private $announcement;
 
     public function __construct()
     {
@@ -140,6 +143,7 @@ class Enterprise
         $this->certification = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->created_at = new DateTimeImmutable();
+        $this->announcement = new ArrayCollection();
     }
 
     public function __toString() 
@@ -175,7 +179,7 @@ class Enterprise
 
         return $this;
     }
-
+    
     public function getSiretNumber(): ?string
     {
         return $this->siret_number;
@@ -406,6 +410,38 @@ class Enterprise
 
         return $this;
     }
+
+    /**
+     * @return Collection|Announcement[]
+     */
+    public function getAnnouncement(): Collection
+    {
+        return $this->announcement;
+    }
+
+    public function addAnnouncement(Announcement $announcement): self
+    {
+        if (!$this->announcement->contains($announcement)) {
+            $this->announcement[] = $announcement;
+            $announcement->setEnterprise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnouncement(Announcement $announcement): self
+    {
+        if ($this->announcement->removeElement($announcement)) {
+            // set the owning side to null (unless already changed)
+            if ($announcement->getEnterprise() === $this) {
+                $announcement->setEnterprise(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 
     
 

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,9 +43,9 @@ class Category
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $updated_by;
-
+   
     /**
-     * @ORM\ManyToOne(targetEntity=Announcement::class, inversedBy="category")
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="category")
      */
     private $announcement;
     public function __construct()
@@ -56,6 +58,7 @@ class Category
         if ($this->getUpdatedAt() === null) {
             $this->setUpdatedAt(new \DateTimeImmutable('now'));
         }
+        $this->announcement = new ArrayCollection();
        
     }
     public function getId(): ?int
@@ -123,15 +126,34 @@ class Category
         return $this;
     }
 
-    public function getAnnouncement(): ?Announcement
+    /**
+     * @return Collection|Announcement[]
+     */
+    public function getAnnouncement(): Collection
     {
         return $this->announcement;
     }
 
-    public function setAnnouncement(?Announcement $announcement): self
+    public function addAnnouncement(Announcement $announcement): self
     {
-        $this->announcement = $announcement;
+        if (!$this->announcement->contains($announcement)) {
+            $this->announcement[] = $announcement;
+            $announcement->setCategory($this);
+        }
 
         return $this;
     }
+
+    public function removeAnnouncement(Announcement $announcement): self
+    {
+        if ($this->announcement->removeElement($announcement)) {
+            // set the owning side to null (unless already changed)
+            if ($announcement->getCategory() === $this) {
+                $announcement->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

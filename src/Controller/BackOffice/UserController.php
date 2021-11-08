@@ -31,14 +31,13 @@ class UserController extends AbstractController
     {
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/user/browse.html.twig', [
-            'user_list' => $userRepository->findAll(),
-            'controller_name' => 'BackOffice/UserController'
+            'user_list' => $userRepository->findAll()
         ]);
     }
 
     /**
-    * @Route("/api", name="api_browse", methods={"GET"})
-    */
+     * @Route("/api", name="api_browse", methods={"GET"})
+     */
     /* public function api_browse(UserRepository $userRepository): Response
     {
         // on fournit ce formulaire à notre vue
@@ -46,7 +45,7 @@ class UserController extends AbstractController
     } */
 
     /**
-     * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      * @IsGranted("ROLE_USER_READ")
      * */
     public function read(Request $request, User $user): Response
@@ -58,7 +57,7 @@ class UserController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-       
+
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/user/read.html.twig', [
             'user_form' => $userForm->createView(),
@@ -67,7 +66,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      * @IsGranted("ROLE_USER_EDIT")
      */
     public function edit(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response
@@ -78,13 +77,12 @@ class UserController extends AbstractController
 
         if ($userForm->isSubmitted() && $userForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            
+
             $user->setUpdatedAt(new DateTimeImmutable());
 
             $clearPassword = $request->request->get('user')['password']['first'];
             // si un mot de passe a été saisi
-            if (! empty($clearPassword))
-            {
+            if (!empty($clearPassword)) {
                 // hashage du mot de passe écrit en clair
                 $hashedPassword = $passwordHasher->hashPassword($user, $clearPassword);
                 $user->setPassword($hashedPassword);
@@ -100,21 +98,21 @@ class UserController extends AbstractController
         // le champ mot de passe est différent en update et en ajout
         // on le rajoute au niveau du controleur
         $userForm
-        ->remove('password')
-        ->add('password', RepeatedType::class, [
-            'type' => PasswordType::class, 
-            'required' => false,
+            ->remove('password')
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'required' => false,
 
-            // comme on veut appliquer des règles de gestion non standard
-            // on précise à symfony que cette valeur ne correspond à aucun 
-            // champ de notre objet
-            //!\ il faudra gérer la valeur saisie dans le controleur
-            'mapped' => false,
-            'first_options'  => ['label' => 'Password'],
-            'second_options' => ['label' => 'Repeat Password'],
-        ]);
+                // comme on veut appliquer des règles de gestion non standard
+                // on précise à symfony que cette valeur ne correspond à aucun 
+                // champ de notre objet
+                //!\ il faudra gérer la valeur saisie dans le controleur
+                'mapped' => false,
+                'first_options'  => ['label' => 'Password'],
+                'second_options' => ['label' => 'Repeat Password'],
+            ]);
+
         
-        // on fournit ce formulaire à notre vue
         return $this->render('backoffice/user/add.html.twig', [
             'user_form' => $userForm->createView(),
             'user' => $user,
@@ -152,8 +150,7 @@ class UserController extends AbstractController
             // car on a démappé le champ (c'est à dire que le formulaire ne le gère pas)
             $clearPassword = $request->request->get('user')['password']['first'];
             // si un mot de passe a été saisi
-            if (! empty($clearPassword))
-            {
+            if (!empty($clearPassword)) {
                 // hashage du mot de passe écrit en clair
                 $hashedPassword = $passwordHasher->hashPassword($user, $clearPassword);
                 $user->setPassword($hashedPassword);
@@ -176,7 +173,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/delete", name="delete", methods={"GET"}, requirements={"id"="\d+"})
      * @IsGranted("ROLE_USER_DELETE")
      */
     public function delete(User $user, EntityManagerInterface $entityManager): Response
@@ -188,6 +185,4 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('backoffice_user_browse');
     }
-
-
 }
