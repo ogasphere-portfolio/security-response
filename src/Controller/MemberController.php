@@ -39,6 +39,9 @@ class MemberController extends AbstractController
      */
     public function editConnexion(Request $request, Security $security): Response
     {
+        /**
+         * @var \App\Entity\User
+         */
         $userMember = $security->getUser();
         $userMember->getUserMember()->getFirstName();
 
@@ -68,6 +71,9 @@ class MemberController extends AbstractController
      */
     public function editPerso(Request $request, Security $security, MemberType $memberType): Response
     {
+        /**
+         * @var \App\Entity\User
+         */
         $member = $security->getUser();
         $member->getUserMember()->getFirstName();
 
@@ -78,7 +84,7 @@ class MemberController extends AbstractController
         if ($memberForm->isSubmitted() && $memberForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             
-            $member->setUpdatedAt(new DateTime());
+            $member->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
             $this->addFlash('success', "Les infos personnelles ont été modifiées");
