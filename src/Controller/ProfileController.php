@@ -39,7 +39,7 @@ class ProfileController extends AbstractController
 
             $this->addFlash('success', "L'entreprise {$enterprise->getBusinessName()} à été modifié");
 
-            return $this->redirectToRoute('enterprise_browse');
+            return $this->redirectToRoute('enterprise');
         }
 
         return $this->render('profile/enterprise/home.html.twig', [

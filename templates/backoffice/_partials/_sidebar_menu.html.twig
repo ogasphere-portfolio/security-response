@@ -40,8 +40,8 @@
 				class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 				<!-- Add icons to the links using the .nav-icon class
 				               with font-awesome or any other icon font library -->
-				<li class="nav-item menu-open">
-					<a href="{{ path('backoffice_browse') }}" class="nav-link active">
+				<li class="nav-item ">
+					<a href="{{ path('backoffice_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
 						<p>
 							Dashboard
@@ -51,7 +51,7 @@
 
 				</li>
 				<li class="nav-item">
-					<a href="{{ path('backoffice_user_browse') }}" class="nav-link">
+					<a href="{{ path('backoffice_user_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_user_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-th"></i>
 						<p>
 							Utilisateurs
@@ -60,7 +60,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="{{ path('backoffice_member_browse') }}" class="nav-link">
+					<a href="{{ path('backoffice_member_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_member_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-th"></i>
 						<p>
 							Membres
@@ -68,7 +68,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="{{ path('backoffice_enterprise_browse') }}" class="nav-link">
+					<a href="{{ path('backoffice_enterprise_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_enterprise_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-th"></i>
 						<p>
 							Entreprises
@@ -76,7 +76,7 @@
 					</a>
 				</li>
         <li class="nav-item">
-					<a href="{{ path('backoffice_announcement_browse') }}" class="nav-link">
+					<a href="{{ path('backoffice_announcement_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_announcement_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-th"></i>
 						<p>
 							Annonces
@@ -84,7 +84,7 @@
 					</a>
 				</li>
         <li class="nav-item">
-					<a href="{{ path('backoffice_certification_browse') }}" class="nav-link">
+					<a href="{{ path('backoffice_certification_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_certification_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-th"></i>
 						<p>
 							Certfications
@@ -92,7 +92,7 @@
 					</a>
 				</li>
         <li class="nav-item">
-					<a href="{{ path('backoffice_specialization_browse') }}" class="nav-link">
+					<a href="{{ path('backoffice_specialization_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_specialization_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-th"></i>
 						<p>
 							Spécialisations
@@ -100,7 +100,7 @@
 					</a>
 				</li>
         <li class="nav-item">
-					<a href="{{ path('backoffice_category_browse') }}" class="nav-link">
+					<a href="{{ path('backoffice_category_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_category_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-th"></i>
 						<p>
 							Catégories
@@ -108,7 +108,7 @@
 					</a>
 				</li>
         <li class="nav-item">
-					<a href="{{ path('backoffice_socialNetwork_browse') }}" class="nav-link">
+					<a href="{{ path('backoffice_socialNetwork_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_socialNetwork_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-th"></i>
 						<p>
 							Réseaux sociaux
@@ -116,7 +116,7 @@
 					</a>
 				</li>
         <li class="nav-item">
-					<a href="{{ path('backoffice_document_browse') }}" class="nav-link">
+					<a href="{{ path('backoffice_document_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_document_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-th"></i>
 						<p>
 							Documents
