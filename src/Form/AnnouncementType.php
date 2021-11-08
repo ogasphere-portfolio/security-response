@@ -17,29 +17,19 @@ class AnnouncementType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description')
-            ->add('slug') 
-            ->add('status')
+            ->add('description')                        
             ->add('certification',EntityType::class,[
                 'class' => Certification::class,
                 'multiple' => true,
                 'expanded' => true,
                 'choice_label' => 'name',
-            ])
-            ->add('member',EntityType::class,[
-                'class' => Member::class,
-                'multiple' => true,
-                'expanded' => true,
-                'choice_label' => 'firstname',
-            ])
+            ])            
             ->add('specialization',EntityType::class,[
                 'class' => Specialization::class,
                 'multiple' => true,
                 'expanded' => true,
                 'choice_label' => 'name',
-            ]) 
-            ->add('document')          
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
