@@ -111,7 +111,7 @@ class Announcement
             $this->setUpdatedAt(new \DateTimeImmutable('now'));
         }
         $this->certification = new ArrayCollection();
-        $this->member = new ArrayCollection();
+        $this->members = new ArrayCollection();
         $this->specialization = new ArrayCollection();
         $this->category = new ArrayCollection();
         $this->created_at = new DateTimeImmutable();

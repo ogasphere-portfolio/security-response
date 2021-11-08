@@ -30,7 +30,7 @@ class AppFixtures extends Fixture
         $faker->addProvider(new EnterpriseProvider($faker));
 
 
-       
+
 
         $specializationList = [];
         for ($i = 0; $i <= 9; $i++) {
@@ -44,7 +44,7 @@ class AppFixtures extends Fixture
             $specializationList[] = $specialization;
         }
 
-        
+
 
         $certificationList = [];
         for ($i = 0; $i <= 9; $i++) {
@@ -62,7 +62,7 @@ class AppFixtures extends Fixture
             $member = new Member();
             $member->setFirstname($faker->firstName())
                 ->setLastname($faker->lastName())
-                ->setSlug((strtolower($this->slugger->slug($member->getFirstname(). '-' .$member->getLastname()))))
+                ->setSlug((strtolower($this->slugger->slug($member->getFirstname() . '-' . $member->getLastname()))))
                 ->setDescription($faker->text())
                 ->setPicture($faker->word())
                 ->setGender($faker->numberBetween(0, 1))
@@ -76,7 +76,7 @@ class AppFixtures extends Fixture
 
             $memberList[] = $member;
         }
-        
+
         $categoryList = [];
         for ($i = 0; $i <= 9; $i++) {
             $category = new Category();
@@ -96,7 +96,7 @@ class AppFixtures extends Fixture
             $announcement->setTitle($faker->sentence())
                 ->setDescription($faker->paragraphs(2, true))
                 ->setStatus($faker->numberBetween(0, 1))
-                // ->addMember($memberList[$i])
+                ->addMember($memberList[$i])
                 ->addSpecialization($specializationList[$i])
                 ->setCategory($categoryList[$i])
                 ->addCertification($certificationList[$i])
@@ -131,17 +131,21 @@ class AppFixtures extends Fixture
             $enterpriseList[] = $enterprise;
         }
 
-       
+
 
         $userList = [];
         for ($i = 0; $i <= 9; $i++) {
             $user = new User();
             $user->setEmail($faker->email())
                 ->setPassword($faker->password())
-                ->setRoles([$faker->word()])
-                ->setUserMember($memberList[$i])
-                ->setUserEnterprise($enterpriseList[$i])
-                ->setCreatedAt(new \DateTimeImmutable())
+                ->setRoles([$faker->word()]);
+            if ($i % 2) {
+                $user->setUserMember($memberList[$i]);
+            } else {
+                $user->setUserEnterprise($enterpriseList[$i]);
+            }
+
+            $user->setCreatedAt(new \DateTimeImmutable())
                 ->setIsVerified(true);
             $manager->persist($user);
 
