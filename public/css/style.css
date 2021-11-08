@@ -1,7 +1,17 @@
 body{
     background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
     font-family: 'Montserrat', sans-serif;
+    position: relative;
+    padding-bottom: 5em;
 }
+
+footer {
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0
+}
+
 
 #map_enterprise {
     width: 100%;
