@@ -112,8 +112,7 @@ class Announcement
         }
         $this->certification = new ArrayCollection();
         $this->members = new ArrayCollection();
-        $this->specialization = new ArrayCollection();
-        $this->category = new ArrayCollection();
+        $this->specialization = new ArrayCollection();        
         $this->created_at = new DateTimeImmutable();
     }
 
@@ -321,7 +320,7 @@ class Announcement
         return $this;
     }
 
-    public function getCategory(): ?ArrayCollection
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
