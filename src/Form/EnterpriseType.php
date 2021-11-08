@@ -47,9 +47,10 @@ class EnterpriseType extends AbstractType
             // ->add('updated_at')
             // ->add('created_by')
             // ->add('updated_by')
-            //->add('certification')
-            //->add('user')
-            // ->add('documents')
+            ->add('certification')
+            ->add('user')
+            ->add('documents')
+            ->add('announcement')
         ;
     }
 

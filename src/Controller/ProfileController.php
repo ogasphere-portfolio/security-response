@@ -31,7 +31,7 @@ class ProfileController extends AbstractController
         
         $enterpriseForm = $this->createForm(EnterpriseType::class, $enterprise);
         $enterpriseForm->handleRequest($request);
-
+dd($enterpriseForm);
         if ($enterpriseForm->isSubmitted() && $enterpriseForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             
