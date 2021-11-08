@@ -2,18 +2,19 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
-use App\Entity\Certification;
-use App\Entity\Enterprise;
 use App\Entity\Member;
+use App\Entity\Category;
+use App\Entity\Enterprise;
+use App\Entity\Certification;
 use App\Entity\Specialization;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AnnouncementType extends AbstractType
 {
@@ -38,7 +39,7 @@ class AnnouncementType extends AbstractType
 
         $builder
             ->add('title')
-            ->add('description')                        
+            ->add('description',CKEditorType::class,)                     
             ->add('certification',EntityType::class,[
                 'class' => Certification::class,
                 'multiple' => true,

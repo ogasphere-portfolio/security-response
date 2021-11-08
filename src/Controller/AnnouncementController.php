@@ -79,17 +79,11 @@ class AnnouncementController extends AbstractController
         $enterprise = $security->getUser();
         $enterprise->getUserEnterprise()->getBusinessName();
         $userEnterprise = $enterprise->getUserEnterprise();
-        // on créé un formulaire vierge (sans données initiales car l'objet fournit est vide)
+        
         $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
 
-        // Après avoir été affiché le handleRequest nous permettra
-        // de faire la différence entre un affichage de formulaire (en GET) 
-        // et une soumission de formulaire (en POST)
-        // Si un formulaire a été soumis, il rempli l'objet fournit lors de la création
         $announcementForm->handleRequest($request);
 
-        // l'objet de formulaire a vérifié si le formulaire a été soumis grace au HandleRequest
-        // l'objet de formulaire vérifie si le formulaire est valide (token csrf mais pas que)
         if ($announcementForm->isSubmitted() && $announcementForm->isValid()) {
 
             $announcement->setEnterprise($userEnterprise);
