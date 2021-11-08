@@ -34,12 +34,12 @@ class EnterpriseType extends AbstractType
                 'label'=> 'Numéro de téléphone'
             ])
             ->add('logo')
-             ->add('latitude',null,[
+           /*  // ->add('latitude',null,[
                  'attr' => ['class' => 'tinymce, hide-coordinates'],
              ])
-             ->add('longitude', null, [
+             //->add('longitude', null, [
                  'attr' => ['class' => 'hide-coordinates']
-             ])
+             ]) */
             ->add('contact_mail',null, [
                 'label'=> 'Mail de contact'
             ])
@@ -47,10 +47,10 @@ class EnterpriseType extends AbstractType
             // ->add('updated_at')
             // ->add('created_by')
             // ->add('updated_by')
-            ->add('certification')
+            /* ->add('certification')
             ->add('user')
             ->add('documents')
-            ->add('announcement')
+            ->add('announcement') */
         ;
     }
 
