@@ -73,8 +73,32 @@
                                                     <a class="btn btn-primary" href="{{ url('member_edit_perso') }}" title="EditPerso" alt="Edit">Modifier</a>
                                                 </td>
                                                 <td class="py-1">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia fugiat aliquam repellat perspiciatis nulla adipisci quam. Cumque soluta vero maxime. Dolorum, eveniet? Voluptates aspernatur omnis alias earum fugiat illo?
-                                                    {# {{ form(member_form) }} #}
+                                                <div class="mb-3">
+                                                        <div class="mb-3"><strong>Prénom :</strong></div>
+                                                        <p>{{ app.user.userMember.firstname }}</p>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <div class="mb-3"><strong>Nom :</strong></div>
+                                                        <p>{{ app.user.userMember.lastname }}</p>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <div class="mb-3"><strong>Description :</strong></div>
+                                                        <p>{{ app.user.userMember.description }}</p>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <div class="mb-3"><strong>Ville :</strong></div>
+                                                        <p>{{ app.user.userMember.city }}</p>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <div class="mb-3"><strong>Genre :</strong></div>
+                                                        <p>
+                                                            {% if app.user.userMember.gender == 1 %}
+                                                            Homme
+                                                            {% else %}
+                                                            Femme
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
                                                 </td>                                                
                                             </tr>
 
@@ -85,9 +109,11 @@
                                             </tr>
 
                                             <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
-                                                <td class="py-1"><strong>Supprimer mon compte</strong></td>
-                                                <td class="py-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi minus accusantium qui voluptas adipisci, sint aspernatur eos ducimus distinctio quam earum nostrum rem dolore est ex. Rem, in! Incidunt, animi?</td>
-                                                <td class="py-1"><em>test</em></td>
+                                                <td class="d-flex justify-content-between py-1">
+                                                    <h5><strong>Supprimer mon compte</strong></h5>
+                                                    <a class="btn btn-primary" href="" title="DeleteMember" alt="Delete">Supprimer</a>
+                                                </td>
+                                                <td class="py-1">Cliquer pour supprimer le compte définitivement.</td>
                                             </tr>
                                         </tbody>
                                 </table>  

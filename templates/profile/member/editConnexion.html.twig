@@ -61,8 +61,23 @@
                                                             {{ message }}
                                                         </div>
                                                     {% endfor %}
+                                                    {% for message in app.flashes('error') %}
+                                                        <div class="alert alert-danger" role="alert">
+                                                            {{ message }}
+                                                        </div>
+                                                    {% endfor %}
                                                     {{ form_start(user_form) }}
                                                     {{ form_row(user_form.email) }}
+
+                                                        <div class="mb-3">
+                                                            <label for="pass">Nouveau mot de passe</label>
+                                                            <input type="password" id="pass" name="pass" class="form-control">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="pass">Confirmer le mot de passe</label>
+                                                            <input type="password" id="pass2" name="pass2" class="form-control">
+                                                        </div>
+
                                                     <input class="btn btn-primary" type="submit" name="EditConnexion"> 
                                                     {{ form_end(user_form) }}
                                                 
