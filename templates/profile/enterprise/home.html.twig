@@ -1,71 +1,137 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Espace Entreprise{% endblock %}
+{% block title %}Espace Entreprise
+{% endblock %}
 
 {% block body %}
 
-<main>
-    <div class="container">
-        <div class="d-flex flex-column flex-md-row">
-            <div class="d-flex mt-4 text-center mx-auto">
-                <h1>Bienvenue dans votre espace Entreprise</h1>
-            </div>
-        </div> 
-        <div class="d-flex flex-column flex-md-row mt-5">
-            <div class="mt-5">
-                <div class="bg-white mt-3 rounded border profile-heading">
-                    <h4 class="px-0 py-2 text-center fw-bold">Mon compte</h4>
-                    <h6 class="px-0 py-2 text-center">{{ app.user }}</h6>
-                        <ul class="list-group mx-3">
-                            <li class="list-group">
-                                <a class="nav-link fs-6" aria-current="page" href="{{ url('announcement_browse') }}">Infos de connexion</a>
-                            </li>
-                            <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes coordonnées</a>
-                            </li>
-                            <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes certifications</a>
-                            </li>
-                            <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Supprimer mon compte</a>
-                            </li>
-                        </ul>
-                </div>
+	<main>
+		<div class="container">
+			<div class="d-flex flex-column flex-md-row">
+				<div class="d-flex mt-4 text-center mx-auto">
+					<h1>Bienvenue dans votre espace Entreprise</h1>
+				</div>
+			</div>
+			<div class="d-flex flex-column flex-md-row mt-5">
+				<div class="mt-5">
+					<div class="bg-white mt-3 rounded border profile-heading">
+						<h4 class="px-0 py-2 text-center fw-bold">Mon compte</h4>
+						<h6 class="px-0 py-2 text-center">{{ app.user }}</h6>
+						<ul class="list-group mx-3">
+							<li class="list-group">
+								<a class="nav-link fs-6" aria-current="page" href="{{ url('announcement_browse') }}">Infos de connexion</a>
+							</li>
+							<li class="list-group">
+								<a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes coordonnées</a>
+							</li>
+							<li class="list-group">
+								<a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Mes certifications</a>
+							</li>
+							<li class="list-group">
+								<a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Supprimer mon compte</a>
+							</li>
+						</ul>
+					</div>
 
-                <div class="bg-white mt-3 rounded border profile-heading">
-                    <h4 class="px-0 py-2 text-center fw-bold">Mes annonces</h4>
-                        <ul class="list-group mx-3">
-                            <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="{{ url('announcement_add') }}">Créer une annonce</a>
-                            </li>
-                            <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Gérer mes annonces</a>
-                            </li>
-                        </ul>
-                </div>
-            </div>
-        
+					<div class="bg-white mt-3 rounded border profile-heading">
+						<h4 class="px-0 py-2 text-center fw-bold">Mes annonces</h4>
+						<ul class="list-group mx-3">
+							<li class="list-group">
+								<a class="nav-link" aria-current="page" href="{{ url('announcement_add') }}">Créer une annonce</a>
+							</li>
+							<li class="list-group">
+								<a class="nav-link" aria-current="page" href="{{ url('announcement_browse') }}">Gérer mes annonces</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 
-            <section class="text-center container mt-4">
-                <div class="d-flex">
-                    <div class="mx-auto">
-                        <h2 class="fw-bold">Liste de mes annonces</h2>  
-                            <div>
-                                <div>
-                                    <table class="mt-4">            
-                                            <tbody>
-                                                
-                                                
-                                                
-                                                
-                                            </tbody>
-                                    </table>  
-                                </div>        
-                            </div>
-                    </div>
-                </div>                  
-            </section>
-        </div>
-    </div>
-</main>     
+
+				<section class="text-center container mt-4">
+					<div class="d-flex">
+						<div class="mx-auto">
+							<h2 class="fw-bold">Liste de mes annonces</h2>
+							<div>
+								<div>
+									<table class="mt-4">
+										<tbody>
+										
+										
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+
+	<div class="container">
+		<div class="card card-primary card-outline">
+			<div class="card-header">
+				<h3 class="card-title">
+					<i class="fas fa-edit"></i>
+					Bienvenue dans votre espace Entreprise
+				</h3>
+			</div>
+			<div class="card-body">
+				
+				<div class="row">
+					<div class="col-5 col-sm-3">
+					<h4 class="px-0 py-2 text-left fw-bold">Mon compte</h4>
+						<h6 class="px-0 py-2 text-left">{{ app.user }}</h6>
+						<div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
+							<a class="nav-link active" id="vert-tabs-connexion-tab" data-toggle="pill" href="#vert-tabs-connexion" role="tab" aria-controls="vert-tabs-connexion" aria-selected="false">Infos de connexion</a>
+							<a class="nav-link" id="vert-tabs-coordinate-tab" data-toggle="pill" href="#vert-tabs-coordinate" role="tab" aria-controls="vert-tabs-coordinate" aria-selected="false">Mes coordonnées</a>
+							<a class="nav-link" id="vert-tabs-certification-tab" data-toggle="pill" href="#vert-tabs-certification" role="tab" aria-controls="vert-tabs-certification" aria-selected="false">Mes Certifications</a>
+							<a class="nav-link" id="vert-tabs-delete-tab" data-toggle="pill" href="#vert-tabs-delete" role="tab" aria-controls="vert-tabs-delete" aria-selected="true">Supprimer mon compte</a>
+							<br><h4 class="px-0 py-2 text-left fw-bold">Mes annonces</h4>
+							<a class="nav-link" id="vert-tabs-create_announcement-tab" data-toggle="pill" href="#vert-tabs-create_announcement" role="tab" aria-controls="vert-tabs-create_announcement" aria-selected="false">Créer une annonce</a>
+							<a class="nav-link" id="vert-tabs-announcement-tab" data-toggle="pill" href="#vert-tabs-announcement" role="tab" aria-controls="vert-tabs-announcement" aria-selected="true">Gérer mes annonces</a>
+						</div>
+					</div>
+					<div class="col-7 col-sm-9">
+						<div class="tab-content" id="vert-tabs-tabContent">
+							<div class="tab-pane text-left fade active show" id="vert-tabs-connexion" role="tabpanel" aria-labelledby="vert-tabs-connexion-tab">
+								<h3>Mes informations de connexion</h3><br>
+								{{ app.user }} <br>
+								{{ app.user.password }}
+							</div>
+							<div class="tab-pane fade" id="vert-tabs-coordinate" role="tabpanel" aria-labelledby="vert-tabs-coordinate-tab">
+								<h3>Mes coordonnées</h3> <br>
+								<h2>{{ enterprise.businessname }}</h2> <br>
+									{{ enterprise.address }}<br>
+									{{ enterprise.zipcode }} ,{{ enterprise.city }}<br>
+							</div>
+							<div class="tab-pane fade" id="vert-tabs-certification" role="tabpanel" aria-labelledby="vert-tabs-certification-tab">
+								<h3>Mes certifications</h3><br>
+								{% for certification in certifications %}
+								<li>{{certification.name}}</li>
+								{% endfor %}	
+								
+							</div>
+							<div class="tab-pane fade" id="vert-tabs-delete" role="tabpanel" aria-labelledby="vert-tabs-delete-tab">
+								<h3>Cette action supprimera définitivement votre compte </h3>
+							</div>
+							<div class="tab-pane fade" id="vert-tabs-create_announcement" role="tabpanel" aria-labelledby="vert-tabs-create_announcement-tab">
+								<h3>Création d'une annonce</h3>
+							</div>
+							<div class="tab-pane fade" id="vert-tabs-announcement" role="tabpanel" aria-labelledby="vert-tabs-announcement-tab">
+								<h3>Mes annonces</h3><br>
+								{% for annonce in annonces %}
+									<li>{{annonce.title}}</li>
+								{% endfor %}	
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<!-- /.card -->
+		</div>
+	</div>
+
 {% endblock %}

@@ -31,13 +31,10 @@
 							<th scope="col">User</th>
                             <th scope="col">Siret de l'entreprise</th>
 							<th scope="col">Adresse</th>
-                            {# <th scope="col">Adresse more</th> #}
-                            <th scope="col">Code postal</th>
-                            <th scope="col">Ville</th>
                             <th scope="col">Numéro de téléphone</th>
                             <th scope="col">Mail de contact</th>
-                            <th scope="col">Latitude</th>
-                            <th scope="col">Longitude</th>
+                            <th scope="col">Coordonnées Gps</th>
+                           
                             <th scope="col"></th>
 						</tr>
 					</thead>
@@ -50,14 +47,13 @@
 								<td>{{ enterprise.businessname }}</td>
 								<td>{{ enterprise.user }}</td>
 								<td>{{ enterprise.siretNumber }}</td>
-								<td>{{ enterprise.address }}</td>
+								<td>{{ enterprise.address }} <br>{{ enterprise.zipcode }} , {{ enterprise.city }}</td>
                                 {# <td>{{ enterprise.addressmore }}</td> #}
-                                <td>{{ enterprise.zipcode }}</td>
-                                <td>{{ enterprise.city }}</td>
+                                
                                 <td>{{ enterprise.phonenumber }}</td>
                                 <td>{{ enterprise.contactmail }}</td>
-                                <td>{{ enterprise.latitude }}</td>
-                                <td>{{ enterprise.longitude }}</td>
+                                <td>{{ enterprise.latitude }} <br>{{ enterprise.longitude }}</td>
+                               
 
 								<td>
                                 

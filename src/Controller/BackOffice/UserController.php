@@ -112,7 +112,7 @@ class UserController extends AbstractController
                 'second_options' => ['label' => 'Repeat Password'],
             ]);
 
-        // on fournit ce formulaire à notre vue
+        
         return $this->render('backoffice/user/add.html.twig', [
             'user_form' => $userForm->createView(),
             'user' => $user,
