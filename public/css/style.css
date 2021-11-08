@@ -116,8 +116,13 @@ h4 {
 }
 
 .team {
-    background-color: #006fc5;
-    border-radius: 6px;    
+    margin-top: 1rem;
+    color: #006fc5;        
+}
+
+.team-status {    
+    margin-bottom: 10rem;
+    color: #006fc5;        
 }
 
 /*.nav-button {
