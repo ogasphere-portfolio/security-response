@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
 class EnterpriseController extends AbstractController
 {
     /**
-     * @Route("/", name="browse", methods={"GET"})
+     * @Route("/liste", name="browse", methods={"GET"})
      */
     public function browse(Request $request, EnterpriseRepository $EnterpriseRepository): Response
     {

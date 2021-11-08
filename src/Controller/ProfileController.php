@@ -2,12 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Member;
+use DateTimeImmutable;
+use App\Form\MemberType;
 use App\Entity\Enterprise;
 use App\Form\EnterpriseType;
+use App\Form\BackOffice\UserType;
 use App\Repository\MemberRepository;
 use App\Repository\EnterpriseRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,7 +28,7 @@ class ProfileController extends AbstractController
     public function enterpriseHome(Request $request, Enterprise $enterprise): Response
     {
         /**
-         * @var User
+         * 
          */
         $user = $this->getUser()->getUserEnterprise();
         $annonces = $user->getAnnouncement();
@@ -31,7 +36,7 @@ class ProfileController extends AbstractController
         
         $enterpriseForm = $this->createForm(EnterpriseType::class, $enterprise);
         $enterpriseForm->handleRequest($request);
-dd($enterpriseForm);
+
         if ($enterpriseForm->isSubmitted() && $enterpriseForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             
@@ -51,14 +56,18 @@ dd($enterpriseForm);
     }
 
     /**
-     * @Route("/membre/{id}", name="member")
+     * @Route("/membre", name="member", methods={"GET"})
      */
-    public function memberHome(MemberRepository $memberRepository): Response
+    public function memberHome(Security $security): Response
     {
-        $userMember = $this->getUser();
+        $userMember = $security->getUser();
+        $userMember->getUserMember()->getFirstName();
+
+        $member = $userMember->getUserMember();
 
         return $this->render('profile/member/home.html.twig', [
-            'member' => $userMember,
+            'member' => $member,
         ]);
     }
+
 }

@@ -125,8 +125,6 @@ class RegistrationFormType extends AbstractType
             unset($user['userMember']);
             $event->setData($user);
         }
-
-        
     }
 
     public function configureOptions(OptionsResolver $resolver): void

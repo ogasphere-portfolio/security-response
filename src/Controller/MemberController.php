@@ -3,17 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\Member;
-use App\Form\BackOffice\MemberType;
-
-
+use App\Entity\User;
+use App\Form\UserType;
+use App\Form\MemberType;
 use App\Repository\MemberRepository;
 use DateTime;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\Security\Core\Security;
 
 /**
  * Les annotations de routes au niveau de la classe servent de préfixe à toutes les routes définies dans celle ci
@@ -24,7 +25,7 @@ class MemberController extends AbstractController
 {
     
     /**
-     * @Route("/", name="browse")
+     * @Route("/liste", name="browse")
      */
     public function browse(MemberRepository $memberRepository): Response
     {
@@ -32,31 +33,44 @@ class MemberController extends AbstractController
             'member_browse' => $memberRepository->findAll()
         ]);
     }
-
-     /**
-     * 
-     * @Route("/read/{id}", name="read", methods={"GET"}, requirements={"id"="\d+"})
-     */
-    public function read($id, MemberRepository $MemberRepository ): Response
-    { 
-       
-        $member = $MemberRepository->find($id);
-
-        $memberForm = $this->createForm(MemberType::class, $member, [
-            'disabled' => 'disabled'
-        ]);
-
-        return $this->render('member/read.html.twig', [
-            'member_form' => $memberForm->createView(),
-            'member' => $member,
-        ]);
-    }
     
     /**
-     * @Route("/edit/{id}", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * @Route("/edit/connexion", name="edit_connexion", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Member $member): Response
+    public function editConnexion(Request $request, Security $security): Response
     {
+        $userMember = $security->getUser();
+        $userMember->getUserMember()->getFirstName();
+
+        $memberForm = $this->createForm(UserType::class, $userMember);
+
+        $memberForm->handleRequest($request);
+
+        if ($memberForm->isSubmitted() && $memberForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();            
+            
+            $entityManager->flush();
+
+            $this->addFlash('success', "Les infos de connexions ont été modifiées");
+
+            return $this->redirectToRoute('member_edit_connexion');
+        }
+        
+        return $this->render('profile/member/editConnexion.html.twig', [
+            'user_form' => $memberForm->createView(),
+            'member' => $security,
+            'page' => 'edit',
+        ]);
+    }
+
+    /**
+     * @Route("/edit/infospersonnelles", name="edit_perso", methods={"GET", "POST"})
+     */
+    public function editPerso(Request $request, Security $security, MemberType $memberType): Response
+    {
+        $member = $security->getUser();
+        $member->getUserMember()->getFirstName();
+
         $memberForm = $this->createForm(MemberType::class, $member);
 
         $memberForm->handleRequest($request);
@@ -67,18 +81,17 @@ class MemberController extends AbstractController
             $member->setUpdatedAt(new DateTime());
             $entityManager->flush();
 
-            $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()}  à été modifié");
+            $this->addFlash('success', "Les infos personnelles ont été modifiées");
 
-            return $this->redirectToRoute('member_browse');
+            return $this->redirectToRoute('profile_member');
         }
 
-        
-        return $this->render('member/add.html.twig', [
+        return $this->render('profile/member/home.html.twig', [            
             'member_form' => $memberForm->createView(),
-            'member' => $member,
-            'page' => 'edit',
+            'member' => $security,
         ]);
     }
+
      /**
      * 
      * @Route("/add", name="add", methods={"GET", "POST"})
@@ -112,14 +125,14 @@ class MemberController extends AbstractController
         }
 
         // on fournit ce formulaire à notre vue
-        return $this->render('/member/add.html.twig', [
+        return $this->render('profile/member/add.html.twig', [
             'form' => $memberForm->createView(),
             'page' => 'create',
         ]);
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/delete", name="delete", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function delete(Member $member, EntityManagerInterface $entityManager): Response
     {
