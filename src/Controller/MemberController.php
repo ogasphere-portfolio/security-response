@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Security;
 
 /**
@@ -37,7 +38,7 @@ class MemberController extends AbstractController
     /**
      * @Route("/edit/connexion", name="edit_connexion", methods={"GET", "POST"})
      */
-    public function editConnexion(Request $request, Security $security): Response
+    public function editConnexion(Request $request, Security $security, UserPasswordHasherInterface $passwordHasher): Response
     {
         /**
          * @var \App\Entity\User
@@ -59,10 +60,28 @@ class MemberController extends AbstractController
             return $this->redirectToRoute('member_edit_connexion');
         }
         
+        if($request->isMethod('POST')) {
+
+            // Verification if the two submit password are equal
+            if($request->request->get('pass') == $request->request->get('pass2')) {
+
+                $hashedPassword = $passwordHasher->hash($userMember, $request->request->get('pass'));
+                $userMember->setPassword($hashedPassword);
+
+                $this->getDoctrine()->getManager()->flush();
+                $this->addFlash('message', "Le mot de passe à été modifié.");
+
+                return $this->redirectToRoute('member_edit_connexion');
+
+            } else {
+                $this->addFlash('error', "Les deux mots de passes ne sont pas identiques.");
+            }
+            
+        }
+
         return $this->render('profile/member/editConnexion.html.twig', [
             'user_form' => $memberForm->createView(),
             'member' => $security,
-            'page' => 'edit',
         ]);
     }
 
@@ -84,7 +103,6 @@ class MemberController extends AbstractController
         if ($memberForm->isSubmitted() && $memberForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             
-            $member->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
             $this->addFlash('success', "Les infos personnelles ont été modifiées");
