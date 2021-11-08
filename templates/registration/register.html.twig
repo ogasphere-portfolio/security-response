@@ -1,39 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block body %}
 
-<main>
-    <div class="container mt-6">
-        <div class="row">
-            <div class="col-md-6 w-md-75 mx-auto">
-              
-                <div class="account-wall p-5">
-        
-                        <h1 class="h3 mb-4 font-weight-normal">Inscription</h1>
-                        {% for flashError in app.flashes('verify_email_error') %}
-                            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-                        {% endfor %}
-                        {{ form_start(registrationForm) }}
-                            {{ form_row(registrationForm.email) }}
-                            {{ form_row(registrationForm.password) }}
-                            {# {{ form_row(registrationForm.agreeTerms) }}   #}
-                            {{ form_row(registrationForm.membershipType) }}
-                            {{ form_row(registrationForm.userMember) }}
-                            {{ form_row(registrationForm.userEnterprise) }}
-                            
-                            
+	<main>
+		<div class="container mt-6">
+			<div class="row">
+				<div class="col-md-6 w-md-75 mx-auto">
 
-                        <div class="col-12">
-                            <button class="btn btn-lg btn-primary" type="submit">S'inscrire</button>
-                        </div>
-                        
-                        {{ form_end(registrationForm) }}
-                    </div>
-            </div>
-        </div>
-    </div>
-</main>
+					<div class="account-wall p-5">
+
+						<h1 class="h3 mb-4 font-weight-normal">Inscription</h1>
+						{% for flashError in app.flashes('verify_email_error') %}
+							<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+						{% endfor %}
+						{{ form_start(registrationForm) }}
+						{{ form_row(registrationForm.email) }}
+						{{ form_row(registrationForm.password) }}
+						{# {{ form_row(registrationForm.agreeTerms) }}   #}
+						{{ form_row(registrationForm.membershipType) }}
+						{{ form_row(registrationForm.userMember) }}
+						{{ form_widget(registrationForm.userEnterprise.latitude, {'attr': {'class': 'invisible'}}) }}
+						{{ form_widget(registrationForm.userEnterprise.longitude, {'attr': {'class': 'invisible'}}) }}
+						{{ form_row(registrationForm.userEnterprise) }}
+
+
+						<div class="col-12">
+							<button class="btn btn-lg btn-primary" type="submit">S'inscrire</button>
+						</div>
+
+						{{ form_end(registrationForm) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
 
 {% endblock %}
