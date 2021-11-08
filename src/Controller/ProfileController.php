@@ -23,32 +23,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProfileController extends AbstractController
 {
     /**
-     * @Route("/entreprise/{id}", name="enterprise", methods={"GET"})
+     * @Route("/entreprise/", name="enterprise", methods={"GET"})
      */
-    public function enterpriseHome(Request $request, Enterprise $enterprise): Response
+    public function enterpriseHome(Security $security): Response
     {
         /**
-         * 
+         * @var User
          */
-        $user = $this->getUser()->getUserEnterprise();
-        $annonces = $user->getAnnouncement();
-        $certifications = $user->getCertification();
+        $userEnterprise =  $security->getUser();
+        $userEnterprise->getUserEnterprise();
+        $annonces = $userEnterprise->getAnnouncement();
+        $certifications = $userEnterprise->getCertification();
         
-        $enterpriseForm = $this->createForm(EnterpriseType::class, $enterprise);
-        $enterpriseForm->handleRequest($request);
-
-        if ($enterpriseForm->isSubmitted() && $enterpriseForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            
-            $entityManager->flush();
-
-            $this->addFlash('success', "L'entreprise {$enterprise->getBusinessName()} à été modifié");
-
-            return $this->redirectToRoute('enterprise');
-        }
+       
 
         return $this->render('profile/enterprise/home.html.twig', [
-            'enterprise_form' => $enterpriseForm->createView(),
+           
             'enterprise' => $user,
             'annonces' => $annonces,
             'certifications' => $certifications,
