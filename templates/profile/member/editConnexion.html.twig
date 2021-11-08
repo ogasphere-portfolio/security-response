@@ -56,7 +56,11 @@
                                                     <a class="btn btn-primary" href="{{ url('profile_member') }}">Retour</a>
                                                 </td>
                                                 <td class="py-1">
-                                               
+                                                    {% for message in app.flashes('success') %}
+                                                        <div class="alert alert-success" role="alert">
+                                                            {{ message }}
+                                                        </div>
+                                                    {% endfor %}
                                                     {{ form_start(user_form) }}
                                                     {{ form_row(user_form.email) }}
                                                     <input class="btn btn-primary" type="submit" name="EditConnexion"> 
