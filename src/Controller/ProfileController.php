@@ -50,6 +50,9 @@ class ProfileController extends AbstractController
      */
     public function memberHome(Security $security): Response
     {
+        /**
+         * @var User
+         */
         $userMember = $security->getUser();
         $userMember->getUserMember()->getFirstName();
 
