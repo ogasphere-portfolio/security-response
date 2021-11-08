@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use DateTimeImmutable;
 use App\Repository\AnnouncementRepository;
+use App\Entity\Category;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -182,7 +183,7 @@ class Announcement
 
     public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
-        $this->created_at = $created_at;$member->setUpdatedAt(new DateTimeImmutable());
+        $this->created_at = $created_at;
 
         return $this;
     }
@@ -320,7 +321,7 @@ class Announcement
         return $this;
     }
 
-    public function getCategory(): ?Category
+    public function getCategory(): ?ArrayCollection
     {
         return $this->category;
     }
