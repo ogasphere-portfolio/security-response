@@ -31,17 +31,15 @@ class ProfileController extends AbstractController
          * @var User
          */
         $userEnterprise =  $security->getUser();
-        $userEnterprise->getUserEnterprise();
-        $annonces = $userEnterprise->getAnnouncement();
-        $certifications = $userEnterprise->getCertification();
+        $userEnterprise->getUserEnterprise()->getBusinessName();
+        dump($userEnterprise);
+        // $annonces = $userEnterprise->getAnnouncement();
+        // $certifications = $userEnterprise->getCertification();
         
-       
-
         return $this->render('profile/enterprise/home.html.twig', [
-           
-            'enterprise' => $user,
-            'annonces' => $annonces,
-            'certifications' => $certifications,
+            'enterprise' => $userEnterprise,
+            // 'annonces' => $annonces,
+            // 'certifications' => $certifications,
         ]);
     }
 
