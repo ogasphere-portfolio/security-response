@@ -53,11 +53,7 @@ class AnnouncementType extends AbstractType
                 'choice_label' => 'name',
             ])
             ->add('category', EntityType::class,[
-                'class' => Category::class])
-            ->add('enterprise', EntityType::class,[
-                'class' => Enterprise::class, 
-                'data_class' => Enterprise::class
-            ]);            
+                'class' => Category::class]);                       
     }
 
     public function configureOptions(OptionsResolver $resolver)
