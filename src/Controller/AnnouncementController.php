@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Announcement;
 use App\Form\AnnouncementType;
-use App\Repository\AnnouncementRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\AnnouncementRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Core\Security;
 
 /**
      * @Route("/annonces", name="announcement_")
@@ -20,9 +21,22 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/", name="browse")
      */
-    public function browse(AnnouncementRepository $announcementRepository): Response
+    public function browse(AnnouncementRepository $announcementRepository ,Security $security): Response
     {
-        
+
+         /**
+         * @var User
+         */
+        $user =  $security->getUser();
+
+        if ($user->getUserEnterprise() === null)
+
+        {
+            return $this->render('announcement/browse.html.twig', [
+                'announcement_browse' => $announcementRepository->findByRecrutement(),
+               
+            ]);
+        }
         
         
         return $this->render('announcement/browse.html.twig', [
