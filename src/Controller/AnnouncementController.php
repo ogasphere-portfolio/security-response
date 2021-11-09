@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Announcement;
 use App\Form\AnnouncementType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
      * @Route("/annonces", name="announcement_")
+     * IsGranted("IS_AUTHENTICATED_FULLY")
      */
 class AnnouncementController extends AbstractController
 {

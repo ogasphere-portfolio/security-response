@@ -5,125 +5,96 @@
 {% block body %}
 
 <main>
-    <div class="container">
-        <div class="d-flex flex-column flex-md-row">
-            <div class="d-flex mt-4 text-center mx-auto">
-                <h1 class="fw-bold">Bienvenue dans votre espace Membre</h1>
-            </div>
-        </div> 
-        <div class="d-flex flex-column flex-md-row mt-5">
-            <div class="mt-5">
-                <div class="bg-white mt-3 rounded border profile-heading">
-                    <h4 class="px-0 py-2 text-center">Mon compte</h4>
-                    <h6 class="px-0 py-2 text-center">{{ app.user.userMember.firstname ~ " " ~ app.user.userMember.lastname }}</h6>
-                        <ul class="list-group mx-3">
-                            <li class="list-group">
-                                <a class="nav-link fs-6" aria-current="page" href="#">Infos de connexion</a>
-                            </li>
-                            <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="#">Mes informations personnelles</a>
-                            </li>
-                            <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="#">Mes spécialisations</a>
-                            </li>
-                            <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="#">Supprimer mon compte</a>
-                            </li>
-                        </ul>
-                </div>
-                <div class="bg-white mt-3 rounded border profile-heading">
-                    <h4 class="px-0 py-2 text-center">Mes annonces</h4>
-                        <ul class="list-group mx-3">
-                            <li class="list-group">
-                                <a class="nav-link" aria-current="page" href="">Voir mes postulations</a>
-                            </li>
-                        </ul>
-                </div>
-            </div>
+	<div class="container">
+		<div class="card card-primary card-outline">
+			<div class="card-header">
+				<h3 class="card-title">
+					<i class="fas fa-edit"></i>
+					Bienvenue dans votre espace Membre
+				</h3>
+			</div>
+			<div class="card-body">
+				
+				<div class="row">
+					<div class="col-5 col-sm-3">
+					<h4 class="px-0 py-2 text-left fw-bold">Mon compte</h4>
+						<h6 class="px-0 py-2 text-center">{{ app.user.userMember.firstname ~ " " ~ app.user.userMember.lastname }}</h6>
+						<div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
+							<a class="nav-link active" id="vert-tabs-connexion-tab" data-toggle="pill" href="#vert-tabs-connexion" role="tab" aria-controls="vert-tabs-connexion" aria-selected="false">Infos de connexion</a>
+							<a class="nav-link" id="vert-tabs-coordinate-tab" data-toggle="pill" href="#vert-tabs-coordinate" role="tab" aria-controls="vert-tabs-coordinate" aria-selected="false">Mes Informations personnelles</a>
+							<a class="nav-link" id="vert-tabs-specialization-tab" data-toggle="pill" href="#vert-tabs-specialization" role="tab" aria-controls="vert-tabs-specialization" aria-selected="false">Mes spécialisations</a>
+							<a class="nav-link" id="vert-tabs-delete-tab" data-toggle="pill" href="#vert-tabs-delete" role="tab" aria-controls="vert-tabs-delete" aria-selected="true">Supprimer mon compte</a>
+							<br><h4 class="px-0 py-2 text-left fw-bold">Mes annonces</h4>
+							<a class="nav-link" id="vert-tabs-announcement-tab" data-toggle="pill" href="#vert-tabs-announcement" role="tab" aria-controls="vert-tabs-announcement" aria-selected="true">Gérer mes annonces</a>
+						</div>
+					</div>
+					<div class="col-7 col-sm-9">
+						<div class="tab-content" id="vert-tabs-tabContent">
+							<div class="tab-pane text-left fade active show" id="vert-tabs-connexion" role="tabpanel" aria-labelledby="vert-tabs-connexion-tab">
+								<h3><strong>Mes informations de connexion</strong></h3>
+								<div class="mb-3 d-flex flex-column"><strong>Email :</strong>
+									<p>{{ app.user }}</p>
+								</div>
+                                <div class="mb-3 d-flex flex-column"><strong>Password :</strong>
+									<p>*********</p>
+								</div>
+								<a class="btn btn-primary" href="{{ url('member_edit_connexion') }}" title="EditConnexion" alt="Edit">Modifier</a>
+							</div>
+							<div class="tab-pane fade" id="vert-tabs-coordinate" role="tabpanel" aria-labelledby="vert-tabs-coordinate-tab">
+								<h3><strong>Mes informations personnelles</strong></h3>
+								<p><strong>Prénom: </strong>{{ app.user.userMember.firstname }}</p>
+								<p><strong>Nom : </strong>{{ app.user.userMember.lastname }}</p>
+								<p><strong>Descrpition: </strong>{{ app.user.userMember.description }}</p>
+                                <p><strong>Ville: </strong>{{ app.user.userMember.city }}</p>
+                                <p><strong>Genre: </strong>
+                                    {% if app.user.userMember.gender == "1" %}
+                                        Homme
+                                    {% else %}
+                                        Femme
+                                    {% endif %}
+                                </p>
+							</div>
+							<div class="tab-pane fade" id="vert-tabs-specialization" role="tabpanel" aria-labelledby="vert-tabs-specialization-tab">
+								<h3>Mes spécialisations</h3><br>
+								{% if  app.user.userMember.specialization %}
+									{% for certification in app.user.userMember.specialization %}	
+										<li>{{certification.name}}</li>
+									{% endfor %}
+								{% else %}
+									<p>Aucune certification trouvée</p>	 
+								{% endif %}
+							</div>
+							<div class="tab-pane fade" id="vert-tabs-delete" role="tabpanel" aria-labelledby="vert-tabs-delete-tab">
+								<h3>Cette action supprimera définitivement votre compte </h3>
+							</div>
+							<div class="tab-pane fade" id="vert-tabs-announcement" role="tabpanel" aria-labelledby="vert-tabs-announcement-tab">
+								<h3>Mes annonces</h3><br>
+								{# {% if  app.user.userMember.announcement != null %}
+									{% for annonce in app.user.userMember.announcement %}
+										<li><a href="{{ path('announcement_read', {"id": annonce.id}) }}">{{annonce.title}}</a></li>
+										
+										<ul class="d-flex flex-row navbar-nav me-4 mb-md-0">
+											<li class="nav-item">
+													<a class="btn btn-primary" aria-current="page" href="{{ path('announcement_edit', {"id" : annonce.id}) }}">Modifier</a>
+											</li>
+											<li class="nav-item">
+													<a class="btn btn-primary" aria-current="page" href="{{ path('announcement_delete', {"id" : annonce.id}) }}">Supprimer</a>
+											</li>
+                		                </ul> 
 
-            <section class="text-center container mt-4">
-                <div class="d-flex">
-                    <div class="mx-auto">
-                        <h2>Mes paramètres</h2>
+									{% endfor %}
+								{% else %}
+									<p>Aucune annonce n'a été créée pour le moment.</p>	 
+								{% endif %} #}
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<!-- /.card -->
 
-                        <div>
-                            <div>
-                                <table class="mt-4">            
-                                        <tbody>
-                                            <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
-                                                <td class="d-flex justify-content-between py-1">
-                                                    <h5><strong>Infos de connexion</strong></h5>
-                                                    <a class="btn btn-primary" href="{{ url('member_edit_connexion') }}" title="EditConnexion" alt="Edit">Modifier</a>
-                                                </td>
-                                                <td class="py-1">
-                                                    <div class="mb-3">
-                                                        <div class="mb-3"><strong>Email :</strong></div>
-                                                        <p>{{ app.user }}</p>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <div class="mb-3"><strong>Password :</strong></div>
-                                                        <p>********</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                            <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
-                                                <td class="d-flex justify-content-between py-1">
-                                                    <h5><strong>Mes informations personnelles</strong></h5>
-                                                    <a class="btn btn-primary" href="{{ url('member_edit_perso') }}" title="EditPerso" alt="Edit">Modifier</a>
-                                                </td>
-                                                <td class="py-1">
-                                                <div class="mb-3">
-                                                        <div class="mb-3"><strong>Prénom :</strong></div>
-                                                        <p>{{ app.user.userMember.firstname }}</p>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <div class="mb-3"><strong>Nom :</strong></div>
-                                                        <p>{{ app.user.userMember.lastname }}</p>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <div class="mb-3"><strong>Description :</strong></div>
-                                                        <p>{{ app.user.userMember.description }}</p>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <div class="mb-3"><strong>Ville :</strong></div>
-                                                        <p>{{ app.user.userMember.city }}</p>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <div class="mb-3"><strong>Genre :</strong></div>
-                                                        <p>
-                                                            {% if app.user.userMember.gender == 1 %}
-                                                            Homme
-                                                            {% else %}
-                                                            Femme
-                                                            {% endif %}
-                                                        </p>
-                                                    </div>
-                                                </td>                                                
-                                            </tr>
-
-                                            <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
-                                                <td class="py-1"><strong>Mes spécialisations</strong></td>
-                                                <td class="py-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi minus accusantium qui voluptas adipisci, sint aspernatur eos ducimus distinctio quam earum nostrum rem dolore est ex. Rem, in! Incidunt, animi?</td>
-                                                <td class="py-1"><em>test</em></td>
-                                            </tr>
-
-                                            <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
-                                                <td class="d-flex justify-content-between py-1">
-                                                    <h5><strong>Supprimer mon compte</strong></h5>
-                                                    <a class="btn btn-primary" href="" title="DeleteMember" alt="Delete">Supprimer</a>
-                                                </td>
-                                                <td class="py-1">Cliquer pour supprimer le compte définitivement.</td>
-                                            </tr>
-                                        </tbody>
-                                </table>  
-                            </div>        
-                        </div>
-
-                    </div>
-                </div>                  
-            </section>
-        </div>
-    </div>
-</main>     
+		</div>
+	</div>
+</main>
 {% endblock %}
