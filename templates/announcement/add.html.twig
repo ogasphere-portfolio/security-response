@@ -4,7 +4,7 @@
 	{% if page == 'create' %}
 			Nouvelle annonce
 			{% else %}
-			Annonce {{ announcement.title }}
+			Modifier l'annonce {{ announcement.title }}
 			{% endif %}
 {% endblock %}
 
@@ -31,21 +31,25 @@
 							<a class="btn btn-primary" aria-current="page" href="{{ url('announcement_browse') }}">Retour</a>
 						</li>
 					</ul>
-				</div>
-				<div class="col-4">
-					{{ form_row(announcement_form.certification) }}
-					{{ form_row(announcement_form.specialization) }}
 
-					{# {{ form_widget(announcement_form.enterprise, {'attr': {'class': 'invisible'}}) }}
- #}
 					<button type="submit" class="btn btn-primary mt-4">
-						{% if 'annoucement_add' == app.request.get('_route') %}
+						{% if 'announcement_add' == app.request.get('_route') %}
 						Créer l'annonce
 						{% else %}
 						Modifier l'annonce
 					{% endif %}
 					</button>
 					
+				</div>
+				
+				<div class="col-4">
+					{{ form_row(announcement_form.certification) }}
+					{{ form_row(announcement_form.specialization) }}
+						
+
+					{# {{ form_widget(announcement_form.enterprise, {'attr': {'class': 'invisible'}}) }}
+ #}
+										
 					{{ form_end(announcement_form) }}
 				</div>
 			</div>
