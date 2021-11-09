@@ -20,9 +20,11 @@
                                                     
                                                     {% for announcement in announcement_browse %}
                                                     <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
-                                                        <td class="py-1"><strong>{{ announcement.title }}</strong></td>
+                                                        <td class="py-1"><strong><a href="{{ path('announcement_read', {"id": announcement.id}) }}">{{ announcement.title }}</a></strong></td>
                                                         <td class="py-1">{{ announcement.description }}</td>
-                                                        <td class="py-1"><em>{{ announcement.createdAt|date("d/m/Y") }}</em></td>
+                                                       
+                                                        <td class="py-1"><em>Crée le {{ announcement.createdAt|date("d/m/Y") }} par </em> <strong>{{ announcement.enterprise.businessName }}</strong> </td>
+                                                                
                                                     </tr>
                                                     {% endfor %}
                                                     

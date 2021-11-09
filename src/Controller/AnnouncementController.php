@@ -22,8 +22,12 @@ class AnnouncementController extends AbstractController
      */
     public function browse(AnnouncementRepository $announcementRepository): Response
     {
+        
+        
+        
         return $this->render('announcement/browse.html.twig', [
-            'announcement_browse' => $announcementRepository->findAll()
+            'announcement_browse' => $announcementRepository->findAll(),
+           
         ]);
     }
 
@@ -45,7 +49,7 @@ class AnnouncementController extends AbstractController
      */
     public function edit(Request $request, Announcement $announcement): Response
     {
-        $announcementForm = $this->createForm(Announcement::class, $announcement);
+        $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
 
         $announcementForm->handleRequest($request);
 
