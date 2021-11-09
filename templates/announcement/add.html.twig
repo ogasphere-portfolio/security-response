@@ -9,50 +9,53 @@
 {% endblock %}
 
 {% block body %}
-	<main>
+<main>
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row">
+            <div class="d-flex mt-4 text-center mx-auto">
+        
+                <section class="text-center container mt-4">
+                    <div class="d-flex">
+                        <div class="mx-auto">
+							<div class="d-flex flex-row justify-content-between">
+								<h2 class="fw-bold">Détails de l'annonce</h2>
+								<a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
+							</div>  
+							<div>
+								<div class="row justify-content-between">
+									<div class="d-flex flex-column">
+										{{ form_start(announcement_form, {attr: {novalidate: 'novalidate'}}) }}
+										{{ form_row(announcement_form.title) }}
+										{{ form_row(announcement_form.category) }}
+										{{ form_row(announcement_form.description) }}
 
-		<section class="py-5 text-center container mt-">
-			<div class="d-flex py-lg-5">
-				<div class="mx-auto">
-					<h1 class="fw-bold text-start">Détail de l'annonce</h1>
-				</div>
-			</div>
-
-		</section>
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-8">
-					{{ form_start(announcement_form, {attr: {novalidate: 'novalidate'}}) }}
-					{{ form_row(announcement_form.title) }}
-					{{ form_row(announcement_form.category) }}
-					{{ form_row(announcement_form.description) }}
-					<ul class="navbar-nav me-4 mb-md-0">
-						<li class="nav-item">
-							<a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
-						</li>
-					</ul>
-
-					<button type="submit" class="btn btn-primary mt-4">
-						{% if 'announcement_add' == app.request.get('_route') %}
-						Créer l'annonce
-						{% else %}
-						Modifier l'annonce
-					{% endif %}
-					</button>
-					
-				</div>
-				
-				<div class="col-4">
-					{{ form_row(announcement_form.certification) }}
-					{{ form_row(announcement_form.specialization) }}
-						
-
-					{# {{ form_widget(announcement_form.enterprise, {'attr': {'class': 'invisible'}}) }}
- #}
+										<button type="submit" class="btn btn-primary mt-4">
+											{% if 'announcement_add' == app.request.get('_route') %}
+											Créer l'annonce
+											{% else %}
+											Modifier l'annonce
+										{% endif %}
+										</button>
 										
-					{{ form_end(announcement_form) }}
-				</div>
-			</div>
-		</div>
-	</main>
+									</div>
+									
+									{# <div class="">
+										{{ form_row(announcement_form.certification) }}
+										{{ form_row(announcement_form.specialization) }}
+											
+
+										{{ form_widget(announcement_form.enterprise, {'attr': {'class': 'invisible'}}) }}
+															
+										{{ form_end(announcement_form) }}
+									</div> #}
+
+								</div> 
+							</div>
+                        </div>
+                    </div>                  
+                </section>
+            </div>
+        </div>
+    </div>
+</main> 
 {% endblock %}
