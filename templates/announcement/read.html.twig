@@ -13,7 +13,14 @@
             </div>
                 <ul class="navbar-nav me-4 mb-md-0">
                     <li class="d-flex justify-content-center nav-item">
-                        <a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
+                        <a class="btn btn-primary" aria-current="page" href="
+                            {% if app.user.userMember == null %}
+                                {{ url('profile_enterprise') }}
+                            {% else %}
+                                {{ url('announcement_browse') }}
+                            {% endif %}">
+                                Retour
+                        </a>
                     </li>
                 </ul> 
         </section>
