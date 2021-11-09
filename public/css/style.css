@@ -12,7 +12,6 @@ footer {
     right: 0
 }
 
-
 #map_enterprise {
     width: 100%;
     height: 100vh; }
@@ -27,6 +26,13 @@ h1 {
 
 h4 {
     padding: 1em;
+}
+
+.bg-grey {
+    background-color: #889cd6;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
 }
 
 .bd-placeholder-img {
