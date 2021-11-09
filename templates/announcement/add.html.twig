@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonce
+{% block title %}
+	{% if page == 'create' %}
+			Nouvelle annonce
+			{% else %}
+			Annonce {{ announcement.title }}
+			{% endif %}
 {% endblock %}
 
 {% block body %}
@@ -33,7 +38,13 @@
 
 					{# {{ form_widget(announcement_form.enterprise, {'attr': {'class': 'invisible'}}) }}
  #}
-					<button type="submit" class="btn btn-primary mt-4">Créer mon annonce</button>
+					<button type="submit" class="btn btn-primary mt-4">
+						{% if 'annoucement_add' == app.request.get('_route') %}
+						Créer l'annonce
+						{% else %}
+						Modifier l'annonce
+					{% endif %}
+					</button>
 					
 					{{ form_end(announcement_form) }}
 				</div>

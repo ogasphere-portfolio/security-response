@@ -41,11 +41,11 @@ class AnnouncementController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Announcement $announcement): Response
     {
-        $announcementForm = $this->createForm(Announcement::class, $announcement);
+        $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
 
         $announcementForm->handleRequest($request);
 
@@ -92,6 +92,8 @@ class AnnouncementController extends AbstractController
 
             $entityManager->persist($announcement);
             $entityManager->flush();
+
+            $this->addFlash('success', "L'annonce {$announcement->getTitle()} a été créée");
             
             // redirection
             return $this->redirectToRoute('announcement_browse');
@@ -99,19 +101,21 @@ class AnnouncementController extends AbstractController
 
         // on fournit ce formulaire à notre vue
         return $this->render('announcement/add.html.twig', [
-            'announcement_form' => $announcementForm->createView()
+            'announcement_form' => $announcementForm->createView(),
+            'page' => 'create'
         ]);
     }
 
     /**
-     * @Route("/{id}/delete", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}/delete", name="delete", methods={"GET"})
      */
     public function delete(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
-        $this->addFlash('success', "L'annonce a été {$announcement->getId()} deleted");
-
+        
         $entityManager->remove($announcement);
         $entityManager->flush();
+
+        $this->addFlash('success', "L'annonce {$announcement->getTitle()} a été supprimé");
 
         return $this->redirectToRoute('announcement_browse');
     }
