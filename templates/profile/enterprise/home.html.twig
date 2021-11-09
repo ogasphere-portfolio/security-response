@@ -4,7 +4,10 @@
 {% endblock %}
 
 {% block body %}
-
+{% for message in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ message }}</div>
+	{% endfor %}
+	
 <main>
 	<div class="container">
 		<div class="card card-primary card-outline">

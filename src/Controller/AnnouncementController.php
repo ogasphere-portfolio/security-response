@@ -56,7 +56,7 @@ class AnnouncementController extends AbstractController
 
             $this->addFlash('success', "L'annonce `{$announcement->getTitle()}` a été modifiée");
 
-            return $this->redirectToRoute('enterprise_browse');
+            return $this->redirectToRoute('profile_enterprise');
         }
 
         // on fournit ce formulaire à notre vue
@@ -96,7 +96,7 @@ class AnnouncementController extends AbstractController
             $this->addFlash('success', "L'annonce {$announcement->getTitle()} a été créée");
             
             // redirection
-            return $this->redirectToRoute('announcement_browse');
+            return $this->redirectToRoute('profile_enterprise');
         }
 
         // on fournit ce formulaire à notre vue
@@ -117,6 +117,6 @@ class AnnouncementController extends AbstractController
 
         $this->addFlash('success', "L'annonce {$announcement->getTitle()} a été supprimé");
 
-        return $this->redirectToRoute('announcement_browse');
+        return $this->redirectToRoute('profile_enterprise');
     }
 }
