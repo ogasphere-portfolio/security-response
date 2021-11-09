@@ -32,7 +32,7 @@ class ProfileController extends AbstractController
          */
         $userEnterprise =  $security->getUser();
         $userEnterprise->getUserEnterprise()->getBusinessName();
-        dump($userEnterprise);
+        
         // $annonces = $userEnterprise->getAnnouncement();
         // $certifications = $userEnterprise->getCertification();
         

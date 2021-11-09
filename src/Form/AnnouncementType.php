@@ -32,8 +32,7 @@ class AnnouncementType extends AbstractType
          */
 
         $enterprise = $this->security->getUser();
-        $nameEnterprise = $enterprise->getUserEnterprise()->getBusinessName();
-
+       
        // dd($enterprise);
       
 
@@ -53,7 +52,8 @@ class AnnouncementType extends AbstractType
                 'choice_label' => 'name',
             ])
             ->add('category', EntityType::class,[
-                'class' => Category::class]);                       
+                'class' => Category::class])   
+            ;                             
     }
 
     public function configureOptions(OptionsResolver $resolver)

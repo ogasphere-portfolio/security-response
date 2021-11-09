@@ -22,8 +22,12 @@ class AnnouncementController extends AbstractController
      */
     public function browse(AnnouncementRepository $announcementRepository): Response
     {
+        
+        
+        
         return $this->render('announcement/browse.html.twig', [
-            'announcement_browse' => $announcementRepository->findAll()
+            'announcement_browse' => $announcementRepository->findAll(),
+           
         ]);
     }
 

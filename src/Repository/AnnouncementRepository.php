@@ -18,7 +18,12 @@ class AnnouncementRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Announcement::class);
     }
+/**
+     * Récupère toutes les informations liées au tvShow demandé
+     * @return Announcement
+     */
 
+    
     // /**
     //  * @return Announcement[] Returns an array of Announcement objects
     //  */
