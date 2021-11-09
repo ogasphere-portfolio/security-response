@@ -33,13 +33,8 @@ class ProfileController extends AbstractController
         $userEnterprise =  $security->getUser();
         $userEnterprise->getUserEnterprise()->getBusinessName();
         
-        // $annonces = $userEnterprise->getAnnouncement();
-        // $certifications = $userEnterprise->getCertification();
-        
         return $this->render('profile/enterprise/home.html.twig', [
             'enterprise' => $userEnterprise,
-            // 'annonces' => $annonces,
-            // 'certifications' => $certifications,
         ]);
     }
 
@@ -54,10 +49,8 @@ class ProfileController extends AbstractController
         $userMember = $security->getUser();
         $userMember->getUserMember()->getFirstName();
 
-        $member = $userMember->getUserMember();
-
         return $this->render('profile/member/home.html.twig', [
-            'member' => $member,
+            'member' => $userMember,
         ]);
     }
 

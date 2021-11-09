@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-{% for message in app.flashes('success') %}
+	{% for message in app.flashes('success') %}
 		<div class="alert alert-success" role="alert">{{ message }}</div>
 	{% endfor %}
 
@@ -77,7 +77,7 @@
 											<li class="nav-item">
 													<a class="btn btn-primary" aria-current="page" href="{{ path('announcement_delete', {"id" : annonce.id}) }}">Supprimer</a>
 											</li>
-                		</ul> 
+                						</ul> 
 
 									{% endfor %}
 								{% else %}
@@ -90,11 +90,10 @@
 				
 			</div>
 			<!-- /.card -->
+
 		</div>
 	</div>
-			</div>
-		</div>
-	</main>
+</main>
 
 {% endblock %}
 {# <div class="container">
