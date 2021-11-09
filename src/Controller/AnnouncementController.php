@@ -73,20 +73,20 @@ class AnnouncementController extends AbstractController
     public function add(Request $request, Security $security): Response
     {
         $announcement = new Announcement();
-        /**
-        * @var User
-        */
-        $enterprise = $security->getUser();
-        $enterprise->getUserEnterprise()->getBusinessName();
-        $userEnterprise = $enterprise->getUserEnterprise();
-        
+         
         $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
 
         $announcementForm->handleRequest($request);
 
         if ($announcementForm->isSubmitted() && $announcementForm->isValid()) {
 
-            $announcement->setEnterprise($userEnterprise);
+            /**
+            * @var User
+            */            
+            $user = $security->getUser();
+
+            $announcement->setEnterprise($user->getUserEnterprise());
+
             // on ne demande l'entityManager que si on en a besoin
             $entityManager = $this->getDoctrine()->getManager();
 
