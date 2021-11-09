@@ -38,8 +38,7 @@ class Announcement
      * @Assert\NotBlank(message="Merci de saisir la description de l'annonce !!!")
      * @Assert\Length(
      *      min = 4,
-     *      max = 300,
-     *      minMessage = "Veuillez saisir un minimum de {{ limit }} charactères !!!",
+     *      
      * )
      */
     private $description;
