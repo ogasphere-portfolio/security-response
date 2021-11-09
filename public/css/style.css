@@ -125,19 +125,19 @@ h4 {
     color: #006fc5;        
 }
 
-/*.nav-button {
+#nav-inscription {
     background-color: #0051b6;   
     border-radius: 6px;
 }
 
-.nav-button:hover {
+#nav-inscription:hover {
     background-color: #006fc5;
     border-radius: 6px;
 }
 
-.nav-button a {
+#nav-inscription a {
     color: white;
-}*/
+}
 
 .card.shadow-sm.border.border-5 {
     height: 300px;

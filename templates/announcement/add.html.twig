@@ -1,32 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonce{% endblock %}
+{% block title %}Annonce
+{% endblock %}
 
 {% block body %}
-<main>
+	<main>
 
-        <section class="py-5 text-center container mt-">
-            <div class="d-flex py-lg-5">
-                <div class="mx-auto">
-                    <h1 class="fw-bold text-start">Détail de l'annonce</h1>                    
-                </div>
-            </div>
-             <ul class="navbar-nav me-4 mb-md-0">
-            <li class="nav-item">
-                <a class="btn btn-primary" aria-current="page" href="{{ url('announcement_browse') }}">Retour</a>
-            </li>
-        </ul> 
-        </section>
+		<section class="py-5 text-center container mt-">
+			<div class="d-flex py-lg-5">
+				<div class="mx-auto">
+					<h1 class="fw-bold text-start">Détail de l'annonce</h1>
+				</div>
+			</div>
 
-               {{ form_start(announcement_form, {attr: {novalidate: 'novalidate'}}) }}
+		</section>
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-8">
+					{{ form_start(announcement_form, {attr: {novalidate: 'novalidate'}}) }}
+					{{ form_row(announcement_form.title) }}
+					{{ form_row(announcement_form.category) }}
+					{{ form_row(announcement_form.description) }}
+					<ul class="navbar-nav me-4 mb-md-0">
+						<li class="nav-item">
+							<a class="btn btn-primary" aria-current="page" href="{{ url('announcement_browse') }}">Retour</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-4">
+					{{ form_row(announcement_form.certification) }}
+					{{ form_row(announcement_form.specialization) }}
 
-                
-                {{ form_row(announcement_form.title) }}
-                {{ form_row(announcement_form.description) }}
-
-                <button type="submit" class="btn btn-primary mt-4">Créer mon annonce</button>
-
-              {{ form_end(announcement_form) }}
-                
-    </main>
+					{# {{ form_widget(announcement_form.enterprise, {'attr': {'class': 'invisible'}}) }}
+ #}
+					<button type="submit" class="btn btn-primary mt-4">Créer mon annonce</button>
+					
+					{{ form_end(announcement_form) }}
+				</div>
+			</div>
+		</div>
+	</main>
 {% endblock %}
