@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Entity\User;
 use App\Entity\Announcement;
 use App\Form\AnnouncementType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -38,7 +39,7 @@ class AnnouncementController extends AbstractController
                
             ]);
         }
-        if ($user->getUserEnterprise() === null){
+        if ($user->getUserMember() === null){
             return $this->render('announcement/browse.html.twig', [
             'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
                
