@@ -105,15 +105,14 @@ h4 {
 }
 
 .nav-button .nav-link.active{
-    background-color: #0051b6;   
-    border-radius: 6px;   
+    border-bottom: 3px solid #0051b6;
 }
 
 .nav-button .nav-link.active:hover {
-    background-color: #006fc5;
     border-radius: 6px;
-    color: #FFFFFF;
+    color: #006fc5;
 }
+
 
 .team {
     margin-top: 1rem;
