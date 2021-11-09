@@ -4,6 +4,9 @@
 {% endblock %}
 
 {% block body %}
+{% for message in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ message }}</div>
+	{% endfor %}
 
 <main>
 	<div class="container">
@@ -26,7 +29,7 @@
 							<a class="nav-link" id="vert-tabs-certification-tab" data-toggle="pill" href="#vert-tabs-certification" role="tab" aria-controls="vert-tabs-certification" aria-selected="false">Mes Certifications</a>
 							<a class="nav-link" id="vert-tabs-delete-tab" data-toggle="pill" href="#vert-tabs-delete" role="tab" aria-controls="vert-tabs-delete" aria-selected="true">Supprimer mon compte</a>
 							<br><h4 class="px-0 py-2 text-left fw-bold">Mes annonces</h4>
-							<a class="nav-link" id="vert-tabs-create_announcement-tab" data-toggle="pill" href="#vert-tabs-create_announcement" role="tab" aria-controls="vert-tabs-create_announcement" aria-selected="false">Créer une annonce</a>
+							<a class="nav-link" href="{{ path('announcement_add') }}">Créer une annonce</a>
 							<a class="nav-link" id="vert-tabs-announcement-tab" data-toggle="pill" href="#vert-tabs-announcement" role="tab" aria-controls="vert-tabs-announcement" aria-selected="true">Gérer mes annonces</a>
 						</div>
 					</div>
@@ -65,7 +68,17 @@
 								<h3>Mes annonces</h3><br>
 								{% if  app.user.userEnterprise.announcement %}
 									{% for annonce in app.user.userEnterprise.announcement %}
-										<li><a href="{{ path('announcement_browse') }}">{{annonce.title}}</a></li>
+										<li><a href="{{ path('announcement_read', {"id": annonce.id}) }}">{{annonce.title}}</a></li>
+										
+										<ul class="d-flex flex-row navbar-nav me-4 mb-md-0">
+											<li class="nav-item">
+													<a class="btn btn-primary" aria-current="page" href="{{ path('announcement_edit', {"id" : annonce.id}) }}">Modifier</a>
+											</li>
+											<li class="nav-item">
+													<a class="btn btn-primary" aria-current="page" href="{{ path('announcement_delete', {"id" : annonce.id}) }}">Supprimer</a>
+											</li>
+                		</ul> 
+
 									{% endfor %}
 								{% else %}
 									<p>Aucune annonce n'a été créée pour le moment.</p>	 

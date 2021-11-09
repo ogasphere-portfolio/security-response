@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonce
+{% block title %}
+	{% if page == 'create' %}
+			Nouvelle annonce
+			{% else %}
+			Modifier l'annonce {{ announcement.title }}
+			{% endif %}
 {% endblock %}
 
 {% block body %}
@@ -23,18 +28,28 @@
 					{{ form_row(announcement_form.description) }}
 					<ul class="navbar-nav me-4 mb-md-0">
 						<li class="nav-item">
-							<a class="btn btn-primary" aria-current="page" href="{{ url('announcement_browse') }}">Retour</a>
+							<a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
 						</li>
 					</ul>
+
+					<button type="submit" class="btn btn-primary mt-4">
+						{% if 'announcement_add' == app.request.get('_route') %}
+						Créer l'annonce
+						{% else %}
+						Modifier l'annonce
+					{% endif %}
+					</button>
+					
 				</div>
+				
 				<div class="col-4">
 					{{ form_row(announcement_form.certification) }}
 					{{ form_row(announcement_form.specialization) }}
+						
 
 					{# {{ form_widget(announcement_form.enterprise, {'attr': {'class': 'invisible'}}) }}
  #}
-					<button type="submit" class="btn btn-primary mt-4">Créer mon annonce</button>
-					
+										
 					{{ form_end(announcement_form) }}
 				</div>
 			</div>

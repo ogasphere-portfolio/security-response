@@ -11,35 +11,42 @@
                     <h1 class="fw-bold text-start">Détail de l'annonce</h1>                    
                 </div>
             </div>
-        </section>
-
-        <ul class="navbar-nav me-4 mb-md-0">
-            <li class="nav-item">
-                <a class="btn btn-primary" aria-current="page" href="{{ url('announcement_browse') }}">Retour</a>
-            </li>
-        </ul> 
-
-                <h2>Titre: </h2>
-                  <thead>
-                      <tr>
-                          <th scope="col">{{ announcement_read.title }}</th>                       
-                      </tr>
-                  </thead>
-                <h2>Description: </h2>
-                  <thead>
-                      <tr>
-                          <th scope="col">{{ announcement_read.description }}</th>                
-                      </tr>
-                  </thead>                  
-
                 <ul class="navbar-nav me-4 mb-md-0">
-                    <li class="nav-item">
-                        <a class="btn btn-primary" aria-current="page" href="{{ url('announcement_edit', {"id" : announcement.id}) }}">Modifier</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" aria-current="page" href="{{ url('announcement_edit', {"id" : announcement.id}) }}">Supprimer</a>
+                    <li class="d-flex justify-content-center nav-item">
+                        <a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
                     </li>
                 </ul> 
-                
+        </section>
+
+        
+            <div class="d-flex flex-column">
+                <div class="">
+                    <h2>Titre:</h2>
+                    <thead>
+                        <tr>
+                            <th scope="col">{{ announcement_read.title }}</th>                       
+                        </tr>
+                    </thead>
+                </div>
+
+                 <div>   
+                    <h2>Categorie:</h2>
+                    <thead>
+                        <tr>
+                            <th scope="col">{{ announcement_read.category }}</th>                       
+                        </tr>
+                    </thead>
+                </div>
+
+                <div>
+                    <h2>Description:</h2>
+                    <thead>
+                        <tr>
+                            <th scope="col">{{ announcement_read.description }}</th>                
+                        </tr>
+                    </thead>  
+                </div>  
+
+            </div>   
     </main>
 {% endblock %}
