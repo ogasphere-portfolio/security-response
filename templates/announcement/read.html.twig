@@ -13,7 +13,7 @@
             </div>
                 <ul class="navbar-nav me-4 mb-md-0">
                     <li class="d-flex justify-content-center nav-item">
-                        <a class="btn btn-primary" aria-current="page" href="{{ url('announcement_browse') }}">Retour</a>
+                        <a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
                     </li>
                 </ul> 
         </section>
@@ -47,16 +47,6 @@
                     </thead>  
                 </div>  
 
-            </div>              
-
-                <ul class="d-flex flex-row navbar-nav me-4 mb-md-0">
-                    <li class="nav-item">
-                        <a class="btn btn-primary" aria-current="page" href="{{ url('announcement_edit', {"id" : announcement_read.id}) }}">Modifier</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" aria-current="page" href="{{ url('announcement_delete', {"id" : announcement_read.id}) }}">Supprimer</a>
-                    </li>
-                </ul> 
-                
+            </div>   
     </main>
 {% endblock %}

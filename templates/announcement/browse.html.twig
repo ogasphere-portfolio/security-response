@@ -20,7 +20,9 @@
                                                     
                                                     {% for announcement in announcement_browse %}
                                                     <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
-                                                        <td class="py-1"><strong>{{ announcement.title }}</strong></td>
+                                                        <td                                                            
+                                                            <li><a href="{{ path('announcement_read', {"id": announcement.id}) }}">{{announcement.title}}</a></li>
+                                                        </td>
                                                         <td class="py-1">{{ announcement.description }}</td>
                                                         <td class="py-1"><em>{{ announcement.createdAt|date("d/m/Y") }}</em></td>
                                                     </tr>
