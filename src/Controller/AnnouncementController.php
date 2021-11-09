@@ -37,12 +37,14 @@ class AnnouncementController extends AbstractController
                
             ]);
         }
+        if ($user->getUserEnterprise() === null){
+            return $this->render('announcement/browse.html.twig', [
+            'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
+               
+            ]);
+        }
         
-        
-        return $this->render('announcement/browse.html.twig', [
-            'announcement_browse' => $announcementRepository->findAll(),
-           
-        ]);
+       
     }
 
     /**

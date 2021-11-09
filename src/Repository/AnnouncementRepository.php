@@ -26,9 +26,9 @@ class AnnouncementRepository extends ServiceEntityRepository
     
     /**
      * Récupère toutes les informations liées au tvShow demandé
-     *@return Announcement
+     *@return Announcement[]
      */
-    public function findByRecrutement() :Announcement
+    public function findByRecrutement() :array
     {
         $entityManager = $this->getEntityManager();
 
@@ -40,7 +40,7 @@ class AnnouncementRepository extends ServiceEntityRepository
         $dqlQuery = " SELECT a
         FROM App\Entity\Announcement a
         INNER JOIN App\Entity\Category c 
-        ON a.category_id = c.id
+        WITH a.category = c.id
         WHERE c.name = 'RECRUTEMENT'"; 
 
         $query = $entityManager->createQuery(
@@ -58,19 +58,38 @@ class AnnouncementRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    // select *
-    // from announcement
-    // INNER JOIN category ON announcement.category_id = category.id
-    // where category.name = "RECRUTEMENT"
-    /*
-    public function findOneBySomeField($value): ?Announcement
+    /**
+     * Récupère toutes les informations liées au tvShow demandé
+     *@return Announcement[]
+     */
+    public function findByAnnouncementByEnterprise() :array
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $entityManager = $this->getEntityManager();
+
+        // $select = " SELECT ";
+        // $from = " FROM announcement a";
+        // $join = "INNER JOIN category ON announcement.category_id = category.id ";
+        // $where = "where category.name = 'RECRUTEMENT'";
+
+        $dqlQuery = " SELECT a
+        FROM App\Entity\Announcement a
+        INNER JOIN App\Entity\Category c 
+        WITH a.category = c.id
+        WHERE c.name <> 'RECRUTEMENT'
+        ORDER BY a.created_at DESC"; 
+
+        $query = $entityManager->createQuery(
+            $dqlQuery
+        );
+         
+        
+        // $dqlQuery = $select . $from . $join . $where;
+
+        //dd($dqlQuery);
+        
+        $query = $entityManager->createQuery($dqlQuery);
+
+        // returns the selected Announcement Object
+        return $query->getResult();
     }
-    */
 }
