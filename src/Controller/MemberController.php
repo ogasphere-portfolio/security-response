@@ -41,7 +41,7 @@ class MemberController extends AbstractController
     public function editConnexion(Request $request, Security $security, UserPasswordHasherInterface $passwordHasher): Response
     {
         /**
-         * @var \App\Entity\User
+         * @var User
          */
         $userMember = $security->getUser();
         $userMember->getUserMember()->getFirstName();
@@ -88,13 +88,13 @@ class MemberController extends AbstractController
     /**
      * @Route("/edit/infospersonnelles", name="edit_perso", methods={"GET", "POST"})
      */
-    public function editPerso(Request $request, Security $security, MemberType $memberType): Response
+    public function editPerso(Request $request, Security $security): Response
     {
         /**
          * @var \App\Entity\User
          */
-        $member = $security->getUser();
-        $member->getUserMember()->getFirstName();
+        $userMember = $security->getUser();
+        $member = $userMember->getUserMember();
 
         $memberForm = $this->createForm(MemberType::class, $member);
 
@@ -107,10 +107,12 @@ class MemberController extends AbstractController
 
             $this->addFlash('success', "Les infos personnelles ont été modifiées");
 
-            return $this->redirectToRoute('profile_member');
+            return $this->redirectToRoute('member_edit_perso');
         }
 
-        return $this->render('profile/member/home.html.twig', [            
+        
+
+        return $this->render('profile/member/editPerso.html.twig', [            
             'member_form' => $memberForm->createView(),
             'member' => $security,
         ]);
@@ -124,7 +126,6 @@ class MemberController extends AbstractController
     {
         $member = new Member();
 
-       
         $memberForm = $this->createForm(MemberType::class, $member);
 
         $memberForm->handleRequest($request);
@@ -156,10 +157,16 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @Route("/delete", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/delete", name="delete", methods={"GET"})
      */
-    public function delete(Member $member, EntityManagerInterface $entityManager): Response
+    public function delete(Security $security, EntityManagerInterface $entityManager): Response
     {
+        /**
+         * @var \App\Entity\User
+         */
+        $userMember = $security->getUser();
+        $member = $userMember->getUserMember();
+
         $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()} à été supprimé");
 
         $entityManager->remove($member);

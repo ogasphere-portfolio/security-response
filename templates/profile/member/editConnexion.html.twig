@@ -54,15 +54,17 @@
                                         <input type="password" id="pass2" name="pass2" class="form-control">
                                     </div>
 
-                                <input class="btn btn-primary" type="submit" name="EditConnexion"> 
+                                <input class="btn btn-primary" type="submit" name="EditConnexion"> 																
+																<a class="btn btn-primary" aria-current="page" href="{{ url('profile_member') }}">Retour</a>
                                 {{ form_end(user_form) }}
 
 							</div>
 							<div class="tab-pane fade" id="vert-tabs-coordinate" role="tabpanel" aria-labelledby="vert-tabs-coordinate-tab">
 								<h3><strong>Mes informations personnelles</strong></h3>
+
 								<p><strong>Prénom: </strong>{{ app.user.userMember.firstname }}</p>
 								<p><strong>Nom : </strong>{{ app.user.userMember.lastname }}</p>
-								<p><strong>Descrpition: </strong>{{ app.user.userMember.description }}</p>
+								<p><strong>Description: </strong>{{ app.user.userMember.description }}</p>
                                 <p><strong>Ville: </strong>{{ app.user.userMember.city }}</p>
                                 <p><strong>Genre: </strong>
                                     {% if app.user.userMember.gender == "1" %}
