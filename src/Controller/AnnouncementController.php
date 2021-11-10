@@ -30,22 +30,25 @@ class AnnouncementController extends AbstractController
          * @var User
          */
         $user =  $security->getUser();
-
-        if ($user->getUserEnterprise() === null)
-
-        {
-            return $this->render('announcement/browse.html.twig', [
-                'announcement_browse' => $announcementRepository->findByRecrutement(),
-               
-            ]);
-        }
-        if ($user->getUserMember() === null){
-            return $this->render('announcement/browse.html.twig', [
-            'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
-               
-            ]);
-        }
         
+        if (!$user === null){
+            if ($user->getUserEnterprise() === null)
+
+            {
+                return $this->render('announcement/browse.html.twig', [
+                    'announcement_browse' => $announcementRepository->findByRecrutement(),
+                
+                ]);
+            }
+            if ($user->getUserMember() === null){
+                return $this->render('announcement/browse.html.twig', [
+                'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
+                
+                ]);
+            }
+        }
+        return $this->render('announcement/browse.html.twig', [
+        'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise()]);
        
     }
 
@@ -61,6 +64,7 @@ class AnnouncementController extends AbstractController
             'announcement_read' => $announcement,
         ]);
     }
+
 
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
@@ -148,17 +152,16 @@ class AnnouncementController extends AbstractController
     public function postulate(Announcement $announcement, EntityManagerInterface $entityManager,Security $security): Response
     {
         /**
-            * @var User
-            */    
-
+        * @var User
+        */    
         $user = $security->getUser();
         $announcement->addMember($user->getUserMember());
-
+        
         $entityManager->persist($announcement);
         $entityManager->flush();
 
         $this->addFlash('success', "L'annonce {$announcement->getTitle()} a postuler");
 
-        return $this->redirectToRoute('profile_member');
+        return $this->redirectToRoute('announcement_browse');
     }
 }

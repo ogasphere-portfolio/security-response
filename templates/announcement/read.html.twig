@@ -10,12 +10,17 @@
 
                     <h1 class="fw-bold text-start">Détail de l'annonce</h1>
                     <a class="btn btn-primary" aria-current="page" href="
+                    {% if app.user is not empty %}
                         {% if app.user.userMember == null %}
                             {{ url('profile_enterprise') }}
                         {% else %}
                             {{ url('announcement_browse') }}
                         {% endif %}">
                             Retour
+                    {% else %}
+                            {{ url('announcement_browse') }}">
+                            retour
+                    {% endif %}
                     </a>                 
 
             </div>
@@ -36,8 +41,16 @@
                         </tr>
                     </thead>  
                 </div>
-
-                <div class="my-2">
+            
+                {% if app.user %} 
+                    {% if app.user.userEnterprise == null %}
+                        {% if app.user.userMember %} 
+                            <a class="nav-link " href="{{ path('announcement_postulate', {"id": announcement_read.id}) }}">
+                            <span class="text">Postuler</span></a>
+                        {% endif %} 
+                    {% endif %} 
+                {% endif %} 
+             </form>
                     <em>Créé le {{ announcement_read.createdAt|date("d/m/Y") }}</em>
                 </div>
 
