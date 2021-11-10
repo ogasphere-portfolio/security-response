@@ -145,22 +145,21 @@ class AnnouncementController extends AbstractController
     }
 
     /**
-     * @Route("/postulate", name="postulate", methods={"GET"})
+     * @Route("/{id}/postulate", name="postulate", methods={"GET"})
      */
     public function postulate(Announcement $announcement, EntityManagerInterface $entityManager,Security $security): Response
     {
         /**
-            * @var User
-            */    
-
+        * @var User
+        */    
         $user = $security->getUser();
         $announcement->addMember($user->getUserMember());
-dd($announcement);
+        
         $entityManager->persist($announcement);
         $entityManager->flush();
 
         $this->addFlash('success', "L'annonce {$announcement->getTitle()} a postuler");
 
-        return $this->redirectToRoute('profile_member');
+        return $this->redirectToRoute('announcement_browse');
     }
 }

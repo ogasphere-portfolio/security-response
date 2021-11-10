@@ -36,15 +36,21 @@
                         </tr>
                     </thead>  
                 </div>
+                <li class="nav-item">
+									<a class="nav-link " href="{{ path('announcement_postulate', {"id": announcement_read.id}) }}">
+										<span class="text">Postuler</span>
+									</a>
+								</li>
+                                
                 {# <div class="my-2">
 						
 						<li  href="{{ path('announcement_postulate') }}">Submit to another page</li>
 					</div>
 
                 <div class="my-2"> #}
-                {{form_start(announcement_form)}}
+                {# {{form_start(announcement_read)}}
                 {{form_row(announcement.members)}}
-                {{form_end(announcement_form)}}
+                {{form_end(announcement_read)}} #}
              </form>
                     <em>Créé le {{ announcement_read.createdAt|date("d/m/Y") }}</em>
                 </div>
