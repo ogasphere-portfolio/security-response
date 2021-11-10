@@ -30,34 +30,33 @@
 					</div>
 					<div class="col-7 col-sm-9">
 						<div class="tab-content" id="vert-tabs-tabContent">
+            
 							<div class="tab-pane text-left fade active show" id="vert-tabs-connexion" role="tabpanel" aria-labelledby="vert-tabs-connexion-tab">
-								<h3 class="mb-5"><strong>Mes informations de connexion</strong></h3>
+								<h3><strong>Mes informations de connexion</strong></h3>
 								<div class="mb-3 d-flex flex-column"><strong>Email :</strong>
 									<p>{{ app.user }}</p>
 								</div>
-                                <div class="mb-3 d-flex flex-column"><strong>Password :</strong>
+												<div class="mb-3 d-flex flex-column"><strong>Password :</strong>
 									<p>*********</p>
 								</div>
-								<a class="btn btn-primary" href="{{ url('member_edit_connexion') }}" title="EditConnexion" alt="Edit">Modifier</a>
-							</div>
-							<div class="tab-pane fade" id="vert-tabs-coordinate" role="tabpanel" aria-labelledby="vert-tabs-coordinate-tab">
-								<h3 class="mb-5"><strong>Mes informations personnelles</strong></h3>
-								<p><strong>Prénom: </strong><br>{{ app.user.userMember.firstname }}</p>
-								<p><strong>Nom : </strong><br>{{ app.user.userMember.lastname }}</p>
-								<p><strong>Description : </strong><br>{{ app.user.userMember.description }}</p>
-                                <p><strong>Ville : </strong><br>{{ app.user.userMember.city }}</p>
-                                <p><strong>Genre : </strong><br>
-                                    {% if app.user.userMember.gender == "1" %}
-                                        Homme
-                                    {% else %}
-                                        Femme
-                                    {% endif %}
-                                </p>
 
-								<a class="btn btn-primary" href="{{ url('member_edit_perso') }}" title="personal information" alt="Edit">Modifier</a>
+							<div class="tab-pane fade" id="vert-tabs-coordinate" role="tabpanel" aria-labelledby="vert-tabs-coordinate-tab">
+								<h3><strong>Mes informations personnelles</strong></h3>
+
+							        {{ form_start(member_form) }}
+                                	{{ form_row(member_form.firstname) }}
+									{{ form_row(member_form.lastname) }}
+									{{ form_row(member_form.description) }}
+									{{ form_row(member_form.city) }}
+									{{ form_row(member_form.gender) }}
+                                    
+                                <input class="btn btn-primary" type="submit" name="EditConnexion"> 																
+								<a class="btn btn-primary" aria-current="page" href="{{ url('profile_member') }}">Retour</a>
+               					{{ form_end(member_form) }}	
 							</div>
+
 							<div class="tab-pane fade" id="vert-tabs-specialization" role="tabpanel" aria-labelledby="vert-tabs-specialization-tab">
-								<h3 class="mb-5">Mes spécialisations</h3><br>
+								<h3>Mes spécialisations</h3><br>
 								{% if  app.user.userMember.specialization %}
 									{% for certification in app.user.userMember.specialization %}	
 										<li>{{certification.name}}</li>
@@ -67,10 +66,10 @@
 								{% endif %}
 							</div>
 							<div class="tab-pane fade" id="vert-tabs-delete" role="tabpanel" aria-labelledby="vert-tabs-delete-tab">
-								<h3 class="mb-5">Cette action supprimera définitivement votre compte </h3>
+								<h3>Cette action supprimera définitivement votre compte </h3>
 							</div>
 							<div class="tab-pane fade" id="vert-tabs-announcement" role="tabpanel" aria-labelledby="vert-tabs-announcement-tab">
-								<h3 class="mb-5">Mes annonces</h3><br>
+								<h3>Mes annonces</h3><br>
 								{# {% if  app.user.userMember.announcement != null %}
 									{% for annonce in app.user.userMember.announcement %}
 										<li><a href="{{ path('announcement_read', {"id": annonce.id}) }}">{{annonce.title}}</a></li>
@@ -100,3 +99,4 @@
 	</div>
 </main>
 {% endblock %}
+

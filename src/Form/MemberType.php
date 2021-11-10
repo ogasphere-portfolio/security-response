@@ -44,17 +44,17 @@ class MemberType extends AbstractType
             ->add('city',null, [
                 'label' => 'Ville *'
             ])
-            ->add('job_status', ChoiceType::class, [
-                "label" => "Statut profession *",
-                'choices'  => [
-                    'En poste' => 1,
-                    'Recherche' => 2,
-                    //'No' => false,
-                ],
-                'expanded' => false,
-                'multiple' => false,
-                ])
-                ->add('picture')
+            // ->add('job_status', ChoiceType::class, [
+            //     "label" => "Statut profession *",
+            //     'choices'  => [
+            //         'En poste' => 1,
+            //         'Recherche' => 2,
+            //         //'No' => false,
+            //     ],
+            //     'expanded' => false,
+            //     'multiple' => false,
+            //     ])
+            //     ->add('picture')
             //->add('created_at')
             // ->add('updated_at')
             // ->add('created_by')
