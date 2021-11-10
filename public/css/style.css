@@ -99,6 +99,15 @@ h4 {
     color: #006fc5;
 }
 
+#home-announcement {
+    height: 10em;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #0051b6;
+    color: white;
+    border-radius: 10px;
+}
+
 .navbar{
     background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
 }
