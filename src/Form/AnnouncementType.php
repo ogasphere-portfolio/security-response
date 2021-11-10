@@ -39,18 +39,18 @@ class AnnouncementType extends AbstractType
         $builder
             ->add('title')
             ->add('description')                     
-            ->add('certification',EntityType::class,[
-                'class' => Certification::class,
-                'multiple' => true,
-                'expanded' => true,
-                'choice_label' => 'name',
-            ])            
-            ->add('specialization',EntityType::class,[
-                'class' => Specialization::class,
-                'multiple' => true,
-                'expanded' => true,
-                'choice_label' => 'name',
-            ])
+            // ->add('certification',EntityType::class,[
+            //     'class' => Certification::class,
+            //     'multiple' => true,
+            //     'expanded' => true,
+            //     'choice_label' => 'name',
+            // ])            
+            // ->add('specialization',EntityType::class,[
+            //     'class' => Specialization::class,
+            //     'multiple' => true,
+            //     'expanded' => true,
+            //     'choice_label' => 'name',
+            // ])
             ->add('category', EntityType::class,[
                 'class' => Category::class])   
             ;                             

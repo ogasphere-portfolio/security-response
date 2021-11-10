@@ -24,6 +24,7 @@
                                                             <li><a href="{{ path('announcement_read', {"id": announcement.id}) }}">{{announcement.title}}</a></li>
                                                         </td>
                                                         <td class="py-1">{{ announcement.description }}</td>
+                                                        
                                                        
                                                         <td class="py-1"><em>Crée le {{ announcement.createdAt|date("d/m/Y") }} par </em> <strong>{{ announcement.enterprise.businessName }}</strong> </td>
                                                                 
