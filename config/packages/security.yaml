@@ -47,5 +47,6 @@ security:
         #  - { path: ^/backoffice, roles: ROLE_ADMIN }
     #     - { path: ^/entreprises, roles: ROLE_ENTERPRISE }
     #     - { path: ^/membres, roles: ROLE_MEMBER }
+    #     - { path: ^/annonces, roles: ROLE_MEMBER, ROLE_ENTERPRISE }
 
         
