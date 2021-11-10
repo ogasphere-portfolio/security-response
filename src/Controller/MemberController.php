@@ -126,7 +126,6 @@ class MemberController extends AbstractController
     {
         $member = new Member();
 
-       
         $memberForm = $this->createForm(MemberType::class, $member);
 
         $memberForm->handleRequest($request);
@@ -158,10 +157,16 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @Route("/delete", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/delete", name="delete", methods={"GET"})
      */
-    public function delete(Member $member, EntityManagerInterface $entityManager): Response
+    public function delete(Security $security, EntityManagerInterface $entityManager): Response
     {
+        /**
+         * @var \App\Entity\User
+         */
+        $userMember = $security->getUser();
+        $member = $userMember->getUserMember();
+
         $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()} à été supprimé");
 
         $entityManager->remove($member);

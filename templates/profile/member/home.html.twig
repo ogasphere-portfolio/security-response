@@ -67,7 +67,9 @@
 								{% endif %}
 							</div>
 							<div class="tab-pane fade" id="vert-tabs-delete" role="tabpanel" aria-labelledby="vert-tabs-delete-tab">
-								<h3 class="mb-5">Cette action supprimera définitivement votre compte </h3>
+								<h3 class="mb-5"><strong>Supprimer mon compte</strong></h3>
+								<p>Cette action supprimera définitivement votre compte.</p>
+								<a class="btn btn-primary" href="{{ url('member_delete') }}" title="DeleteAccount" alt="Delete">Suppression du compte</a>
 							</div>
 							<div class="tab-pane fade" id="vert-tabs-announcement" role="tabpanel" aria-labelledby="vert-tabs-announcement-tab">
 								<h3 class="mb-5">Mes annonces</h3><br>
