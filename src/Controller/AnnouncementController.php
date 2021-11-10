@@ -45,7 +45,8 @@ class AnnouncementController extends AbstractController
                
             ]);
         }
-        
+        return $this->render('announcement/browse.html.twig', [
+        'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise()]);
        
     }
 
@@ -61,6 +62,7 @@ class AnnouncementController extends AbstractController
             'announcement_read' => $announcement,
         ]);
     }
+
 
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
@@ -143,7 +145,7 @@ class AnnouncementController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/postulate", name="postulate", methods={"GET"})
+     * @Route("/postulate", name="postulate", methods={"GET"})
      */
     public function postulate(Announcement $announcement, EntityManagerInterface $entityManager,Security $security): Response
     {
@@ -153,7 +155,7 @@ class AnnouncementController extends AbstractController
 
         $user = $security->getUser();
         $announcement->addMember($user->getUserMember());
-
+dd($announcement);
         $entityManager->persist($announcement);
         $entityManager->flush();
 

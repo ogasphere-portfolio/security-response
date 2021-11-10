@@ -36,8 +36,16 @@
                         </tr>
                     </thead>  
                 </div>
+                {# <div class="my-2">
+						
+						<li  href="{{ path('announcement_postulate') }}">Submit to another page</li>
+					</div>
 
-                <div class="my-2">
+                <div class="my-2"> #}
+                {{form_start(announcement_form)}}
+                {{form_row(announcement.members)}}
+                {{form_end(announcement_form)}}
+             </form>
                     <em>Créé le {{ announcement_read.createdAt|date("d/m/Y") }}</em>
                 </div>
 
