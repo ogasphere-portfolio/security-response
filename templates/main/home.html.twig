@@ -19,7 +19,7 @@
 
             </div>
             <div class="w-50 mx-auto">
-                <form class="d-flex" method="GET" action="/profil/entreprise">
+                <form class="d-flex" method="GET" action="{{ path('enterprise_browse') }}">
                     <input name="searchEnterprise" class="form-control me-2" type="search" placeholder="Rechercher le nom d'une ville" aria-label="Search">
                     <button class="d-flex btn btn-outline-primary" type="submit">Rechercher</button>
                 </form>

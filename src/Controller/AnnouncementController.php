@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
      * @Route("/annonces", name="announcement_")
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     * 
      */
 class AnnouncementController extends AbstractController
 {
