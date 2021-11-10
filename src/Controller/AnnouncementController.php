@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
      * @Route("/annonces", name="announcement_")
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     * 
      */
 class AnnouncementController extends AbstractController
 {
@@ -30,20 +30,22 @@ class AnnouncementController extends AbstractController
          * @var User
          */
         $user =  $security->getUser();
+        
+        if (!$user === null){
+            if ($user->getUserEnterprise() === null)
 
-        if ($user->getUserEnterprise() === null)
-
-        {
-            return $this->render('announcement/browse.html.twig', [
-                'announcement_browse' => $announcementRepository->findByRecrutement(),
-               
-            ]);
-        }
-        if ($user->getUserMember() === null){
-            return $this->render('announcement/browse.html.twig', [
-            'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
-               
-            ]);
+            {
+                return $this->render('announcement/browse.html.twig', [
+                    'announcement_browse' => $announcementRepository->findByRecrutement(),
+                
+                ]);
+            }
+            if ($user->getUserMember() === null){
+                return $this->render('announcement/browse.html.twig', [
+                'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
+                
+                ]);
+            }
         }
         return $this->render('announcement/browse.html.twig', [
         'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise()]);
