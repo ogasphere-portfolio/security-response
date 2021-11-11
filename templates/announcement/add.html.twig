@@ -36,12 +36,12 @@
 						<div class="my-2">
 							<h5>Liste des membres ayant postulé à l'annonce</h5>
 							{% if 'announcement_edit' == app.request.get('_route') %}
-							{% for member in announcement.members %}
-								<span>{{member.firstname }}
-									{{member.lastname }}
-									{{member.user }}
-								</span><br>
-							{% endfor %}
+								{% for member in announcement.members %}
+									<span>{{member.firstname }}
+										{{member.lastname }}
+										{{member.user }}
+									</span><br>
+								{% endfor %}
 							{% endif %} 
 
 							<button type="submit" class="btn btn-primary mt-4">
