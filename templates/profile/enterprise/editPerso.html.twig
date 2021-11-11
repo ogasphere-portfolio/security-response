@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Espace entreprise{% endblock %}
+{% block title %}Espace membre{% endblock %}
 
 {% block body %}
 
@@ -31,41 +31,36 @@
 					</div>
 					<div class="col-7 col-sm-9">
 						<div class="tab-content" id="vert-tabs-tabContent">
+            
 							<div class="tab-pane text-left fade active show" id="vert-tabs-connexion" role="tabpanel" aria-labelledby="vert-tabs-connexion-tab">
 								<h3><strong>Mes informations de connexion</strong></h3>
-								{% for message in app.flashes('success') %}
-                                    <div class="alert alert-success" role="alert">
-                                        {{ message }}
-                                    </div>
-                                {% endfor %}
-                                {% for message in app.flashes('error') %}
-                                    <div class="alert alert-danger" role="alert">
-                                        {{ message }}
-                                    </div>
-                                {% endfor %}
-                                {{ form_start(user_form) }}
-                                {{ form_row(user_form.email) }}
+								<div class="mb-3 d-flex flex-column"><strong>Email :</strong>
+									<p>{{ app.user }}</p>
+								</div>
+												<div class="mb-3 d-flex flex-column"><strong>Password :</strong>
+									<p>*********</p>
+								</div>
 
-                                    <div class="mb-3">
-                                        <label for="pass">Nouveau mot de passe</label>
-                                        <input type="password" id="pass" name="pass" class="form-control">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="pass">Confirmer le mot de passe</label>
-                                        <input type="password" id="pass2" name="pass2" class="form-control">
-                                    </div>
-
-                                <input class="btn btn-primary" type="submit" name="EditConnexion"> 																
-																<a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
-                                {{ form_end(user_form) }}
-
-							</div>
 							<div class="tab-pane fade" id="vert-tabs-coordinate" role="tabpanel" aria-labelledby="vert-tabs-coordinate-tab">
-								<h3 class="mb-5"><strong>Mes coordonnées</strong></h3>
-								<p><strong>Nom de l'entreprise : </strong>{{ app.user.userEnterprise.businessname }}</p>
-								<p><strong>Adresse : </strong>{{ app.user.userEnterprise.address }}</p>
-								<p><strong>Ville : </strong>{{ app.user.userEnterprise.zipcode }} ,{{ app.user.userEnterprise.city }}</p>
+								<h3><strong>Mes coordonnées</strong></h3>
+
+							        {{ form_start(enterprise_form) }}
+                                	{{ form_row(enterprise_form.business_name) }}
+																	{{ form_row(enterprise_form.address) }}
+																	{{ form_row(enterprise_form.address_more) }}
+																	{{ form_row(enterprise_form.zip_code) }}
+																	{{ form_row(enterprise_form.city) }}
+																	{{ form_row(enterprise_form.siret_number) }}
+																	{{ form_row(enterprise_form.phone_number) }}
+																	{{ form_row(enterprise_form.logo) }}
+																	{{ form_row(enterprise_form.contact_mail) }}
+																	
+									<input class="btn btn-primary" type="submit" name="EditConnexion"> 																
+									<a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
+               				{{ form_end(enterprise_form) }}	
+
 							</div>
+
 							<div class="tab-pane fade" id="vert-tabs-certification" role="tabpanel" aria-labelledby="vert-tabs-certification-tab">
 								<h3 class="mb-5"><strong>Mes certifications</strong></h3>
 								{% if  app.user.userEnterprise.certification %}
@@ -117,3 +112,4 @@
 	</div>
 </main>
 {% endblock %}
+

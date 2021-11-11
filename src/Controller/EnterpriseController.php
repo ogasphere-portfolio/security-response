@@ -161,6 +161,38 @@ var_dump($resultByCity);
     }
 
     /**
+     * @Route("/edit/infospersonnelles", name="edit_perso", methods={"GET", "POST"})
+     */
+    public function editPerso(Request $request, Security $security): Response
+    {
+        /**
+         * @var \App\Entity\User
+         */
+        $userEnterprise = $security->getUser();
+        $enterprise = $userEnterprise->getUserEnterprise();
+
+        $enterpriseForm = $this->createForm(EnterpriseType::class, $enterprise);
+
+        $enterpriseForm->handleRequest($request);
+
+        if ($enterpriseForm->isSubmitted() && $enterpriseForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            
+            $entityManager->flush();
+
+            $this->addFlash('success', "Les coordonnées ont été modifiées");
+
+            return $this->redirectToRoute('enterprise_edit_perso');
+        }
+                    
+
+        return $this->render('profile/enterprise/editPerso.html.twig', [            
+            'enterprise_form' => $enterpriseForm->createView(),
+            'enterprise' => $security,
+        ]);
+    }
+
+    /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
     public function add(Request $request): Response
