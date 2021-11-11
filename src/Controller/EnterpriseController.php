@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Enterprise;
 use App\Form\EnterpriseType;
+use App\Form\UserType;
 use App\Repository\EnterpriseRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * Les annotations de routes au niveau de la classe servent de préfixe à toutes les routes définies dans celle ci
@@ -104,6 +107,56 @@ var_dump($resultByCity);
             'enterprise_form' => $enterpriseForm->createView(),
             'enterprise' => $enterprise,
             'page' => 'edit',
+        ]);
+    }
+
+    /**
+     * @Route("/edit/connexion", name="edit_connexion", methods={"GET", "POST"})
+     */
+    public function editConnexion(Request $request, Security $security, UserPasswordHasherInterface $passwordHasher): Response
+    {
+        /**
+         * @var User
+         */
+        $userEnterprise = $security->getUser();
+        $userEnterprise->getUserEnterprise()->getBusinessName();
+
+        $enterpriseForm = $this->createForm(UserType::class, $userEnterprise);
+
+        $enterpriseForm->handleRequest($request);
+
+        if ($enterpriseForm->isSubmitted() && $enterpriseForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();            
+            
+            $entityManager->flush();
+
+            $this->addFlash('success', "Les infos de connexions ont été modifiées");
+
+            return $this->redirectToRoute('enterprise_edit_connexion');
+        }
+        
+        if($request->isMethod('POST')) {
+
+            // Verification if the two submit password are equal
+            if($request->request->get('pass') == $request->request->get('pass2')) {
+
+                $hashedPassword = $passwordHasher->hash($userEnterprise, $request->request->get('pass'));
+                $userEnterprise->setPassword($hashedPassword);
+
+                $this->getDoctrine()->getManager()->flush();
+                $this->addFlash('message', "Le mot de passe à été modifié.");
+
+                return $this->redirectToRoute('enterprise_edit_connexion');
+
+            } else {
+                $this->addFlash('error', "Les deux mots de passes ne sont pas identiques.");
+            }
+            
+        }
+
+        return $this->render('profile/enterprise/editConnexion.html.twig', [
+            'user_form' => $enterpriseForm->createView(),
+            'enterprise' => $security,
         ]);
     }
 

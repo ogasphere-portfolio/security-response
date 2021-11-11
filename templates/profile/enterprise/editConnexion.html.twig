@@ -1,12 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Espace Entreprise
-{% endblock %}
+{% block title %}Espace entreprise{% endblock %}
 
 {% block body %}
-	{% for message in app.flashes('success') %}
-		<div class="alert alert-success" role="alert">{{ message }}</div>
-	{% endfor %}
 
 <main>
 	<div class="container">
@@ -22,28 +18,46 @@
 				<div class="row">
 					<div class="col-5 col-sm-3">
 					<h4 class="px-0 py-2 text-left fw-bold">Mon compte</h4>
-						<h6 class="px-0 py-2 text-left">{{ app.user.userEnterprise }}</h6>
+						<h6 class="px-0 py-2 text-center">{{ app.user.userEnterprise }}</h6>
 						<div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
 							<a class="nav-link active" id="vert-tabs-connexion-tab" data-toggle="pill" href="#vert-tabs-connexion" role="tab" aria-controls="vert-tabs-connexion" aria-selected="false">Infos de connexion</a>
-							<a class="nav-link" id="vert-tabs-coordinate-tab" data-toggle="pill" href="#vert-tabs-coordinate" role="tab" aria-controls="vert-tabs-coordinate" aria-selected="false">Mes coordonnées</a>
-							<a class="nav-link" id="vert-tabs-certification-tab" data-toggle="pill" href="#vert-tabs-certification" role="tab" aria-controls="vert-tabs-certification" aria-selected="false">Mes Certifications</a>
+							<a class="nav-link" id="vert-tabs-coordinate-tab" data-toggle="pill" href="#vert-tabs-coordinate" role="tab" aria-controls="vert-tabs-coordinate" aria-selected="false">Mes Informations personnelles</a>
+							<a class="nav-link" id="vert-tabs-specialization-tab" data-toggle="pill" href="#vert-tabs-specialization" role="tab" aria-controls="vert-tabs-specialization" aria-selected="false">Mes spécialisations</a>
 							<a class="nav-link" id="vert-tabs-delete-tab" data-toggle="pill" href="#vert-tabs-delete" role="tab" aria-controls="vert-tabs-delete" aria-selected="true">Supprimer mon compte</a>
 							<br><h4 class="px-0 py-2 text-left fw-bold">Mes annonces</h4>
-							<a class="nav-link" href="{{ path('announcement_add') }}">Créer une annonce</a>
 							<a class="nav-link" id="vert-tabs-announcement-tab" data-toggle="pill" href="#vert-tabs-announcement" role="tab" aria-controls="vert-tabs-announcement" aria-selected="true">Gérer mes annonces</a>
 						</div>
 					</div>
 					<div class="col-7 col-sm-9">
 						<div class="tab-content" id="vert-tabs-tabContent">
 							<div class="tab-pane text-left fade active show" id="vert-tabs-connexion" role="tabpanel" aria-labelledby="vert-tabs-connexion-tab">
-								<h3 class="mb-5"><strong>Mes informations de connexion</strong></h3>
-								<div class="mb-3 d-flex flex-column"><strong>Email :</strong>
-									<p>{{ app.user }}</p>
-								</div>
-                                <div class="mb-3 d-flex flex-column"><strong>Password :</strong>
-									<p>*********</p>
-								</div>
-								<a class="btn btn-primary" href="{{ url('enterprise_edit_connexion') }}" title="EditConnexion" alt="Edit">Modifier</a>
+								<h3><strong>Mes informations de connexion</strong></h3>
+								{% for message in app.flashes('success') %}
+                                    <div class="alert alert-success" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                {% for message in app.flashes('error') %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                {{ form_start(user_form) }}
+                                {{ form_row(user_form.email) }}
+
+                                    <div class="mb-3">
+                                        <label for="pass">Nouveau mot de passe</label>
+                                        <input type="password" id="pass" name="pass" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="pass">Confirmer le mot de passe</label>
+                                        <input type="password" id="pass2" name="pass2" class="form-control">
+                                    </div>
+
+                                <input class="btn btn-primary" type="submit" name="EditConnexion"> 																
+																<a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
+                                {{ form_end(user_form) }}
+
 							</div>
 							<div class="tab-pane fade" id="vert-tabs-coordinate" role="tabpanel" aria-labelledby="vert-tabs-coordinate-tab">
 								<h3 class="mb-5"><strong>Mes coordonnées</strong></h3>
@@ -101,5 +115,4 @@
 		</div>
 	</div>
 </main>
-
 {% endblock %}
