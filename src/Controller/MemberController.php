@@ -169,7 +169,8 @@ class MemberController extends AbstractController
         $member = $userMember->getUserMember();
 
         $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()} à été supprimé");
-                
+         
+        // logout of current user
         $tokenStorage->setToken();
 
         $entityManager->remove($member);

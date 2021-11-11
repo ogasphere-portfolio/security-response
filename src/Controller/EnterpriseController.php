@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Security;
 
 /**
@@ -233,7 +234,7 @@ var_dump($resultByCity);
     /**
      * @Route("/delete", name="delete", methods={"GET"})
      */
-    public function delete(Security $security, EntityManagerInterface $entityManager): Response
+    public function delete(Security $security, EntityManagerInterface $entityManager, TokenStorageInterface $tokenStorage): Response
     {
         /**
          * @var \App\Entity\User
@@ -242,6 +243,9 @@ var_dump($resultByCity);
         $enterprise = $userEnterprise->getUserEnterprise();
 
         $this->addFlash('success', "L'entreprise' {$enterprise->getBusinessName()} à été supprimée");
+
+        // logout of current user
+        $tokenStorage->setToken();
 
         $entityManager->remove($enterprise);
         $entityManager->flush();
