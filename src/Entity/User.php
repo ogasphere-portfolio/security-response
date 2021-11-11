@@ -49,7 +49,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $userMember;
 
     /**
-     * @ORM\OneToOne(targetEntity=Enterprise::class, inversedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Enterprise::class, inversedBy="user")
      */
     private $userEnterprise;
 

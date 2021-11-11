@@ -132,7 +132,7 @@ var_dump($resultByCity);
 
             $this->addFlash('success', "Les infos de connexions ont été modifiées");
 
-            return $this->redirectToRoute('enterprise_edit_connexion');
+            return $this->redirectToRoute('profile_enterprise');
         }
         
         if($request->isMethod('POST')) {
@@ -146,7 +146,7 @@ var_dump($resultByCity);
                 $this->getDoctrine()->getManager()->flush();
                 $this->addFlash('message', "Le mot de passe à été modifié.");
 
-                return $this->redirectToRoute('enterprise_edit_connexion');
+                return $this->redirectToRoute('profile_enterprise');
 
             } else {
                 $this->addFlash('error', "Les deux mots de passes ne sont pas identiques.");
@@ -182,7 +182,7 @@ var_dump($resultByCity);
 
             $this->addFlash('success', "Les coordonnées ont été modifiées");
 
-            return $this->redirectToRoute('enterprise_edit_perso');
+            return $this->redirectToRoute('profile_enterprise');
         }
                     
 
@@ -231,11 +231,17 @@ var_dump($resultByCity);
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/delete", name="delete", methods={"GET"})
      */
-    public function delete(Enterprise $enterprise, EntityManagerInterface $entityManager): Response
+    public function delete(Security $security, EntityManagerInterface $entityManager): Response
     {
-        $this->addFlash('success', "L'entreprise {$enterprise->getBusinessName()} à été supprimé");
+        /**
+         * @var \App\Entity\User
+         */
+        $userEnterprise = $security->getUser();
+        $enterprise = $userEnterprise->getUserEnterprise();
+
+        $this->addFlash('success', "L'entreprise' {$enterprise->getBusinessName()} à été supprimée");
 
         $entityManager->remove($enterprise);
         $entityManager->flush();

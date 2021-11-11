@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Security;
 
 /**
@@ -159,7 +160,7 @@ class MemberController extends AbstractController
     /**
      * @Route("/delete", name="delete", methods={"GET"})
      */
-    public function delete(Security $security, EntityManagerInterface $entityManager): Response
+    public function delete(Security $security, EntityManagerInterface $entityManager, TokenStorageInterface $tokenStorage): Response
     {
         /**
          * @var \App\Entity\User
@@ -168,6 +169,8 @@ class MemberController extends AbstractController
         $member = $userMember->getUserMember();
 
         $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()} à été supprimé");
+                
+        $tokenStorage->setToken();
 
         $entityManager->remove($member);
         $entityManager->flush();
