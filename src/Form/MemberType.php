@@ -15,8 +15,6 @@ use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 class MemberType extends AbstractType
 {
 
-    
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
 
