@@ -34,8 +34,8 @@
 							<p class="">{{ form_widget(announcement_form.description) }}</p>
 						</div>
 						<div class="my-2">
-							<h5>Liste des membres ayant postulé à l'annonce</h5>
 							{% if 'announcement_edit' == app.request.get('_route') %}
+							<h5>Liste des membres ayant postulé à l'annonce</h5>
 								{% for member in announcement.members %}
 									<span>{{member.firstname }}
 										{{member.lastname }}

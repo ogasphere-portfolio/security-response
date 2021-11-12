@@ -22,9 +22,9 @@ class MemberType extends AbstractType
             'choices'  => [
                 'Monsieur' => 1,
                 'Madame' => 2,
-                
                 //'No' => false,
             ],
+            'required' => true,
             'expanded' => true,
             'multiple' => false,
             'label' => false,
@@ -54,7 +54,7 @@ class MemberType extends AbstractType
                 'expanded' => false,
                 'multiple' => false,
                 ])
-                ->add('picture')
+                // ->add('picture')
             //->add('created_at')
             // ->add('updated_at')
             // ->add('created_by')
