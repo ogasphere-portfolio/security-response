@@ -53,6 +53,13 @@
                                         Femme
                                     {% endif %}
                                 </p>
+								<p><strong>Status : </strong><br>
+								{% if app.user.userMember.jobStatus == "1" %}
+                                        Actuellement en poste
+                                    {% else %}
+                                        En recherche d'emploi
+                                    {% endif %}
+								</p>
 
 								<a class="btn btn-primary" href="{{ url('member_edit_perso') }}" title="personal information" alt="Edit">Modifier</a>
 							</div>
