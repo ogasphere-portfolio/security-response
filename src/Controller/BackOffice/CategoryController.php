@@ -44,7 +44,6 @@ class CategoryController extends AbstractController
         ]);
 
         
-
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/category/read.html.twig', [
             'form' => $categoryForm->createView(),

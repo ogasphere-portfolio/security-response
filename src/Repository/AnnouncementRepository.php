@@ -20,10 +20,6 @@ class AnnouncementRepository extends ServiceEntityRepository
         parent::__construct($registry, Announcement::class);
     }
 
-
-    
-    
-    
     /**
      * Récupère toutes les informations liées au tvShow demandé
      *@return Announcement[]
@@ -41,7 +37,7 @@ class AnnouncementRepository extends ServiceEntityRepository
         FROM App\Entity\Announcement a
         INNER JOIN App\Entity\Category c 
         WITH a.category = c.id
-        WHERE c.name = 'RECRUTEMENT'"; 
+        WHERE c.name = 'Recrutement'"; 
 
         $query = $entityManager->createQuery(
             $dqlQuery
@@ -75,14 +71,14 @@ class AnnouncementRepository extends ServiceEntityRepository
         FROM App\Entity\Announcement a
         INNER JOIN App\Entity\Category c 
         WITH a.category = c.id
-        WHERE c.name <> 'RECRUTEMENT'
+        WHERE c.name <> 'Recrutement'
         ORDER BY a.created_at DESC"; 
 
         $query = $entityManager->createQuery(
             $dqlQuery
         );
          
-        
+       
         // $dqlQuery = $select . $from . $join . $where;
 
         //dd($dqlQuery);
