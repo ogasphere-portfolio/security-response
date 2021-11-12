@@ -83,7 +83,22 @@
 													<p class="" href="{{ path('announcement_read', {"id": annonce.id}) }}">Date de création : {{ annonce.createdAt|date("d/m/Y") }}</p>
 												</div>
 
-															</span>
+													<div class="d-flex flex-row me-4 m-auto">
+														<a class="btn btn-primary mx-3" aria-current="page" href="{{ path('announcement_edit', {"id" : annonce.id}) }}">Modifier</a>
+														<a class="btn btn-primary mx3" aria-current="page" href="{{ path('announcement_delete', {"id" : annonce.id}) }}">Supprimer</a>
+
+														{% if  annonce.members|length >0 %}
+															<span class="badge bg-warning text-dark position-relative mx-5">
+
+																{% if  annonce.members|length == 1 %}
+																	postulant
+																{% else %}
+																	postulants
+																{% endif %}
+																<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+																	{{ annonce.members|length }}
+																</span>
+															
 														{% endif %}
 													</div>
 												</ul>
