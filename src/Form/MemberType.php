@@ -61,7 +61,7 @@ class MemberType extends AbstractType
             // ->add('updated_by')
             // ->add('announcements')
             // ->add('social_network')
-            //->add('specialization')
+            ->add('specialization')
             //->add('document')
         ;
     }

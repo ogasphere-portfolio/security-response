@@ -58,11 +58,14 @@ class AnnouncementController extends AbstractController
         $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
 
         $announcementForm->handleRequest($request);
-
+       
+       
+        
+       
         if ($announcementForm->isSubmitted() && $announcementForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            $announcement->setUpdatedAt(new DateTimeImmutable());
+           
             $entityManager->flush();
 
             $this->addFlash('success', "Announcement `{$announcement->getTitle()}` udpated successfully");
@@ -77,6 +80,7 @@ class AnnouncementController extends AbstractController
             'page' => 'edit',
         ]);
     }
+
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
