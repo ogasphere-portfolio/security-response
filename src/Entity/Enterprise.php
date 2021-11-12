@@ -126,7 +126,7 @@ class Enterprise
     private $documents;
 
      /**
-     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="enterprise")
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="enterprise", cascade={"persist", "remove"})
      */
     private $announcement;
 
