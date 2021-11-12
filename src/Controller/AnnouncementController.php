@@ -122,7 +122,7 @@ class AnnouncementController extends AbstractController
              */
             $user = $security->getUser();
 
-            $announcement->setEnterprise($user->getUserEnterprise());
+            // $announcement->setEnterprise($user->getUserEnterprise());
 
             // on ne demande l'entityManager que si on en a besoin
             $entityManager = $this->getDoctrine()->getManager();
@@ -131,6 +131,10 @@ class AnnouncementController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', "L'annonce {$announcement->getTitle()} a été créée");
+
+            if (empty(($this->getUser()))) {
+                return $this->redirectToRoute('homepage');
+            }
 
             // redirection
             return $this->redirectToRoute('profile_enterprise');
