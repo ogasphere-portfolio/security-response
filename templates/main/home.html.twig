@@ -31,12 +31,10 @@
                 <div class="col-lg-6 col-md-8">
                     <h3 class="fw-bold text-start">Vous avez subit une attaque informatique ?</h3>
                     <p>Créez une annonce dès maintenant pour vous protéger. Nos experts inscrits sur la plateforme vous aiderons à corriger ce problème.</p>                   
-                </div>
-            
-                <form action="">
-                    <button class="btn btn-success" type="submit">Créer une annonce</button>
-                </form>
-                       
+                </div> 
+                    {% if is_granted('ANNOUNCE_ADD') %}           
+                        <a class="btn btn-success" href="{{ path('announcement_add') }}" type="submit">Créer une annonce</a>      
+                    {% endif %}               
             </div>
         </section>
 

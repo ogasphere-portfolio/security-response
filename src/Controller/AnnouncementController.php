@@ -7,6 +7,7 @@ use App\Entity\Announcement;
 use App\Form\AnnouncementType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\AnnouncementRepository;
+use App\Security\Voter\AnnoucementVoter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -99,7 +100,9 @@ class AnnouncementController extends AbstractController
     public function add(Request $request, Security $security): Response
     {
         $announcement = new Announcement();
-         
+
+        $this->denyAccessUnlessGranted(AnnoucementVoter::ADD, $announcement);
+        
         $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
 
         $announcementForm->handleRequest($request);
