@@ -33,6 +33,18 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    /**
+     * 
+     * 
+     * @Route("/404", name="404")
+     */
+    public function error404(): Response
+    {
+        return $this->render('main/erro404.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
    
 
 }
