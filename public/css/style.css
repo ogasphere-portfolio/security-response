@@ -255,7 +255,12 @@ h4 {
 .profile-heading {
     width: 250px;
 }
-
+.register-member{
+    background: linear-gradient(82.08deg, #3349ec 0%, #4b5ae6 100%);
+}
+.register-enterprise {
+    background: linear-gradient(82.08deg, #3349ec 0%, #4b5ae6 100%);
+}
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
