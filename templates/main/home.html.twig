@@ -32,8 +32,8 @@
                     <h3 class="fw-bold text-start">Vous avez subit une attaque informatique ?</h3>
                     <p>Créez une annonce dès maintenant pour vous protéger. Nos experts inscrits sur la plateforme vous aiderons à corriger ce problème.</p>                   
                 </div> 
-                    {% if is_granted('ROLE_MEMBER') == false %}           
-                    <a class="btn btn-success" href="{{ path('announcement_add') }}" type="submit">Créer une annonce</a>      
+                    {% if is_granted('ANNOUNCE_ADD') %}           
+                        <a class="btn btn-success" href="{{ path('announcement_add') }}" type="submit">Créer une annonce</a>      
                     {% endif %}               
             </div>
         </section>

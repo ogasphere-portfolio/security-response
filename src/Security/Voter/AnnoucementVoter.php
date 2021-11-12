@@ -23,21 +23,22 @@ class AnnoucementVoter extends Voter
         if (!in_array($attribute, [self::ADD])) {
             return false;
         }
-
+            
         // only vote on `Announcement` objects
-        if (!$subject instanceof Announcement) {
+        if ($subject == null) {
+            return true;      
+        } elseif (!$subject instanceof Announcement) {
             return false;
-        }
-
+        }        
         return true;
     }
 
     protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token): bool
-    {
+    {        
         $user = $token->getUser();
         // if the user is anonymous, do grant access
         if (!$user instanceof User) {
-            return false;
+            return true;
         } 
         
         // you know $subject is a Announcement object, thanks to `supports()`
@@ -51,7 +52,8 @@ class AnnoucementVoter extends Voter
                 {
                     return true;
                 }                
-        }        
+        } 
+        return false;       
     }    
 }
     
