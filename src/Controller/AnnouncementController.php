@@ -7,6 +7,7 @@ use App\Entity\Announcement;
 use App\Form\AnnouncementType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\AnnouncementRepository;
+use App\Repository\CategoryRepository;
 use App\Security\Voter\AnnoucementVoter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
@@ -16,41 +17,39 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
-     * @Route("/annonces", name="announcement_")
-     * 
-     */
+ * @Route("/annonces", name="announcement_")
+ * 
+ */
 class AnnouncementController extends AbstractController
 {
     /**
      * @Route("/", name="browse")
      */
-    public function browse(AnnouncementRepository $announcementRepository ,Security $security): Response
+    public function browse(AnnouncementRepository $announcementRepository, Security $security): Response
     {
 
-         /**
+        /**
          * @var User
          */
         $user =  $security->getUser();
-        
-        if (isset($user)){
-            if (empty($user->getUserEnterprise()))
 
-            {
+        if (isset($user)) {
+            if (empty($user->getUserEnterprise())) {
                 return $this->render('announcement/browse.html.twig', [
                     'announcement_browse' => $announcementRepository->findByRecrutement(),
-                
+
                 ]);
             }
-            if (empty($user->getUserMember())){
+            if (empty($user->getUserMember())) {
                 return $this->render('announcement/browse.html.twig', [
-                'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
-                
+                    'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
+
                 ]);
             }
         }
         return $this->render('announcement/browse.html.twig', [
-        'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise()]);
-       
+            'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise()
+        ]);
     }
 
     /**
@@ -60,7 +59,7 @@ class AnnouncementController extends AbstractController
     public function read($id, AnnouncementRepository $announcementRepository): Response
     {
         $announcement = $announcementRepository->find($id);
-      
+
         return $this->render('announcement/read.html.twig', [
             'announcement_read' => $announcement,
         ]);
@@ -77,8 +76,8 @@ class AnnouncementController extends AbstractController
         $announcementForm->handleRequest($request);
 
         if ($announcementForm->isSubmitted() && $announcementForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();            
-           
+            $entityManager = $this->getDoctrine()->getManager();
+
             $entityManager->flush();
 
             $this->addFlash('success', "L'annonce `{$announcement->getTitle()}` a été modifiée");
@@ -97,7 +96,7 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
-    public function add(Request $request, Security $security): Response
+    public function add(Request $request, Security $security,CategoryRepository $cr): Response
     {
         $announcement = new Announcement();
 
@@ -105,16 +104,28 @@ class AnnouncementController extends AbstractController
         
         $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
 
+        if (empty(($this->getUser()))) {
+            $invitedCategory = $cr->findOneBy([
+                'name' => 'Invité'
+            ]);
+            $announcement->setCategory($invitedCategory);
+            $announcementForm
+            ->add('category', null, [
+                
+            'disabled' => 'disabled',
+            ]);
+        }
+
         $announcementForm->handleRequest($request);
 
         if ($announcementForm->isSubmitted() && $announcementForm->isValid()) {
 
             /**
-            * @var User
-            */            
+             * @var User
+             */
             $user = $security->getUser();
 
-            $announcement->setEnterprise($user->getUserEnterprise());
+            // $announcement->setEnterprise($user->getUserEnterprise());
 
             // on ne demande l'entityManager que si on en a besoin
             $entityManager = $this->getDoctrine()->getManager();
@@ -123,7 +134,11 @@ class AnnouncementController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', "L'annonce {$announcement->getTitle()} a été créée");
-            
+
+            if (empty(($this->getUser()))) {
+                return $this->redirectToRoute('homepage');
+            }
+
             // redirection
             return $this->redirectToRoute('profile_enterprise');
         }
@@ -140,7 +155,7 @@ class AnnouncementController extends AbstractController
      */
     public function delete(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
-        
+
         $entityManager->remove($announcement);
         $entityManager->flush();
 
@@ -152,14 +167,14 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/{id}/postulate", name="postulate", methods={"GET"})
      */
-    public function postulate(Announcement $announcement, EntityManagerInterface $entityManager,Security $security): Response
+    public function postulate(Announcement $announcement, EntityManagerInterface $entityManager, Security $security): Response
     {
         /**
-        * @var User
-        */    
+         * @var User
+         */
         $user = $security->getUser();
         $announcement->addMember($user->getUserMember());
-        
+
         $entityManager->persist($announcement);
         $entityManager->flush();
 
