@@ -7,6 +7,7 @@ use App\Entity\Announcement;
 use App\Form\AnnouncementType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\AnnouncementRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -94,18 +95,21 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
-    public function add(Request $request, Security $security): Response
+    public function add(Request $request, Security $security,CategoryRepository $cr): Response
     {
         $announcement = new Announcement();
 
         $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
 
         if (empty(($this->getUser()))) {
-            
+            $invitedCategory = $cr->findOneBy([
+                'name' => 'Invité'
+            ]);
+            $announcement->setCategory($invitedCategory);
             $announcementForm
             ->add('category', null, [
-                'empty_data' => 'Invité'
-            // 'disabled' => 'disabled',
+                
+            'disabled' => 'disabled',
             ]);
         }
 
