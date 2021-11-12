@@ -49,7 +49,7 @@
 								<h3 class="mb-5"><strong>Mes coordonnées</strong></h3>
 								<p><strong>Nom de l'entreprise : </strong>{{ app.user.userEnterprise.businessname }}</p>
 								<p><strong>Adresse : </strong>{{ app.user.userEnterprise.address }}</p>
-								<p><strong>Ville : </strong>{{ app.user.userEnterprise.zipcode }} ,{{ app.user.userEnterprise.city }}</p>
+								<p><strong>Ville : </strong>{{ app.user.userEnterprise.zipcode }} {{ app.user.userEnterprise.city }}</p>
 
 								<a class="btn btn-primary" href="{{ url('enterprise_edit_perso') }}" title="personal information" alt="Edit">Modifier</a>
 
