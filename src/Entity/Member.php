@@ -120,7 +120,7 @@ class Member
         $this->announcements = new ArrayCollection();
         $this->social_network = new ArrayCollection();
         $this->specialization = new ArrayCollection();
-        $this->created_at = new DateTimeImmutable();
+        
     }
     public function __toString()
     {

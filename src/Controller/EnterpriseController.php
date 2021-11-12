@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Enterprise;
 use App\Form\EnterpriseType;
+use App\Form\UserType;
 use App\Repository\EnterpriseRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,6 +12,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * Les annotations de routes au niveau de la classe servent de préfixe à toutes les routes définies dans celle ci
@@ -51,7 +55,7 @@ class EnterpriseController extends AbstractController
 
         // Use the method searchByCity in EnterpriseRepository to search enterprise by city
         $resultByCity = $EnterpriseRepository->searchByCity($searchEnterprise);
-var_dump($resultByCity);
+
         // return $this->redirectToRoute('enterprise_list');
 
         return $this->renderForm('enterprise/browse.html.twig', [
@@ -108,6 +112,88 @@ var_dump($resultByCity);
     }
 
     /**
+     * @Route("/edit/connexion", name="edit_connexion", methods={"GET", "POST"})
+     */
+    public function editConnexion(Request $request, Security $security, UserPasswordHasherInterface $passwordHasher): Response
+    {
+        /**
+         * @var User
+         */
+        $userEnterprise = $security->getUser();
+        $userEnterprise->getUserEnterprise()->getBusinessName();
+
+        $enterpriseForm = $this->createForm(UserType::class, $userEnterprise);
+
+        $enterpriseForm->handleRequest($request);
+
+        if ($enterpriseForm->isSubmitted() && $enterpriseForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();            
+            
+            $entityManager->flush();
+
+            $this->addFlash('success', "Les infos de connexions ont été modifiées");
+
+            return $this->redirectToRoute('profile_enterprise');
+        }
+        
+        if($request->isMethod('POST')) {
+
+            // Verification if the two submit password are equal
+            if($request->request->get('pass') == $request->request->get('pass2')) {
+
+                $hashedPassword = $passwordHasher->hash($userEnterprise, $request->request->get('pass'));
+                $userEnterprise->setPassword($hashedPassword);
+
+                $this->getDoctrine()->getManager()->flush();
+                $this->addFlash('message', "Le mot de passe à été modifié.");
+
+                return $this->redirectToRoute('profile_enterprise');
+
+            } else {
+                $this->addFlash('error', "Les deux mots de passes ne sont pas identiques.");
+            }
+            
+        }
+
+        return $this->render('profile/enterprise/editConnexion.html.twig', [
+            'user_form' => $enterpriseForm->createView(),
+            'enterprise' => $security,
+        ]);
+    }
+
+    /**
+     * @Route("/edit/infospersonnelles", name="edit_perso", methods={"GET", "POST"})
+     */
+    public function editPerso(Request $request, Security $security): Response
+    {
+        /**
+         * @var \App\Entity\User
+         */
+        $userEnterprise = $security->getUser();
+        $enterprise = $userEnterprise->getUserEnterprise();
+
+        $enterpriseForm = $this->createForm(EnterpriseType::class, $enterprise);
+
+        $enterpriseForm->handleRequest($request);
+
+        if ($enterpriseForm->isSubmitted() && $enterpriseForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            
+            $entityManager->flush();
+
+            $this->addFlash('success', "Les coordonnées ont été modifiées");
+
+            return $this->redirectToRoute('profile_enterprise');
+        }
+                    
+
+        return $this->render('profile/enterprise/editPerso.html.twig', [            
+            'enterprise_form' => $enterpriseForm->createView(),
+            'enterprise' => $security,
+        ]);
+    }
+
+    /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
     public function add(Request $request): Response
@@ -146,11 +232,20 @@ var_dump($resultByCity);
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/delete", name="delete", methods={"GET"})
      */
-    public function delete(Enterprise $enterprise, EntityManagerInterface $entityManager): Response
+    public function delete(Security $security, EntityManagerInterface $entityManager, TokenStorageInterface $tokenStorage): Response
     {
-        $this->addFlash('success', "L'entreprise {$enterprise->getBusinessName()} à été supprimé");
+        /**
+         * @var \App\Entity\User
+         */
+        $userEnterprise = $security->getUser();
+        $enterprise = $userEnterprise->getUserEnterprise();
+
+        $this->addFlash('success', "L'entreprise' {$enterprise->getBusinessName()} à été supprimée");
+
+        // logout of current user
+        $tokenStorage->setToken();
 
         $entityManager->remove($enterprise);
         $entityManager->flush();

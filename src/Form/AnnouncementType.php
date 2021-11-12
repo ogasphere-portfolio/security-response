@@ -10,6 +10,7 @@ use App\Entity\Specialization;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Security\Core\Security;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use PhpParser\Parser\Multiple;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -52,7 +53,12 @@ class AnnouncementType extends AbstractType
             //     'choice_label' => 'name',
             // ])
             ->add('category', EntityType::class,[
-                'class' => Category::class])   
+                'class' => Category::class])  
+            ->add('members', EntityType::class,[
+                'class' => Member::class,
+                'choice_label' => 'firstname',
+                'multiple' => true,
+                'disabled' =>true]) 
             ;                             
     }
 

@@ -1,12 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Espace Entreprise
-{% endblock %}
+{% block title %}Espace entreprise{% endblock %}
 
 {% block body %}
-	{% for message in app.flashes('success') %}
-		<div class="alert alert-success" role="alert">{{ message }}</div>
-	{% endfor %}
 
 <main>
 	<div class="container">
@@ -36,23 +32,39 @@
 					<div class="col-7 col-sm-9">
 						<div class="tab-content" id="vert-tabs-tabContent">
 							<div class="tab-pane text-left fade active show" id="vert-tabs-connexion" role="tabpanel" aria-labelledby="vert-tabs-connexion-tab">
-								<h3 class="mb-5"><strong>Mes informations de connexion</strong></h3>
-								<div class="mb-3 d-flex flex-column"><strong>Email :</strong>
-									<p>{{ app.user }}</p>
-								</div>
-                                <div class="mb-3 d-flex flex-column"><strong>Password :</strong>
-									<p>*********</p>
-								</div>
-								<a class="btn btn-primary" href="{{ url('enterprise_edit_connexion') }}" title="EditConnexion" alt="Edit">Modifier</a>
+								<h3><strong>Mes informations de connexion</strong></h3>
+								{% for message in app.flashes('success') %}
+                                    <div class="alert alert-success" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                {% for message in app.flashes('error') %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                {{ form_start(user_form) }}
+                                {{ form_row(user_form.email) }}
+
+                                    <div class="mb-3">
+                                        <label for="pass">Nouveau mot de passe</label>
+                                        <input type="password" id="pass" name="pass" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="pass">Confirmer le mot de passe</label>
+                                        <input type="password" id="pass2" name="pass2" class="form-control">
+                                    </div>
+
+                                <input class="btn btn-primary" type="submit" name="EditConnexion"> 																
+																<a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
+                                {{ form_end(user_form) }}
+
 							</div>
 							<div class="tab-pane fade" id="vert-tabs-coordinate" role="tabpanel" aria-labelledby="vert-tabs-coordinate-tab">
 								<h3 class="mb-5"><strong>Mes coordonnées</strong></h3>
 								<p><strong>Nom de l'entreprise : </strong>{{ app.user.userEnterprise.businessname }}</p>
 								<p><strong>Adresse : </strong>{{ app.user.userEnterprise.address }}</p>
 								<p><strong>Ville : </strong>{{ app.user.userEnterprise.zipcode }} ,{{ app.user.userEnterprise.city }}</p>
-
-								<a class="btn btn-primary" href="{{ url('enterprise_edit_perso') }}" title="personal information" alt="Edit">Modifier</a>
-
 							</div>
 							<div class="tab-pane fade" id="vert-tabs-certification" role="tabpanel" aria-labelledby="vert-tabs-certification-tab">
 								<h3 class="mb-5"><strong>Mes certifications</strong></h3>
@@ -67,7 +79,7 @@
 							<div class="tab-pane fade" id="vert-tabs-delete" role="tabpanel" aria-labelledby="vert-tabs-delete-tab">
 								<h3 class="mb-5"><strong>Supprimer mon compte</strong></h3>
 								<p>Cette action supprimera définitivement votre compte.</p>
-								<a class="btn btn-primary" href="{{ url('enterprise_delete') }}" title="DeleteAccount" alt="Delete">Suppression du compte</a>
+								<a class="btn btn-primary" href="" title="DeleteAccount" alt="Delete">Suppression du compte</a>
 							</div>
 							<div class="tab-pane fade" id="vert-tabs-create_announcement" role="tabpanel" aria-labelledby="vert-tabs-create_announcement-tab">
 								<h3>Création d'une annonce</h3>
@@ -83,40 +95,25 @@
 													<p class="" href="{{ path('announcement_read', {"id": annonce.id}) }}">Date de création : {{ annonce.createdAt|date("d/m/Y") }}</p>
 												</div>
 
-													<div class="d-flex flex-row me-4 m-auto">
-														<a class="btn btn-primary mx-3" aria-current="page" href="{{ path('announcement_edit', {"id" : annonce.id}) }}">Modifier</a>
-														<a class="btn btn-primary mx3" aria-current="page" href="{{ path('announcement_delete', {"id" : annonce.id}) }}">Supprimer</a>
-
-														{% if  annonce.members|length >0 %}
-															<span class="badge bg-warning text-dark position-relative mx-5">
-
-																{% if  annonce.members|length == 1 %}
-																	postulant
-																{% else %}
-																	postulants
-																{% endif %}
-																<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-																	{{ annonce.members|length }}
-																</span>
-															
-														{% endif %}
-													</div>
-												</ul>
-											</div>
-										{% endfor %}
-									{% else %}
-										<p>Aucune annonce n'a été créée pour le moment.</p>
-									{% endif %}
-								</div>
+												<div class="d-flex flex-row me-4 m-auto">												
+													<a class="btn btn-primary mx-3" aria-current="page" href="{{ path('announcement_edit', {"id" : annonce.id}) }}">Modifier</a>
+													<a class="btn btn-primary mx3" aria-current="page" href="{{ path('announcement_delete', {"id" : annonce.id}) }}">Supprimer</a>
+												</div>
+											</ul>									
+										</div>
+									{% endfor %}
+								{% else %}
+									<p>Aucune annonce n'a été créée pour le moment.</p>	 
+								{% endif %}
 							</div>
 						</div>
 					</div>
-
 				</div>
-				<!-- /.card -->
-
+				
 			</div>
-		</div>
-	</main>
+			<!-- /.card -->
 
+		</div>
+	</div>
+</main>
 {% endblock %}
