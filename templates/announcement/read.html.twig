@@ -59,7 +59,7 @@
 		</div>
 		<br>
 		{% if 'announcement_read' == app.request.get('_route') %}
-			{% if app.user%}
+			{% if app.user %}
 				{% if app.user.userMember %}
 					{% if announcement_read.members|length >0 %}
 						<h5>Liste des membres ayant postulé à l'annonce</h5>

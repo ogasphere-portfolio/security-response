@@ -5,35 +5,47 @@
 
 {% block body %}
 
-<main>
-    <div class="container mt-6">
-        <div class="row">
-            <div class="col-md-6 w-md-75 mx-auto">
-              
-                <div class="account-wall p-5">
-        
-                        <h1 class="h3 mb-4 font-weight-normal">Inscription</h1>
-                        {% for flashError in app.flashes('verify_email_error') %}
-                            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-                        {% endfor %}
-                        {{ form_start(registrationForm) }}
-                            {{ form_row(registrationForm.email) }}
-                            {{ form_row(registrationForm.password) }}
-                            {# {{ form_row(registrationForm.agreeTerms) }}   #}
-                            {{ form_row(registrationForm.membershipType) }}
-                            {{ form_row(registrationForm.userMember) }}
-                                                     
-                            {{ form_row(registrationForm.userEnterprise) }}   
+	<main>
+		<div class="container mt-4">
+			<div class="row">
+				<div class="col-md-6 w-md-75 mx-auto">
 
-                        <div class="col-12">
-                            <button class="btn btn-lg btn-primary" type="submit">S'inscrire</button>
-                        </div>
-                        
-                        {{ form_end(registrationForm) }}
-                    </div>
-            </div>
-        </div>
-    </div>
-</main>
+					<div class="account-wall p-5">
+
+						<h1 class="h3 mb-4 font-weight-normal">Inscription</h1>
+						{% for flashError in app.flashes('verify_email_error') %}
+							<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+						{% endfor %}
+						{{ form_start(registrationForm) }}
+						{{ form_row(registrationForm.email) }}
+						{{ form_row(registrationForm.password) }}
+						{# {{ form_row(registrationForm.agreeTerms) }}   #}
+
+						<div class="row ">
+							<div class="col register-member">
+								<p class ="mt-2">Vous étes en <Strong>recherche d'emploi</Strong>  dans le domaine de la sécurité informatique</p>
+								<p>Inscrivez vous en tant que membre</p>
+							</div>
+							<div class="col register-enterprise">
+								<p class ="mt-2">Vous étes une <Strong>entreprise de sécurité</Strong> informatique</p>
+								<p>Inscrivez-vous en tant qu'entreprise</p>
+							</div>
+						</div>
+                      
+						{{ form_row(registrationForm.membershipType) }}
+						{{ form_row(registrationForm.userMember) }}
+
+						{{ form_row(registrationForm.userEnterprise) }}
+                       
+						<div class="col-12">
+							<button class="btn btn-lg btn-primary" type="submit">S'inscrire</button>
+						</div>
+
+						{{ form_end(registrationForm) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
 
 {% endblock %}
