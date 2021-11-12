@@ -1,0 +1,50 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}
+    {% if page == 'create' %}
+    Nouvelle catégorie
+    {% else %}
+    Catégorie : {{ category.name }}
+    {% endif %}
+{% endblock %}
+
+
+
+{% block body %}
+<div class="container">
+
+{% for message in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ message }}</div>
+
+
+
+	{% endfor %}
+<h1> 
+    {% if page == 'create' %}
+        Nouvelle catégorie
+    {% else %}
+        Modification {{ category.name }}
+    {% endif %}
+</h1>
+<div class="text-end">
+</div>
+
+ {{ form_start(form) }}
+
+ 
+    {{ form_errors(form) }}
+    {{ form_row(form.name) }}
+   
+ 
+    <button type="submit" class="btn btn-primary mt-4">
+    {% if 'backoffice_category_add' == app.request.get('_route') %}
+    Ajouter
+    {% else %}
+    Modifier
+    {% endif %}
+    </button>
+
+{{ form_end(form) }} 
+
+</div>
+{% endblock %}
