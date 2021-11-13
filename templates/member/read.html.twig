@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Membre
+{% endblock %}
+
+{% block body %}
+	<main>
+		<div class="container">
+			<section class="py-5 text-center container mt-">
+				<div class="d-flex py-lg-5 justify-content-between w-75 mx-auto">
+
+					<h1 class="fw-bold text-start">Détail du membre</h1>
+					<a class="btn btn-primary" aria-current="page" href="
+						{% if app.user is not empty %}
+							{% if app.user.userMember == null %}
+								{{ url('member_browse') }}
+							{% else %}
+								{{ url('member_browse') }}
+							{% endif %}">
+						Retour
+					{% else %}
+						{{ url('member_browse') }}">
+						retour
+					{% endif %}
+				</a>
+
+			</div>
+		</section>
+
+		<div class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">
+			<div class="d-flex flex-column">
+				<div class="d-flex flex-row my-2 justify-content-between">
+					<h3>{{ member_read.firstname }} {{ member_read.lastname }}</h3>
+					
+				</div>
+
+				<div class="my-2">
+					<h5>Description</h5>
+					<thead>
+						<tr>
+							<th scope="col">{{ member_read.description }}</th>
+						</tr>
+					</thead>
+				</div>
+
+				
+			</form>
+			<em>Créé le
+				{{ member_read.createdAt|date("d/m/Y") }}</em>
+		</div>
+		<br>
+		{% if 'member_read' == app.request.get('_route') %}
+			{% if app.user %}
+				{% if app.user.userMember %}
+					{% if member_read.members|length >0 %}
+						<h5>Liste des membres ayant postulé à l'annonce</h5>
+						{% for member in member_read.members %}
+							<span>{{member.firstname }}
+								{{member.lastname }}
+								{{member.user }}
+							</span><br>
+						{% endfor %}
+					{% endif %}
+				{% endif %}
+			{% endif %}
+		{% endif %}
+	</div>
+</div></div></main>{% endblock %}
