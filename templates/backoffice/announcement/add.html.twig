@@ -2,9 +2,9 @@
 
 {% block title %}
     {% if page == 'create' %}
-    New annoucement
+    Nouvel annonce
     {% else %}
-    annoucement {{ announcement.title }}
+    Titre {{ announcement.title }}
     {% endif %}
 {% endblock %}
 
@@ -20,31 +20,34 @@
 	{% endfor %}
 <h1> 
     {% if page == 'create' %}
-        New annoucement
+        Nouvel annonce
     {% else %}
-        Update {{ announcement.title }}
+        Modification de  {{ announcement.title }}
     {% endif %}
 </h1>
 <div class="text-end">
 </div>
 
 {{ form_start(announcement_form) }}
-
+<div class="row">
     {{ form_errors(announcement_form) }}
-    {{ form_row(announcement_form.title) }}
+    <div class="col">{{ form_row(announcement_form.title) }}</div>
+    <div class="col">{{ form_row(announcement_form.category) }}</div>
+</div>
+    <div class="row">
+     <div class="col-8"> {{ form_row(announcement_form.description) }}</div>
     
-    {{ form_row(announcement_form.description) }}
+    <div class="col-2">  {{ form_row(announcement_form.members) }}</div>
+    <div class="col-2">  {{ form_row(announcement_form.specialization) }}</div>
+    </div>
     
-    {{ form_row(announcement_form.members) }}
-    
-    {{ form_row(announcement_form.category) }}
 
 
     <button type="submit" class="btn btn-primary mt-4">
     {% if 'backoffice_annoucement_add' == app.request.get('_route') %}
-    Create
+    Ajouter
     {% else %}
-    Update
+    Modifier
     {% endif %}
     </button>
 

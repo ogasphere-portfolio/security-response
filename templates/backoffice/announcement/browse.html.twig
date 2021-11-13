@@ -28,13 +28,13 @@
 					<thead>
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">Nom de l'annonce</th>
+							<th scope="col">Titre de l'annonce</th>
 							<th scope="col">Slug</th>
 							<th scope="col">Description</th>
 							<th scope="col">status</th>
 							<th scope="col">Spécialisation</th>
 							<th scope="col">Postulants</th>
-							<th scope="col">Categorie</th>
+							<th scope="col">Catégorie</th>
 							<th scope="col"></th>
 						</tr>
 					</thead>
@@ -45,7 +45,7 @@
 								<th scope="row">{{ announcement.id }}</th>
 								<td>{{ announcement.title }}</td>
 								<td>{{ announcement.slug }}</td>
-								<td>{{ announcement.description|slice(0, 150)|raw }}</td>
+								<td>{{ announcement.description[:150]|raw }}</td>
 								<td>{{ announcement.status }}</td>
 								<td>
 									{% for specialization in announcement.specialization %}
