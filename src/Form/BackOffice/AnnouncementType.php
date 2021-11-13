@@ -4,7 +4,9 @@ namespace App\Form\BackOffice;
 
 use App\Entity\Member;
 use App\Entity\Category;
-use App\Entity\Announcement;
+use App\Entity\Enterprise;
+use App\Entity\Specialization;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Security\Core\Security;
@@ -25,7 +27,6 @@ class AnnouncementType extends AbstractType
         /**
          * @var User
          */
-
         $enterprise = $this->security->getUser();
        
        // dd($enterprise);
@@ -33,14 +34,21 @@ class AnnouncementType extends AbstractType
 
         $builder
             ->add('title')
-            ->add('description')                     
+            ->add('description', CKEditorType::class)                     
             ->add('category', EntityType::class,[
                 'class' => Category::class])  
             ->add('members', EntityType::class,[
                 'class' => Member::class,
                 'choice_label' => 'firstname',
                 'multiple' => true,
-                'disabled' =>true]) 
+                'expanded' => true,
+                'disabled' =>false])
+            ->add('specialization', EntityType::class,[
+                'class' => Specialization::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+                'disabled' =>false])      
             ;                             
     }
 
