@@ -1,57 +1,59 @@
 {% extends 'base_admin.html.twig' %}
 
 {% block title %}
-    {% if page == 'create' %}
-    Nouvel annonce
-    {% else %}
-    Titre {{ announcement.title }}
-    {% endif %}
+	{% if page == 'create' %}
+		Nouvel annonce
+	{% else %}
+		Titre
+		{{ announcement.title }}
+	{% endif %}
 {% endblock %}
 
 {% block backoffice_menu %}
-    {% include "backoffice/annoucement/_menu.html.twig" %}
+	{% include "backoffice/annoucement/_menu.html.twig" %}
 {% endblock %}
 
 {% block body %}
-<div class="container">
+	<div class="container">
 
-{% for message in app.flashes('success') %}
-		<div class="alert alert-success" role="alert">{{ message }}</div>
-	{% endfor %}
-<h1> 
-    {% if page == 'create' %}
-        Nouvel annonce
-    {% else %}
-        Modification de  {{ announcement.title }}
-    {% endif %}
-</h1>
-<div class="text-end">
-</div>
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success" role="alert">{{ message }}</div>
+		{% endfor %}
+		<h1>
+			{% if page == 'create' %}
+				Nouvel annonce
+			{% else %}
+				Modification de
+				{{ announcement.title }}
+			{% endif %}
+		</h1>
+		<div class="text-end"></div>
 
-{{ form_start(announcement_form) }}
-<div class="row">
-    {{ form_errors(announcement_form) }}
-    <div class="col">{{ form_row(announcement_form.title) }}</div>
-    <div class="col">{{ form_row(announcement_form.category) }}</div>
-</div>
-    <div class="row">
-     <div class="col-8"> {{ form_row(announcement_form.description) }}</div>
-    
-    <div class="col-2">  {{ form_row(announcement_form.members) }}</div>
-    <div class="col-2">  {{ form_row(announcement_form.specialization) }}</div>
-    </div>
-    
+		{{ form_start(announcement_form) }}
+		<div class="row">
+			{{ form_errors(announcement_form) }}
+			<div class="col">{{ form_row(announcement_form.title) }}</div>
+			<div class="col">{{ form_row(announcement_form.category) }}</div>
+		</div>
+		<div class="row">
+			<div class="col-8">
+				{{ form_row(announcement_form.description) }}</div>
 
+			<div class="col-2">
+				{{ form_row(announcement_form.members) }}</div>
+			<div class="col-2">
+				{{ form_row(announcement_form.specialization) }}</div>
+		</div>
 
-    <button type="submit" class="btn btn-primary mt-4">
-    {% if 'backoffice_annoucement_add' == app.request.get('_route') %}
-    Ajouter
-    {% else %}
-    Modifier
-    {% endif %}
-    </button>
+		<button type="submit" class="btn btn-primary mt-4">
+			{% if 'backoffice_annoucement_add' == app.request.get('_route') %}
+				Ajouter
+			{% else %}
+				Modifier
+			{% endif %}
+		</button>
 
-{{ form_end(announcement_form) }} 
+		{{ form_end(announcement_form) }}
 
-</div>
+	</div>
 {% endblock %}
