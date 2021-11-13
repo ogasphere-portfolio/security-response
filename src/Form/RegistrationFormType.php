@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -102,8 +103,8 @@ class RegistrationFormType extends AbstractType
     public function conditional(FormEvent $event)
     {
         $user = $event->getData();
+        // dd($user);
         $form = $event->getForm();
-
         // Vérifier la valeur du radio
         // si 'est member on indique le champ userMember (ou plutôt le sous form) est requis.
         if ($user['membershipType'] === 'member') {
@@ -111,6 +112,8 @@ class RegistrationFormType extends AbstractType
                 'label' => false,
                 'required' => true,
             ]);
+            $user->getRole();
+            dd($user);
             unset($user['userEnterprise']);
             $event->setData($user);
         }

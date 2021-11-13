@@ -36,12 +36,12 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-        
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
-            $userPasswordHasherInterface->hashPassword(
+                $userPasswordHasherInterface->hashPassword(
                     $user,
                     $form->get('password')->getData()
                 )
@@ -104,18 +104,18 @@ class RegistrationController extends AbstractController
     //     dump($this->token);
     //     if ($form->isSubmitted() && $form->isValid()) {
     //         // encode the plain password
-            
+
     //         $user = $this->token->getToken()->getUser();
     //         //$user->setUser($this->getUser());
 
-            
+
     //         $memberUser = $form->getData($user);
 
     //         $entityManager = $this->getDoctrine()->getManager();
     //         $entityManager->persist($memberUser);
     //         $entityManager->flush();
 
-            
+
 
     //         return $this->redirectToRoute('homepage');
     //     }
