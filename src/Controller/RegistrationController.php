@@ -90,39 +90,4 @@ class RegistrationController extends AbstractController
 
         return $this->redirectToRoute('homepage');
     }
-
-
-    // /**
-    //  * @Route("/register/membre", name="app_register_member")
-    //  */
-    // public function registerMembre(Request $request): Response
-    // {
-    //     $member = new Member();
-    //     $form = $this->createForm(MemberType::class, $member);
-    //     $form->handleRequest($request);
-
-    //     dump($this->token);
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         // encode the plain password
-
-    //         $user = $this->token->getToken()->getUser();
-    //         //$user->setUser($this->getUser());
-
-
-    //         $memberUser = $form->getData($user);
-
-    //         $entityManager = $this->getDoctrine()->getManager();
-    //         $entityManager->persist($memberUser);
-    //         $entityManager->flush();
-
-
-
-    //         return $this->redirectToRoute('homepage');
-    //     }
-
-
-    //     return $this->render('registration/register-member.html.twig', [
-    //         'registrationForm' => $form->createView(),
-    //     ]);
-    // }
 }

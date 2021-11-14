@@ -91,7 +91,17 @@ class RegistrationFormType extends AbstractType
 
 
 
-            // ->add('roles')
+            ->add('roles', ChoiceType::class,  [
+                'attr' => ['class' => 'tinymce'],
+                'required' => false,
+                'choices'  => [
+                    'Membres' => 'ROLE_MEMBER',
+                    'Entreprises' => 'ROLE_ENTERPRISE',
+                ],
+                'expanded' => true,
+                'multiple' => true,
+                'label' => 'Votre role',
+            ])
 
         ;
 
@@ -103,8 +113,8 @@ class RegistrationFormType extends AbstractType
     public function conditional(FormEvent $event)
     {
         $user = $event->getData();
-        // dd($user);
         $form = $event->getForm();
+        // dd($form);
         // Vérifier la valeur du radio
         // si 'est member on indique le champ userMember (ou plutôt le sous form) est requis.
         if ($user['membershipType'] === 'member') {
@@ -112,8 +122,16 @@ class RegistrationFormType extends AbstractType
                 'label' => false,
                 'required' => true,
             ]);
-            $user->getRole();
-            dd($user);
+             $form->add('roles', ChoiceType::class, [
+                'choices'  => [
+                    'Membres' => 'ROLE_test',
+                
+                ],
+                'expanded' => true,
+                'multiple' => true,
+                'label' => 'Votre role',
+            ]);
+            // dd($form->getRole());
             unset($user['userEnterprise']);
             $event->setData($user);
         }
