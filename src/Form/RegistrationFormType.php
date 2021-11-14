@@ -91,17 +91,7 @@ class RegistrationFormType extends AbstractType
 
 
 
-            ->add('roles', ChoiceType::class,  [
-                'attr' => ['class' => 'tinymce'],
-                'required' => false,
-                'choices'  => [
-                    'Membres' => 'ROLE_MEMBER',
-                    'Entreprises' => 'ROLE_ENTERPRISE',
-                ],
-                'expanded' => true,
-                'multiple' => true,
-                'label' => 'Votre role',
-            ])
+            // ->add('roles', HiddenType::class)
 
         ;
 
@@ -122,15 +112,15 @@ class RegistrationFormType extends AbstractType
                 'label' => false,
                 'required' => true,
             ]);
-             $form->add('roles', ChoiceType::class, [
-                'choices'  => [
-                    'Membres' => 'ROLE_test',
+            //  $form->add('roles', ChoiceType::class, [
+            //     'choices'  => [
+            //         'Membres' => 'ROLE_test',
                 
-                ],
-                'expanded' => true,
-                'multiple' => true,
-                'label' => 'Votre role',
-            ]);
+            //     ],
+            //     'expanded' => true,
+            //     'multiple' => true,
+            //     'label' => 'Votre role',
+            // ]);
             // dd($form->getRole());
             unset($user['userEnterprise']);
             $event->setData($user);

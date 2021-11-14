@@ -182,4 +182,6 @@ class AnnouncementController extends AbstractController
 
         return $this->redirectToRoute('announcement_browse');
     }
+
+    
 }
