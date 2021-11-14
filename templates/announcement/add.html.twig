@@ -25,6 +25,7 @@
 				<div class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">
 					{{ form_start(announcement_form, {attr: {novalidate: 'novalidate'}}) }}
 					<div class="d-flex flex-column">
+					        {{ form_row(announcement_form.specialization)}}
 						<div class="d-flex flex-row my-2 justify-content-between">
 							<h3>Titre de l'annonce :</h3>
 							{{ form_widget(announcement_form.title) }}
