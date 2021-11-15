@@ -24,11 +24,16 @@
                                                             <li><a href="{{ path('announcement_read', {"id": announcement.id}) }}">{{announcement.title}}</a></li>
                                                         </td>
                                                         <td class="py-1">{{ announcement.description }}</td>
-                                                       {% if announcement.enterprise is empty %}
-                                                        <td class="py-1"><em>Crée le {{ announcement.createdAt|date("d/m/Y") }} par </em> <strong>{{ announcement.category.name }}</strong> </td>
-                                                        {% else %}   
-                                                        <td class="py-1"><em>Crée le {{ announcement.createdAt|date("d/m/Y") }} par </em> <strong>{{ announcement.enterprise.businessName }}</strong> </td>
-                                                        {% endif %}     
+                                                        <td class="py-1"><em>Crée le {{ announcement.createdAt|date("d/m/Y") }} par </em> <strong>
+                                                        {% if announcement.enterprise is empty %} 
+                                                        {{ announcement.category.name }}  
+                                                        {% else %} {{ announcement.enterprise.businessName }} 
+                                                        {% endif %}</strong> 
+
+                                                        {% for specialization in announcement.specialization  %}
+                                                         <span class="badge bg-primary float-end">{{ specialization.name }}</span>
+                                                        {% endfor %}
+                                                        </td>     
                                                     </tr>
                                                     {% endfor %}
                                                     

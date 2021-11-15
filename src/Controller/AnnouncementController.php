@@ -111,7 +111,7 @@ class AnnouncementController extends AbstractController
             $announcement->setCategory($invitedCategory);
             $announcementForm
             ->add('category', null, [
-                
+            'attr' => ['class' => 'd-none'] ,  
             'disabled' => 'disabled',
             ]);
         }
@@ -182,4 +182,6 @@ class AnnouncementController extends AbstractController
 
         return $this->redirectToRoute('announcement_browse');
     }
+
+    
 }

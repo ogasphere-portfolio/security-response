@@ -47,6 +47,12 @@ class AnnouncementType extends AbstractType
                 'choice_label' => 'firstname',
                 'multiple' => true,
                 'disabled' =>true]) 
+            ->add('specialization',EntityType::class,[
+                'class' => Specialization::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => false,  
+                ])  
             ;                             
     }
 
