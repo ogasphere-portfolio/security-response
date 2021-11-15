@@ -96,12 +96,12 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
-    public function add(Request $request, Security $security,CategoryRepository $cr): Response
+    public function add(Request $request, Security $security, CategoryRepository $cr): Response
     {
         $announcement = new Announcement();
 
         $this->denyAccessUnlessGranted(AnnoucementVoter::ADD, $announcement);
-        
+
         $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
 
         if (empty(($this->getUser()))) {
@@ -110,24 +110,24 @@ class AnnouncementController extends AbstractController
             ]);
             $announcement->setCategory($invitedCategory);
             $announcementForm
-            ->add('category', null, [
-            'attr' => ['class' => 'd-none'] ,  
-            'disabled' => 'disabled',
-            ]);
-        }        
-
-        if (($this->getUser()->getUserEnterprise())) {
-            $invitedCategory = $cr->findOneBy([
-                'name' => 'Recrutement'
-            ]);
-            $announcement->setCategory($invitedCategory);
-            $announcementForm
-            ->add('category', null, [
-            // 'attr' => ['class' => 'd-none'] ,  
-            'disabled' => 'disabled',
-            ]);
+                ->add('category', null, [
+                    'attr' => ['class' => 'd-none'],
+                    'disabled' => 'disabled',
+                ]);
         }
-
+            if (!empty(($this->getUser()))) {
+                if (!empty(($this->getUser()->getUserEnterprise()))) {
+                    $invitedCategory = $cr->findOneBy([
+                    'name' => 'Recrutement'
+                ]);
+                    $announcement->setCategory($invitedCategory);
+                    $announcementForm
+                    ->add('category', null, [
+                        // 'attr' => ['class' => 'd-none'] ,
+                        'disabled' => 'disabled',
+                    ]);
+                }
+            }
 
         $announcementForm->handleRequest($request);
 
@@ -195,6 +195,4 @@ class AnnouncementController extends AbstractController
 
         return $this->redirectToRoute('announcement_browse');
     }
-
-    
 }
