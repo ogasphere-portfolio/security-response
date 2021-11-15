@@ -1,7 +1,9 @@
 
 
 const userMemberFormPart = document.getElementById('registration_form_userMember');
-const userMembershipTypeChoices = document.getElementById('registration_form_membershipType').querySelectorAll('input');
+// const userMembershipTypeChoices = document.getElementById('registration_form_membershipType').querySelectorAll('input');
+const userMembershipTypeChoices = document.getElementById('choice-register').querySelectorAll('p');
+
 // TODO: Récupérer la div correspondant aux champs de l'entreprise 
 const userEnterpriseFormPart = document.getElementById('registration_form_userEnterprise');
 
