@@ -3,8 +3,11 @@
 namespace App\Form\BackOffice;
 
 use App\Entity\Enterprise;
+use App\Entity\Announcement;
+use App\Entity\Certification;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EnterpriseType extends AbstractType
@@ -28,10 +31,22 @@ class EnterpriseType extends AbstractType
             // ->add('updated_at')
             // ->add('created_by')
             // ->add('updated_by')
-            ->add('certification')
-            ->add('user')
+            ->add('certification', EntityType::class, [
+                'class' => Certification::class,
+                'multiple' => true,
+                'expanded' => true,
+                'choice_label' => 'name',
+              
+            ])
+            //->add('user')
             //->add('documents')
-            ->add('announcement')
+            ->add('announcement', EntityType::class, [
+                'class' => Announcement::class,
+                'multiple' => true,
+                'expanded' => true,
+                'choice_label' => 'title',
+              
+            ])
         ;
     }
 

@@ -118,7 +118,7 @@ class EnterpriseController extends AbstractController
      */
     public function delete(Enterprise $enterprise, EntityManagerInterface $entityManager): Response
     {
-        $this->addFlash('success', "Enterprise {$enterprise->getId()} deleted");
+        $this->addFlash('success', "Enterprise {$enterprise->getBusinessName()} deleted");
 
         $entityManager->remove($enterprise);
         $entityManager->flush();

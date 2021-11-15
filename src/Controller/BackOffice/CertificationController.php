@@ -124,7 +124,7 @@ class CertificationController extends AbstractController
      */
     public function delete(Certification $certification, EntityManagerInterface $entityManager): Response
     {
-        $this->addFlash('success', "Certification {$certification->getId()} deleted");
+        $this->addFlash('success', "Certification {$certification->getName()} deleted");
 
         $entityManager->remove($certification);
         $entityManager->flush();

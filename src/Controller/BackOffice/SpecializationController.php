@@ -117,7 +117,7 @@ class SpecializationController extends AbstractController
      */
     public function delete(Specialization $specialization, EntityManagerInterface $entityManager): Response
     {
-        $this->addFlash('success', "Specialization {$specialization->getId()} deleted");
+        $this->addFlash('success', "Specialization {$specialization->getName()} deleted");
 
         $entityManager->remove($specialization);
         $entityManager->flush();
