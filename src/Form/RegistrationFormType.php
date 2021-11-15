@@ -67,16 +67,16 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('membershipType', ChoiceType::class, [
-                'mapped' => false,
-                'choices'  => [
-                    'Membre' => 'member',
-                    'Entreprise' => 'enterprise',
-                ],
-                'expanded' => true,
-                'multiple' => false,
-                'label' => 'Choisissez votre type de compte',
-            ])
+            // ->add('membershipType', ChoiceType::class, [
+            //     'mapped' => false,
+            //     'choices'  => [
+            //         'Membre' => 'member',
+            //         'Entreprise' => 'enterprise',
+            //     ],
+            //     'expanded' => true,
+            //     'multiple' => false,
+            //     'label' => 'Choisissez votre type de compte',
+            // ])
             // De base il est pas en required 
             // TODO: Vérifier qu'il l'est bien pas
             ->add('userMember', MemberType::class, [
