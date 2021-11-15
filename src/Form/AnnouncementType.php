@@ -39,7 +39,7 @@ class AnnouncementType extends AbstractType
 
         $builder
             ->add('title')
-            ->add('description')                     
+            ->add('description', CKEditorType::class)                     
             // ->add('certification',EntityType::class,[
             //     'class' => Certification::class,
             //     'multiple' => true,
@@ -48,9 +48,9 @@ class AnnouncementType extends AbstractType
             // ])            
             ->add('specialization',EntityType::class,[
                 'class' => Specialization::class,
-                'multiple' => true,
-                'expanded' => true,
                 'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => false,
             ])
             ->add('category', EntityType::class,[
                 'class' => Category::class])  

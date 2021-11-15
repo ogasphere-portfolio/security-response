@@ -111,7 +111,7 @@ class AnnouncementController extends AbstractController
             $announcement->setCategory($invitedCategory);
             $announcementForm
             ->add('category', null, [
-                
+            'attr' => ['class' => 'd-none'] ,  
             'disabled' => 'disabled',
             ]);
         }

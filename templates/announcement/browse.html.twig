@@ -29,10 +29,9 @@
                                                         {{ announcement.category.name }}  
                                                         {% else %} {{ announcement.enterprise.businessName }} 
                                                         {% endif %}</strong> 
-                                                        {# {{dump(announcement)}} #}
 
                                                         {% for specialization in announcement.specialization  %}
-                                                         <p class="text-end" >{{ specialization.name }}</p>
+                                                         <span class="badge bg-primary float-end">{{ specialization.name }}</span>
                                                         {% endfor %}
                                                         </td>     
                                                     </tr>
