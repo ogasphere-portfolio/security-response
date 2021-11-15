@@ -48,7 +48,6 @@ class ProfileController extends AbstractController
          */
         $userMember = $security->getUser();
         $userMember->getUserMember()->getFirstName();
-
         return $this->render('profile/member/home.html.twig', [
             'member' => $userMember,
         ]);
