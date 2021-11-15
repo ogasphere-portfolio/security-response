@@ -17,14 +17,6 @@ class MainController extends AbstractController
      */
     public function index(): Response
     {
-        // $user =$this->getUser();
-        // // dd($user->getUserMember());
-        // if (!empty($user->getUserMember())) {
-        //     // dd($user);
-        //     $role = ['ROLE_MEMBER'];
-        //     $user->setRoles($role);
-        // }
-        
         return $this->render('main/home.html.twig', [
             'controller_name' => 'MainController',
         ]);

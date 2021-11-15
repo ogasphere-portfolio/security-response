@@ -46,6 +46,15 @@ class RegistrationController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
+            
+            if (!empty($user->getUserMember())) {
+                
+                $user->setRoles(["ROLE_MEMBER"]);
+            }
+            if (!empty($user->getUserEnterprise())) {
+                
+                $user->setRoles(["ROLE_ENTERPRISE"]);
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -63,6 +72,8 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('homepage');
         }
+
+        
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
