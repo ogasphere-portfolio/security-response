@@ -19,16 +19,30 @@
 													<td                                                            
 															<li><a href="{{ path('member_read', {"id": member.id}) }}">{{member.firstname ~ " " ~ member.lastname }}</a></li>
 													</td>
-													<td class="py-1">{{ member.description }}</td>													
-													<td class="py-1"><em>Crée le {{ member.createdAt|date("d/m/Y") }} </td>
-												
+													<td class="py-1">{{ member.description }}</td>	
+													<td class="py-1">	
+													Liste des spécialisations :
+													{% if member.specialization %}	
+																{% for specialization in member.specialization %}	
+																	<li>{{specialization.name}}</li>
+																{% endfor %}								
+													{% endif %} 													
+													</td>
+														
+													<td class="py-1">{{ member.city }}</td>										
+																									
 											</tr>
 											{% endfor %}
 											
 											
 									</tbody>
 								</table>  
-			</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</div>
 	</div>
-</div></section></div></div></main>{% endblock %}
+</main>
+{% endblock %}
