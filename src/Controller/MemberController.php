@@ -188,7 +188,7 @@ class MemberController extends AbstractController
 
         return $this->render('member/read.html.twig', [
             'member_read' => $member,
-        ]);
+        ]);        
     }
 
 
