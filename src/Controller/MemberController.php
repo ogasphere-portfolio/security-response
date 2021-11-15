@@ -35,7 +35,7 @@ class MemberController extends AbstractController
     public function browse(MemberRepository $memberRepository): Response
     {
         return $this->render('member/browse.html.twig', [
-            'member_browse' => $memberRepository->findAll()
+            'member_list' => $memberRepository->findAll()
         ]);
     }
     
@@ -218,4 +218,18 @@ class MemberController extends AbstractController
 
         return $this->redirectToRoute('homepage');
     }
+     /**
+     *
+     * @Route("/{id}/read", name="read")
+     */
+    public function read($id, MemberRepository $memberRepository): Response
+    {
+        $member = $memberRepository->find($id);
+
+        return $this->render('member/read.html.twig', [
+            'member_read' => $member,
+        ]);
+    }
+
+
 }

@@ -2,35 +2,60 @@
 
 namespace App\Form\BackOffice;
 
-use App\Entity\Announcement;
+use App\Entity\Member;
+use App\Entity\Category;
+use App\Entity\Enterprise;
+use App\Entity\Specialization;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AnnouncementType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    private $security;
+
+    public function __construct(Security $security)    
     {
-        $builder
-            ->add('slug')
-            ->add('title')
-            ->add('description')
-            ->add('status')
-        /*     ->add('created_at')
-            ->add('updated_at')
-            ->add('created_by')
-            ->add('updated_by') */
-            ->add('certification')
-            ->add('members')
-            ->add('specialization')
-            ->add('document')
-        ;
+        $this->security = $security;
     }
 
-    public function configureOptions(OptionsResolver $resolver): void
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        /**
+         * @var User
+         */
+        $enterprise = $this->security->getUser();
+       
+       // dd($enterprise);
+      
+
+        $builder
+            ->add('title')
+            ->add('description', CKEditorType::class)                     
+            ->add('category', EntityType::class,[
+                'class' => Category::class])  
+            ->add('members', EntityType::class,[
+                'class' => Member::class,
+                'choice_label' => 'firstname',
+                'multiple' => true,
+                'expanded' => true,
+                'disabled' =>false])
+            ->add('specialization', EntityType::class,[
+                'class' => Specialization::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+                'disabled' =>false])      
+            ;                             
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Announcement::class,
+            // Configure your form options here
         ]);
     }
 }
