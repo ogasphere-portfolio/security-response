@@ -41,7 +41,7 @@
 						<div class="my-2">
 
 							{% if 'announcement_edit' == app.request.get('_route') %}
-								{% if announcement_read.members|length >0 %}
+								{% if announcement_form.members|length >0 %}
 									<h5>Liste des membres ayant postulé à l'annonce</h5>
 									{% for member in announcement.members %}
 										<span>{{member.firstname }}

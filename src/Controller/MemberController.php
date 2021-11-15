@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Member;
+use App\Entity\Specialization;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Form\MemberType;
+use App\Form\SpecializationType;
 use App\Repository\MemberRepository;
+use App\Repository\SpecializationRepository;
 use DateTime;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -32,7 +35,7 @@ class MemberController extends AbstractController
     public function browse(MemberRepository $memberRepository): Response
     {
         return $this->render('member/browse.html.twig', [
-            'member_browse' => $memberRepository->findAll()
+            'member_list' => $memberRepository->findAll()
         ]);
     }
     
@@ -119,6 +122,43 @@ class MemberController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/edit/specialisations", name="edit_specialization", methods={"GET", "POST"})
+     */
+    public function editSpecialization(Request $request, Security $security): Response
+    {
+        /**
+         * @var \App\Entity\User
+         */
+        $userMember = $security->getUser();
+        $member = $userMember->getUserMember();
+
+        $specializationForm = $this->createForm(MemberType::class, $member, [
+            'type' => 'specialization'
+        ]);
+
+        $specializationForm->handleRequest($request);
+
+        if ($specializationForm->isSubmitted() && $specializationForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+
+            // Read all specializations of the member
+            foreach ($member->getSpecialization() as $specialization) {
+                $specialization->addMember($member);
+            }
+
+            $entityManager->flush();
+
+            $this->addFlash('success', "Les spécialisations ont été modifiées.");
+
+            return $this->redirectToRoute('profile_member');
+        }
+
+        return $this->render('profile/member/editSpecializations.html.twig', [            
+            'specialization_form' => $specializationForm->createView(),
+        ]);
+    }
+
      /**
      * 
      * @Route("/add", name="add", methods={"GET", "POST"})
@@ -178,4 +218,18 @@ class MemberController extends AbstractController
 
         return $this->redirectToRoute('homepage');
     }
+     /**
+     *
+     * @Route("/{id}/read", name="read")
+     */
+    public function read($id, MemberRepository $memberRepository): Response
+    {
+        $member = $memberRepository->find($id);
+
+        return $this->render('member/read.html.twig', [
+            'member_read' => $member,
+        ]);        
+    }
+
+
 }

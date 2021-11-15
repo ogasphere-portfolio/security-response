@@ -46,6 +46,9 @@
 							<li class="nav-item">
 								<a class="nav-link {{ app.request.get('_route') == 'announcement_browse' ? 'active' }}" href="{{ path('announcement_browse') }}">Les annonces</a>
 							</li>
+							<li class="nav-item">
+								<a class="nav-link {{ app.request.get('_route') == 'member_browse' ? 'active' }}" href="{{ path('member_browse') }}">Les membres</a>
+							</li>
 						{% if app.user %}
 							{% if app.user.userMember == null %}
 								<li class="nav-item">
