@@ -51,8 +51,7 @@ class AnnouncementType extends AbstractType
                 'class' => Specialization::class,
                 'choice_label' => 'name',
                 'multiple' => true,
-                'expanded' => false,  
-                ])  
+                'expanded' => false,  ])  
             ;                             
     }
 

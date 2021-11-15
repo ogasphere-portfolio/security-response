@@ -114,7 +114,20 @@ class AnnouncementController extends AbstractController
             'attr' => ['class' => 'd-none'] ,  
             'disabled' => 'disabled',
             ]);
+        }        
+
+        if (($this->getUser()->getUserEnterprise())) {
+            $invitedCategory = $cr->findOneBy([
+                'name' => 'Recrutement'
+            ]);
+            $announcement->setCategory($invitedCategory);
+            $announcementForm
+            ->add('category', null, [
+            // 'attr' => ['class' => 'd-none'] ,  
+            'disabled' => 'disabled',
+            ]);
         }
+
 
         $announcementForm->handleRequest($request);
 
