@@ -76,6 +76,7 @@ class EnterpriseType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Enterprise::class,
+            'type' => 'default'
         ]);
     }
 }
