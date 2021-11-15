@@ -41,7 +41,7 @@ class AnnouncementType extends AbstractType
         $builder
             ->add('title',null,[
                 'label' => false])
-            ->add('description',null,[
+            ->add('description',CKEditorType::class,[
                 'label' => false])                     
             ->add('category', EntityType::class,[
                 'class' => Category::class])  
@@ -55,9 +55,8 @@ class AnnouncementType extends AbstractType
                 'label' => false,
                 'multiple' => true,
                 'expanded' => true,
-                'constraints' => array(
-                        new Constraints\NotBlank()
-            ];                             
+                ]) 
+                ;                          
     }
 
     public function configureOptions(OptionsResolver $resolver)
