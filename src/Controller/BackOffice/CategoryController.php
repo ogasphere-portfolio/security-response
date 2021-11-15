@@ -119,7 +119,7 @@ class CategoryController extends AbstractController
      */
     public function delete(Category $category, EntityManagerInterface $entityManager): Response
     {
-        $this->addFlash('success', "Category {$category->getId()} deleted");
+        $this->addFlash('success', "Category {$category->getName()} deleted");
 
         $entityManager->remove($category);
         $entityManager->flush();

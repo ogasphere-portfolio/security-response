@@ -15,6 +15,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Announcement
 {
+    const STATUS_PUBLIE = 1;
+    const STATUS_VALIDE = 2;
+    const STATUS_ARCHIVE = 3;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -160,7 +163,22 @@ class Announcement
 
         return $this;
     }
-
+    public function getStatusText(): ?string
+    {
+        switch ($this->gender) {
+            
+            case 0:
+                return 'Non validé';
+                break;
+            case 1:
+                return 'Validé';
+                break;
+            default:
+                return 'Non validé';
+                break;
+        }
+        
+    }
     public function getStatus(): ?int
     {
         return $this->status;

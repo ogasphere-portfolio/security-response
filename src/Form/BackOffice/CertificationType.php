@@ -18,8 +18,8 @@ class CertificationType extends AbstractType
             ->add('updated_at')
             ->add('created_by')
             ->add('updated_by') */
-            ->add('enterprises')
-            ->add('announcements')
+           /*  ->add('enterprises')
+            ->add('announcements') */
         ;
     }
 

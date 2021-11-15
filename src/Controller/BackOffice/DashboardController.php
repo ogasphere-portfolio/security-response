@@ -24,6 +24,10 @@ class DashboardController extends AbstractController
     MemberRepository $memberRepository): Response
     {
         $announcements = $announcementRepository->findAll();
+        $announcementNotValid = $announcementRepository->findBy(['status' => 0]);
+
+       
+
         $enterprises = $enterpriseRepository->findAll();
         $members = $memberRepository->findAll();
 
@@ -31,6 +35,7 @@ class DashboardController extends AbstractController
             'announcements' => $announcements,
             'enterprises' => $enterprises,
             'members' => $members,
+            'announcementNotValid' => $announcementNotValid,
         ]);
     }
 }

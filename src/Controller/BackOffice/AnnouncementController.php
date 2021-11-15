@@ -122,7 +122,7 @@ class AnnouncementController extends AbstractController
      */
     public function delete(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
-        $this->addFlash('success', "Announcement {$announcement->getId()} deleted");
+        $this->addFlash('success', "Announcement {$announcement->getTitle()} deleted");
 
         $entityManager->remove($announcement);
         $entityManager->flush();
