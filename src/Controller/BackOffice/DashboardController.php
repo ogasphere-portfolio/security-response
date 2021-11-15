@@ -6,6 +6,7 @@ namespace App\Controller\BackOffice;
 use App\Repository\AnnouncementRepository;
 use App\Repository\EnterpriseRepository;
 use App\Repository\MemberRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -21,10 +22,12 @@ class DashboardController extends AbstractController
      * @Route("/", name="browse")
      */
     public function browse(AnnouncementRepository $announcementRepository,EnterpriseRepository $enterpriseRepository,
-    MemberRepository $memberRepository): Response
+    MemberRepository $memberRepository, UserRepository $userRepository): Response
     {
         $announcements = $announcementRepository->findAll();
         $announcementNotValid = $announcementRepository->findBy(['status' => 0]);
+
+        $usersNotValid = $userRepository->findBy(['isVerified' => 0]);
 
        
 
@@ -36,6 +39,7 @@ class DashboardController extends AbstractController
             'enterprises' => $enterprises,
             'members' => $members,
             'announcementNotValid' => $announcementNotValid,
+            'usersNotValid' => $usersNotValid,
         ]);
     }
 }
