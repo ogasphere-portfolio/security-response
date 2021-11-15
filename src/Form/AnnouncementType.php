@@ -16,6 +16,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class AnnouncementType extends AbstractType
 {
@@ -38,8 +39,10 @@ class AnnouncementType extends AbstractType
       
 
         $builder
-            ->add('title')
-            ->add('description')                     
+            ->add('title',null,[
+                'label' => false])
+            ->add('description',null,[
+                'label' => false])                     
             ->add('category', EntityType::class,[
                 'class' => Category::class])  
             ->add('members', EntityType::class,[
@@ -49,10 +52,12 @@ class AnnouncementType extends AbstractType
                 'disabled' =>true]) 
             ->add('specialization',EntityType::class,[
                 'class' => Specialization::class,
-                'choice_label' => 'name',
+                'label' => false,
                 'multiple' => true,
-                'expanded' => false,  ])  
-            ;                             
+                'expanded' => true,
+                'constraints' => array(
+                        new Constraints\NotBlank()
+            ];                             
     }
 
     public function configureOptions(OptionsResolver $resolver)

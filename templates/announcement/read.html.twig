@@ -11,16 +11,16 @@
 
 					<h1 class="fw-bold text-start">Détail de l'annonce</h1>
 					<a class="btn btn-primary" aria-current="page" href="
-																												                    {% if app.user is not empty %}
-																												                        {% if app.user.userMember == null %}
-																												                            {{ url('profile_enterprise') }}
-																												                        {% else %}
-																												                            {{ url('announcement_browse') }}
-																												                        {% endif %}">
+						{% if app.user is not empty %}
+								{% if app.user.userMember == null %}
+										{{ url('profile_enterprise') }}
+								{% else %}
+										{{ url('announcement_browse') }}
+								{% endif %}">
 						Retour
 					{% else %}
 						{{ url('announcement_browse') }}">
-																								                            retour
+						retour
 					{% endif %}
 				</a>
 
