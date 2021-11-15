@@ -41,10 +41,30 @@
 							<th scope="col">{{ member_read.description }}</th>
 						</tr>
 					</thead>
+				</div>		
+				<div class="my-2">
+					<h5>Specialisations :</h5>
+					<thead>
+						<tr>
+							<th scope="col">
+							{% if member_read.specialization %}	
+								{% for specialization in member_read.specialization %}	
+									<li>{{specialization.name}}</li>
+								{% endfor %}								
+							{% endif %} 
+							</th>
+						</tr>
+					</thead>
 				</div>					
-			</form>
-			<em>Créé le
-				{{ member_read.createdAt|date("d/m/Y") }}</em>
+				<div class="my-2">
+					<h5>Ville :</h5>
+					<thead>
+						<tr>
+							<th scope="col">{{ member_read.city }}</th>
+						</tr>
+					</thead>
+				</div>					
+			</form>			
 		</div>
 		<br>
 		{# {% if 'member_read' == app.request.get('_route') %}
