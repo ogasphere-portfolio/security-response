@@ -30,10 +30,14 @@
 							{{ form_row(announcement_form.title) }}
 						</div>
 
+							{% if app.user is not empty %}
 						<div class="w-25 p-2 bd-highlight">
-							<h3>Catégorie</h3>
+							<h3>Catégorie :</h3>
 								{{ form_widget(announcement_form.category) }}</p>
-						</div>
+						</div>	
+							{% else %}	
+								{{ form_widget(announcement_form.category, {'attr': {'class': 'd-none'}}) }}</p>
+							{% endif %}					
 				</div>
 				<div class="my-2">
 					<h3>Description :</h3>
@@ -72,4 +76,5 @@
 			</div>
 		</section>
 	</div>
-</main>{% endblock %}
+</main>
+{% endblock %}
