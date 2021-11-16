@@ -68,7 +68,7 @@
 								</div>
 								<div class="tab-pane fade" id="vert-tabs-specialization" role="tabpanel" aria-labelledby="vert-tabs-specialization-tab">
 									<h3 class="mb-5"><strong>Mes spécialisations</strong></h3><br>
-									{% if  app.user.userMember.specialization i not empty%}
+									{% if  app.user.userMember.specialization is not empty %}
 										{% for specialization in app.user.userMember.specialization %}	
 											<li>{{specialization.name}}</li>
 										{% endfor %}
