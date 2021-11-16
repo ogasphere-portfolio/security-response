@@ -39,7 +39,7 @@
 					<h5>Description</h5>
 					<thead>
 						<tr>
-							<th scope="col">{{ announcement_read.description }}</th>
+							<th scope="col">{{ announcement_read.description|raw}}</th>
 						</tr>
 					</thead>
 				</div>
@@ -48,7 +48,16 @@
 					{% if app.user.userEnterprise == null %}
 						{% if app.user.userMember %}
 							<a class="nav-link " href="{{ path('announcement_postulate', {"id": announcement_read.id}) }}">
-								<span class="text">Postuler</span>
+								
+							{% if  announcement_read.members|length >0 %}
+							<span class="btn btn-success text-light position-relative ">
+								Postuler
+								<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+									{{ announcement_read.members|length }}
+								</span>
+
+							{% endif %}
+
 							</a>
 						{% endif %}
 					{% endif %}
@@ -65,7 +74,7 @@
 		<br>
 		{% if 'announcement_read' == app.request.get('_route') %}
 			{% if app.user %}
-				{% if app.user.userMember %}
+				{% if app.user.userEnterprise %}
 					{% if announcement_read.members|length >0 %}
 						<h5>Liste des membres ayant postulé à l'annonce</h5>
 						{% for member in announcement_read.members %}

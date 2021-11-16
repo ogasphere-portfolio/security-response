@@ -3,12 +3,15 @@
 {% block title %}Espace membre{% endblock %}
 
 {% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ message }}</div>
+	{% endfor %}
 
 <main>
 	<div class="container">
 		<div class="card card-primary card-outline">
 			<div class="card-header">
-				<h3 class="card-title">
+				<h3 class="card-title text-center">
 					<i class="fas fa-edit"></i>
 					Bienvenue dans votre espace Membre
 				</h3>
@@ -16,10 +19,10 @@
 			<div class="card-body">
 				
 				<div class="row">
-					<div class="col-5 col-sm-3">
-						<h4 class="px-0 py-2 text-left fw-bold">Mon compte</h4>
-							<h6 class="px-0 py-2 text-center">{{ app.user.userMember.firstname ~ " " ~ app.user.userMember.lastname }}</h6>
-							<div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
+					<div class="col-5 col-sm-3 text-center">
+						<h4 class="px-0 py-2 text-left fw-bold pe-5">Mon compte</h4>
+							<h6 class="px-0 py-2 text-center pe-5">{{ app.user.userMember.firstname ~ " " ~ app.user.userMember.lastname }}</h6>
+							<div class="nav flex-column nav-pills pe-5 mx-auto" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
 								<a class="nav-link active" id="vert-tabs-connexion-tab" data-toggle="pill" href="#vert-tabs-connexion" role="tab" aria-controls="vert-tabs-connexion" aria-selected="false">Infos de connexion</a>
 								<a class="nav-link" id="vert-tabs-coordinate-tab" data-toggle="pill" href="#vert-tabs-coordinate" role="tab" aria-controls="vert-tabs-coordinate" aria-selected="false">Mes Informations personnelles</a>
 								<a class="nav-link" id="vert-tabs-specialization-tab" data-toggle="pill" href="#vert-tabs-specialization" role="tab" aria-controls="vert-tabs-specialization" aria-selected="false">Mes spécialisations</a>
@@ -61,7 +64,7 @@
 										{% endif %}
 									</p>
 
-									<a class="btn btn-primary" href="{{ url('member_edit_perso') }}" title="personal information" alt="Edit">Modifier</a>
+									<a class="btn btn-primary" href="{{ url('member_edit_perso', {'_fragment': 'vert-tabs-coordinate'}) }}" title="personal information" alt="Edit">Modifier</a>
 								</div>
 								<div class="tab-pane fade" id="vert-tabs-specialization" role="tabpanel" aria-labelledby="vert-tabs-specialization-tab">
 									<h3 class="mb-5"><strong>Mes spécialisations</strong></h3><br>
@@ -73,7 +76,7 @@
 										<p>Aucune spécialisation trouvée.</p>	 
 									{% endif %}
 									
-									<a class="btn btn-primary my-5" href="{{ url('member_edit_specialization') }}" title="add specialization" alt="Edit">Modifier mes spécialisations</a>
+									<a class="btn btn-primary my-5" href="{{ url('member_edit_specialization', {'_fragment': 'vert-tabs-specialization'}) }}" title="add specialization" alt="Edit">Modifier mes spécialisations</a>
 								</div>
 								<div class="tab-pane fade" id="vert-tabs-delete" role="tabpanel" aria-labelledby="vert-tabs-delete-tab">
 									<h3 class="mb-5"><strong>Supprimer mon compte</strong></h3>

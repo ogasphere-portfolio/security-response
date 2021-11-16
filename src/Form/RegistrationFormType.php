@@ -105,7 +105,14 @@ class RegistrationFormType extends AbstractType
         $user = $event->getData();
         $form = $event->getForm();
         // dd($user);
-        if (!empty($user->userMember)) {
+        if (!empty($user['userEnterprise']['business_name'])) {
+            $form->add('userEnterprise', EnterpriseType::class, [
+                'label' => false,
+                'required' => true,
+            ]);
+            unset($user['userMember']);
+            $event->setData($user);
+        }else {
             $form->add('userMember', MemberType::class, [
                 'label' => false,
                 'required' => true,
@@ -117,14 +124,6 @@ class RegistrationFormType extends AbstractType
 
         //  enterprise
 
-        if (!empty($user->userEnterprise)) {
-            $form->add('userEnterprise', EnterpriseType::class, [
-                'label' => false,
-                'required' => true,
-            ]);
-            unset($user['userMember']);
-            $event->setData($user);
-        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
