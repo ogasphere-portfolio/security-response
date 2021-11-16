@@ -49,9 +49,10 @@
 						{% if app.user.userMember %}
 							<a class="nav-link " href="{{ path('announcement_postulate', {"id": announcement_read.id}) }}">
 								
-							{% if  announcement_read.members|length >0 %}
+							
 							<span class="btn btn-success text-light position-relative ">
 								Postuler
+								{% if  announcement_read.members|length >0 %}
 								<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 									{{ announcement_read.members|length }}
 								</span>
