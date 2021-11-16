@@ -51,7 +51,7 @@
 								<p><strong>Adresse : </strong>{{ app.user.userEnterprise.address }}</p>
 								<p><strong>Ville : </strong>{{ app.user.userEnterprise.zipcode }} {{ app.user.userEnterprise.city }}</p>
 
-								<a class="btn btn-primary" href="{{ url('enterprise_edit_perso') }}" title="personal information" alt="Edit">Modifier</a>
+								<a class="btn btn-primary" href="{{ url('enterprise_edit_perso', {'_fragment': 'vert-tabs-coordinate'}) }}" title="personal information" alt="Edit">Modifier</a>
 
 							</div>
 							<div class="tab-pane fade" id="vert-tabs-certification" role="tabpanel" aria-labelledby="vert-tabs-certification-tab">
