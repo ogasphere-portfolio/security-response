@@ -21,10 +21,11 @@
 													</td>
 													<td class="py-1">{{ member.description }}</td>	
 													<td class="py-1">	
-													Liste des spécialisations :
-													{% if member.specialization %}	
+													
+													{% if member.specialization|length>0 %}
 																{% for specialization in member.specialization %}	
-																	<li>{{specialization.name}}</li>
+
+																 <span class="badge bg-secondary">{{specialization.name}}</span>
 																{% endfor %}								
 													{% endif %} 													
 													</td>
