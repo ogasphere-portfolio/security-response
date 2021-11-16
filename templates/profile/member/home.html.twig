@@ -68,15 +68,16 @@
 								</div>
 								<div class="tab-pane fade" id="vert-tabs-specialization" role="tabpanel" aria-labelledby="vert-tabs-specialization-tab">
 									<h3 class="mb-5"><strong>Mes spécialisations</strong></h3><br>
-									{% if  app.user.userMember.specialization %}
+									{% if  app.user.userMember.specialization i not empty%}
 										{% for specialization in app.user.userMember.specialization %}	
 											<li>{{specialization.name}}</li>
 										{% endfor %}
+										<a class="btn btn-primary my-5" href="{{ url('member_edit_specialization', {'_fragment': 'vert-tabs-specialization'}) }}" title="add specialization" alt="Edit">Modifier mes spécialisations</a>
 									{% else %}
 										<p>Aucune spécialisation trouvée.</p>	 
 									{% endif %}
 									
-									<a class="btn btn-primary my-5" href="{{ url('member_edit_specialization', {'_fragment': 'vert-tabs-specialization'}) }}" title="add specialization" alt="Edit">Modifier mes spécialisations</a>
+									<a class="btn btn-primary my-5" href="{{ url('member_edit_specialization', {'_fragment': 'vert-tabs-specialization'}) }}" title="add specialization" alt="Edit">Ajouter des spécialisations</a>
 								</div>
 								<div class="tab-pane fade" id="vert-tabs-delete" role="tabpanel" aria-labelledby="vert-tabs-delete-tab">
 									<h3 class="mb-5"><strong>Supprimer mon compte</strong></h3>
