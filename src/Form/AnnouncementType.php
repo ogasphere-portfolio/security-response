@@ -7,6 +7,7 @@ use App\Entity\Category;
 use App\Entity\Enterprise;
 use App\Entity\Certification;
 use App\Entity\Specialization;
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Security\Core\Security;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -56,6 +57,9 @@ class AnnouncementType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 ]) 
+            // ->add('enterprise', EntityType::class,[
+            //     'class'=>Enterprise::class,
+            // ])
                 ;                          
     }
 
