@@ -12,7 +12,7 @@
 		<div class="container">
 			<div class="card card-primary card-outline">
 				<div class="card-header">
-					<h3 class="card-title">
+					<h3 class="card-title text-center">
 						<i class="fas fa-edit"></i>
 						Bienvenue dans votre espace Entreprise
 					</h3>
@@ -79,7 +79,7 @@
 								{% else %}
 									<p>Aucune certification trouvée</p>	 
 								{% endif %}
-								<a class="btn btn-primary my-5" href="{{ url('enterprise_edit_certification', {'_fragment': 'vert-tabs-certification'}) }}" title="edit certification" alt="Edit">Modifier mes certifications</a>
+								<a class="btn btn-primary my-5" href="{{ url('enterprise_edit_certification', {'_fragment': 'vert-tabs-certification'}) }}" title="EditCertification" alt="Edit">Modifier mes certifications</a>
 							</div>
 							<div class="tab-pane fade" id="vert-tabs-delete" role="tabpanel" aria-labelledby="vert-tabs-delete-tab">
 								<h3 class="mb-5"><strong>Supprimer mon compte</strong></h3>
