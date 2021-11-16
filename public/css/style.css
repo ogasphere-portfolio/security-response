@@ -257,19 +257,21 @@ h4 {
 }
 .register-member{
     background: linear-gradient(82.08deg, #3349ec 0%, #4b5ae6 100%);
-    transition: box-shadow 1s;
+    transition: box-shadow 0.5s;
 }
 .register-enterprise {
     background: linear-gradient(82.08deg, #3349ec 0%, #4b5ae6 100%);
-    transition: box-shadow 1s;
+    transition: box-shadow 0.5s;
 }
 
 .register-member:hover{
-    box-shadow:3px 8px #888
+    box-shadow:3px 8px #888;
+    cursor: pointer;
   }
 
 .register-enterprise:hover{
-    box-shadow:3px 8px #888
+    box-shadow:3px 8px #888;
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {

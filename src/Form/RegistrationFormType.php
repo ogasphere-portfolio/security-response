@@ -104,8 +104,8 @@ class RegistrationFormType extends AbstractType
     {
         $user = $event->getData();
         $form = $event->getForm();
-
-        if ($user['membershipType'] === 'member') {
+        // dd($user);
+        if (!empty($user->userMember)) {
             $form->add('userMember', MemberType::class, [
                 'label' => false,
                 'required' => true,
@@ -117,7 +117,7 @@ class RegistrationFormType extends AbstractType
 
         //  enterprise
 
-        if ($user['membershipType'] === 'enterprise') {
+        if (!empty($user->userEnterprise)) {
             $form->add('userEnterprise', EnterpriseType::class, [
                 'label' => false,
                 'required' => true,
