@@ -41,6 +41,7 @@ class MainController extends AbstractController
      */
     public function error404(): Response
     {
+       
         return $this->render('main/error404.html.twig', [
             'controller_name' => 'MainController',
         ]);
