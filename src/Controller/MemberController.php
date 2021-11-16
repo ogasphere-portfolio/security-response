@@ -34,9 +34,11 @@ class MemberController extends AbstractController
      */
     public function browse(MemberRepository $memberRepository): Response
     {
+        $memberList = $memberRepository->findAll();
+        
         return $this->render('member/browse.html.twig', [
-            'member_list' => $memberRepository->findAll()
-        ]);
+            'member_list' => $memberList
+        ]);       
     }
     
     /**
