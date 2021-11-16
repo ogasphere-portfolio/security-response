@@ -35,6 +35,8 @@
 							<h3>Catégorie :</h3>
 								{{ form_widget(announcement_form.category) }}</p>
 						</div>	
+							{% else %}	
+								{{ form_widget(announcement_form.category, {'attr': {'class': 'd-none'}}) }}</p>
 							{% endif %}					
 				</div>
 				<div class="my-2">
