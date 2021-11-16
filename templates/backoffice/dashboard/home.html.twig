@@ -1,0 +1,213 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ message }}</div>
+	{% endfor %}
+
+
+	<!-- Main content -->
+	<section class="content">
+		<div class="container-fluid">
+			<!-- Small boxes (Stat box) -->
+			<div class="row">
+				<div class="col-lg-4 col-6">
+					<!-- small box -->
+					<div class="small-box bg-info">
+						<div class="inner">
+							<h3>{{ announcements|length }}</h3>
+							<p>Nombre d'annonces</p>
+						</div>
+						<div class="icon">
+							<i class="ion ion-bag"></i>
+						</div>
+						<a href="{{ url('backoffice_announcement_browse') }}" class="small-box-footer">Plus d'info<i class="fas fa-arrow-circle-right"></i>
+						</a>
+					</div>
+				</div>
+				<!-- ./col -->
+				<div
+					class="col-lg-4 col-6">
+					<!-- small box -->
+					<div class="small-box bg-success">
+						<div class="inner">
+							<h3>{{ enterprises|length }}<sup style="font-size: 20px"></sup>
+							</h3>
+							<p>Nombre d'entreprises</p>
+						</div>
+						<div class="icon">
+							<i class="ion ion-stats-bars"></i>
+						</div>
+						<a href="{{ url('backoffice_enterprise_browse') }}" class="small-box-footer">Plus d'info
+							<i class="fas fa-arrow-circle-right"></i>
+						</a>
+					</div>
+				</div>
+				<!-- ./col -->
+				<div
+					class="col-lg-4 col-6">
+					<!-- small box -->
+					<div class="small-box bg-warning">
+						<div class="inner">
+							<h3>{{ members|length }}<h3></h3>
+							</h3>
+
+							<p>Nombre de membres</p>
+						</div>
+						<div class="icon">
+							<i class="ion ion-person-add"></i>
+						</div>
+						<a href="{{ url('backoffice_member_browse') }}" class="small-box-footer">Plus d'info
+							<i class="fas fa-arrow-circle-right"></i>
+						</a>
+					</div>
+				</div>
+
+			</div>
+
+            <div class="d-flex flex-row">
+                <!-- Announcement List -->
+                <div class="card col-lg-6 col-6 mr-1">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="ion ion-clipboard mr-1"></i>
+                            Annonces à valider
+                        </h3>
+
+                        <div class="card-tools">
+                            <ul class="pagination pagination-sm">
+                                <li class="page-item">
+                                    <a href="#" class="page-link">&laquo;</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">&raquo;</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <ul class="todo-list" data-widget="todo-list">
+                            {% for id , announcement in announcementNotValid %}
+
+                                <li>
+                                    <!-- drag handle -->
+                                    <span class="handle">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </span>
+                                    <!-- checkbox -->
+                                    <div class="icheck-primary d-inline ml-2">
+                                        <input type="checkbox" value="" name="todo1" id="todoCheck{{id}}">
+                                        <label for="todoCheck{{id}}"></label>
+                                    </div>
+                                    <!-- todo text -->
+                                    <span class="text">{{ announcement.title }}</span>
+                                    <!-- Emphasis label -->
+                                    <small class="badge badge-danger">
+                                        <i class="far fa-clock"></i>
+                                        {{ announcement.category }}</small>
+                                    <!-- General tools such as edit or delete-->
+                                    <div class="tools">
+                                        <i class="fas fa-edit"></i>
+                                        <i class="fas fa-trash-o"></i>
+                                    </div>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <button type="button" class="btn btn-primary float-right">
+                            <i class="fas fa-plus"></i>
+                            Modifier le status</button>
+                    </div>
+                </div>
+
+                <!-- Member List -->
+                <div class="card col-lg-6 col-6 ml-1">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="ion ion-clipboard mr-1"></i>
+                            Membres à valider
+                        </h3>
+
+                        <div class="card-tools">
+                            <ul class="pagination pagination-sm">
+                                <li class="page-item">
+                                    <a href="#" class="page-link">&laquo;</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">&raquo;</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <ul class="todo-list" data-widget="todo-list">
+                            {% for id , userNotValid in usersNotValid %}
+
+                                <li>
+                                    <!-- drag handle -->
+                                    <span class="handle">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </span>
+                                    <!-- checkbox -->
+                                    <div class="icheck-primary d-inline ml-2">
+                                        <input type="checkbox" value="" name="todo1" id="todoCheck{{id}}">
+                                        <label for="todoCheck{{id}}"></label>
+                                    </div>
+                                    <!-- todo text -->
+                                    <span class="text">{{ userNotValid.email }}</span>
+                                    <!-- Emphasis label -->
+                                    <small class="badge badge-danger">
+                                        <i class="far fa-clock"></i>
+                                        2 mins</small>
+                                    <!-- General tools such as edit or delete-->
+                                    <div class="tools">
+                                        <i class="fas fa-edit"></i>
+                                        <i class="fas fa-trash-o"></i>
+                                    </div>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <button type="button" class="btn btn-primary float-right">
+                            <i class="fas fa-plus"></i>
+                            Modifier le status</button>
+                    </div>
+                </div>
+            </div>
+
+		</div>
+
+	</section>
+
+	
+	{# Bloc destiné à recevoir le javascript spécifique à la page #}
+	{% block javascripts %}{% endblock %}
+{% endblock %}

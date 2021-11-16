@@ -21,13 +21,21 @@
                                                     {% for announcement in announcement_browse %}
                                                     <tr class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">   
                                                         <td                                                            
-                                                            <li><a href="{{ path('announcement_read', {"id": announcement.id}) }}">{{announcement.title}}</a></li>
+                                                            <li>
+                                                                <a href="{{ path('announcement_read', {"id": announcement.id}) }}">{{announcement.title}}</a>
+                                                                {% for specialization in announcement.specialization  %}
+                                                                <span class="badge bg-primary float-end">{{ specialization.name }}</span>
+                                                                {% endfor %}
+                                                            </li>
                                                         </td>
                                                         <td class="py-1">{{ announcement.description }}</td>
-                                                        
-                                                       
-                                                        <td class="py-1"><em>Crée le {{ announcement.createdAt|date("d/m/Y") }} par </em> <strong>{{ announcement.enterprise.businessName }}</strong> </td>
-                                                                
+                                                        <td class="py-1"><em>Crée le {{ announcement.createdAt|date("d/m/Y") }} par </em> <strong>
+                                                        {% if announcement.enterprise is empty %} 
+                                                        {{ announcement.category.name }}  
+                                                        {% else %} {{ announcement.enterprise.businessName }} 
+                                                        {% endif %}</strong> 
+
+                                                        </td>     
                                                     </tr>
                                                     {% endfor %}
                                                     

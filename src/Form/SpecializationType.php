@@ -13,13 +13,13 @@ class SpecializationType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('slug')
+            // ->add('slug')
             // ->add('created_at')
             // ->add('updated_at')
             // ->add('created_by')
             // ->add('updated_by')
-            ->add('announcements')
-            ->add('members')
+            // ->add('announcements')
+            // ->add('members')
         ;
     }
 

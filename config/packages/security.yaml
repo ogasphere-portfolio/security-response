@@ -44,9 +44,10 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        #  - { path: ^/backoffice, roles: ROLE_ADMIN }
+         - { path: ^/backoffice, roles: ROLE_ADMIN }
     #     - { path: ^/entreprises, roles: ROLE_ENTERPRISE }
     #     - { path: ^/membres, roles: ROLE_MEMBER }
     #     - { path: ^/annonces, roles: ROLE_MEMBER, ROLE_ENTERPRISE }
+    #     - { path: ^/annonces/add, roles: ROLE_ENTERPRISE }
 
         

@@ -194,6 +194,43 @@ class EnterpriseController extends AbstractController
     }
 
     /**
+     * @Route("/edit/certifications", name="edit_certification", methods={"GET", "POST"})
+     */
+    public function editCertification(Request $request, Security $security): Response
+    {
+        /**
+         * @var \App\Entity\User
+         */
+        $userEnterprise = $security->getUser();
+        $enterprise = $userEnterprise->getUserEnterprise();
+
+        $certificationForm = $this->createForm(EnterpriseType::class, $enterprise, [
+            'type' => 'certification'
+        ]);
+
+        $certificationForm->handleRequest($request);
+
+        if ($certificationForm->isSubmitted() && $certificationForm->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+
+            // Read all certifications of the enterprise
+            foreach ($enterprise->getCertification() as $certification) {
+                $certification->addEnterprise($enterprise);
+            }
+
+            $entityManager->flush();
+
+            $this->addFlash('success', "Les certifications ont été modifiées.");
+
+            return $this->redirectToRoute('profile_enterprise');
+        }
+
+        return $this->render('profile/enterprise/editCertification.html.twig', [            
+            'certification_form' => $certificationForm->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
     public function add(Request $request): Response

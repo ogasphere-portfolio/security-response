@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -66,16 +67,16 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('membershipType', ChoiceType::class, [
-                'mapped' => false,
-                'choices'  => [
-                    'Membre' => 'member',
-                    'Entreprise' => 'enterprise',
-                ],
-                'expanded' => true,
-                'multiple' => false,
-                'label' => 'Choisissez votre type de compte',
-            ])
+            // ->add('membershipType', ChoiceType::class, [
+            //     'mapped' => false,
+            //     'choices'  => [
+            //         'Membre' => 'member',
+            //         'Entreprise' => 'enterprise',
+            //     ],
+            //     'expanded' => true,
+            //     'multiple' => false,
+            //     'label' => 'Choisissez votre type de compte',
+            // ])
             // De base il est pas en required 
             // TODO: Vérifier qu'il l'est bien pas
             ->add('userMember', MemberType::class, [
@@ -90,7 +91,7 @@ class RegistrationFormType extends AbstractType
 
 
 
-            // ->add('roles')
+            // ->add('roles', HiddenType::class)
 
         ;
 
@@ -103,21 +104,20 @@ class RegistrationFormType extends AbstractType
     {
         $user = $event->getData();
         $form = $event->getForm();
-
-        // Vérifier la valeur du radio
-        // si 'est member on indique le champ userMember (ou plutôt le sous form) est requis.
-        if ($user['membershipType'] === 'member') {
+        // dd($user);
+        if (!empty($user->userMember)) {
             $form->add('userMember', MemberType::class, [
                 'label' => false,
                 'required' => true,
             ]);
+            
             unset($user['userEnterprise']);
             $event->setData($user);
         }
 
-        // pareil pour entreprise
+        //  enterprise
 
-        if ($user['membershipType'] === 'enterprise') {
+        if (!empty($user->userEnterprise)) {
             $form->add('userEnterprise', EnterpriseType::class, [
                 'label' => false,
                 'required' => true,

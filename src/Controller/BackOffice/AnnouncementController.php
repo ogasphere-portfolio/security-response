@@ -26,7 +26,7 @@ class AnnouncementController extends AbstractController
      */
     public function browse(AnnouncementRepository $announcementRepository): Response
     {
-
+        
         return $this->render('backoffice/announcement/browse.html.twig', [
             'announcement_list' => $announcementRepository->findAll(),
             
@@ -58,11 +58,14 @@ class AnnouncementController extends AbstractController
         $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
 
         $announcementForm->handleRequest($request);
-
+       
+       
+        
+       
         if ($announcementForm->isSubmitted() && $announcementForm->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            $announcement->setUpdatedAt(new DateTimeImmutable());
+           
             $entityManager->flush();
 
             $this->addFlash('success', "Announcement `{$announcement->getTitle()}` udpated successfully");
@@ -77,6 +80,7 @@ class AnnouncementController extends AbstractController
             'page' => 'edit',
         ]);
     }
+
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
@@ -118,7 +122,7 @@ class AnnouncementController extends AbstractController
      */
     public function delete(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
-        $this->addFlash('success', "Announcement {$announcement->getId()} deleted");
+        $this->addFlash('success', "Announcement {$announcement->getTitle()} deleted");
 
         $entityManager->remove($announcement);
         $entityManager->flush();

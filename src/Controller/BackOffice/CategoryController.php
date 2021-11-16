@@ -28,8 +28,8 @@ class CategoryController extends AbstractController
     {
 
         return $this->render('backoffice/category/browse.html.twig', [
-            'category_browse' => $categoryRepository->findAll(),
-            'controller_name' => 'BackOffice/CategoryController'
+            'category_list' => $categoryRepository->findAll(),
+           
         ]);
     }
 
@@ -43,14 +43,7 @@ class CategoryController extends AbstractController
             'disabled' => 'disabled'
         ]);
 
-        $categoryForm
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ]);
-
+        
         // on fournit ce formulaire à notre vue
         return $this->render('backoffice/category/read.html.twig', [
             'form' => $categoryForm->createView(),
@@ -126,7 +119,7 @@ class CategoryController extends AbstractController
      */
     public function delete(Category $category, EntityManagerInterface $entityManager): Response
     {
-        $this->addFlash('success', "Category {$category->getId()} deleted");
+        $this->addFlash('success', "Category {$category->getName()} deleted");
 
         $entityManager->remove($category);
         $entityManager->flush();

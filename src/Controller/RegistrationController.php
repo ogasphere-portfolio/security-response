@@ -36,16 +36,25 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-        
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
-            $userPasswordHasherInterface->hashPassword(
+                $userPasswordHasherInterface->hashPassword(
                     $user,
                     $form->get('password')->getData()
                 )
             );
+            
+            if (!empty($user->getUserMember())) {
+                
+                $user->setRoles(["ROLE_MEMBER"]);
+            }
+            if (!empty($user->getUserEnterprise())) {
+                
+                $user->setRoles(["ROLE_ENTERPRISE"]);
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -63,6 +72,8 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('homepage');
         }
+
+        
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
@@ -90,39 +101,4 @@ class RegistrationController extends AbstractController
 
         return $this->redirectToRoute('homepage');
     }
-
-
-    // /**
-    //  * @Route("/register/membre", name="app_register_member")
-    //  */
-    // public function registerMembre(Request $request): Response
-    // {
-    //     $member = new Member();
-    //     $form = $this->createForm(MemberType::class, $member);
-    //     $form->handleRequest($request);
-
-    //     dump($this->token);
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         // encode the plain password
-            
-    //         $user = $this->token->getToken()->getUser();
-    //         //$user->setUser($this->getUser());
-
-            
-    //         $memberUser = $form->getData($user);
-
-    //         $entityManager = $this->getDoctrine()->getManager();
-    //         $entityManager->persist($memberUser);
-    //         $entityManager->flush();
-
-            
-
-    //         return $this->redirectToRoute('homepage');
-    //     }
-
-
-    //     return $this->render('registration/register-member.html.twig', [
-    //         'registrationForm' => $form->createView(),
-    //     ]);
-    // }
 }

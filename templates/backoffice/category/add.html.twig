@@ -2,9 +2,9 @@
 
 {% block title %}
     {% if page == 'create' %}
-    New User
+    Nouvelle catégorie
     {% else %}
-    User {{ user.Email }}
+    Catégorie : {{ category.name }}
     {% endif %}
 {% endblock %}
 
@@ -15,35 +15,36 @@
 
 {% for message in app.flashes('success') %}
 		<div class="alert alert-success" role="alert">{{ message }}</div>
+
+
+
 	{% endfor %}
 <h1> 
     {% if page == 'create' %}
-        Nouvel utilisateur
+        Nouvelle catégorie
     {% else %}
-        Modification de  {{ user.Email }}
+        Modification {{ category.name }}
     {% endif %}
 </h1>
 <div class="text-end">
 </div>
 
-{{ form_start(user_form) }}
+ {{ form_start(form) }}
 
-    {{ form_errors(user_form) }}
-    {{ form_row(user_form.email) }}
-    {{ form_row(user_form.password) }}
-    {{ form_row(user_form.roles) }}
-    {{ form_row(user_form.isVerified) }}
-
-
+ 
+    {{ form_errors(form) }}
+    {{ form_row(form.name) }}
+   
+ 
     <button type="submit" class="btn btn-primary mt-4">
-    {% if 'backoffice_user_add' == app.request.get('_route') %}
-    Create
+    {% if 'backoffice_category_add' == app.request.get('_route') %}
+    Ajouter
     {% else %}
-    Update
+    Modifier
     {% endif %}
     </button>
 
-{{ form_end(user_form) }} 
+{{ form_end(form) }} 
 
 </div>
 {% endblock %}
