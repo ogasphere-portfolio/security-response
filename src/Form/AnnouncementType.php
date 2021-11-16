@@ -44,7 +44,7 @@ class AnnouncementType extends AbstractType
             ->add('description',CKEditorType::class,[
                 'label' => false])                     
             ->add('category', EntityType::class,[
-                'class' => Category::class])  
+                'class' => Category::class,])  
             ->add('members', EntityType::class,[
                 'class' => Member::class,
                 'choice_label' => 'firstname',
