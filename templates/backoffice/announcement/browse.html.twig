@@ -46,7 +46,7 @@
 								<td>{{ announcement.title }}</td>
 								<td>{{ announcement.slug }}</td>
 								<td>{{ announcement.description[:150]|raw }}</td>
-								<td>{{ announcement.status }}</td>
+								<td>{{ announcement.getStatusText() }}</td>
 								<td>
 									{% for specialization in announcement.specialization %}
 										{{specialization.name}}
