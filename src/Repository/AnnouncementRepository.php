@@ -37,8 +37,8 @@ class AnnouncementRepository extends ServiceEntityRepository
         FROM App\Entity\Announcement a
         INNER JOIN App\Entity\Category c 
         WITH a.category = c.id
-        WHERE c.name = 'Recrutement'"; 
-
+        WHERE c.name = 'Recrutement'
+        ORDER BY a.created_at DESC"; 
         $query = $entityManager->createQuery(
             $dqlQuery
         );
