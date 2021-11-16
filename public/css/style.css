@@ -152,7 +152,13 @@ h4 {
 #nav-inscription a {
     color: white;
 }
-
+.nav-tabs {
+    border-bottom: 0px;
+}
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
+    border-color: #e9ecef #e9ecef #dee2e6 #e9ecef;
+   
+}
 .card.shadow-sm.border.border-5 {
     height: 300px;
 }
