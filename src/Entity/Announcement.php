@@ -165,7 +165,7 @@ class Announcement
     }
     public function getStatusText(): ?string
     {
-        switch ($this->gender) {
+        switch ($this->status) {
             
             case 0:
                 return 'Non validé';
