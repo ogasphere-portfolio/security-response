@@ -85,23 +85,15 @@
 								</div>
 								<div class="tab-pane fade" id="vert-tabs-announcement" role="tabpanel" aria-labelledby="vert-tabs-announcement-tab">
 									<h3 class="mb-5">Mes annonces</h3><br>
-									{# {% if  app.user.userMember.announcement != null %}
-										{% for annonce in app.user.userMember.announcement %}
+								{# {{ dump(app.user.userMember) }} #}
+									 {% if  app.user.userMember.announcements is not empty %}
+										{% for annonce in app.user.userMember.announcements %}
 											<li><a href="{{ path('announcement_read', {"id": annonce.id}) }}">{{annonce.title}}</a></li>
 											
-											<ul class="d-flex flex-row navbar-nav me-4 mb-md-0">
-												<li class="nav-item">
-														<a class="btn btn-primary" aria-current="page" href="{{ path('announcement_edit', {"id" : annonce.id}) }}">Modifier</a>
-												</li>
-												<li class="nav-item">
-														<a class="btn btn-primary" aria-current="page" href="{{ path('announcement_delete', {"id" : annonce.id}) }}">Supprimer</a>
-												</li>
-											</ul> 
-
 										{% endfor %}
 									{% else %}
-										<p>Aucune annonce n'a été créée pour le moment.</p>	 
-									{% endif %} #}
+										<p>Vous n'avez postulé à aucune annonces.</p>	 
+									{% endif %} 
 								</div>
 							</div>
 						</div>
