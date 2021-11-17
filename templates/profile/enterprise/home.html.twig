@@ -93,9 +93,7 @@
 							<div class="tab-pane fade" id="vert-tabs-announcement" role="tabpanel" aria-labelledby="vert-tabs-announcement-tab">
 								<h3 class="mb-5"><strong>Mes annonces</strong></h3>
 								{% if  app.user.userEnterprise.announcement is not empty %}
-									{% for annonce in app.user.userEnterprise.announcement %}
-								{% if  app.user.userEnterprise.announcement %}
-								
+															
 									{% for annonce in app.user.userEnterprise.announcement|sort((b, a) => a.createdAt <=> b.createdAt) %}
 								
 										<div class="d-flex flex-row my-3 py-3 border-top border-2 border-primary">
