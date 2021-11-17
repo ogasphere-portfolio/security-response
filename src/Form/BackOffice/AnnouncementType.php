@@ -9,6 +9,7 @@ use App\Entity\Specialization;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -34,7 +35,12 @@ class AnnouncementType extends AbstractType
 
         $builder
             ->add('title')
-            ->add('description', CKEditorType::class)                     
+            ->add('description', CKEditorType::class)
+            ->add('status',ChoiceType::class, [
+                'choices'  => [
+                    'Non validé' => 0,
+                    'Validé' => 1,
+                ]])                    
             ->add('category', EntityType::class,[
                 'class' => Category::class])  
             ->add('members', EntityType::class,[

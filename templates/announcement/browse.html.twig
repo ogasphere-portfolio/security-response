@@ -28,7 +28,7 @@
                                                                 {% endfor %}
                                                             </li>
                                                         </td>
-                                                        <td class="py-1">{{ announcement.description[:150]|raw }}</td>
+                                                        <td class="py-1">{{ announcement.description|u.truncate(150, '...', false)|raw }}</td>
                                                         <td class="py-1"><em>Crée le {{ announcement.createdAt|date("d/m/Y") }} par </em> <strong>
                                                         {% if announcement.enterprise is empty %}
                                                         {{ announcement.category.name }} 
