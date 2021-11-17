@@ -49,6 +49,18 @@ class MainController extends AbstractController
     /**
      * 
      * 
+     * @Route("/contact", name="contact")
+     */
+    public function contact(): Response
+    {
+        return $this->render('main/contact.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
+
+    /**
+     * 
+     * 
      * @Route("/404", name="404")
      */
     public function error404(): Response
