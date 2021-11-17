@@ -33,7 +33,7 @@ class UserType extends AbstractType
                 'choices' => [
                     'Utilisateur' => 'ROLE_USER',
                     'Membre' => 'ROLE_MEMBER',
-                    'Entreprise' => 'ROLE_ENTREPRISE',
+                    'Entreprise' => 'ROLE_ENTERPRISE',
                     'Administrateur' => 'ROLE_ADMIN',
                 ],
                 'expanded' => true,
