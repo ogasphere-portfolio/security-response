@@ -15,9 +15,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Announcement
 {
-    const STATUS_PUBLIE = 1;
-    const STATUS_VALIDE = 2;
-    const STATUS_ARCHIVE = 3;
+    const STATUS_NON_VALIDE = 0;
+    const STATUS_VALIDE = 1;
+    
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -112,6 +112,9 @@ class Announcement
         }
         if ($this->getUpdatedAt() === null) {
             $this->setUpdatedAt(new \DateTimeImmutable('now'));
+        }
+        if ($this->getStatus() === null) {
+            $this->setStatus(0);
         }
         $this->certification = new ArrayCollection();
         $this->members = new ArrayCollection();
