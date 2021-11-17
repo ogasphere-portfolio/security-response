@@ -126,6 +126,7 @@ class AnnouncementController extends AbstractController
                         // 'attr' => ['class' => 'd-none'] ,
                         'disabled' => 'disabled',
                     ]);
+                    $announcement->setEnterprise( $this->getUser()->getUserEnterprise());
                 }
             }
 

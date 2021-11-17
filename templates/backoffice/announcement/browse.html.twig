@@ -17,7 +17,7 @@
 		<!-- Default box -->
 		<div class="card">
 			<div class="card-header row ">
-				<h2 class="card-title col-6 ">Liste des entreprises</h3>
+				<h2 class="card-title col-6 ">Liste des annonces</h3>
 				<div class="col-6 text-right">
 					{% include "backoffice/announcement/_menu.html.twig" %}</div>
 			</div>
@@ -46,7 +46,7 @@
 								<td>{{ announcement.title }}</td>
 								<td>{{ announcement.slug }}</td>
 								<td>{{ announcement.description[:150]|raw }}</td>
-								<td>{{ announcement.status }}</td>
+								<td>{{ announcement.getStatusText() }}</td>
 								<td>
 									{% for specialization in announcement.specialization %}
 										{{specialization.name}}

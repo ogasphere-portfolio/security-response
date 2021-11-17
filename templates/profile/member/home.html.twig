@@ -3,12 +3,15 @@
 {% block title %}Espace membre{% endblock %}
 
 {% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ message }}</div>
+	{% endfor %}
 
 <main>
-	<div class="container">
+	<div class="container mt-5">
 		<div class="card card-primary card-outline">
 			<div class="card-header">
-				<h3 class="card-title">
+				<h3 class="card-title text-center">
 					<i class="fas fa-edit"></i>
 					Bienvenue dans votre espace Membre
 				</h3>
@@ -65,15 +68,16 @@
 								</div>
 								<div class="tab-pane fade" id="vert-tabs-specialization" role="tabpanel" aria-labelledby="vert-tabs-specialization-tab">
 									<h3 class="mb-5"><strong>Mes spécialisations</strong></h3><br>
-									{% if  app.user.userMember.specialization %}
+									{% if  app.user.userMember.specialization is not empty %}
 										{% for specialization in app.user.userMember.specialization %}	
 											<li>{{specialization.name}}</li>
 										{% endfor %}
+										<a class="btn btn-primary my-5" href="{{ url('member_edit_specialization', {'_fragment': 'vert-tabs-specialization'}) }}" title="add specialization" alt="Edit">Modifier mes spécialisations</a>
 									{% else %}
 										<p>Aucune spécialisation trouvée.</p>	 
 									{% endif %}
 									
-									<a class="btn btn-primary my-5" href="{{ url('member_edit_specialization', {'_fragment': 'vert-tabs-specialization'}) }}" title="add specialization" alt="Edit">Modifier mes spécialisations</a>
+									<a class="btn btn-primary my-5" href="{{ url('member_edit_specialization', {'_fragment': 'vert-tabs-specialization'}) }}" title="add specialization" alt="Edit">Ajouter des spécialisations</a>
 								</div>
 								<div class="tab-pane fade" id="vert-tabs-delete" role="tabpanel" aria-labelledby="vert-tabs-delete-tab">
 									<h3 class="mb-5"><strong>Supprimer mon compte</strong></h3>
@@ -82,23 +86,15 @@
 								</div>
 								<div class="tab-pane fade" id="vert-tabs-announcement" role="tabpanel" aria-labelledby="vert-tabs-announcement-tab">
 									<h3 class="mb-5">Mes annonces</h3><br>
-									{# {% if  app.user.userMember.announcement != null %}
-										{% for annonce in app.user.userMember.announcement %}
+								{# {{ dump(app.user.userMember) }} #}
+									 {% if  app.user.userMember.announcements is not empty %}
+										{% for annonce in app.user.userMember.announcements %}
 											<li><a href="{{ path('announcement_read', {"id": annonce.id}) }}">{{annonce.title}}</a></li>
 											
-											<ul class="d-flex flex-row navbar-nav me-4 mb-md-0">
-												<li class="nav-item">
-														<a class="btn btn-primary" aria-current="page" href="{{ path('announcement_edit', {"id" : annonce.id}) }}">Modifier</a>
-												</li>
-												<li class="nav-item">
-														<a class="btn btn-primary" aria-current="page" href="{{ path('announcement_delete', {"id" : annonce.id}) }}">Supprimer</a>
-												</li>
-											</ul> 
-
 										{% endfor %}
 									{% else %}
-										<p>Aucune annonce n'a été créée pour le moment.</p>	 
-									{% endif %} #}
+										<p>Vous n'avez postulé à aucune annonces.</p>	 
+									{% endif %} 
 								</div>
 							</div>
 						</div>
