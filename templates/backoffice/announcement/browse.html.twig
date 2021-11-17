@@ -45,7 +45,7 @@
 								<th scope="row">{{ announcement.id }}</th>
 								<td>{{ announcement.title }}</td>
 								<td>{{ announcement.slug }}</td>
-								<td>{{ announcement.description|u.truncate(150, '...', false)}}</td>
+								<td>{{ announcement.description|u.truncate(150, '...', false)|raw}}</td>
 								<td>{{ announcement.getStatusText() }}</td>
 								<td>
 									{% for specialization in announcement.specialization %}
