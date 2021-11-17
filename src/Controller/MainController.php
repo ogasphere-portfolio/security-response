@@ -37,6 +37,18 @@ class MainController extends AbstractController
     /**
      * 
      * 
+     * @Route("/mentions-legales", name="mentions_legales")
+     */
+    public function mentionLegales(): Response
+    {
+        return $this->render('main/mentionLegales.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
+
+    /**
+     * 
+     * 
      * @Route("/404", name="404")
      */
     public function error404(): Response
