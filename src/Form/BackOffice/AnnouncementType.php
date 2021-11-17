@@ -34,7 +34,8 @@ class AnnouncementType extends AbstractType
 
         $builder
             ->add('title')
-            ->add('description', CKEditorType::class)                     
+            ->add('description', CKEditorType::class)
+            ->add('status')                     
             ->add('category', EntityType::class,[
                 'class' => Category::class])  
             ->add('members', EntityType::class,[
