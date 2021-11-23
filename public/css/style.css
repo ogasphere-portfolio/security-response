@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-
 body{
     background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
     font-family: 'Montserrat', sans-serif;
@@ -282,26 +280,45 @@ h4 {
     cursor: pointer;
 }
 
+.contact-block{
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
+}
+
 .contact {
     padding: 30px;
-    background-color: white;
+    background-color: #FFF;
     border-radius: 10px;
+}
+
+.contact h1{
+    font-size: 30px;
 }
 
 .contact .separation {
     width: 100%;
     height: 1px;
-    background-color: #006FC5;
+    background-color: #006fc5;
 }
 
-.contact .corps-formulaire .groupe {
+.contact .body-form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.contact .body-form .group {
     position: relative; /* Pour mettre positionner l’élément dans le flux normal de la page */
     margin-top: 20px;
     display: flex;
     flex-direction: column;
 }
 
-.contact .corps-formulaire .gauche .groupe input {
+.contact .body-form .left .group input {
     margin-top: 5px;
     padding: 10px 5px 10px 30px;
     border: 1px solid #c9c9c9;
@@ -309,17 +326,53 @@ h4 {
     border-radius: 5px;
 }
 
-.contact .corps-formulaire .gauche .groupe .icone {
+.contact .body-form .left .group i {
     position: absolute; /* positionné par rapport à son parent le plus proche positionné */
     left: 0;
     top: 25px;
-    padding: 9px 8px;
+    padding: 18px 8px;
     color: #006fc5;
 }
 
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
+.contact .body-form .right {
+    margin-left: 40px;
+}
+
+.contact .body-form .right .group {
+    height: 100%;
+}
+
+.contact .body-form .right .group textarea {
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 2px solid #006fc5;
+    outline: none;
+    border-radius: 5px;
+    resize: none;
+    height: 82%;
+}
+
+.contact .footer-form button {
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.contact .footer-form button:hover {
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 1024px) {
+        .contact .body-form .right {
+        margin-left: 0px;        
     }
 }
 
