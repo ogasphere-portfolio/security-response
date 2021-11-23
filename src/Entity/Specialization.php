@@ -50,7 +50,7 @@ class Specialization
     private $updated_by;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Announcement::class, mappedBy="specialization")
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="specialization")
      */
     private $announcements;
 

@@ -83,7 +83,7 @@ class Announcement
     private $members;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Specialization::class, inversedBy="announcements")
+     * @ORM\ManyToOne(targetEntity=Specialization::class, inversedBy="announcements")
      * @Assert\Count(min=1, minMessage="Merci de choisir une spécialisation !!!")
      */
     private $specialization;
