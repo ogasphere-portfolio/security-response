@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\SendMailService;
+use Symfony\Component\HttpFoundation\Request;
 
 
 
@@ -48,28 +50,38 @@ class MainController extends AbstractController
 
     /**
      * 
-     * 
      * @Route("/contact", name="contact")
+     * 
      */
-    public function contact(): Response
+    public function contact(Request $request, SendMailService $sendMailService): Response
     {
+        $formContact = $this->createForm();
+        $formContact->handleRequest($request)
+
+        if ($formContact->isSubmitted() && $formContact->isValid()) {
+            $data = $formContact->getData();
+            
+            $sendMailService->send(
+                subject: "Nouveau message",
+                from: "cskyzr@hotmail.com",
+                to : "cskyzr@hotmail.com",
+                template: "main/contact.html.twig",
+                [
+                    "name" => $data['name'],
+                    "email" => $data['email'],
+                    "phone" => $data['phone'],
+                    "description" => $data['description']
+                ]
+                
+            );
+
+            $this->addFlash('success', "Votre message a bien été envoyé");
+
+            return $this->redirectToRoute('contact');
+        }
+
         return $this->render('main/contact.html.twig', [
-            'controller_name' => 'MainController',
+            'formContact' => $formContact->creatView(),
         ]);
     }
-
-    /**
-     * 
-     * 
-     * @Route("/404", name="404")
-     */
-    public function error404(): Response
-    {
-       
-        return $this->render('main/error404.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
-    }
-   
-
 }
