@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/annonces", name="announcement_")
@@ -96,7 +97,7 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
-    public function add(Request $request, Security $security, CategoryRepository $cr): Response
+    public function add(Request $request, Security $security, CategoryRepository $cr, SluggerInterface $slugger): Response
     {
         $announcement = new Announcement();
 
@@ -138,7 +139,7 @@ class AnnouncementController extends AbstractController
              * @var User
              */
             $user = $security->getUser();
-
+            $announcement->setSlug($slugger->slug($announcement->getTitle()));
             // $announcement->setEnterprise($user->getUserEnterprise());
 
             // on ne demande l'entityManager que si on en a besoin

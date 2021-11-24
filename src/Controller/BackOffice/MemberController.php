@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Constraints\Date;
 
 /**
@@ -91,7 +92,7 @@ class MemberController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
-    public function add(Request $request): Response
+    public function add(Request $request, SluggerInterface $slugger): Response
     {
         $member = new Member();
 
@@ -104,6 +105,7 @@ class MemberController extends AbstractController
 
         if ($memberForm->isSubmitted() && $memberForm->isValid()) {
 
+            $member->setSlug(strtolower($slugger->slug($member->getFirstname() . '-' . $member->getLastname())));
 
             $entityManager = $this->getDoctrine()->getManager();
 

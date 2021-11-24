@@ -97,7 +97,7 @@ class AppFixtures extends Fixture
                 ->setDescription($faker->paragraphs(2, true))
                 ->setStatus($faker->numberBetween(0, 1))
                 ->addMember($memberList[$i])
-                ->addSpecialization($specializationList[$i])
+                ->setSpecialization($specializationList[$i])
                 ->setCategory($categoryList[$i])
                 ->addCertification($certificationList[$i])
                 ->setSlug((strtolower($this->slugger->slug($announcement->getTitle()))))
