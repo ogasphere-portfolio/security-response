@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
+use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\SendMailService;
 use Symfony\Component\HttpFoundation\Request;
-
-
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class MainController extends AbstractController
 {
@@ -53,35 +55,33 @@ class MainController extends AbstractController
      * @Route("/contact", name="contact")
      * 
      */
-    public function contact(Request $request, SendMailService $sendMailService): Response
+    public function contact(Request $request, MailerInterface $mailer): Response
     {
-        $formContact = $this->createForm();
-        $formContact->handleRequest($request)
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        /*$form->handleRequest($request);       
+  
+        if($form->isSubmitted() && $form->isValid()) {
 
-        if ($formContact->isSubmitted() && $formContact->isValid()) {
-            $data = $formContact->getData();
+            $contactFormData = $form->getData();
             
-            $sendMailService->send(
-                subject: "Nouveau message",
-                from: "cskyzr@hotmail.com",
-                to : "cskyzr@hotmail.com",
-                template: "main/contact.html.twig",
-                [
-                    "name" => $data['name'],
-                    "email" => $data['email'],
-                    "phone" => $data['phone'],
-                    "description" => $data['description']
-                ]
-                
-            );
+            $message = (new Email())
+                ->from($contactFormData['email'])
+                ->to('ton@gmail.com')
+                ->subject('vous avez reçu unn email')
+                ->text('Sender : '.$contactFormData['email'].\PHP_EOL.
+                    $contactFormData['Message'],
+                    'text/plain');
+            $mailer->send($message);
 
-            $this->addFlash('success', "Votre message a bien été envoyé");
+            $this->addFlash('success', 'Vore message a été envoyé');
 
             return $this->redirectToRoute('contact');
-        }
+        }*/
 
         return $this->render('main/contact.html.twig', [
-            'formContact' => $formContact->creatView(),
+            'contact_form' => $form->createView()
         ]);
+    
     }
 }

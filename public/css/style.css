@@ -330,7 +330,7 @@ h4 {
     position: absolute; /* positionné par rapport à son parent le plus proche positionné */
     left: 0;
     top: 25px;
-    padding: 18px 8px;
+    padding: 27px 8px;
     color: #006fc5;
 }
 
@@ -350,7 +350,7 @@ h4 {
     outline: none;
     border-radius: 5px;
     resize: none;
-    height: 82%;
+    height: 260%;
 }
 
 .contact .footer-form button {

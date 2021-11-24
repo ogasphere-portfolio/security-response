@@ -1,49 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact
-{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block body %}
-	{% for message in app.flashes('success') %}
+
+{% for message in app.flashes('success') %}
 		<div class="alert alert-success" role="alert">{{ message }}</div>
 	{% endfor %}
 
-	<main>
+<main>
 		<div class="contact-block">
 			<form class="contact">
 				<h1>Contactez-nous</h1>      		
 				<div class="separation"></div>
 					<div class="body-form">
 						<div class="left">
-							<div class="group">
-								<label>Votre Prénom</label>
-								<input type="text" name="name" required="required" autocomplete="off" />
+              {{ form_start(contact_form) }}
+							<div class="group">{{ form_row(contact_form.name) }}								
 								<i class="fas fa-user"></i>
 							</div>
-							<div class="group">
-								<label>Votre adresse e-mail</label>
-								<input type="text" name="email" required="required" autocomplete="off" />
+							<div class="group">{{ form_row(contact_form.email) }}								
 								<i class="fas fa-envelope"></i>
 							</div>
-							<div class="group">
-								<label>Votre téléphone</label>
-								<input type="text" name="phone" required="required" autocomplete="off" />
+							<div class="group">{{ form_row(contact_form.phone) }}								
 								<i class="fas fa-mobile-alt"></i>
 							</div>
 						</div>
 
 						<div class="right">
-							<div class="group">
-								<label>Message</label>
-								<textarea placeholder="Saisissez ici..." name="description" required="required"></textarea>
+							<div class="group">{{ form_row(contact_form.message, { 'attr': {'placeholder': "Saisissez ici..."}}) }}								
 							</div>
 						</div>
 					</div>
 
-				<div class="footer-form" align="center">
-					<button>Envoyer le message</button>
-				</div>
+          <div class="footer-form" align="center">
+            <button>Envoyer le message</button>
+            {{ form_end(contact_form) }}
+          </div>
 			</form>
 			</div>			
 		</main>
-	{% endblock %}
+{% endblock %}
