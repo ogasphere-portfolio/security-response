@@ -104,24 +104,17 @@ class AnnouncementController extends AbstractController
         $this->denyAccessUnlessGranted(AnnoucementVoter::ADD, $announcement);
 
         $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
+            if (empty($this->getUser())) {
 
-        if (empty(($this->getUser()))) {
-            $invitedCategory = $cr->findOneBy([
-                'name' => 'Invité'
-            ]);
-            $announcement->setCategory($invitedCategory);
-            $announcementForm
-                ->add('category', null, [
-                    'attr' => ['class' => 'd-none'],
-                    'disabled' => 'disabled',
-                ]);
-        }
+                return $this->redirectToRoute('homepage');                
+            }
+        
             if (!empty(($this->getUser()))) {
-                if (!empty(($this->getUser()->getUserEnterprise()))) {
-                    $invitedCategory = $cr->findOneBy([
+                if(($this->getUser()->getUserEnterprise())) {
+                    $enterpriseCategory = $cr->findOneBy([
                     'name' => 'Recrutement'
                 ]);
-                    $announcement->setCategory($invitedCategory);
+                    $announcement->setCategory($enterpriseCategory);
                     $announcementForm
                     ->add('category', null, [
                         // 'attr' => ['class' => 'd-none'] ,
