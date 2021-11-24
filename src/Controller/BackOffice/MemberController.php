@@ -78,7 +78,7 @@ class MemberController extends AbstractController
 
             $this->addFlash('success', "Le membre {$member->getFirstname()} {$member->getLastname()} à été modifié");
 
-            return $this->redirectToRoute('backoffice_member_edit', ['id' => $member->getId()]);
+            return $this->redirectToRoute('backoffice_member_browse');
         }
 
 
