@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use DateTimeImmutable;
-use App\Repository\AnnouncementRepository;
-use App\Entity\Category;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -94,6 +92,10 @@ class Announcement
      * @ORM\ManyToOne(targetEntity=Enterprise::class, inversedBy="announcement")
      */
     private $enterprise;
+   /**
+     * @ORM\ManyToOne(targetEntity=Compagny::class, inversedBy="announcement")
+     */
+    private $compagny;
 
     /**
      * @ORM\ManyToOne(targetEntity=Specialization::class, inversedBy="announcements")
@@ -314,7 +316,17 @@ class Announcement
 
         return $this;
     }
+    public function getCompagny(): ?Compagny
+    {
+        return $this->compagny;
+    }
 
+    public function setCompagny(?Compagny $compagny): self
+    {
+        $this->compagny = $compagny;
+
+        return $this;
+    }
     public function getCategory(): ?Category
     {
         return $this->category;
