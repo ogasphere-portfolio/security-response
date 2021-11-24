@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Constraints\Date;
 
 /**
@@ -80,7 +81,7 @@ class EnterpriseController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
-    public function add(Request $request): Response
+    public function add(Request $request, SluggerInterface $slugger): Response
     {
         $enterprise = new Enterprise();
 
@@ -93,6 +94,7 @@ class EnterpriseController extends AbstractController
 
         if ($enterpriseForm->isSubmitted() && $enterpriseForm->isValid()) {
 
+            $enterprise->setSlug(strtolower($slugger->slug($enterprise->getBusinessName())));
 
             $entityManager = $this->getDoctrine()->getManager();
 
