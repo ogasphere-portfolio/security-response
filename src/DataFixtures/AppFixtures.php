@@ -4,8 +4,10 @@ namespace App\DataFixtures;
 
 use App\DataFixtures\Provider\EnterpriseProvider;
 use App\Entity\Announcement;
+use App\Entity\Answer;
 use App\Entity\Category;
 use App\Entity\Certification;
+use App\Entity\Compagny;
 use App\Entity\Enterprise;
 use App\Entity\Member;
 use App\Entity\Specialization;
@@ -89,7 +91,6 @@ class AppFixtures extends Fixture
             $categoryList[] = $category;
         }
 
-
         $announcementList = [];
         for ($i = 0; $i <= 9; $i++) {
             $announcement = new Announcement();
@@ -131,19 +132,56 @@ class AppFixtures extends Fixture
             $enterpriseList[] = $enterprise;
         }
 
+        $answerList = [];
+        for ($i = 0; $i <= 9; $i++) {
+            $answer = new Answer();
+            $answer->setBody($faker->text())
+                ->setCreatedAt(new \DateTimeImmutable())
+                // ->setUser($userList[$i])
+                ->setAnnouncement($announcementList[$i]);
 
+            $manager->persist($answer);
+
+            $answerList[] = $answer;
+        }
+
+        $compagnyList = [];
+        for ($i = 0; $i <= 9; $i++) {
+            $compagny = new Compagny();
+            $compagny->setBusinessName($faker->unique()->word())
+                ->setSiretNumber($faker->siret())
+                ->setAddress($faker->streetAddress())
+                ->setCity($faker->city())
+                //->setUser($userList[$i])
+                // ->setPhoneNumber($faker->serviceNumber())
+                // ->setLatitude($faker->latitude())
+                // ->setLongitude($faker->longitude())
+                // ->setContactMail($faker->email())
+                // ->addCertification($certificationList[$i])
+                // ->setSlug(strtolower($this->slugger->slug($compagny->getBusinessName())))
+                ->setZipCode($faker->postcode())
+                ->setCreatedAt(new \DateTimeImmutable());
+
+            $manager->persist($compagny);
+
+            $compagnyList[] = $compagny;
+        }
 
         $userList = [];
         for ($i = 0; $i <= 9; $i++) {
             $user = new User();
             $user->setEmail($faker->email())
                 ->setPassword($faker->password())
-                ->setRoles([$faker->word()]);
-            if ($i % 2) {
+                ->setRoles([$faker->word()])
+                ->addAnswer($answerList[$i]);
+            if ($i % 3) {
                 $user->setUserMember($memberList[$i]);
-            } else {
+            } elseif ($i % 2) {
                 $user->setUserEnterprise($enterpriseList[$i]);
+            } else {
+                $user->setUserCompagny($compagnyList[$i]);
             }
+
 
             $user->setCreatedAt(new \DateTimeImmutable())
                 ->setIsVerified(true);
@@ -151,13 +189,6 @@ class AppFixtures extends Fixture
 
             $userList[] = $user;
         }
-
-
-
-
-
-
-
 
         $manager->flush();
     }

@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 
- 
+
 // Exemples annotations pour une recherche fullText sur les champs business_name,siret_number,zip_code,phone_number et city
 //
 // @ORM\Table(name="enterprise", indexes={@ORM\Index(columns={"business_name","siret_number","zip_code","phone_number","city"})}, flags={"fulltext"})})
@@ -125,15 +125,15 @@ class Compagny
      */
     private $documents;
 
-     /**
+    /**
      * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="enterprise", cascade={"persist", "remove"})
      */
     private $announcement;
 
     public function __construct()
     {
-        $this->setUpdatedAt(new \DateTimeImmutable('now'));    
-        
+        $this->setUpdatedAt(new \DateTimeImmutable('now'));
+
         if ($this->getCreatedAt() === null) {
             $this->setCreatedAt(new \DateTimeImmutable('now'));
         }
@@ -146,11 +146,11 @@ class Compagny
         $this->announcement = new ArrayCollection();
     }
 
-    public function __toString() 
+    public function __toString()
     {
         return $this->business_name;
     }
-    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -179,7 +179,7 @@ class Compagny
 
         return $this;
     }
-    
+
     public function getSiretNumber(): ?string
     {
         return $this->siret_number;
@@ -396,7 +396,7 @@ class Compagny
     {
         if (!$this->documents->contains($document)) {
             $this->documents[] = $document;
-            $document->addEnterprise($this);
+            $document->addCompagny($this);
         }
 
         return $this;
@@ -405,7 +405,7 @@ class Compagny
     public function removeDocument(Document $document): self
     {
         if ($this->documents->removeElement($document)) {
-            $document->removeEnterprise($this);
+            $document->removeCompagny($this);
         }
 
         return $this;
@@ -423,7 +423,7 @@ class Compagny
     {
         if (!$this->announcement->contains($announcement)) {
             $this->announcement[] = $announcement;
-            $announcement->setEnterprise($this);
+            $announcement->setCompagny($this);
         }
 
         return $this;
@@ -440,10 +440,4 @@ class Compagny
 
         return $this;
     }
-
-    
-
-    
-
-    
 }
