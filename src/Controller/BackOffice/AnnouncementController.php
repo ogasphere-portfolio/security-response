@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Constraints\Date;
 
 /**
@@ -84,7 +85,7 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
-    public function add(Request $request): Response
+    public function add(Request $request, SluggerInterface $slugger): Response
     {
         $announcement = new Announcement();
 
@@ -97,6 +98,7 @@ class AnnouncementController extends AbstractController
 
         if ($announcementForm->isSubmitted() && $announcementForm->isValid()) {
 
+            $announcement->setSlug($slugger->slug($announcement->getTitle()));
 
             $entityManager = $this->getDoctrine()->getManager();
 
