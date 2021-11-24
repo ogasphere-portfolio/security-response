@@ -4,40 +4,40 @@
 
 {% block body %}
 
-{% for message in app.flashes('success') %}
+	{% for message in app.flashes('success') %}
 		<div class="alert alert-success" role="alert">{{ message }}</div>
 	{% endfor %}
 
-<main>
-		<div class="contact-block">
-			<form class="contact">
-				<h1>Contactez-nous</h1>      		
-				<div class="separation"></div>
-					<div class="body-form">
-						<div class="left">
-              {{ form_start(contact_form) }}
-							<div class="group">{{ form_row(contact_form.name) }}								
-								<i class="fas fa-user"></i>
+	<main>
+			<div class="contact-block">
+				<form class="contact">
+					<h1>Contactez-nous</h1>      		
+					<div class="separation"></div>
+						<div class="body-form">
+							<div class="left">
+								{{ form_start(contact_form) }}
+								<div class="group">{{ form_row(contact_form.name) }}								
+									<i class="fas fa-user"></i>
+								</div>
+								<div class="group">{{ form_row(contact_form.email) }}								
+									<i class="fas fa-envelope"></i>
+								</div>
+								<div class="group">{{ form_row(contact_form.phone) }}								
+									<i class="fas fa-mobile-alt"></i>
+								</div>
 							</div>
-							<div class="group">{{ form_row(contact_form.email) }}								
-								<i class="fas fa-envelope"></i>
-							</div>
-							<div class="group">{{ form_row(contact_form.phone) }}								
-								<i class="fas fa-mobile-alt"></i>
+
+							<div class="right">
+								<div class="group">{{ form_row(contact_form.message, { 'attr': {'placeholder': "Saisissez ici..."}}) }}								
+								</div>
 							</div>
 						</div>
 
-						<div class="right">
-							<div class="group">{{ form_row(contact_form.message, { 'attr': {'placeholder': "Saisissez ici..."}}) }}								
-							</div>
+						<div class="footer-form" align="center">
+							<button>Envoyer le message</button>
+							{{ form_end(contact_form) }}
 						</div>
-					</div>
-
-          <div class="footer-form" align="center">
-            <button>Envoyer le message</button>
-            {{ form_end(contact_form) }}
-          </div>
-			</form>
-			</div>			
-		</main>
+				</form>
+				</div>			
+			</main>
 {% endblock %}

@@ -55,29 +55,31 @@ class MainController extends AbstractController
      * @Route("/contact", name="contact")
      * 
      */
-    public function contact(Request $request, MailerInterface $mailer): Response
+    public function contact(Request $request, SendMailService $mail): Response
     {
-        $contact = new Contact();
-        $form = $this->createForm(ContactType::class, $contact);
-        /*$form->handleRequest($request);       
-  
-        if($form->isSubmitted() && $form->isValid()) {
+        
+        $form = $this->createForm(ContactType::class);
 
-            $contactFormData = $form->getData();
-            
-            $message = (new Email())
-                ->from($contactFormData['email'])
-                ->to('ton@gmail.com')
-                ->subject('vous avez reçu unn email')
-                ->text('Sender : '.$contactFormData['email'].\PHP_EOL.
-                    $contactFormData['Message'],
-                    'text/plain');
-            $mailer->send($message);
-
-            $this->addFlash('success', 'Vore message a été envoyé');
-
+        $contact = $form->handleRequest($request);       
+        
+        if($form->isSubmitted() && $form->isValid()){
+            $context = [
+                'mail' => $contact->get('email')->getData(),
+                'sujet' => $contact->get('sujet')->getData(),
+                'message' => $contact->get('message')->getData(),
+            ];
+            $mail->send(
+                $contact->get('email')->getData(),
+                'cskyzr@hotmail.com',
+                'Contact depuis le site Security Response',
+                'contact',
+                $context
+            );
+               
+            $this->addFlash('success', 'Vore message a bien été envoyé');
             return $this->redirectToRoute('contact');
-        }*/
+         
+        }
 
         return $this->render('main/contact.html.twig', [
             'contact_form' => $form->createView()

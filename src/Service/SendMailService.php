@@ -1,33 +1,36 @@
 <?php
 namespace App\Service;
 
-use Symfony\Component\Mailer\Exception\TransportException;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
-use Twig\Environment;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+
 
 class SendMailService
 {
+  
   private $mailer;
-  private $twig;
 
-  public function __construct(MailerInterface $mailer, Environment $twig)
+  public function __construct(MailerInterface $mailer)
   {
-    $this->mailer = $mailer;
-    $this->twig = $twig;
+    $this->mailer = $mailer;    
   }
 
-  public function send(string $from, string $to, string $subject, string $template, array $parameters) :void
-    {
-      $email = (new Email())
-            ->from($from)
-            ->to($to)            
-            ->subject($subject)          
-            ->html(
-                $this->twig->render($template, $parameters)
-            );
-
-        $this->mailer->send($email);
-    }
+  public function send(
+      string $from,
+      string $to,
+      string $subject,
+      string $template,
+      array $context
+  ) : void
+  {
+      // On crée le mail
+      $email = (new TemplatedEmail())
+          ->from($from)
+          ->to($to)
+          ->subject($subject)
+          ->htmlTemplate("main/$template.html.twig")
+          ->context($context);
+      // On envoie le mail
+      $this->mailer->send($email);
+  }
 }
