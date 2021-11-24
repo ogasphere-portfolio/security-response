@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * Les annotations de routes au niveau de la classe servent de préfixe à toutes les routes définies dans celle ci
@@ -233,7 +234,7 @@ class EnterpriseController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
-    public function add(Request $request): Response
+    public function add(Request $request, SluggerInterface $slugger): Response
     {
         $enterprise = new Enterprise();
 
@@ -246,6 +247,7 @@ class EnterpriseController extends AbstractController
         if ($enterpriseForm->isSubmitted() && $enterpriseForm->isValid()) {
 
             $enterpriseUser = $enterpriseForm->getData();
+            $enterprise->setSlug(strtolower($slugger->slug($enterprise->getBusinessName())));
 
             // On associe le user connecté à la question
             $enterpriseUser->setUser($this->getUser());
