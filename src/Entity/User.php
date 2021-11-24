@@ -52,6 +52,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToOne(targetEntity=Enterprise::class, inversedBy="user", cascade={"persist", "remove"})
      */
     private $userEnterprise;
+    /**
+     * @ORM\OneToOne(targetEntity=Compagny::class, inversedBy="user", cascade={"persist", "remove"})
+     */
+    private $userCompagny;
+
 
     
     public function __construct()
@@ -304,4 +309,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->isVerified;
     }
+    public function getUserCompagny(): ?Compagny
+    {
+        return $this->userCompagny;
+    }
+
+    public function setUserCompagny(?Compagny $userCompagny): self
+    {
+        $this->userCompagny = $userCompagny;
+
+        return $this;
+    }
+
+    
 }
