@@ -102,6 +102,11 @@ class Announcement
      */
     private $specialization;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Answer::class, mappedBy="announcement")
+     */
+    private $answers;
+
     
     
     public function __construct()
@@ -120,6 +125,7 @@ class Announcement
         $this->certification = new ArrayCollection();
         $this->members = new ArrayCollection();
         $this->created_at = new DateTimeImmutable();
+        $this->answers = new ArrayCollection();
     }
 
     public function __toString() 
@@ -347,6 +353,36 @@ class Announcement
     public function setSpecialization(?Specialization $specialization): self
     {
         $this->specialization = $specialization;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Answer[]
+     */
+    public function getAnswers(): Collection
+    {
+        return $this->answers;
+    }
+
+    public function addAnswer(Answer $answer): self
+    {
+        if (!$this->answers->contains($answer)) {
+            $this->answers[] = $answer;
+            $answer->setAnnouncement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnswer(Answer $answer): self
+    {
+        if ($this->answers->removeElement($answer)) {
+            // set the owning side to null (unless already changed)
+            if ($answer->getAnnouncement() === $this) {
+                $answer->setAnnouncement(null);
+            }
+        }
 
         return $this;
     }
