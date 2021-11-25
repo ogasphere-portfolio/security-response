@@ -10,12 +10,12 @@
 
 	<main>
 			<div class="contact-block">
-				<form class="contact">
+				<div class="contact">
+							{{ form_start(contact_form) }}
 					<h1>Contactez-nous</h1>      		
 					<div class="separation"></div>
 						<div class="body-form">
 							<div class="left">
-								{{ form_start(contact_form) }}
 								<div class="group">{{ form_row(contact_form.name) }}								
 									<i class="fas fa-user"></i>
 								</div>
@@ -34,10 +34,10 @@
 						</div>
 
 						<div class="footer-form" align="center">
-							<button>Envoyer le message</button>
-							{{ form_end(contact_form) }}
+							<button type="submit">Envoyer votre message</button>
 						</div>
-				</form>
-				</div>			
-			</main>
+							{{ form_end(contact_form) }}
+					</div>
+		</div>			
+	</main>
 {% endblock %}

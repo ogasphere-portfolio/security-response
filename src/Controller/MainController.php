@@ -64,18 +64,28 @@ class MainController extends AbstractController
         
         if($form->isSubmitted() && $form->isValid()){
             $context = [
+                'name' => $contact->get('name')->getData(),
                 'mail' => $contact->get('email')->getData(),
-                'sujet' => $contact->get('sujet')->getData(),
+                'phone' => $contact->get('phone')->getData(),
                 'message' => $contact->get('message')->getData(),
             ];
             $mail->send(
                 $contact->get('email')->getData(),
                 'cskyzr@hotmail.com',
-                'Contact depuis le site Security Response',
+                'Security Response - Contact',
                 'contact',
                 $context
             );
-               
+            
+            // accusé réception
+            $mail->send(
+                'cskyzr@hotmail.com',
+                $contact->get('email')->getData(),
+                "Security Response - Nous avons bien recu votre message",
+                'message_confirmation',
+                $context
+            );
+            
             $this->addFlash('success', 'Vore message a bien été envoyé');
             return $this->redirectToRoute('contact');
          
