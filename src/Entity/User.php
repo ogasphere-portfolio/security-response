@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -44,6 +44,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $ForgotPasswordToken;
+
+     /**
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private ?\DateTimeImmutable $ForgotPasswordTokenRequestedAt;
+
+    /**
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private ?\DateTimeImmutable $ForgotPasswordTokenMustBeVerifiedBefore;
+
+    /**
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private ?\DateTimeImmutable $ForgotPasswordTokenVerifiedAt;
 
     /**
      * @ORM\OneToOne(targetEntity=Member::class, inversedBy="user", cascade={"persist", "remove"})
@@ -360,4 +380,84 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     
+
+    /**
+     * Get the value of ForgotPasswordToken
+     */ 
+    public function getForgotPasswordToken(): ?string
+    {
+        return $this->ForgotPasswordToken;
+    }
+
+    /**
+     * Set the value of ForgotPasswordToken
+     *
+     * @return  self
+     */ 
+    public function setForgotPasswordToken(?string $ForgotPasswordToken): self
+    {
+        $this->ForgotPasswordToken = $ForgotPasswordToken;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ForgotPasswordTokenRequestedAt
+     */ 
+    public function getForgotPasswordTokenRequestedAt(): ?\DateTimeImmutable
+    {
+        return $this->ForgotPasswordTokenRequestedAt;
+    }
+
+    /**
+     * Set the value of ForgotPasswordTokenRequestedAt
+     *
+     * @return  self
+     */ 
+    public function setForgotPasswordTokenRequestedAt(?\DateTimeImmutable $ForgotPasswordTokenRequestedAt)
+    {
+        $this->ForgotPasswordTokenRequestedAt = $ForgotPasswordTokenRequestedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ForgotPasswordTokenMustBeVerifiedBefore
+     */ 
+    public function getForgotPasswordTokenMustBeVerifiedBefore(): ?\DateTimeImmutable
+    {
+        return $this->ForgotPasswordTokenMustBeVerifiedBefore;
+    }
+
+    /**
+     * Set the value of ForgotPasswordTokenMustBeVerifiedBefore
+     *
+     * @return  self
+     */ 
+    public function setForgotPasswordTokenMustBeVerifiedBefore(?\DateTimeImmutable $ForgotPasswordTokenMustBeVerifiedBefore)
+    {
+        $this->ForgotPasswordTokenMustBeVerifiedBefore = $ForgotPasswordTokenMustBeVerifiedBefore;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ForgotPasswordTokenVerifiedAt
+     */ 
+    public function getForgotPasswordTokenVerifiedAt(): ?\DateTimeImmutable
+    {
+        return $this->ForgotPasswordTokenVerifiedAt;
+    }
+
+    /**
+     * Set the value of ForgotPasswordTokenVerifiedAt
+     *
+     * @return  self
+     */ 
+    public function setForgotPasswordTokenVerifiedAt(?\DateTimeImmutable $ForgotPasswordTokenVerifiedAt)
+    {
+        $this->ForgotPasswordTokenVerifiedAt = $ForgotPasswordTokenVerifiedAt;
+
+        return $this;
+    }
 }

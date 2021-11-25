@@ -81,7 +81,7 @@ class MainController extends AbstractController
             $mail->send(
                 'cskyzr@hotmail.com',
                 $contact->get('email')->getData(),
-                "Security Response - Nous avons bien recu votre message",
+                "Security Response - Nous avons bien reçu votre message",
                 'message_confirmation',
                 $context
             );

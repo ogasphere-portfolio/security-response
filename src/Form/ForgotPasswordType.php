@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -20,10 +19,10 @@ class ForgotPasswordType extends AbstractType
                 'type'              => EmailType::class,
                 'invalid_message'   => "Les adresses e-mail doivent être identiques.",
                 'required'          => true,
-                /*'constraints'       => [
+                'constraints'       => [
                     new NotBlank(),
                     new Email()
-                ],*/
+                ],
                 'first_options'     => [
                     'label' => 'Saisir votre adresse e-mail'
                 ],
@@ -36,8 +35,6 @@ class ForgotPasswordType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-            'data_class' => User::class
-        ]);
+        $resolver->setDefaults([]);
     }
 }
