@@ -97,6 +97,7 @@ class AnnouncementController extends AbstractController
 
         ]);
 
+
         return $this->render('announcement/read.html.twig', [
             'announcement_read' => $announcement,
             'form' => $form->createView(),
