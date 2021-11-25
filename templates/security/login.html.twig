@@ -34,16 +34,16 @@
                                 <label>
                                     <input type="checkbox" name="remember-me"> Se souvenir de moi
                                 </label>
-                            </div>
-                       
-
+                            </div>                      
                         <button class="btn btn-lg btn-primary" type="submit">
                             connexion
-                        </button>
-               
+                        </button>   
+                        <a href="{{ path('app_forgot_password') }}" class="text-center new-account text-decoration-none fw-bold">Mot de passe oublié ?</a>         
+                <a href="{{ path('app_register') }}" class="text-center new-account text-decoration-none fw-bold">Créer un compte</a>                 
                     </form>
-                </div>
-                <a href="{{ path('app_register') }}" class="text-center new-account text-decoration-none fw-bold">Créer un compte</a>
+                    
+                </div>       
+                
             </div>
         </div>
     </div>

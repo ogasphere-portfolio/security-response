@@ -3,20 +3,13 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Form\FormExtension\RepeatedPasswordType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsFalse;
-use Symfony\Component\Validator\Constraints\IsTrue;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 class RegistrationFormType extends AbstractType
 {
@@ -45,28 +38,7 @@ class RegistrationFormType extends AbstractType
             //     ],
             // ])
 
-            ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'required' => true,
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'mapped' => false,
-                'first_options'  => ['label' => 'Mot de passe *'],
-                'second_options' => ['label' => 'Répéter le mot de passe *'],
-
-                'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Minimum huit caractères, une lettre, un chiffre et un caractère spécial.',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
-            ])
+            ->add('password', RepeatedPasswordType::class)
             // ->add('membershipType', ChoiceType::class, [
             //     'mapped' => false,
             //     'choices'  => [
