@@ -44,12 +44,16 @@
 						<li class="nav-item active mx-lg-2">
 							<a class="nav-link {{ app.request.get('_route') == 'enterprise_browse' ? 'active' }}" aria-current="page" href="{{ url('enterprise_browse') }}">Trouver une entreprise</a>
 						</li>
+
+						{% if app.user != null %}
 							<li class="nav-item">
 								<a class="nav-link {{ app.request.get('_route') == 'announcement_browse' ? 'active' }}" href="{{ path('announcement_browse') }}">Les annonces</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link {{ app.request.get('_route') == 'member_browse' ? 'active' }}" href="{{ path('member_browse') }}">Les membres</a>
 							</li>
+						{% endif %}
+
 						{% if app.user %}
 							{% if app.user.userMember == null %}
 								<li class="nav-item">
