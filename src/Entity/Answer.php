@@ -37,6 +37,14 @@ class Answer
      */
     private $user;
 
+    public function __construct()
+    {
+
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTimeImmutable('now'));
+        }
+    }
+
     public function getId(): ?int
     {
         return $this->id;

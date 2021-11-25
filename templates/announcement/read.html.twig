@@ -11,16 +11,16 @@
 
 					<h1 class="fw-bold text-start">Détail de l'annonce</h1>
 					<a class="btn btn-primary" aria-current="page" href="
-						{% if app.user is not empty %}
-								{% if app.user.userMember == null %}
-										{{ url('profile_enterprise') }}
-								{% else %}
-										{{ url('announcement_browse') }}
-								{% endif %}">
+																																																																																																																																																																																																																																					{% if app.user is not empty %}
+																																																																																																																																																																																																																																					{% if app.user.userMember == null %}
+																																																																																																																																																																																																																																					{{ url('profile_enterprise') }}
+																																																																																																																																																																																																																																					{% else %}
+																																																																																																																																																																																																																																					{{ url('announcement_browse') }}
+																																																																																																																																																																																																																																					{% endif %}">
 						Retour
 					{% else %}
 						{{ url('announcement_browse') }}">
-						retour
+																																																																																																																																																																																																retour
 					{% endif %}
 				</a>
 
@@ -48,45 +48,88 @@
 					{% if app.user.userEnterprise == null %}
 						{% if app.user.userMember %}
 							<a class="nav-link " href="{{ path('announcement_postulate', {"id": announcement_read.id}) }}">
-								
-							
-							<span class="btn btn-success text-light position-relative ">
-								Postuler
-								{% if  announcement_read.members|length >0 %}
-								<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-									{{ announcement_read.members|length }}
-								</span>
 
-							{% endif %}
+
+								<span class="btn btn-success text-light position-relative ">
+									Postuler
+									{% if  announcement_read.members|length >0 %}
+										<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+											{{ announcement_read.members|length }}
+										</span>
+									</span>
+								{% endif %}
 
 							</a>
 						{% endif %}
 					{% endif %}
 				{% endif %}
-			</form>
-			<em>Créé le
-				{{ announcement_read.createdAt|date("d/m/Y") }}</em>
 
-			{% for specialization in announcement_read.specialization  %}
-	       <span class="badge bg-primary float-end">{{ specialization.name }}</span>
+				<em>Créé le
+					{{ announcement_read.createdAt|date("d/m/Y") }}</em>
 
-			{% endfor %}
-		</div>
-		<br>
-		{% if 'announcement_read' == app.request.get('_route') %}
-			{% if app.user %}
-				{% if app.user.userEnterprise %}
-					{% if announcement_read.members|length >0 %}
-						<h5>Liste des membres ayant postulé à l'annonce</h5>
-						{% for member in announcement_read.members %}
-							<span>{{member.firstname }}
-								{{member.lastname }}
-								{{member.user }}
-							</span><br>
-						{% endfor %}
+				{% for specialization in announcement_read.specialization  %}
+					<span class="badge bg-primary float-end">{{ specialization.name }}</span>
+
+				{% endfor %}
+			</div>
+			<br>
+			{% if 'announcement_read' == app.request.get('_route') %}
+				{% if app.user %}
+					{% if app.user.userEnterprise %}
+						{% if announcement_read.members|length >0 %}
+							<h5>Liste des membres ayant postulé à l'annonce</h5>
+							{% for member in announcement_read.members %}
+								<span>{{member.firstname }}
+									{{member.lastname }}
+									{{member.user }}
+								</span><br>
+							{% endfor %}
+						{% endif %}
 					{% endif %}
 				{% endif %}
 			{% endif %}
-		{% endif %}
+			<hr>
+
+			<h3>{{ announcement_read.answers|length }}
+				Réponse(s)</h3>
+
+			{% for answer in answers %}
+
+				<hr class="my-1">
+				<div class="">
+					<div>
+						{{ answer.body }}
+					</div>
+					{# <div>
+					
+									{% if not question.isSolved %}
+									<a href="{{ path('answer_validate', {'id': answer.id}) }}" class="btn btn-sm btn-success">Accepter cette réponse</a>
+									{% endif %}
+									{% if is_granted('ROLE_MODERATOR') %}
+								    {% set btnLabel = answer.isBlocked ? 'Débloquer cette réponse' : 'Bloquer cette réponse' %}
+									<a href="{{ path('admin_answer_toggle', {'id': answer.id}) }}" class="btn btn-sm btn-warning mr-2">{{ btnLabel }}</a>
+									{% endif %}
+								    </div> #}
+					<div class="small-grey-text">
+						par
+						<b class="username">{{ answer.user.email }}</b>
+						le
+						{{ answer.createdAt|date("d/m/Y à h:i") }}
+					</div>
+				</div>
+			{% else %}
+				<p class="text-secondary">Pas de réponse pour le moment, une idée, ou bien connaissez-vous quelqu'un qui pourrait répondre ?</p>
+			{% endfor %}
+
+
+			<hr>
+			<h4>Proposer une réponse</h4>
+
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<button type="submit" class="btn btn-primary">Soumettre</button>
+			{{ form_end(form) }}
+
+		</div>
 	</div>
-</div></div></main>{% endblock %}
+</main>{% endblock %}
