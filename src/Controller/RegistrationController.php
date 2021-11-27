@@ -46,13 +46,13 @@ class RegistrationController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
-            
+
             if (!empty($user->getUserMember())) {
-                
+
                 $user->setRoles(["ROLE_MEMBER"]);
             }
             if (!empty($user->getUserEnterprise())) {
-                
+
                 $user->setRoles(["ROLE_ENTERPRISE"]);
             }
 
@@ -69,11 +69,12 @@ class RegistrationController extends AbstractController
             //         ->htmlTemplate('registration/confirmation_email.html.twig')
             // );
             // do anything else you need here, like send an email
+            $this->addFlash('success', "Votre compte a été créé");
 
             return $this->redirectToRoute('homepage');
         }
 
-        
+
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
