@@ -25,8 +25,11 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email',null, [
-                'label'=> 'Adresse email *',
+            ->add('username', null, [
+                'label' => 'Nom d\'utilisateur *'
+            ])
+            ->add('email', null, [
+                'label' => 'Adresse email *',
                 'required' => true,
             ])
             // ->add('agreeTerms', CheckboxType::class, [
@@ -84,12 +87,12 @@ class RegistrationFormType extends AbstractType
             ]);
             unset($user['userMember']);
             $event->setData($user);
-        }else {
+        } else {
             $form->add('userMember', MemberType::class, [
                 'label' => false,
                 'required' => true,
             ]);
-            
+
             unset($user['userEnterprise']);
             $event->setData($user);
         }

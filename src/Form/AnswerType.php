@@ -12,7 +12,9 @@ class AnswerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('body')
+            ->add('body', null, [
+                'label' => false
+            ])
             // ->add('created_at')
             // ->add('announcement')
             // ->add('user')

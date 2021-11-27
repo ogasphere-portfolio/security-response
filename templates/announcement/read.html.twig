@@ -11,16 +11,16 @@
 
 					<h1 class="fw-bold text-start">Détail de l'annonce</h1>
 					<a class="btn btn-primary" aria-current="page" href="
-																																																																																																																																																																																																																																					{% if app.user is not empty %}
-																																																																																																																																																																																																																																					{% if app.user.userMember == null %}
-																																																																																																																																																																																																																																					{{ url('profile_enterprise') }}
-																																																																																																																																																																																																																																					{% else %}
-																																																																																																																																																																																																																																					{{ url('announcement_browse') }}
-																																																																																																																																																																																																																																					{% endif %}">
+																																																																																																																																																																																																																																																																																						{% if app.user is not empty %}
+																																																																																																																																																																																																																																																																																						{% if app.user.userMember == null %}
+																																																																																																																																																																																																																																																																																						{{ url('profile_enterprise') }}
+																																																																																																																																																																																																																																																																																						{% else %}
+																																																																																																																																																																																																																																																																																						{{ url('announcement_browse') }}
+																																																																																																																																																																																																																																																																																						{% endif %}">
 						Retour
 					{% else %}
 						{{ url('announcement_browse') }}">
-																																																																																																																																																																																																retour
+																																																																																																																																																																																																																																										retour
 					{% endif %}
 				</a>
 
@@ -101,18 +101,18 @@
 						{{ answer.body }}
 					</div>
 					{# <div>
-					
-									{% if not question.isSolved %}
-									<a href="{{ path('answer_validate', {'id': answer.id}) }}" class="btn btn-sm btn-success">Accepter cette réponse</a>
-									{% endif %}
-									{% if is_granted('ROLE_MODERATOR') %}
-								    {% set btnLabel = answer.isBlocked ? 'Débloquer cette réponse' : 'Bloquer cette réponse' %}
-									<a href="{{ path('admin_answer_toggle', {'id': answer.id}) }}" class="btn btn-sm btn-warning mr-2">{{ btnLabel }}</a>
-									{% endif %}
-								    </div> #}
+																																								
+														 {% if not question.isSolved %}
+														<a href="{{ path('answer_validate', {'id': answer.id}) }}" class="btn btn-sm btn-success">Accepter cette réponse</a>
+														{% endif %}
+														{% if is_granted('ROLE_MODERATOR') %}
+														{% set btnLabel = answer.isBlocked ? 'Débloquer cette réponse' : 'Bloquer cette réponse' %}
+														<a href="{{ path('admin_answer_toggle', {'id': answer.id}) }}" class="btn btn-sm btn-warning mr-2">{{ btnLabel }}</a>
+														{% endif %}
+														</div> #}
 					<div class="small-grey-text">
 						par
-						<b class="username">{{ answer.user.email }}</b>
+						<b class="username">{{ answer.user.username }}</b>
 						le
 						{{ answer.createdAt|date("d/m/Y à h:i") }}
 					</div>

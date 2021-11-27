@@ -173,7 +173,8 @@ class AppFixtures extends Fixture
             $user->setEmail($faker->email())
                 ->setPassword($faker->password())
                 ->setRoles([$faker->word()])
-                ->addAnswer($answerList[$i]);
+                ->addAnswer($answerList[$i])
+                ->setUsername($faker->userName());
             if ($i % 3) {
                 $user->setUserMember($memberList[$i]);
             } elseif ($i % 2) {

@@ -50,7 +50,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private ?string $ForgotPasswordToken;
 
-     /**
+    /**
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private ?\DateTimeImmutable $ForgotPasswordTokenRequestedAt;
@@ -84,24 +84,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $answers;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $username;
 
-    
+
+
     public function __construct()
     {
-        $this->setUpdatedAt(new \DateTimeImmutable('now'));    
-        
+        $this->setUpdatedAt(new \DateTimeImmutable('now'));
+
         if ($this->getUpdatedAt() === null) {
             $this->setUpdatedAt(new \DateTimeImmutable('now'));
         }
         $this->answers = new ArrayCollection();
-      
     }
     public function getId(): ?int
     {
         return $this->id;
     }
-    
-    public function __toString() 
+
+    public function __toString()
     {
         return $this->email;
     }
@@ -117,8 +121,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return array_unique($roles);
     }
-    
-    
+
+
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -147,15 +151,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->email;
     }
 
-    /**
-     * @deprecated since Symfony 5.3, use getUserIdentifier instead
-     */
+
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
 
-   
+
 
     /**
      * @see PasswordAuthenticatedUserInterface
@@ -274,7 +276,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    
+
 
     public function getMember(): ?Member
     {
@@ -379,11 +381,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    
+
 
     /**
      * Get the value of ForgotPasswordToken
-     */ 
+     */
     public function getForgotPasswordToken(): ?string
     {
         return $this->ForgotPasswordToken;
@@ -393,7 +395,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * Set the value of ForgotPasswordToken
      *
      * @return  self
-     */ 
+     */
     public function setForgotPasswordToken(?string $ForgotPasswordToken): self
     {
         $this->ForgotPasswordToken = $ForgotPasswordToken;
@@ -403,7 +405,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Get the value of ForgotPasswordTokenRequestedAt
-     */ 
+     */
     public function getForgotPasswordTokenRequestedAt(): ?\DateTimeImmutable
     {
         return $this->ForgotPasswordTokenRequestedAt;
@@ -413,7 +415,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * Set the value of ForgotPasswordTokenRequestedAt
      *
      * @return  self
-     */ 
+     */
     public function setForgotPasswordTokenRequestedAt(?\DateTimeImmutable $ForgotPasswordTokenRequestedAt)
     {
         $this->ForgotPasswordTokenRequestedAt = $ForgotPasswordTokenRequestedAt;
@@ -423,7 +425,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Get the value of ForgotPasswordTokenMustBeVerifiedBefore
-     */ 
+     */
     public function getForgotPasswordTokenMustBeVerifiedBefore(): ?\DateTimeImmutable
     {
         return $this->ForgotPasswordTokenMustBeVerifiedBefore;
@@ -433,7 +435,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * Set the value of ForgotPasswordTokenMustBeVerifiedBefore
      *
      * @return  self
-     */ 
+     */
     public function setForgotPasswordTokenMustBeVerifiedBefore(?\DateTimeImmutable $ForgotPasswordTokenMustBeVerifiedBefore)
     {
         $this->ForgotPasswordTokenMustBeVerifiedBefore = $ForgotPasswordTokenMustBeVerifiedBefore;
@@ -443,7 +445,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Get the value of ForgotPasswordTokenVerifiedAt
-     */ 
+     */
     public function getForgotPasswordTokenVerifiedAt(): ?\DateTimeImmutable
     {
         return $this->ForgotPasswordTokenVerifiedAt;
@@ -453,10 +455,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * Set the value of ForgotPasswordTokenVerifiedAt
      *
      * @return  self
-     */ 
+     */
     public function setForgotPasswordTokenVerifiedAt(?\DateTimeImmutable $ForgotPasswordTokenVerifiedAt)
     {
         $this->ForgotPasswordTokenVerifiedAt = $ForgotPasswordTokenVerifiedAt;
+
+        return $this;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
 
         return $this;
     }
