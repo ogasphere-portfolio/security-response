@@ -29,9 +29,9 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/register/{role}", name="app_register")
      */
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasherInterface): Response
+    public function register(string $role, Request $request, UserPasswordHasherInterface $userPasswordHasherInterface): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -47,36 +47,39 @@ class RegistrationController extends AbstractController
                 )
             );
             
-            if (!empty($user->getUserMember())) {
+            if ($role == "member") {
                 
                 $user->setRoles(["ROLE_MEMBER"]);
             }
-            if (!empty($user->getUserEnterprise())) {
+            if ($role == "enterprise") {
                 
                 $user->setRoles(["ROLE_ENTERPRISE"]);
+            }
+            if ($role == "company") {
+                
+                $user->setRoles(["ROLE_COMPAGNY"]);
             }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // generate a signed url and email it to the user
-            // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-            //     (new TemplatedEmail())
-            //         ->from(new Address('secu.response@gmail.com', 'Security Response Bot'))
-            //         ->to($user->getEmail())
-            //         ->subject('Please Confirm your Email')
-            //         ->htmlTemplate('registration/confirmation_email.html.twig')
-            // );
-            // do anything else you need here, like send an email
-
+           // generate a signed url and email it to the user
+         $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                (new TemplatedEmail())
+                    ->from(new Address('secu.response@gmail.com', 'Security Response Bot'))
+                    ->to($user->getEmail())
+                    ->subject('Please Confirm your Email')
+                    ->htmlTemplate('registration/confirmation_email.html.twig')
+            );
+            
             return $this->redirectToRoute('homepage');
         }
 
         
-
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'role' => $role,
         ]);
     }
 
