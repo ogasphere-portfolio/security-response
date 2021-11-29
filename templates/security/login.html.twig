@@ -25,9 +25,9 @@
                         <label for="inputEmail">Email</label>
                        
                             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-                            <label for="inputPassword">Mot de passe</label>
+                            <label for="inputPassword">mot de passe</label>
                             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-                                
+
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                        
                             <div class="checkbox mb-3">
@@ -60,8 +60,4 @@
     </div>
 </main>
 
-{% endblock %}
-
-{% block javascripts %}
-	{{ encore_entry_script_tags('passwordVisibility') }}
 {% endblock %}
