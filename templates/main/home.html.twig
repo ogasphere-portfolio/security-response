@@ -38,7 +38,7 @@
 				{% if is_granted('ANNOUNCE_ADD') %}
 					<a class="btn btn-success" href="{{ path('announcement_add') }}" type="submit">Créer une annonce</a>
 				{% endif %}
-			</div>
+			</div>git checkout fe
 		</section>
 
 		<section class="d-flex py-5 text-center bg-white">
@@ -119,6 +119,100 @@
 				</div>
 			</div>
 
+        <section class="py-5 text-center container">
+            <div class="d-flex py-lg-5" id="home-top">
+                <div class="col-lg-6 col-md-8 mx-auto" id="home-top-left">
+                    <h1 class="fw-bold text-start">Les experts en sécurité informatique proches de chez vous</h1>
+                    <p class="text-start">Security Response vous permet d'<strong>améliorer la sécurité de votre système</strong> d'information en vous proposant des experts proches de votre entreprise. <br>
+                    <br>
+                    <strong>Trouver dès maintenant des professionnels compétants pour vous aider.</strong></p>
+                </div>
+            
+             <img class="img-security-concept" src="{{ asset("img/security-concept.png") }}" alt="security concept">
+
+            </div>
+            <div class="w-50 mx-auto">
+                <form class="d-flex" method="GET" action="{{ path('enterprise_browse') }}">
+                    <input name="searchEnterprise" class="form-control me-2" type="search" placeholder="Rechercher le nom d'une ville" aria-label="Search">
+                    <button class="d-flex btn btn-outline-primary" type="submit">Rechercher</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="py-5 text-center container">
+            <div class="d-flex flex-sm-column flex-md-column flex-lg-row" id="home-announcement">
+                <div class="col-lg-6 col-md-8">
+                    <h3 class="fw-bold text-start">Vous avez subi une attaque informatique ?</h3>
+                    <p>Créer une annonce dès maintenant pour vous protéger. Nos experts inscrits sur la plateforme vous aideront à corriger ce problème.</p>                   
+                </div> 
+                    {% if is_granted('ANNOUNCE_ADD') %}           
+                        <a class="btn btn-success" href="{{ path('announcement_add') }}" type="submit">Créer une annonce</a>      
+                    {% endif %}               
+            </div>
+        </section>
+
+        <section class="d-flex py-5 text-center bg-white">
+            <div class="container d-flex">
+                <div class="w-50 mx-auto">
+                    <img class="w-50" src="{{ asset("img/shield.jpg") }}" alt="shield">
+                </div>
+                <div class="d-flex flex-column justify-content-around w-50 mx-auto">
+                    <h2>Le constat de la cybersécurité en France</h2>
+                    <p>Dans les 12 derniers moins, <strong>80% des entreprises françaises</strong> ont constaté <strong>au moins une cyber-attaque</strong></p>
+                    <p><strong>59% de ces attaques ont un impact direct</strong> sur les entrprises : ralentissement de leur production, indisponibilité de leur site etc</p>
+                    <p>Les <strong>données sensibles</strong> des entreprises seraient la <strong>cible principale</strong> de ces attaques</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 text-center container">
+            <div class="d-flex flex-sm-column flex-md-column flex-lg-row" id="home-register">
+                <div class="col-lg-6 col-md-8 ">
+                    <h3 class="fw-bold text-start">Vous êtes un expert en cybersécurité ?</h3>
+                    <p>Inscrivez-vous dès maintenant ! Vous pourrez ainsi répondre aux annonces des sociétés en demande de sécurité et vous pourrez recruter de nouveaux talents via notre liste de membre.</p>                    
+                </div>
+            
+                <form action="{{ path('app_register', {'role': "enterprise"}) }}">
+                    <button class="btn btn-outline-primary" id="nav-inscription" type="submit">Inscription</button>
+                </form>
+                       
+            </div>
+        </section>
+        
+        
+        <div class="album py-5 ">
+            <div class="container">
+
+                <div class="row row-cols-lg-3 row-cols-sm-1 row-cols-md-1 g-3">
+
+                    <div class="col card shadow-sm p-4">
+                        <img class="icon-home mx-auto" src="{{ asset("img/location.svg") }}" alt="location">
+                        <h4 class="text-center"><strong>Mobilisez des experts proches de chez vous</strong></h4>
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+                        </div>
+                    </div>
+          
+                    <div class="col card shadow-sm p-4">
+                        <img class="icon-home mx-auto" src="{{ asset("img/shield-pro.svg") }}" alt="shield-pro">
+                        <h4 class="text-center"><strong>Choisissez les professionnels en charge de votre cybersécurité</strong></h4>
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col card shadow-sm p-4">
+                        <img class="icon-home mx-auto" src="{{ asset("img/coding.svg") }}" alt="coding">
+                        <h4 class="text-center"><strong>Recrutez des talents</strong></h4>
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        
 		</section>
 
 
