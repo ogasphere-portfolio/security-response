@@ -25,9 +25,9 @@
                         <label for="inputEmail">Email</label>
                        
                             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-                            <label for="inputPassword">mot de passe</label>
+                            <label for="inputPassword">Mot de passe</label>
                             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
+                                
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                        
                             <div class="checkbox mb-3">
@@ -38,8 +38,7 @@
                         <button class="btn btn-lg btn-primary" type="submit">
                             connexion
                         </button>   
-                        <a href="{{ path('app_forgot_password') }}" class="text-center new-account text-decoration-none fw-bold">Mot de passe oublié ?</a>         
-                <a href="{{ path('app_register') }}" class="text-center new-account text-decoration-none fw-bold">Créer un compte</a>                 
+                        <a href="{{ path('app_forgot_password') }}" class="text-center new-account text-decoration-none fw-bold">Mot de passe oublié ?</a>        
                     </form>
                     
                 </div>       
@@ -49,4 +48,8 @@
     </div>
 </main>
 
+{% endblock %}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('passwordVisibility') }}
 {% endblock %}
