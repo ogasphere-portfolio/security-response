@@ -35,30 +35,19 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/api", name="api_browse", methods={"GET"})
-     */
-    /* public function api_browse(UserRepository $userRepository): Response
-    {
-        // on fournit ce formulaire à notre vue
-        return $this->json($userRepository->findAll());
-    } */
-
-    /**
+     /**
      * @Route("/{id}/read", name="read", methods={"GET"}, requirements={"id"="\d+"})
      * @IsGranted("ROLE_USER_READ")
      * */
     public function read(Request $request, User $user): Response
     {
-        // on créé un formulaire avec l'objet récupéré
-        // on modifie dynamiquement (dans le controleur) les options du formulaire
-        // pour désactiver tous les champs
+       
         $userForm = $this->createForm(UserType::class, $user, [
             'disabled' => 'disabled'
         ]);
 
 
-        // on fournit ce formulaire à notre vue
+        
         return $this->render('backoffice/user/read.html.twig', [
             'user_form' => $userForm->createView(),
             'user' => $user,
@@ -87,7 +76,7 @@ class UserController extends AbstractController
                 $hashedPassword = $passwordHasher->hashPassword($user, $clearPassword);
                 $user->setPassword($hashedPassword);
             }
-            // dd($user);
+           
             $entityManager->flush();
 
             $this->addFlash('success', "User `{$user->getEmail()}` udpated successfully");
@@ -102,11 +91,6 @@ class UserController extends AbstractController
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'required' => false,
-
-                // comme on veut appliquer des règles de gestion non standard
-                // on précise à symfony que cette valeur ne correspond à aucun 
-                // champ de notre objet
-                //!\ il faudra gérer la valeur saisie dans le controleur
                 'mapped' => false,
                 'first_options'  => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat Password'],
@@ -127,45 +111,31 @@ class UserController extends AbstractController
     {
         $user = new User();
 
-        // on créé un formulaire vierge (sans données initiales car l'objet fournit est vide)
         $userForm = $this->createForm(UserType::class, $user);
 
-        // Après avoir été affiché le handleRequest nous permettra
-        // de faire la différence entre un affichage de formulaire (en GET) 
-        // et une soumission de formulaire (en POST)
-        // Si un formulaire a été soumis, il rempli l'objet fournit lors de la création
+       
         $userForm->handleRequest($request);
 
-
-        // l'objet de formulaire a vérifié si le formulaire a été soumis grace au HandleRequest
-        // l'objet de formulaire vérifie si le formulaire est valide (token csrf mais pas que)
         if ($userForm->isSubmitted() && $userForm->isValid()) {
 
-            // on ne demande l'entityManager que si on en a besoin
             $entityManager = $this->getDoctrine()->getManager();
 
             $entityManager->persist($user);
 
-            // on récupère le mot de passe depuis le formulaire
-            // car on a démappé le champ (c'est à dire que le formulaire ne le gère pas)
             $clearPassword = $request->request->get('user')['password']['first'];
-            // si un mot de passe a été saisi
+           
             if (!empty($clearPassword)) {
-                // hashage du mot de passe écrit en clair
                 $hashedPassword = $passwordHasher->hashPassword($user, $clearPassword);
                 $user->setPassword($hashedPassword);
             }
 
             $entityManager->flush();
 
-            // pour opquast 
+          
             $this->addFlash('success', "User `{$user->getEmail()}` created successfully");
-
-            // redirection
             return $this->redirectToRoute('backoffice_user_browse');
         }
 
-        // on fournit ce formulaire à notre vue
         return $this->render('backoffice/user/add.html.twig', [
             'user_form' => $userForm->createView(),
             'page' => 'create',
