@@ -11,17 +11,29 @@ $dark:          $gray-900 !default;
 // scss-docs-end theme-color-variables
 
 .dropdown-menu > a:hover, .dropdown-menu > a:focus {
-    background-color: #1f0d49;
-    color: #F2F4FE;
+    background-color: #006fc5;
+    color: #EEF0FE;
 }
 .dropdown-menu > a, .dropdown-menu > a  {
-    background-color: #F2F4FE ;
-    color: #1f0d49 ;
+    background-color: #EEF0FE;
+    color: #006fc5 ;
     
 }
-.dropdown-menu {
-    padding : 0px
+.dropdown-menu {    
+    padding : 0px;      
 }
+
+.dropdown-item{    
+    left: 0;
+    top: 25px;
+    padding: 8px 8px;
+    color: #006fc5;
+} 
+
+.dropdown-menu .dropdown-item i{    
+   margin-right: 1rem;  
+} 
+
 body{
 background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
     font-family: 'Montserrat', sans-serif;
