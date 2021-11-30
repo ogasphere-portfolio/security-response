@@ -72,7 +72,7 @@
 					<p>Inscrivez-vous dès maintenant ! Vous pourrez ainsi répondre aux annonces des sociétés en demande de sécurité et vous pourrez recruter de nouveaux talents via notre liste de membre.</p>
 				</div>
 
-				<form action="{{ path('app_register') }}">
+				<form action="{{ path('app_register', {'role': "enterprise"}) }}">
 					<button class="btn btn-outline-primary" id="nav-inscription" type="submit">Inscription</button>
 				</form>
 
@@ -119,8 +119,7 @@
 				</div>
 			</div>
 
-		</section>
-
+       
 
 	</main>
 	{# Bloc destiné à recevoir le javascript spécifique à la page #}
