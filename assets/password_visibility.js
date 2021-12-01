@@ -1,14 +1,8 @@
-const eye = document.querySelectorAll(".fa-eye");
-const eyeoff = document.querySelectorAll(".fa-eye-slash");
-const passwordField = document.querySelectorAll("input[type=password]");
+const eye = document.querySelector(".fa-eye");
+const eyeoff = document.querySelector(".fa-eye-slash");
+const passwordField = document.querySelector("input[type=password]");
 
-eye.forEach(function(currentValue) {
-  console.log(currentValue);
-});
-
-eye.forEach(function(currentValue) {
-  console.log(currentValue);
-});
+console.log(passwordField);
 
 eye.addEventListener("click", () => {
   eye.style.display = "none";
