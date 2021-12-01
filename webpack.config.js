@@ -23,6 +23,7 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('map', './assets/map.js')
     .addEntry('registration', './assets/registration.js')
+    .addEntry('password_visibility', './assets/password_visibility.js')
     
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)

@@ -9,6 +9,7 @@ $light: $gray-100 !default;
 $dark: $gray-900 !default;
 // scss-docs-end theme-color-variables
 
+<<<<<<< HEAD
 .dropdown-menu>a:hover,
 .dropdown-menu>a:focus {
     background-color: #1f0d49;
@@ -28,6 +29,34 @@ $dark: $gray-900 !default;
 
 body {
     background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
+=======
+.dropdown-menu > a:hover, .dropdown-menu > a:focus {
+    background-color: #006fc5;
+    color: #EEF0FE;
+}
+.dropdown-menu > a, .dropdown-menu > a  {
+    background-color: #EEF0FE;
+    color: #006fc5 ;
+    
+}
+.dropdown-menu {    
+    padding : 0px;      
+}
+
+.dropdown-item{    
+    left: 0;
+    top: 25px;
+    padding: 8px 8px;
+    color: #006fc5;
+} 
+
+.dropdown-menu .dropdown-item i{    
+   margin-right: 1rem;  
+} 
+
+body{
+background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
+>>>>>>> feature/password-visibility
     font-family: 'Montserrat', sans-serif;
     position: relative;
     padding-bottom: 5em;
@@ -407,11 +436,74 @@ h4 {
     transform: scale(1.05);
 }
 
+.password-visibility {    
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 2em 0;
+    border: 2px solid #006fc5;
+}
+
+.body-pass {
+    padding-left: 18em;  
+}
+
+.password-visibility .body-pass .group-pass .password-icon {
+    position: relative; /* Pour mettre positionner l’élément dans le flux normal de la page */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.password-visibility .body-pass .group-pass .password-icon i {
+    position: absolute; /* positionné par rapport à son parent le plus proche positionné */
+    right: 0;
+    top: 0px;
+    padding: 42px 15px;
+    color: #006fc5;
+    cursor: pointer;
+}
+
+.password-visibility .pass-form button {
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.password-visibility .pass-form button:hover {
+    transform: scale(1.05);
+}
+
+.password-visibility .mail-form button {
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.password-visibility .mail-form button:hover {
+    transform: scale(1.05);
+}
+
 @media screen and (max-width: 1024px) {
     .contact .body-form .right {
         margin-left: 0px;
     }
 }
+
+
 
 /* Mobile S CSS*/
 @media (max-width: 320px) {
