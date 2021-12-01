@@ -431,6 +431,7 @@ h4 {
     top: 0px;
     padding: 42px 15px;
     color: #006fc5;
+    cursor: pointer;
 }
 
 .password-visibility .pass-form button {
@@ -447,6 +448,23 @@ h4 {
 }
 
 .password-visibility .pass-form button:hover {
+    transform: scale(1.05);
+}
+
+.password-visibility .mail-form button {
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.password-visibility .mail-form button:hover {
     transform: scale(1.05);
 }
 
