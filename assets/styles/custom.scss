@@ -1,29 +1,33 @@
-
 // scss-docs-start theme-color-variables
-$primary:       $blue !default;
-$secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-900 !default;
+$primary: $blue !default;
+$secondary: $gray-600 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-900 !default;
 // scss-docs-end theme-color-variables
 
-.dropdown-menu > a:hover, .dropdown-menu > a:focus {
+.dropdown-menu>a:hover,
+.dropdown-menu>a:focus {
     background-color: #1f0d49;
     color: #F2F4FE;
 }
-.dropdown-menu > a, .dropdown-menu > a  {
-    background-color: #F2F4FE ;
-    color: #1f0d49 ;
-    
+
+.dropdown-menu>a,
+.dropdown-menu>a {
+    background-color: #F2F4FE;
+    color: #1f0d49;
+
 }
+
 .dropdown-menu {
-    padding : 0px
+    padding: 0px
 }
-body{
-background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
+
+body {
+    background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
     font-family: 'Montserrat', sans-serif;
     position: relative;
     padding-bottom: 5em;
@@ -31,15 +35,16 @@ background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
 
 
 footer {
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
     right: 0
 }
 
 #map_enterprise {
     width: 100%;
-    height: 100vh; }
+    height: 100vh;
+}
 
 .mt-6 {
     margin-top: 100px;
@@ -128,14 +133,15 @@ h4 {
     height: 10em;
     align-items: center;
     justify-content: space-around;
-    background-color: $primary;
+    background-color: #0051b6;
     color: white;
     border-radius: 10px;
 }
 
-.navbar{
+.navbar {
     background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
 }
+
 .navbar-light .navbar-nav .nav-link {
     color: #050f19;
 }
@@ -144,7 +150,7 @@ h4 {
     color: #006fc5;
 }
 
-.nav-button .nav-link.active{
+.nav-button .nav-link.active {
     border-bottom: 3px solid #0051b6;
 }
 
@@ -156,16 +162,16 @@ h4 {
 
 .team {
     margin-top: 1rem;
-    color: #006fc5;        
+    color: #006fc5;
 }
 
-.team-status {    
+.team-status {
     margin-bottom: 10rem;
-    color: #006fc5;        
+    color: #006fc5;
 }
 
 #nav-inscription {
-    background-color: #0051b6;   
+    background-color: #0051b6;
     border-radius: 6px;
 }
 
@@ -177,6 +183,7 @@ h4 {
 #nav-inscription a {
     color: white;
 }
+
 /* .nav-tabs {
     border-bottom: 0px;
 }
@@ -198,27 +205,28 @@ h4 {
 #registration_form_userMember {
     display: none;
 }
+
 /* TODO : faire pareil pour entreprise */
 #registration_form_userEnterprise {
     display: none;
 }
 
-.form-signin
-{
+.form-signin {
     max-width: 400px;
     padding: 15px;
     margin: 0 auto;
 }
-.form-signin .form-signin-heading, .form-signin .checkbox
-{
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
     margin-bottom: 10px;
 }
-.form-signin .checkbox
-{
+
+.form-signin .checkbox {
     font-weight: normal;
 }
-.form-signin .form-control
-{
+
+.form-signin .form-control {
     position: relative;
     font-size: 16px;
     height: auto;
@@ -227,24 +235,24 @@ h4 {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.form-signin .form-control:focus
-{
+
+.form-signin .form-control:focus {
     z-index: 2;
 }
-.form-signin input[type="text"]
-{
+
+.form-signin input[type="text"] {
     margin-bottom: -1px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.form-signin input[type="password"]
-{
+
+.form-signin input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-.account-wall
-{
+
+.account-wall {
     margin-top: 20px;
     padding: 40px 0px 20px 0px;
     background-color: #ffffff;
@@ -252,15 +260,15 @@ h4 {
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(255, 255, 255, 0.3);
 }
-.login-title
-{
+
+.login-title {
     color: #555;
     font-size: 18px;
     font-weight: 400;
     display: block;
 }
-.profile-img
-{
+
+.profile-img {
     width: 96px;
     height: 96px;
     margin: 0 auto 10px;
@@ -269,12 +277,12 @@ h4 {
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
-.need-help
-{
+
+.need-help {
     margin-top: 10px;
 }
-.new-account
-{
+
+.new-account {
     display: block;
     margin-top: 10px;
 }
@@ -286,32 +294,34 @@ h4 {
 .profile-heading {
     width: 250px;
 }
-.register-member{
+
+.register-member {
     background: linear-gradient(82.08deg, #3349ec 0%, #4b5ae6 100%);
     transition: box-shadow 0.5s;
 }
+
 .register-enterprise {
     background: linear-gradient(82.08deg, #3349ec 0%, #4b5ae6 100%);
     transition: box-shadow 0.5s;
 }
 
-.register-member:hover{
-    box-shadow:3px 8px #888;
-    cursor: pointer;
-  }
-
-.register-enterprise:hover{
-    box-shadow:3px 8px #888;
+.register-member:hover {
+    box-shadow: 3px 8px #888;
     cursor: pointer;
 }
 
-.contact-block{
+.register-enterprise:hover {
+    box-shadow: 3px 8px #888;
+    cursor: pointer;
+}
+
+.contact-block {
     margin: 0px;
     padding: 0px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);    
+    transform: translate(-50%, -50%);
 }
 
 .contact {
@@ -320,7 +330,7 @@ h4 {
     border-radius: 10px;
 }
 
-.contact h1{
+.contact h1 {
     font-size: 30px;
 }
 
@@ -337,7 +347,8 @@ h4 {
 }
 
 .contact .body-form .group {
-    position: relative; /* Pour mettre positionner l’élément dans le flux normal de la page */
+    position: relative;
+    /* Pour mettre positionner l’élément dans le flux normal de la page */
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -352,7 +363,8 @@ h4 {
 }
 
 .contact .body-form .left .group i {
-    position: absolute; /* positionné par rapport à son parent le plus proche positionné */
+    position: absolute;
+    /* positionné par rapport à son parent le plus proche positionné */
     left: 0;
     top: 25px;
     padding: 27px 8px;
@@ -396,31 +408,29 @@ h4 {
 }
 
 @media screen and (max-width: 1024px) {
-        .contact .body-form .right {
-        margin-left: 0px;        
+    .contact .body-form .right {
+        margin-left: 0px;
     }
 }
 
 /* Mobile S CSS*/
-@media (max-width: 320px)
-{
-   .logo-img {
-       display: none;
-   }
+@media (max-width: 320px) {
+    .logo-img {
+        display: none;
+    }
 
-   li#nav-inscription.nav-item {
-       width: 90px;
-   }
+    li#nav-inscription.nav-item {
+        width: 90px;
+    }
 
-   .img-security-concept {
-       display: none;
-   }
+    .img-security-concept {
+        display: none;
+    }
 
 }
 
 /* Mobile M CSS*/
-@media (max-width: 375px)
-{
+@media (max-width: 375px) {
     .logo-img {
         display: none;
     }
@@ -429,37 +439,35 @@ h4 {
         display: none;
     }
 
-   li#nav-inscription.nav-item {
-       width: 90px;
-   }
+    li#nav-inscription.nav-item {
+        width: 90px;
+    }
 
-   #logo-name {
-       width: 75%;
-   }
+    #logo-name {
+        width: 75%;
+    }
 
 }
 
 /* Tablet CSS*/
-@media (max-width: 768px)
-{
+@media (max-width: 768px) {
 
     img.img-security-concept {
         display: none;
     }
 
-   li#nav-inscription.nav-item {
-       width: 90px;
-   }
+    li#nav-inscription.nav-item {
+        width: 90px;
+    }
 
 
 }
 
 /* Laptop CSS*/
-@media (max-width: 992px)
-{
+@media (max-width: 992px) {
 
-   a.nav-link {
-       padding-left: 0;
-   }
+    a.nav-link {
+        padding-left: 0;
+    }
 
 }
