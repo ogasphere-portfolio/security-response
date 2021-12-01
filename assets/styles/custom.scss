@@ -9,27 +9,6 @@ $light: $gray-100 !default;
 $dark: $gray-900 !default;
 // scss-docs-end theme-color-variables
 
-<<<<<<< HEAD
-.dropdown-menu>a:hover,
-.dropdown-menu>a:focus {
-    background-color: #1f0d49;
-    color: #F2F4FE;
-}
-
-.dropdown-menu>a,
-.dropdown-menu>a {
-    background-color: #F2F4FE;
-    color: #1f0d49;
-
-}
-
-.dropdown-menu {
-    padding: 0px
-}
-
-body {
-    background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
-=======
 .dropdown-menu > a:hover, .dropdown-menu > a:focus {
     background-color: #006fc5;
     color: #EEF0FE;
@@ -56,7 +35,6 @@ body {
 
 body{
 background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
->>>>>>> feature/password-visibility
     font-family: 'Montserrat', sans-serif;
     position: relative;
     padding-bottom: 5em;

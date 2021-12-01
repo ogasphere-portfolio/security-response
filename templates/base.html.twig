@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-=======
-<html>
-	<head>
-		<meta charset="utf-8">
->>>>>>> feature/password-visibility
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<title>
@@ -16,28 +10,16 @@
 		</title>
 
 
-<<<<<<< HEAD
-		<link
-		rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-=======
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
->>>>>>> feature/password-visibility
+		<link	rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
 
 		<!-- Custom font -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-<<<<<<< HEAD
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
-		{% endblock %}
-=======
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		{% block stylesheets %}
 					{{ encore_entry_link_tags('app') }}
 			{% endblock %}
->>>>>>> feature/password-visibility
 	</head>
 
 	<body>
@@ -91,60 +73,6 @@
 									<a class="nav-link {{ app.request.get('_route') == 'app_login' ? 'active' }}" href="{{ url('app_login') }}">Se connecter</a>
 								</li>
 								<li class="nav-item">
-<<<<<<< HEAD
-
-
-									<div class="dropdown show">
-										<a class="nav-link  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Inscription
-										</a>
-										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-											<a class="dropdown-item" href="{{ url('app_register', {'role': "enterprise"}) }}">
-												<i class="fas fa-user-shield"></i>
-												Expert en sécurité</a>
-											<a class="dropdown-item" href="{{ url('app_register', {'role': "company"}) }}">
-												<i class="fas fa-building"></i>
-												Société en demande</a>
-											<a class="dropdown-item" href="{{ url('app_register', {'role': "member"}) }}">
-												<i class="fas fa-user"></i>
-												Candidat</a>
-										</div>
-									</div>
-								</li>
-
-							{% endif %}
-							<li class="nav-item">
-								{% if is_granted('ROLE_ADMIN') %}
-									<a class="nav-link {{ app.request.get('_route') == 'backoffice_browse' ? 'active' }}" href="{{ path('backoffice_browse') }}">Administation</a>
-								{% endif %}
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-
-		</header>
-
-		{% for message in app.flashes('success') %}
-			<div class="alert alert-success" role="alert">{{ message }}</div>
-		{% endfor %}
-
-		{% block body %}{% endblock %}
-
-		<footer class="text-muted py-5">
-			<div class="container d-flex align-items-center flex-column">
-				<div class="col">
-					<p class="d-flex flex-column flex-md-row mb-0">
-						<a class="mx-2 text-decoration-none" href="{{ path('mentions_legales') }}">Mentions légales</a>
-						<a class="mx-2 text-decoration-none" href="{{ path('contact') }}">Contact</a>
-						<a class="mx-2 text-decoration-none" href="{{ path('team') }}">L'équipe</a>
-					</p>
-				</div>
-				<div class="col">
-					<p class="mb-1">Copyright 2021 - &copy; Security Response
-					</p>
-				</div>
-=======
 									
 								
 								<div class="dropdown show">
@@ -191,7 +119,6 @@
 					<p class="mb-1">Copyright 2021 - &copy; Security Response
 					</p>
 				</div>
->>>>>>> feature/password-visibility
 			</div>
 		</footer>
 
@@ -202,15 +129,9 @@
 			<script>feather.replace();</script>
 
 		{% block javascripts %}
-<<<<<<< HEAD
-
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
-=======
 		
 					{{ encore_entry_script_tags('app') }}
 					
 			{% endblock %}
->>>>>>> feature/password-visibility
 	</body>
 </html>
