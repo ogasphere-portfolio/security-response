@@ -75,6 +75,14 @@
 						</p>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a href="{{ path('backoffice_enterprise_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_enterprise_browse' ? 'active' }} ">
+						<i class="nav-icon fas fa-th"></i>
+						<p>
+							Sociétés
+						</p>
+					</a>
+				</li>
         <li class="nav-item">
 					<a href="{{ path('backoffice_announcement_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_announcement_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-th"></i>
@@ -87,7 +95,7 @@
 					<a href="{{ path('backoffice_certification_browse') }}" class="nav-link {{ app.request.get('_route') == 'backoffice_certification_browse' ? 'active' }} ">
 						<i class="nav-icon fas fa-th"></i>
 						<p>
-							Certfications
+							Certifications
 						</p>
 					</a>
 				</li>
