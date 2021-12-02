@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-
+use App\Repository\CompanyRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -375,8 +375,8 @@ class Company
     {
         if ($this->announcement->removeElement($announcement)) {
             // set the owning side to null (unless already changed)
-            if ($announcement->getEnterprise() === $this) {
-                $announcement->setEnterprise(null);
+            if ($announcement->getCompany() === $this) {
+                $announcement->setCompany(null);
             }
         }
 
