@@ -97,6 +97,7 @@ class Document
         $this->member = new ArrayCollection();
         $this->enterprise = new ArrayCollection();
         $this->announcement = new ArrayCollection();
+        $this->company = new ArrayCollection();
     }
 
     public function getId(): ?int

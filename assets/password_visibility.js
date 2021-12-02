@@ -1,19 +1,25 @@
-const eye = document.querySelector(".fa-eye");
-const eyeoff = document.querySelector(".fa-eye-slash");
-const passwordField = document.querySelector("input[type=password]");
+document.addEventListener('DOMContentLoaded', () => {
+  const eyes = document.querySelectorAll(".fa-eye-slash");
 
-console.log(passwordField);
+  for (let index = 0; index < eyes.length; index++) {
+    const element = [...eyes][index];
+    element.addEventListener('click', () => {
+      changeEye(element)
+    });
+  }
 
-eye.addEventListener("click", () => {
-  eye.style.display = "none";
-  eyeoff.style.display = "block";
+  const changeEye = (element) => {    
+    let password = element.previousElementSibling.children[1];
 
-  passwordField.type = "text";
-});
-
-eyeoff.addEventListener("click", () => {
-  eyeoff.style.display = "none";
-  eye.style.display = "block";
-
-  passwordField.type = "password";
+    if (element.classList.contains("fa-eye-slash")) {
+      element.classList.remove('fa-eye-slash')
+      element.classList.add('fa-eye')
+      password.type = 'text';
+      
+    } else {
+      element.classList.add('fa-eye-slash')
+      element.classList.remove('fa-eye')
+      password.type = "password";
+    }
+  }
 });

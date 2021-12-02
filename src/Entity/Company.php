@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\EnterpriseRepository;
+use App\Repository\CompanyRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -14,12 +14,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 // Exemples annotations pour une recherche fullText sur les champs business_name,siret_number,zip_code,phone_number et city
 //
-// @ORM\Table(name="enterprise", indexes={@ORM\Index(columns={"business_name","siret_number","zip_code","phone_number","city"})}, flags={"fulltext"})})
+// @ORM\Table(name="company", indexes={@ORM\Index(columns={"business_name","siret_number","zip_code","phone_number","city"})}, flags={"fulltext"})})
 
 
 
 /**
- * @ORM\Entity(repositoryClass=EnterpriseRepository::class)
+ * @ORM\Entity(repositoryClass=CompanyRepository::class)
  */
 class Company
 {
@@ -108,12 +108,12 @@ class Company
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Document::class, mappedBy="enterprise")
+     * @ORM\ManyToMany(targetEntity=Document::class, mappedBy="company")
      */
     private $documents;
 
     /**
-     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="enterprise", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="company", cascade={"persist", "remove"})
      */
     private $announcement;
 
@@ -375,8 +375,8 @@ class Company
     {
         if ($this->announcement->removeElement($announcement)) {
             // set the owning side to null (unless already changed)
-            if ($announcement->getEnterprise() === $this) {
-                $announcement->setEnterprise(null);
+            if ($announcement->getCompany() === $this) {
+                $announcement->setCompany(null);
             }
         }
 
