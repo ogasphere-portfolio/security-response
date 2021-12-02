@@ -35,8 +35,7 @@ class CompanyType extends AbstractType
             ->add('contact_mail',null, [
                 'label'=> 'Mail de contact'
             ]);
-
-        
+       
     }
 
     public function configureOptions(OptionsResolver $resolver): void

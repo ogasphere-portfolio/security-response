@@ -3,11 +3,12 @@
 namespace App\Form;
 
 use App\Entity\User;
-use App\Form\FormExtension\RepeatedPasswordType;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
+use App\Form\CompanyType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\AbstractType;
+use App\Form\FormExtension\RepeatedPasswordType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
@@ -89,17 +90,28 @@ class RegistrationFormType extends AbstractType
                 'required' => true,
             ]);
             unset($user['userMember']);
+            unset($user['userCompany']);
             $event->setData($user);
-        } else {
+        }
+        if (!empty($user['userMember']['firstname'])){
             $form->add('userMember', MemberType::class, [
                 'label' => false,
                 'required' => true,
             ]);
 
             unset($user['userEnterprise']);
+            unset($user['userCompany']);
             $event->setData($user);
         }
-
+        if (!empty($user['userCompany']['business_name'])) {
+            $form->add('userCompany', CompanyType::class, [
+                'label' => false,
+                'required' => true,
+            ]);
+            unset($user['userMember']);
+            unset($user['userEnterprise']);
+            $event->setData($user);
+        }
         //  enterprise
 
     }
