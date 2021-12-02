@@ -210,12 +210,12 @@ h4 {
 
 /* On cache les champs de member à l'inscription tant qu'on a pas cocher member*/
 #registration_form_userMember {
-    display: none;
+    display: block;
 }
 
 /* TODO : faire pareil pour entreprise */
 #registration_form_userEnterprise {
-    display: none;
+    display: block;
 }
 
 .form-signin {

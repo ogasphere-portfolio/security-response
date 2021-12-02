@@ -46,7 +46,7 @@ class RegistrationController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
-            
+            \dd($role);
             if ($role == "member") {
                 
                 $user->setRoles(["ROLE_MEMBER"]);

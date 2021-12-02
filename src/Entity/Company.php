@@ -219,7 +219,7 @@ class Company
     {
         return $this->phone_number;
     }
-
+    
     public function setPhoneNumber(string $phone_number): self
     {
         $this->phone_number = $phone_number;
