@@ -82,7 +82,7 @@ class Document
     /**
      * @ORM\ManyToMany(targetEntity=Company::class, inversedBy="documents")
      */
-    private $compagny;
+    private $company;
 
     public function __construct()
     {

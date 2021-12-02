@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20211202071151 extends AbstractMigration
+final class Version20211202071958 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -49,7 +49,7 @@ final class Version20211202071151 extends AbstractMigration
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D64930FCDC3A');
         $this->addSql('CREATE TABLE compagny (id INT AUTO_INCREMENT NOT NULL, slug VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`, business_name VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, siret_number VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`, address VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`, address_more VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`, zip_code VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, phone_number VARCHAR(20) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`, logo VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`, contact_mail VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`, city VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`, created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', updated_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', created_by VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`, updated_by VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
         $this->addSql('CREATE TABLE compagny_certification (compagny_id INT NOT NULL, certification_id INT NOT NULL, INDEX IDX_3DF3AAA2CB47068A (certification_id), INDEX IDX_3DF3AAA21224ABE0 (compagny_id), PRIMARY KEY(compagny_id, certification_id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
-        $this->addSql('CREATE TABLE document_compagny (document_id INT NOT NULL, compagny_id INT NOT NULL, INDEX IDX_98648B5DC33F7837 (document_id), INDEX IDX_98648B5D1224ABE0 (compagny_id), PRIMARY KEY(document_id, compagny_id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
+        $this->addSql('CREATE TABLE document_compagny (document_id INT NOT NULL, compagny_id INT NOT NULL, INDEX IDX_98648B5D1224ABE0 (compagny_id), INDEX IDX_98648B5DC33F7837 (document_id), PRIMARY KEY(document_id, compagny_id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
         $this->addSql('ALTER TABLE compagny_certification ADD CONSTRAINT FK_3DF3AAA21224ABE0 FOREIGN KEY (compagny_id) REFERENCES compagny (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE compagny_certification ADD CONSTRAINT FK_3DF3AAA2CB47068A FOREIGN KEY (certification_id) REFERENCES certification (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE document_compagny ADD CONSTRAINT FK_98648B5D1224ABE0 FOREIGN KEY (compagny_id) REFERENCES compagny (id) ON DELETE CASCADE');
