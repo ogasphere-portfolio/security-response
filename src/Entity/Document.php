@@ -80,9 +80,9 @@ class Document
      */
     private $enterprise;
     /**
-     * @ORM\ManyToMany(targetEntity=Compagny::class, inversedBy="documents")
+     * @ORM\ManyToMany(targetEntity=Company::class, inversedBy="documents")
      */
-    private $compagny;
+    private $company;
 
     public function __construct()
     {
@@ -301,25 +301,25 @@ class Document
     }
 
     /**
-     * @return Collection|Compagny[]
+     * @return Collection|Company[]
      */
-    public function getCompagny(): Collection
+    public function getCompany(): Collection
     {
-        return $this->compagny;
+        return $this->company;
     }
 
-    public function addCompagny(Compagny $compagny): self
+    public function addCompany(Company $company): self
     {
-        if (!$this->compagny->contains($compagny)) {
-            $this->compagny[] = $compagny;
+        if (!$this->company->contains($company)) {
+            $this->company[] = $company;
         }
 
         return $this;
     }
 
-    public function removeCompagny(Compagny $compagny): self
+    public function removeCompany(Company $company): self
     {
-        $this->compagny->removeElement($compagny);
+        $this->company->removeElement($company);
 
         return $this;
     }

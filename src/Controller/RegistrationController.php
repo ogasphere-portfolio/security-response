@@ -57,7 +57,7 @@ class RegistrationController extends AbstractController
             }
             if ($role == "company") {
                 
-                $user->setRoles(["ROLE_COMPAGNY"]);
+                $user->setRoles(["ROLE_COMPANY"]);
             }
 
             $entityManager = $this->getDoctrine()->getManager();

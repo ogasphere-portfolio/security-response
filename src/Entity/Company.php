@@ -21,7 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=EnterpriseRepository::class)
  */
-class Compagny
+class Company
 {
     /**
      * @ORM\Id
@@ -101,13 +101,9 @@ class Compagny
      */
     private $updated_by;
 
+    
     /**
-     * @ORM\ManyToMany(targetEntity=Certification::class, inversedBy="enterprises")
-     */
-    private $certification;
-
-    /**
-     * @ORM\OneToOne(targetEntity=User::class,  mappedBy="userEnterprise", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class,  mappedBy="userCompany", cascade={"persist", "remove"})
      */
     private $user;
 
@@ -316,29 +312,7 @@ class Compagny
         return $this;
     }
 
-    /**
-     * @return Collection|Certification[]
-     */
-    public function getCertification(): Collection
-    {
-        return $this->certification;
-    }
-
-    public function addCertification(Certification $certification): self
-    {
-        if (!$this->certification->contains($certification)) {
-            $this->certification[] = $certification;
-        }
-
-        return $this;
-    }
-
-    public function removeCertification(Certification $certification): self
-    {
-        $this->certification->removeElement($certification);
-
-        return $this;
-    }
+   
 
     public function getUser(): ?User
     {
@@ -364,7 +338,7 @@ class Compagny
     {
         if (!$this->documents->contains($document)) {
             $this->documents[] = $document;
-            $document->addCompagny($this);
+            $document->addCompany($this);
         }
 
         return $this;
@@ -373,7 +347,7 @@ class Compagny
     public function removeDocument(Document $document): self
     {
         if ($this->documents->removeElement($document)) {
-            $document->removeCompagny($this);
+            $document->removeCompany($this);
         }
 
         return $this;
@@ -391,7 +365,7 @@ class Compagny
     {
         if (!$this->announcement->contains($announcement)) {
             $this->announcement[] = $announcement;
-            $announcement->setCompagny($this);
+            $announcement->setCompany($this);
         }
 
         return $this;

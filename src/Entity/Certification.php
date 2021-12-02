@@ -53,6 +53,7 @@ class Certification
      * @ORM\ManyToMany(targetEntity=Enterprise::class, mappedBy="certification")
      */
     private $enterprises;
+   
 
     /**
      * @ORM\ManyToMany(targetEntity=Announcement::class, mappedBy="certification")

@@ -93,9 +93,9 @@ class Announcement
      */
     private $enterprise;
    /**
-     * @ORM\ManyToOne(targetEntity=Compagny::class, inversedBy="announcement")
+     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="announcement")
      */
-    private $compagny;
+    private $company;
 
     /**
      * @ORM\ManyToOne(targetEntity=Specialization::class, inversedBy="announcements")
@@ -322,14 +322,14 @@ class Announcement
 
         return $this;
     }
-    public function getCompagny(): ?Compagny
+    public function getCompany(): ?Company
     {
-        return $this->compagny;
+        return $this->company;
     }
 
-    public function setCompagny(?Compagny $compagny): self
+    public function setCompany(?Company $company): self
     {
-        $this->compagny = $compagny;
+        $this->company = $company;
 
         return $this;
     }
