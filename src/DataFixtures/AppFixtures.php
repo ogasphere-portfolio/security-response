@@ -7,7 +7,7 @@ use App\Entity\Announcement;
 use App\Entity\Answer;
 use App\Entity\Category;
 use App\Entity\Certification;
-use App\Entity\Compagny;
+use App\Entity\Company;
 use App\Entity\Enterprise;
 use App\Entity\Member;
 use App\Entity\Specialization;
@@ -145,10 +145,10 @@ class AppFixtures extends Fixture
             $answerList[] = $answer;
         }
 
-        $compagnyList = [];
+        $companyList = [];
         for ($i = 0; $i <= 9; $i++) {
-            $compagny = new Compagny();
-            $compagny->setBusinessName($faker->unique()->word())
+            $company = new Company();
+            $company->setBusinessName($faker->unique()->word())
                 ->setSiretNumber($faker->siret())
                 ->setAddress($faker->streetAddress())
                 ->setCity($faker->city())
@@ -158,13 +158,13 @@ class AppFixtures extends Fixture
                 // ->setLongitude($faker->longitude())
                 // ->setContactMail($faker->email())
                 // ->addCertification($certificationList[$i])
-                // ->setSlug(strtolower($this->slugger->slug($compagny->getBusinessName())))
+                // ->setSlug(strtolower($this->slugger->slug($company->getBusinessName())))
                 ->setZipCode($faker->postcode())
                 ->setCreatedAt(new \DateTimeImmutable());
 
-            $manager->persist($compagny);
+            $manager->persist($company);
 
-            $compagnyList[] = $compagny;
+            $companyList[] = $company;
         }
 
         $userList = [];
@@ -180,7 +180,7 @@ class AppFixtures extends Fixture
             } elseif ($i % 2) {
                 $user->setUserEnterprise($enterpriseList[$i]);
             } else {
-                $user->setUserCompagny($compagnyList[$i]);
+                $user->setUserCompany($companyList[$i]);
             }
 
 
