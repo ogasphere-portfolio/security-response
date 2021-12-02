@@ -266,7 +266,9 @@ h4 {
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(255, 255, 255, 0.3);
-}
+    border-radius: 10px;
+    border: 2px solid #006fc5;
+}   
 
 .login-title {
     color: #555;
@@ -283,6 +285,23 @@ h4 {
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
+}
+
+.account-wall .login-form button {
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.account-wall .login-form button:hover {
+    transform: scale(1.05);
 }
 
 .need-help {
