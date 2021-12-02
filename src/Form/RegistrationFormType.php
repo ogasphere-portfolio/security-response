@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use App\Form\CompanyType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
@@ -83,7 +82,7 @@ class RegistrationFormType extends AbstractType
     {
         $user = $event->getData();
         $form = $event->getForm();
-        // dd($user);
+        
         if (!empty($user['userEnterprise']['business_name'])) {
             $form->add('userEnterprise', EnterpriseType::class, [
                 'label' => false,
@@ -112,8 +111,7 @@ class RegistrationFormType extends AbstractType
             unset($user['userEnterprise']);
             $event->setData($user);
         }
-        //  enterprise
-
+       
     }
 
     public function configureOptions(OptionsResolver $resolver): void

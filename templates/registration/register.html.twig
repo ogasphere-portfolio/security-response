@@ -22,25 +22,25 @@
 						{{ form_row(registrationForm.password) }}
 					
 					
-					{{app.request.get('role')}}
-					{% if app.request.get('role')=='member' %}
-						{{ form_row(registrationForm.userMember) }}
+					
+						{% if app.request.get('role')=='member' %}
+							{{ form_row(registrationForm.userMember) }}
 
-					{% endif %}
-					{% if app.request.get('role')=='enterprise' %}
-						{{ form_row(registrationForm.userEnterprise) }} 
-
-
-					{% endif %}
-					{% if app.request.get('role')=='company' %}
-						{{ form_row(registrationForm.userCompany) }} 
-					{% endif %}
+						{% endif %}
+						{% if app.request.get('role')=='enterprise' %}
+							{{ form_row(registrationForm.userEnterprise) }} 
 
 
-                        <button class="btn btn-lg btn-primary" type="submit">
-                            S'inscrire
-                        </button>   
-					{{ form_end(registrationForm,{render_rest: false}) }}	
+						{% endif %}
+						{% if app.request.get('role')=='company' %}
+							{{ form_row(registrationForm.userCompany) }} 
+						{% endif %}
+						{{ form_row(registrationForm._token) }}
+
+							<button class="btn btn-lg btn-primary" type="submit">
+								S'inscrire
+							</button>   
+						{{ form_end(registrationForm,{render_rest: false}) }}	
 						
 	</main>
 
