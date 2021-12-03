@@ -183,12 +183,12 @@ h4 {
 
 #nav-inscription {
     background-color: #0051b6;
-    border-radius: 6px;
+    transition: transform 0.5s;
 }
 
 #nav-inscription:hover {
     background-color: #006fc5;
-    border-radius: 6px;
+    transform: scale(1.05);
 }
 
 #nav-inscription a {
