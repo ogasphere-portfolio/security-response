@@ -29,15 +29,66 @@
 			</div>
 		</section>
 
+		<div class="info-block album py-5">
+			<div class="container">
+
+				<div class="row row-cols-lg-3 row-cols-sm-1 row-cols-md-1 g-3">
+
+					<div class="card-info col card shadow-sm p-4">
+						<div class="icon-info">
+							<i class="fas fa-user-shield fa-2x"></i>
+						</div>
+						<h4 class="text-center">
+							<strong>Vous êtes Expert en sécurité informatique ?</strong>
+						</h4>
+						<div class="card-body">
+							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+						</div>
+							<div class="register-form text-center">
+										<a class="btn btn-success" href="{{ url('app_register', {'role': "enterprise"}) }}" type="submit">Je m'inscris</a>
+							</div>
+					</div>
+
+					<div class="card-info col card shadow-sm p-4">
+						<div class="icon-info">
+							<i class="fas fa-building fa-2x"></i>
+						</div>
+						<h4 class="text-center">
+							<strong>Vous êtes une Société qui recherche un besoin en sécurité informatique ?</strong>
+						</h4>
+						<div class="card-body">
+							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+						</div>
+								<div class="register-form text-center">
+									<a class="btn btn-success" href="{{ url('app_register', {'role': "company"}) }}" type="submit">Je m'inscris</a>
+								</div>
+					</div>
+
+
+					<div class="card-info col card shadow-sm p-4">
+						<div class="icon-info">
+							<i class="fas fa-user fa-2x"></i>
+						</div>
+						<h4 class="text-center">
+							<strong>Vous êtes un candidat en recherche d'entreprise spécialisé en sécurité informatique ?</strong>
+						</h4>
+						<div class="card-body">
+							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+						</div>
+								<div class="register-form text-center">									
+									<a class="btn btn-success" href="{{ url('app_register', {'role': "member"}) }}" type="submit">Je m'inscris</a>
+								</div>
+					</div>
+
+				</div>
+			</div>
+
 		<section class="py-5 text-center container">
 			<div class="d-flex flex-sm-column flex-md-column flex-lg-row" id="home-announcement">
 				<div class="col-lg-6 col-md-8">
 					<h3 class="fw-bold text-start">Vous avez subi une attaque informatique ?</h3>
 					<p>Créer une annonce dès maintenant pour vous protéger. Nos experts inscrits sur la plateforme vous aideront à corriger ce problème.</p>
-				</div>
-				{% if is_granted('ANNOUNCE_ADD') %}
-					<a class="btn btn-success" href="{{ path('announcement_add') }}" type="submit">Créer une annonce</a>
-				{% endif %}
+				</div>				
 			</div>
 		</section>
 
@@ -55,7 +106,7 @@
 					</p>
 					<p>
 						<strong>59% de ces attaques ont un impact direct</strong>
-						sur les entrprises : ralentissement de leur production, indisponibilité de leur site etc</p>
+						sur les entreprises : ralentissement de leur production, indisponibilité de leur site etc</p>
 					<p>Les
 						<strong>données sensibles</strong>
 						des entreprises seraient la
@@ -85,7 +136,7 @@
 
 				<div class="row row-cols-lg-3 row-cols-sm-1 row-cols-md-1 g-3">
 
-					<div class="col card shadow-sm p-4">
+					<div class="card-info col card shadow-sm p-4">
 						<img class="icon-home mx-auto" src="{{ asset("img/location.svg") }}" alt="location">
 						<h4 class="text-center">
 							<strong>Mobilisez des experts proches de chez vous</strong>

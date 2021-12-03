@@ -217,6 +217,36 @@ h4 {
     display: block;
 }
 
+.icon-info {   
+    display: flex;     
+}
+
+.info-block i{    
+    color: #47BAFB;
+    margin: auto;     
+}
+
+.card-info {   
+   border-radius: 0.50rem;   
+}
+
+.info-block .register-form a {
+    margin-top: 10px;
+    background-color: #47BAFB;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.info-block .register-form a:hover {
+    transform: scale(1.05);
+}
+
 /* TODO : faire pareil pour entreprise */
 #registration_form_userEnterprise {
     display: block;
