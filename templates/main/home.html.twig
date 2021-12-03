@@ -45,7 +45,7 @@
 							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
 						</div>
 							<div class="register-form text-center">
-										<a class="btn btn-success" href="{{ url('app_register', {'role': "enterprise"}) }}" type="submit">Je m'inscris</a>
+										<a class="btn btn-success" href="{{ url('app_register', {'role': "entreprise"}) }}" type="submit">Je m'inscris</a>
 							</div>
 					</div>
 
@@ -60,7 +60,7 @@
 							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
 						</div>
 								<div class="register-form text-center">
-									<a class="btn btn-success" href="{{ url('app_register', {'role': "company"}) }}" type="submit">Je m'inscris</a>
+									<a class="btn btn-success" href="{{ url('app_register', {'role': "societe"}) }}" type="submit">Je m'inscris</a>
 								</div>
 					</div>
 
@@ -76,7 +76,7 @@
 							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
 						</div>
 								<div class="register-form text-center">									
-									<a class="btn btn-success" href="{{ url('app_register', {'role': "member"}) }}" type="submit">Je m'inscris</a>
+									<a class="btn btn-success" href="{{ url('app_register', {'role': "membre"}) }}" type="submit">Je m'inscris</a>
 								</div>
 					</div>
 
@@ -137,7 +137,9 @@
 				<div class="row row-cols-lg-3 row-cols-sm-1 row-cols-md-1 g-3">
 
 					<div class="card-info col card shadow-sm p-4">
-						<img class="icon-home mx-auto" src="{{ asset("img/location.svg") }}" alt="location">
+						<div class="icon-info">
+							<i class="fas fa-map-marker-alt fa-2x"></i>
+						</div>
 						<h4 class="text-center">
 							<strong>Mobilisez des experts proches de chez vous</strong>
 						</h4>
@@ -146,8 +148,10 @@
 						</div>
 					</div>
 
-					<div class="col card shadow-sm p-4">
-						<img class="icon-home mx-auto" src="{{ asset("img/shield-pro.svg") }}" alt="shield-pro">
+					<div class="card-info col card shadow-sm p-4">
+						<div class="icon-info">
+							<i class="fas fa-shield fa-2x"></i>
+						</div>
 						<h4 class="text-center">
 							<strong>Choisissez les professionnels en charge de votre cybersécurité</strong>
 						</h4>
@@ -157,8 +161,10 @@
 					</div>
 
 
-					<div class="col card shadow-sm p-4">
-						<img class="icon-home mx-auto" src="{{ asset("img/coding.svg") }}" alt="coding">
+					<div class="card-info col card shadow-sm p-4">
+						<div class="icon-info">
+							<i class="fas fa-laptop-code fa-2x"></i>
+						</div>
 						<h4 class="text-center">
 							<strong>Recrutez des talents</strong>
 						</h4>

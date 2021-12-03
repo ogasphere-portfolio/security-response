@@ -12,15 +12,15 @@
 
 					<div class="account-wall p-5">
 
-						{% if app.request.get('role')=='member' %}
+						{% if app.request.get('role')=='membre' %}
 							<h1 class="h3 mb-4 font-weight-normal">Inscription d'un Candidat</h1>
 						{% endif %}
 
-						{% if app.request.get('role')=='enterprise' %}
+						{% if app.request.get('role')=='entreprise' %}
 							<h1 class="h3 mb-4 font-weight-normal">Inscription d'un Expert en Sécurité</h1>
 						{% endif %}
 
-						{% if app.request.get('role')=='company' %}
+						{% if app.request.get('role')=='societe' %}
 							<h1 class="h3 mb-4 font-weight-normal">Inscription d'une Société</h1>
 						{% endif %}
 
@@ -34,16 +34,16 @@
 					
 					
 					
-						{% if app.request.get('role')=='member' %}
+						{% if app.request.get('role')=='membre' %}
 							{{ form_row(registrationForm.userMember) }}
 
 						{% endif %}
-						{% if app.request.get('role')=='enterprise' %}
+						{% if app.request.get('role')=='entreprise' %}
 							{{ form_row(registrationForm.userEnterprise) }} 
 
 
 						{% endif %}
-						{% if app.request.get('role')=='company' %}
+						{% if app.request.get('role')=='societe' %}
 							{{ form_row(registrationForm.userCompany) }} 
 						{% endif %}
 						{{ form_row(registrationForm._token) }}

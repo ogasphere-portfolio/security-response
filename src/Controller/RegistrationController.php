@@ -47,15 +47,15 @@ class RegistrationController extends AbstractController
                 )
             );
           
-            if ($role == "member") {
+            if ($role == "membre") {
                 
                 $user->setRoles(["ROLE_MEMBER"]);
             }
-            if ($role == "enterprise") {
+            if ($role == "entreprise") {
                 
                 $user->setRoles(["ROLE_ENTERPRISE"]);
             }
-            if ($role == "company") {
+            if ($role == "societe") {
                 
                 $user->setRoles(["ROLE_COMPANY"]);
             }
