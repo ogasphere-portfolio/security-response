@@ -12,7 +12,18 @@
 
 					<div class="account-wall p-5">
 
-						<h1 class="h3 mb-4 font-weight-normal">Inscription</h1>
+						{% if app.request.get('role')=='member' %}
+							<h1 class="h3 mb-4 font-weight-normal">Inscription d'un Candidat</h1>
+						{% endif %}
+
+						{% if app.request.get('role')=='enterprise' %}
+							<h1 class="h3 mb-4 font-weight-normal">Inscription d'un Expert en Sécurité</h1>
+						{% endif %}
+
+						{% if app.request.get('role')=='company' %}
+							<h1 class="h3 mb-4 font-weight-normal">Inscription d'une Société</h1>
+						{% endif %}
+
 						{% for flashError in app.flashes('verify_email_error') %}
 							<div class="alert alert-danger" role="alert">{{ flashError }}</div>
 						{% endfor %}

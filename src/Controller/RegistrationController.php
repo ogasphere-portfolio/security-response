@@ -29,7 +29,7 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/register/{role}", name="app_register")
+     * @Route("/inscriptions/{role}", name="app_register")
      */
     public function register(string $role, Request $request, UserPasswordHasherInterface $userPasswordHasherInterface): Response
     {
