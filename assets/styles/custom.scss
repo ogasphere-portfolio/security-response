@@ -279,7 +279,7 @@ h4 {
 
 .form-signin .form-control:focus {
     z-index: 2;
-}
+}   
 
 .form-signin input[type="text"] {
     margin-bottom: -1px;
@@ -561,6 +561,18 @@ h4 {
     outline: none;
     cursor: pointer;
     transition: transform 0.5s;
+}
+
+.search-form button {
+    margin: auto;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: 2px solid;
+    cursor: pointer;   
 }
 
 @media screen and (max-width: 1024px) {
