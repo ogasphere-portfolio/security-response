@@ -54,8 +54,8 @@ class AnnouncementType extends AbstractType
             ->add('specialization',EntityType::class,[
                 'class' => Specialization::class,
                 'label' => false,
-                'multiple' => true,
-                'expanded' => true,
+                'multiple' => false,
+                'expanded' => false,
                 ]) 
             // ->add('enterprise', EntityType::class,[
             //     'class'=>Enterprise::class,

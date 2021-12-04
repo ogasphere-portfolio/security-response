@@ -79,6 +79,10 @@ class Document
      * @ORM\ManyToMany(targetEntity=Enterprise::class, inversedBy="documents")
      */
     private $enterprise;
+    /**
+     * @ORM\ManyToMany(targetEntity=Company::class, inversedBy="documents")
+     */
+    private $company;
 
     public function __construct()
     {
@@ -93,6 +97,7 @@ class Document
         $this->member = new ArrayCollection();
         $this->enterprise = new ArrayCollection();
         $this->announcement = new ArrayCollection();
+        $this->company = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -292,6 +297,30 @@ class Document
     public function removeEnterprise(Enterprise $enterprise): self
     {
         $this->enterprise->removeElement($enterprise);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Company[]
+     */
+    public function getCompany(): Collection
+    {
+        return $this->company;
+    }
+
+    public function addCompany(Company $company): self
+    {
+        if (!$this->company->contains($company)) {
+            $this->company[] = $company;
+        }
+
+        return $this;
+    }
+
+    public function removeCompany(Company $company): self
+    {
+        $this->company->removeElement($company);
 
         return $this;
     }

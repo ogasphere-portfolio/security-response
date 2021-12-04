@@ -37,6 +37,21 @@ class ProfileController extends AbstractController
             'enterprise' => $userEnterprise,
         ]);
     }
+    /**
+     * @Route("/societe/", name="company", methods={"GET"})
+     */
+    public function companyHome(Security $security): Response
+    {
+        /**
+         * @var User
+         */
+        $userCompany =  $security->getUser();
+        $userCompany->getUserCompagny()->getBusinessName();
+        
+        return $this->render('profile/company/home.html.twig', [
+            'compagny' => $userCompany,
+        ]);
+    }
 
     /**
      * @Route("/membre", name="member", methods={"GET"})

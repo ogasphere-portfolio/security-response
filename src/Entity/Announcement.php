@@ -3,9 +3,8 @@
 namespace App\Entity;
 
 use DateTimeImmutable;
-use App\Repository\AnnouncementRepository;
-use App\Entity\Category;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AnnouncementRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -83,12 +82,6 @@ class Announcement
     private $members;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Specialization::class, inversedBy="announcements")
-     * @Assert\Count(min=1, minMessage="Merci de choisir une spécialisation !!!")
-     */
-    private $specialization;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="announcement")
      */
     private $document;
@@ -100,6 +93,20 @@ class Announcement
      * @ORM\ManyToOne(targetEntity=Enterprise::class, inversedBy="announcement")
      */
     private $enterprise;
+   /**
+     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="announcement")
+     */
+    private $company;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Specialization::class, inversedBy="announcements")
+     */
+    private $specialization;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Answer::class, mappedBy="announcement")
+     */
+    private $answers;
 
     
     
@@ -118,8 +125,8 @@ class Announcement
         }
         $this->certification = new ArrayCollection();
         $this->members = new ArrayCollection();
-        $this->specialization = new ArrayCollection();        
         $this->created_at = new DateTimeImmutable();
+        $this->answers = new ArrayCollection();
     }
 
     public function __toString() 
@@ -293,30 +300,6 @@ class Announcement
         return $this;
     }
 
-    /**
-     * @return Collection|Specialization[]
-     */
-    public function getSpecialization(): Collection
-    {
-        return $this->specialization;
-    }
-
-    public function addSpecialization(Specialization $specialization): self
-    {
-        if (!$this->specialization->contains($specialization)) {
-            $this->specialization[] = $specialization;
-        }
-
-        return $this;
-    }
-
-    public function removeSpecialization(Specialization $specialization): self
-    {
-        $this->specialization->removeElement($specialization);
-
-        return $this;
-    }
-
     public function getDocument(): ?Document
     {
         return $this->document;
@@ -340,7 +323,17 @@ class Announcement
 
         return $this;
     }
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
 
+    public function setCompany(?Company $company): self
+    {
+        $this->company = $company;
+
+        return $this;
+    }
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -352,6 +345,49 @@ class Announcement
 
         return $this;
     }
+
+    public function getSpecialization(): ?Specialization
+    {
+        return $this->specialization;
+    }
+
+    public function setSpecialization(?Specialization $specialization): self
+    {
+        $this->specialization = $specialization;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Answer[]
+     */
+    public function getAnswers(): Collection
+    {
+        return $this->answers;
+    }
+
+    public function addAnswer(Answer $answer): self
+    {
+        if (!$this->answers->contains($answer)) {
+            $this->answers[] = $answer;
+            $answer->setAnnouncement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnswer(Answer $answer): self
+    {
+        if ($this->answers->removeElement($answer)) {
+            // set the owning side to null (unless already changed)
+            if ($answer->getAnnouncement() === $this) {
+                $answer->setAnnouncement(null);
+            }
+        }
+
+        return $this;
+    }
+
     
 
     
