@@ -4,17 +4,22 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Announcement;
+use App\Entity\Answer;
 use App\Form\AnnouncementType;
+use App\Form\AnswerType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\AnnouncementRepository;
+use App\Repository\AnswerRepository;
 use App\Repository\CategoryRepository;
 use App\Security\Voter\AnnoucementVoter;
+use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/annonces", name="announcement_")
@@ -56,12 +61,47 @@ class AnnouncementController extends AbstractController
      *
      * @Route("/{id}/read", name="read")
      */
-    public function read($id, AnnouncementRepository $announcementRepository): Response
+    public function read($id, AnnouncementRepository $announcementRepository, Request $request, AnswerRepository $answerRepository): Response
     {
         $announcement = $announcementRepository->find($id);
 
+        $answer = new Answer();
+        $form = $this->createForm(AnswerType::class);
+        $form->setData($answer);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // $answer = $form->getData();
+            // On associe Réponse
+            $answer->setannouncement($announcement);
+
+            // On associe le user connecté à la réponse
+            $answer->setUser($this->getUser());
+
+            // Modifier le comportement de announcement pour que sa propriété $updatedAt soit mise à jour à chaque fois qu'une réponse est postée !
+            // $announcement->setUpdatedAt(new DateTime());
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($answer);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Réponse ajoutée');
+
+            return $this->redirectToRoute('announcement_read', ['id' => $announcement->getId()]);
+        }
+
+        $answers = $answerRepository->findBy([
+            'announcement' => $announcement,
+
+        ]);
+
+
         return $this->render('announcement/read.html.twig', [
             'announcement_read' => $announcement,
+            'form' => $form->createView(),
+            'answers' => $answers,
         ]);
     }
 
@@ -96,39 +136,32 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
-    public function add(Request $request, Security $security, CategoryRepository $cr): Response
+    public function add(Request $request, Security $security, CategoryRepository $cr, SluggerInterface $slugger): Response
     {
         $announcement = new Announcement();
 
         $this->denyAccessUnlessGranted(AnnoucementVoter::ADD, $announcement);
 
         $announcementForm = $this->createForm(AnnouncementType::class, $announcement);
+        if (empty($this->getUser())) {
 
-        if (empty(($this->getUser()))) {
-            $invitedCategory = $cr->findOneBy([
-                'name' => 'Invité'
-            ]);
-            $announcement->setCategory($invitedCategory);
-            $announcementForm
-                ->add('category', null, [
-                    'attr' => ['class' => 'd-none'],
-                    'disabled' => 'disabled',
-                ]);
+            return $this->redirectToRoute('homepage');
         }
-            if (!empty(($this->getUser()))) {
-                if (!empty(($this->getUser()->getUserEnterprise()))) {
-                    $invitedCategory = $cr->findOneBy([
+
+        if (!empty(($this->getUser()))) {
+            if (($this->getUser()->getUserEnterprise())) {
+                $enterpriseCategory = $cr->findOneBy([
                     'name' => 'Recrutement'
                 ]);
-                    $announcement->setCategory($invitedCategory);
-                    $announcementForm
+                $announcement->setCategory($enterpriseCategory);
+                $announcementForm
                     ->add('category', null, [
                         // 'attr' => ['class' => 'd-none'] ,
                         'disabled' => 'disabled',
                     ]);
-                    $announcement->setEnterprise( $this->getUser()->getUserEnterprise());
-                }
+                $announcement->setEnterprise($this->getUser()->getUserEnterprise());
             }
+        }
 
         $announcementForm->handleRequest($request);
 
@@ -138,7 +171,7 @@ class AnnouncementController extends AbstractController
              * @var User
              */
             $user = $security->getUser();
-
+            $announcement->setSlug($slugger->slug($announcement->getTitle()));
             // $announcement->setEnterprise($user->getUserEnterprise());
 
             // on ne demande l'entityManager que si on en a besoin

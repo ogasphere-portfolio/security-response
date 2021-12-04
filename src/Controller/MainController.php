@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
+use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-
+use App\Service\SendMailService;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class MainController extends AbstractController
 {
@@ -48,28 +52,48 @@ class MainController extends AbstractController
 
     /**
      * 
-     * 
      * @Route("/contact", name="contact")
+     * 
      */
-    public function contact(): Response
+    public function contact(Request $request, SendMailService $mail): Response
     {
+        
+        $form = $this->createForm(ContactType::class);
+
+        $contact = $form->handleRequest($request);       
+        
+        if($form->isSubmitted() && $form->isValid()){
+            $context = [
+                'name' => $contact->get('name')->getData(),
+                'mail' => $contact->get('email')->getData(),
+                'phone' => $contact->get('phone')->getData(),
+                'message' => $contact->get('message')->getData(),
+            ];
+            $mail->send(
+                $contact->get('email')->getData(),
+                'cskyzr@hotmail.com',
+                'Security Response - Contact',
+                'contact',
+                $context
+            );
+            
+            // accusé réception
+            $mail->send(
+                'cskyzr@hotmail.com',
+                $contact->get('email')->getData(),
+                "Security Response - Nous avons bien reçu votre message",
+                'message_confirmation',
+                $context
+            );
+            
+            $this->addFlash('success', 'Vore message a bien été envoyé');
+            return $this->redirectToRoute('contact');
+         
+        }
+
         return $this->render('main/contact.html.twig', [
-            'controller_name' => 'MainController',
+            'contact_form' => $form->createView()
         ]);
+    
     }
-
-    /**
-     * 
-     * 
-     * @Route("/404", name="404")
-     */
-    public function error404(): Response
-    {
-       
-        return $this->render('main/error404.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
-    }
-   
-
 }

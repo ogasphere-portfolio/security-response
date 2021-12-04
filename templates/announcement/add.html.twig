@@ -16,9 +16,13 @@
 				<div class="d-flex py-lg-5 justify-content-between w-75 mx-auto">
 					<h2 class="fw-bold">Détails de l'annonce</h2>
 					{% if app.user is empty %}
-						<a class="btn btn-primary" aria-current="page" href="{{ url('homepage') }}">Retour</a>
+						<div class="announcement-form">
+							<a class="btn btn-primary" aria-current="page" href="{{ url('homepage') }}">Retour</a>
+						</div>
 					{% else %}
-						<a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
+						<div class="announcement-form">
+							<a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
+						</div>
 					{% endif %}
 				</div>
 
@@ -60,13 +64,15 @@
 							{% endif %}
 						{% endif %}
 
-						<button type="submit" class="btn btn-primary mt-4">
-							{% if 'announcement_add' == app.request.get('_route') %}
-								Créer l'annonce
-							{% else %}
-								Modifier l'annonce
-							{% endif %}
-						</button>
+						<div class="announcement-form">
+							<button type="submit" class="btn btn-primary mt-4">
+								{% if 'announcement_add' == app.request.get('_route') %}
+									Créer l'annonce
+								{% else %}
+									Modifier l'annonce
+								{% endif %}
+							</button>
+						</div>
 					</div>
 
 					<p class="d-none">{{ form_widget(announcement_form.members, {'attr': {'class': 'invisible'}}) }}

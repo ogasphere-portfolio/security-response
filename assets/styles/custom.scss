@@ -1,0 +1,631 @@
+// scss-docs-start theme-color-variables
+$primary: $blue !default;
+$secondary: $gray-600 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-900 !default;
+// scss-docs-end theme-color-variables
+
+.dropdown-menu>a:hover,
+.dropdown-menu>a:focus {
+    background-color: #006fc5;
+    color: #EEF0FE;
+}
+
+.dropdown-menu>a,
+.dropdown-menu>a {
+    background-color: #EEF0FE;
+    color: #006fc5;
+
+}
+
+.dropdown-menu {
+    padding: 0px;
+}
+
+.dropdown-item {
+    left: 0;
+    top: 25px;
+    padding: 8px 8px;
+    color: #006fc5;
+}
+
+.dropdown-menu .dropdown-item i {
+    margin-right: 1rem;
+}
+
+body {
+    background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    padding-bottom: 5em;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0
+}
+
+#map_enterprise {
+    width: 100%;
+    height: 100vh;
+}
+
+.mt-6 {
+    margin-top: 100px;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h4 {
+    padding: 1em;
+}
+
+.bg-grey {
+    background-color: #889cd6;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+#logo-name strong {
+    color: #0051b6;
+}
+
+.btn-outline-primary {
+    color: #0051b6;
+    border-color: #0051b6;
+}
+
+.btn-outline-primary:hover {
+    background-color: #006fc5;
+    border-color: #006fc5;
+}
+
+.logo-img {
+    width: 6%;
+}
+
+#home-top img {
+    width: 40%;
+    height: auto;
+}
+
+#home-top {
+    align-items: center;
+    justify-content: space-around;
+}
+
+#home-top-left {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#home-register {
+    height: 10em;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #0051b6;
+    color: white;
+    border-radius: 10px;
+}
+
+#home-register button {
+    background-color: white;
+    font-size: 1.2em;
+    border-radius: 10px;
+}
+
+#home-register button:hover {
+    background-color: white;
+    font-size: 1.2em;
+    color: #006fc5;
+}
+
+#home-announcement {
+    height: 10em;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #0051b6;
+    color: white;
+    border-radius: 10px;
+}
+
+.navbar {
+    background: linear-gradient(82.08deg, #EEF0FE 0%, #FFFFFF 100%);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #050f19;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #006fc5;
+}
+
+.nav-button .nav-link.active {
+    border-bottom: 3px solid #0051b6;
+}
+
+/* .nav-button .nav-link.active:hover {
+    border-radius: 6px;
+    color: #006fc5;
+} */
+
+
+.team {
+    margin-top: 1rem;
+    color: #006fc5;
+}
+
+.team-status {
+    margin-bottom: 10rem;
+    color: #006fc5;
+}
+
+#nav-inscription {
+    background-color: #0051b6;
+    transition: transform 0.5s;
+}
+
+#nav-inscription:hover {
+    background-color: #006fc5;
+    transform: scale(1.05);
+}
+
+#nav-inscription a {
+    color: white;
+}
+
+/* .nav-tabs {
+    border-bottom: 0px;
+}
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
+    border-color: #e9ecef #e9ecef #dee2e6 #e9ecef;
+   
+} */
+.card.shadow-sm.border.border-5 {
+    height: 300px;
+}
+
+#form-register {
+
+    margin: 0 auto;
+    width: 400px;
+}
+
+/* On cache les champs de member à l'inscription tant qu'on a pas cocher member*/
+#registration_form_userMember {
+    display: block;
+}
+
+.icon-info {   
+    display: flex;     
+}
+
+.info-block i{    
+    color: #006fc5;
+    margin: auto;     
+}
+
+.card-info {   
+   border-radius: 0.50rem;   
+}
+
+.info-block .register-form a {
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.info-block .register-form a:hover {
+    transform: scale(1.05);
+}
+
+/* TODO : faire pareil pour entreprise */
+#registration_form_userEnterprise {
+    display: block;
+}
+
+.form-signin {
+    max-width: 400px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    // border-bottom-left-radius: 0;
+    // border-bottom-right-radius: 0;
+    border-radius: 0.25rem;
+
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    // border-top-left-radius: 0;
+    // border-top-right-radius: 0;
+    border-radius: 0.25rem;
+}
+
+.account-wall {
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #ffffff;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    border: 2px solid #006fc5;
+}
+
+.login-title {
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+
+.profile-img {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.account-wall .login-form button {
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.account-wall .login-form button:hover {
+    transform: scale(1.05);
+}
+
+.need-help {
+    margin-top: 10px;
+}
+
+.new-account {
+    display: block;
+    margin-top: 10px;
+}
+
+.icon-home {
+    width: 10%;
+}
+
+.profile-heading {
+    width: 250px;
+}
+
+.register-member {
+    background: linear-gradient(82.08deg, #3349ec 0%, #4b5ae6 100%);
+    transition: box-shadow 0.5s;
+}
+
+.register-enterprise {
+    background: linear-gradient(82.08deg, #3349ec 0%, #4b5ae6 100%);
+    transition: box-shadow 0.5s;
+}
+
+.register-member:hover {
+    box-shadow: 3px 8px #888;
+    cursor: pointer;
+}
+
+.register-enterprise:hover {
+    box-shadow: 3px 8px #888;
+    cursor: pointer;
+}
+
+.contact-block {
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contact {
+    padding: 30px;
+    background-color: #FFF;
+    border-radius: 10px;
+}
+
+.contact h1 {
+    font-size: 30px;
+}
+
+.contact .separation {
+    width: 100%;
+    height: 1px;
+    background-color: #006fc5;
+}
+
+.contact .body-form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.contact .body-form .group {
+    position: relative;
+    /* Pour mettre positionner l’élément dans le flux normal de la page */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact .body-form .left .group input {
+    margin-top: 5px;
+    padding: 10px 5px 10px 30px;
+    border: 1px solid #c9c9c9;
+    outline-color: #006fc5;
+    border-radius: 5px;
+}
+
+.contact .body-form .left .group i {
+    position: absolute;
+    /* positionné par rapport à son parent le plus proche positionné */
+    left: 0;
+    top: 25px;
+    padding: 27px 8px;
+    color: #006fc5;
+}
+
+.contact .body-form .right {
+    margin-left: 40px;
+}
+
+.contact .body-form .right .group {
+    height: 100%;
+}
+
+.contact .body-form .right .group textarea {
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 2px solid #006fc5;
+    outline: none;
+    border-radius: 5px;
+    resize: none;
+    height: 260%;
+}
+
+.contact .footer-form button {
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.contact .footer-form button:hover {
+    transform: scale(1.05);
+}
+
+.password-visibility {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 2em 0;
+    border: 2px solid #006fc5;
+}
+
+.body-pass {
+    padding-left: 18em;
+}
+
+.password-visibility .body-pass .group-pass .password-icon {
+    position: relative;
+    /* Pour mettre positionner l’élément dans le flux normal de la page */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.password-visibility .body-pass .group-pass .password-icon i {
+    position: absolute;
+    /* positionné par rapport à son parent le plus proche positionné */
+    right: 0;
+    top: 0px;
+    padding: 43px 35px 42px 15px;
+    color: #006fc5;
+    cursor: pointer;
+}
+
+.password-visibility .pass-form button {
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.password-visibility .pass-form button:hover {
+    transform: scale(1.05);
+}
+
+.password-visibility .mail-form button {
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.password-visibility .mail-form button:hover {
+    transform: scale(1.05);
+}
+
+.announcement-form button{
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.announcement-form button:hover {
+    transform: scale(1.05);
+}
+
+.announcement-form a{
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+@media screen and (max-width: 1024px) {
+    .contact .body-form .right {
+        margin-left: 0px;
+    }
+}
+
+
+
+/* Mobile S CSS*/
+@media (max-width: 320px) {
+    .logo-img {
+        display: none;
+    }
+
+    li#nav-inscription.nav-item {
+        width: 90px;
+    }
+
+    .img-security-concept {
+        display: none;
+    }
+
+}
+
+/* Mobile M CSS*/
+@media (max-width: 375px) {
+    .logo-img {
+        display: none;
+    }
+
+    img.img-security-concept {
+        display: none;
+    }
+
+    li#nav-inscription.nav-item {
+        width: 90px;
+    }
+
+    #logo-name {
+        width: 75%;
+    }
+
+}
+
+/* Tablet CSS*/
+@media (max-width: 768px) {
+
+    img.img-security-concept {
+        display: none;
+    }
+
+    li#nav-inscription.nav-item {
+        width: 90px;
+    }
+
+
+}
+
+/* Laptop CSS*/
+@media (max-width: 992px) {
+
+    a.nav-link {
+        padding-left: 0;
+    }
+
+}

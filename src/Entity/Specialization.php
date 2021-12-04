@@ -50,14 +50,14 @@ class Specialization
     private $updated_by;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Announcement::class, mappedBy="specialization")
-     */
-    private $announcements;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Member::class, mappedBy="specialization")
      */
     private $members;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="specialization")
+     */
+    private $announcements;
 
     public function __construct()
     {
@@ -155,32 +155,6 @@ class Specialization
         return $this;
     }
 
-    /**
-     * @return Collection|Announcement[]
-     */
-    public function getAnnouncements(): Collection
-    {
-        return $this->announcements;
-    }
-
-    public function addAnnouncement(Announcement $announcement): self
-    {
-        if (!$this->announcements->contains($announcement)) {
-            $this->announcements[] = $announcement;
-            $announcement->addSpecialization($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAnnouncement(Announcement $announcement): self
-    {
-        if ($this->announcements->removeElement($announcement)) {
-            $announcement->removeSpecialization($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|Member[]
@@ -204,6 +178,36 @@ class Specialization
     {
         if ($this->members->removeElement($member)) {
             $member->removeSpecialization($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Announcement[]
+     */
+    public function getAnnouncements(): Collection
+    {
+        return $this->announcements;
+    }
+
+    public function addAnnouncement(Announcement $announcement): self
+    {
+        if (!$this->announcements->contains($announcement)) {
+            $this->announcements[] = $announcement;
+            $announcement->setSpecialization($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnouncement(Announcement $announcement): self
+    {
+        if ($this->announcements->removeElement($announcement)) {
+            // set the owning side to null (unless already changed)
+            if ($announcement->getSpecialization() === $this) {
+                $announcement->setSpecialization(null);
+            }
         }
 
         return $this;
