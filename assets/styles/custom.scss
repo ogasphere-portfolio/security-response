@@ -49,7 +49,7 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 0
+    right: 0;
 }
 
 #map_enterprise {
@@ -218,7 +218,8 @@ h4 {
 }
 
 .icon-info {   
-    display: flex;     
+    display: flex;    
+    padding-bottom: 1rem;
 }
 
 .info-block i{    
@@ -227,11 +228,19 @@ h4 {
 }
 
 .card-info {   
-   border-radius: 0.50rem;   
+   border-radius: 0.50rem;       
+}
+
+.header-card {
+    height: 9rem;    
+}
+
+.card-body {
+    height: 10rem;     
 }
 
 .info-block .register-form a {
-    margin-top: 10px;
+    margin-top: 2rem;
     background-color: #006fc5;
     color: #fff;
     font-size: 15px;
@@ -297,7 +306,7 @@ h4 {
 }
 
 .account-wall {
-    margin-top: 20px;
+    margin: 5rem 0.5rrem;
     padding: 40px 0px 20px 0px;
     background-color: #ffffff;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
@@ -575,13 +584,13 @@ h4 {
     cursor: pointer;   
 }
 
+
+
 @media screen and (max-width: 1024px) {
     .contact .body-form .right {
         margin-left: 0px;
     }
 }
-
-
 
 /* Mobile S CSS*/
 @media (max-width: 320px) {
