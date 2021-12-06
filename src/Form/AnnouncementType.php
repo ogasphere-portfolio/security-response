@@ -23,7 +23,7 @@ class AnnouncementType extends AbstractType
 {
     private $security;
 
-    public function __construct(Security $security)    
+    public function __construct(Security $security)
     {
         $this->security = $security;
     }
@@ -35,32 +35,36 @@ class AnnouncementType extends AbstractType
          */
 
         $enterprise = $this->security->getUser();
-       
-       // dd($enterprise);
-      
+
+        // dd($enterprise);
+
 
         $builder
-            ->add('title',null,[
-                'label' => false])
-            ->add('description',CKEditorType::class,[
-                'label' => false])                     
-            ->add('category', EntityType::class,[
-                'class' => Category::class,])  
-            ->add('members', EntityType::class,[
+            ->add('title', null, [
+                'label' => false
+            ])
+            ->add('description', CKEditorType::class, [
+                'label' => false
+            ])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+            ])
+            ->add('members', EntityType::class, [
                 'class' => Member::class,
                 'choice_label' => 'firstname',
                 'multiple' => true,
-                'disabled' =>true]) 
-            ->add('specialization',EntityType::class,[
+                'disabled' => true
+            ])
+            ->add('specialization', EntityType::class, [
                 'class' => Specialization::class,
                 'label' => false,
                 'multiple' => false,
                 'expanded' => false,
-                ]) 
+            ])
             // ->add('enterprise', EntityType::class,[
             //     'class'=>Enterprise::class,
             // ])
-                ;                          
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
