@@ -15,6 +15,7 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
@@ -31,7 +32,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/inscriptions/{role}", name="app_register")
      */
-    public function register(string $role, Request $request, UserPasswordHasherInterface $userPasswordHasherInterface): Response
+    public function register(string $role, Request $request, UserPasswordHasherInterface $userPasswordHasherInterface, SluggerInterface $slugger): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -46,37 +47,42 @@ class RegistrationController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
-          
+
             if ($role == "membre") {
-                
+
                 $user->setRoles(["ROLE_MEMBER"]);
+                $user->getuserMember()->setSlug(strtolower($slugger->slug($user->getuserMember()->getFirstname() . '-' . $user->getuserMember()->getLastname())));
             }
             if ($role == "entreprise") {
-                
+
                 $user->setRoles(["ROLE_ENTERPRISE"]);
+                $user->getuserEnterprise()->setSlug(strtolower($slugger->slug($user->getuserEnterprise()->getBusinessName())));
             }
             if ($role == "societe") {
-                
+
                 $user->setRoles(["ROLE_COMPANY"]);
+                $user->getuserCompany()->setSlug(strtolower($slugger->slug($user->getuserCompany()->getBusinessName())));
             }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-           // generate a signed url and email it to the user
-         $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            // generate a signed url and email it to the user
+            $this->emailVerifier->sendEmailConfirmation(
+                'app_verify_email',
+                $user,
                 (new TemplatedEmail())
                     ->from(new Address('secu.response@gmail.com', 'Security Response Bot'))
                     ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
-            
+
             return $this->redirectToRoute('homepage');
         }
 
-        
+
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
             'role' => $role,
