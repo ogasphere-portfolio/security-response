@@ -14,7 +14,7 @@
 						d'information en vous proposant des experts proches de votre entreprise.
 						<br>
 						<br>
-						<strong>Trouver dès maintenant des professionnels compétants pour vous aider.</strong>
+						<strong>Trouvez dès maintenant des professionnels compétents pour vous aider.</strong>
 					</p>
 				</div>
 
@@ -24,7 +24,9 @@
 			<div class="w-50 mx-auto">
 				<form class="d-flex" method="GET" action="{{ path('enterprise_browse') }}">
 					<input name="searchEnterprise" class="form-control me-2" type="search" placeholder="Rechercher le nom d'une ville" aria-label="Search">
-					<button class="d-flex btn btn-outline-primary" type="submit">Rechercher</button>
+					<div class="search-form">
+						<button class="d-flex" type="submit">Rechercher</button>
+					</div>
 				</form>
 			</div>
 		</section>
@@ -35,14 +37,16 @@
 				<div class="row row-cols-lg-3 row-cols-sm-1 row-cols-md-1 g-3 mb-5">
 
 					<div class="card-info col card shadow-sm p-4">
-						<div class="icon-info">
-							<i class="fas fa-user-shield fa-2x"></i>
+						<div class="header-card">
+							<div class="icon-info">
+								<i class="fas fa-user-shield fa-2x"></i>
+							</div>
+							<h4 class="p-0 text-center">
+								<strong>Vous êtes Expert en sécurité informatique ?</strong>
+							</h4>
 						</div>
-						<h4 class="text-center">
-							<strong>Vous êtes Expert en sécurité informatique ?</strong>
-						</h4>
-						<div class="card-body">
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+						<div class="card-body text-center">
+							<p class="card-text">Vous souhaitez recrutez de <br><strong>nouveaux talents</strong> ?<br>Security Response vous permet de créer des annonces de recrutement et également de répondre aux annonces de sociétés en demande de sécurité.</p>
 						</div>
 							<div class="register-form text-center">
 										<a class="btn btn-success" href="{{ url('app_register', {'role': "entreprise"}) }}" type="submit">Je m'inscris</a>
@@ -50,14 +54,16 @@
 					</div>
 
 					<div class="card-info col card shadow-sm p-4">
-						<div class="icon-info">
-							<i class="fas fa-building fa-2x"></i>
+						<div class="header-card">
+							<div class="icon-info">
+								<i class="fas fa-building fa-2x"></i>
+							</div>
+							<h4 class="p-0 text-center">
+								<strong>Vous êtes une Société qui recherche un besoin en sécurité informatique ?</strong>
+							</h4>
 						</div>
-						<h4 class="text-center">
-							<strong>Vous êtes une Société qui recherche un besoin en sécurité informatique ?</strong>
-						</h4>
-						<div class="card-body">
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+						<div class="card-body text-center">
+							<p class="card-text">Security Response vous permet de <br><strong>créer des annonces</strong> pour trouver des experts en sécurité proches de chez vous afin de répondre a vos besoins.</p>
 						</div>
 								<div class="register-form text-center">
 									<a class="btn btn-success" href="{{ url('app_register', {'role': "societe"}) }}" type="submit">Je m'inscris</a>
@@ -66,14 +72,16 @@
 
 
 					<div class="card-info col card shadow-sm p-4">
-						<div class="icon-info">
-							<i class="fas fa-user fa-2x"></i>
+						<div class="header-card">
+							<div class="icon-info">
+								<i class="fas fa-user fa-2x"></i>
+							</div>
+							<h4 class="p-0 text-center">
+								<strong>Vous êtes un Candidat à la recherche d'entreprise en sécurité informatique ?</strong>
+							</h4>
 						</div>
-						<h4 class="text-center">
-							<strong>Vous êtes un candidat en recherche d'entreprise spécialisé en sécurité informatique ?</strong>
-						</h4>
-						<div class="card-body">
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+						<div class="card-body text-center">
+							<p class="card-text">Vous disposez de connaissances et de qualités à proposer dans le domaine de la sécurité ? <strong>Créez votre profil</strong>.<br>Security Response vous permet de postuler à des annonces de recrutement.</p>
 						</div>
 								<div class="register-form text-center">									
 									<a class="btn btn-success" href="{{ url('app_register', {'role': "membre"}) }}" type="submit">Je m'inscris</a>
@@ -87,7 +95,7 @@
 			<div class="d-flex flex-sm-column flex-md-column flex-lg-row" id="home-announcement">
 				<div class="col-lg-6 col-md-8">
 					<h3 class="fw-bold text-start">Vous avez subi une attaque informatique ?</h3>
-					<p>Créer une annonce dès maintenant pour vous protéger. Nos experts inscrits sur la plateforme vous aideront à corriger ce problème.</p>
+					<p>Créez une annonce dès maintenant pour vous protéger. Nos experts inscrits sur la plateforme vous aideront à corriger ce problème.</p>
 				</div>				
 			</div>
 		</section>
@@ -99,19 +107,19 @@
 				</div>
 				<div class="d-flex flex-column justify-content-around w-50 mx-auto">
 					<h2>Le constat de la cybersécurité en France</h2>
-					<p>Dans les 12 derniers moins,
+					<p>Dans les 12 derniers mois,
 						<strong>80% des entreprises françaises</strong>
 						ont constaté
-						<strong>au moins une cyber-attaque</strong>
+						<strong>au moins une cyber-attaque.</strong>
 					</p>
 					<p>
 						<strong>59% de ces attaques ont un impact direct</strong>
-						sur les entreprises : ralentissement de leur production, indisponibilité de leur site etc</p>
+						sur les entreprises : ralentissement de leur production, indisponibilité de leur site etc...</p>
 					<p>Les
 						<strong>données sensibles</strong>
 						des entreprises seraient la
 						<strong>cible principale</strong>
-						de ces attaques</p>
+						de ces attaques.</p>
 				</div>
 			</div>
 		</section>
@@ -120,10 +128,10 @@
 			<div class="d-flex flex-sm-column flex-md-column flex-lg-row" id="home-register">
 				<div class="col-lg-6 col-md-8 ">
 					<h3 class="fw-bold text-start">Vous êtes un expert en cybersécurité ?</h3>
-					<p>Inscrivez-vous dès maintenant ! Vous pourrez ainsi répondre aux annonces des sociétés en demande de sécurité et vous pourrez recruter de nouveaux talents via notre liste de membre.</p>
+					<p>Inscrivez-vous dès maintenant ! Vous pourrez ainsi répondre aux annonces des sociétés en demande de sécurité et vous pourrez recruter de nouveaux talents via notre liste de membres.</p>
 				</div>
 					
-				<form action="{{ path('app_register', {'role': "enterprise"}) }}">
+				<form action="{{ path('app_register', {'role': "entreprise"}) }}">
 					<button class="btn btn-outline-primary" id="nav-inscription" type="submit">Inscription</button>
 				</form>
 
@@ -137,39 +145,45 @@
 				<div class="row row-cols-lg-3 row-cols-sm-1 row-cols-md-1 g-3">
 
 					<div class="card-info col card shadow-sm p-4">
-						<div class="icon-info">
-							<i class="fas fa-map-marker-alt fa-2x"></i>
+						<div class="header-card">
+							<div class="icon-info">
+								<i class="fas fa-map-marker-alt fa-2x"></i>
+							</div>
+							<h4 class="p-0 text-center">
+								<strong>Mobilisez des experts proches de chez vous</strong>
+							</h4>
 						</div>
-						<h4 class="text-center">
-							<strong>Mobilisez des experts proches de chez vous</strong>
-						</h4>
-						<div class="card-body">
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+						<div class="card-body text-center">
+							<p class="card-text">Utilisez notre moteur de recherche afin de trouver plus facilement des <strong>experts</strong> proches de chez vous.</p>
 						</div>
 					</div>
 
 					<div class="card-info col card shadow-sm p-4">
-						<div class="icon-info">
-							<i class="fas fa-shield fa-2x"></i>
+						<div class="header-card">
+							<div class="icon-info">
+								<i class="fas fa-shield fa-2x"></i>
+							</div>						
+							<h4 class="p-0 text-center">
+								<strong>Choisissez les professionnels pour votre cybersécurité</strong>
+							</h4>
 						</div>
-						<h4 class="text-center">
-							<strong>Choisissez les professionnels en charge de votre cybersécurité</strong>
-						</h4>
-						<div class="card-body">
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+						<div class="card-body text-center">
+							<p class="card-text">Cherchez vos experts par rapport à vos besoins et à leur <strong>certification</strong>.</p>
 						</div>
 					</div>
 
 
 					<div class="card-info col card shadow-sm p-4">
-						<div class="icon-info">
-							<i class="fas fa-laptop-code fa-2x"></i>
+						<div class="header-card">
+							<div class="icon-info">
+								<i class="fas fa-laptop-code fa-2x"></i>
+							</div>
+							<h4 class="p-0 text-center">
+								<strong>Recrutez de nouveaux talents en sécurité informatique</strong>
+							</h4>
 						</div>
-						<h4 class="text-center">
-							<strong>Recrutez des talents</strong>
-						</h4>
-						<div class="card-body">
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ea optio. Dolores vero velit eos voluptate illo omnis voluptates, voluptatem beatae optio eius! Vitae debitis maxime est nostrum. Numquam, veritatis.</p>
+						<div class="card-body text-center">
+							<p class="card-text">Accédez à la liste des membres et <br>leurs <strong>spécifications</strong> associées.</p>
 						</div>
 					</div>
 

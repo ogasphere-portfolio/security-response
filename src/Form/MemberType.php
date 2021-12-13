@@ -18,32 +18,32 @@ class MemberType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
 
-        if(isset($options['type']) && $options['type'] === 'specialization') {
+        if (isset($options['type']) && $options['type'] === 'specialization') {
             $builder->add('specialization',  EntityType::class, [
                 'class' => Specialization::class,
                 'multiple' => true,
                 'expanded' => true,
                 'label' => ' '
             ])
-            ->add('save', SubmitType::class, [
-                'attr' => ['class' => 'btn btn-primary my-5'],
-                'label' => 'Modifier mes spécialisations'
-            ]);
-        }else {
+                ->add('save', SubmitType::class, [
+                    'attr' => ['class' => 'btn btn-primary my-5'],
+                    'label' => 'Modifier mes spécialisations'
+                ]);
+        } else {
             $builder
-            ->add('gender', ChoiceType::class, [
-                'choices'  => [
-                    'Monsieur' => 1,
-                    'Madame' => 2,
-                    //'No' => false,
-                ],
-                'required' => true,
-                'expanded' => true,
-                'multiple' => false,
-                'label' => false,
-                'label_attr' =>[
-                    'class' => 'radio-inline'
-                ]
+                ->add('gender', ChoiceType::class, [
+                    'choices'  => [
+                        'Monsieur' => 1,
+                        'Madame' => 2,
+                        //'No' => false,
+                    ],
+                    'required' => true,
+                    'expanded' => true,
+                    'multiple' => false,
+                    'label' => false,
+                    'label_attr' => [
+                        'class' => 'radio-inline'
+                    ]
                 ])
                 ->add('firstname', null, [
                     "label" => "Prénom *",
@@ -52,9 +52,11 @@ class MemberType extends AbstractType
                     "label" => "Nom de famille *",
                 ])
                 // ->add('slug')
-                ->add('description')
+                ->add('description', null, [
+                    'label' => 'description *'
+                ])
                 // ->add('picture')
-                ->add('city',null, [
+                ->add('city', null, [
                     'label' => 'Ville *'
                 ])
                 ->add('job_status', ChoiceType::class, [
@@ -66,7 +68,7 @@ class MemberType extends AbstractType
                     ],
                     'expanded' => false,
                     'multiple' => false,
-                    ]);
+                ]);
         }
 
         // Additionals fields, pick one if needed
@@ -79,7 +81,7 @@ class MemberType extends AbstractType
         // ->add('social_network')
         //->add('specialization')
         //->add('document')
-        
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

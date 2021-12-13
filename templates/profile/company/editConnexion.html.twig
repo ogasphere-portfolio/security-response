@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace societe
+{% endblock %}
+
+{% block body %}
+
+	<main>
+		<div class="container">
+			<div class="card card-primary card-outline">
+				<div class="card-header">
+					<h3 class="card-title text-center">
+						<i class="fas fa-edit"></i>
+						Bienvenue dans votre espace Société
+					</h3>
+				</div>
+				<div class="card-body">
+
+					<div class="row">
+						<div class="col-5 col-sm-3 text-center">
+							<h4 class="px-0 py-2 text-left fw-bold pe-5">Mon compte</h4>
+							<h6 class="px-0 py-2 text-center pe-5">{{ app.user.userCompany }}</h6>
+							<div class="nav flex-column nav-pills pe-5 mx-auto" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
+								<a class="nav-link active" id="vert-tabs-connexion-tab" data-toggle="pill" href="#vert-tabs-connexion" role="tab" aria-controls="vert-tabs-connexion" aria-selected="false">Infos de connexion</a>
+								<a class="nav-link" id="vert-tabs-coordinate-tab" data-toggle="pill" href="#vert-tabs-coordinate" role="tab" aria-controls="vert-tabs-coordinate" aria-selected="false">Mes coordonnées</a>
+								<a class="nav-link" id="vert-tabs-delete-tab" data-toggle="pill" href="#vert-tabs-delete" role="tab" aria-controls="vert-tabs-delete" aria-selected="true">Supprimer mon compte</a>
+								<br><h4 class="px-0 py-2 text-left fw-bold">Mes annonces</h4>
+								<a class="nav-link" href="{{ path('announcement_add') }}">Créer une annonce</a>
+								<a class="nav-link" id="vert-tabs-announcement-tab" data-toggle="pill" href="#vert-tabs-announcement" role="tab" aria-controls="vert-tabs-announcement" aria-selected="true">Gérer mes annonces</a>
+							</div>
+						</div>
+						<div class="col-7 col-sm-9">
+							<div class="tab-content" id="vert-tabs-tabContent">
+								<div class="tab-pane text-left fade active show" id="vert-tabs-connexion" role="tabpanel" aria-labelledby="vert-tabs-connexion-tab">
+									<h3>
+										<strong>Mes informations de connexion</strong>
+									</h3>
+									{% for message in app.flashes('success') %}
+										<div class="alert alert-success" role="alert">
+											{{ message }}
+										</div>
+									{% endfor %}
+									{% for message in app.flashes('error') %}
+										<div class="alert alert-danger" role="alert">
+											{{ message }}
+										</div>
+									{% endfor %}
+									{{ form_start(user_form) }}
+									{{ form_row(user_form.email) }}
+
+									<div class="mb-3">
+										<label for="pass">Nouveau mot de passe</label>
+										<input type="password" id="pass" name="pass" class="form-control">
+									</div>
+									<div class="mb-3">
+										<label for="pass">Confirmer le mot de passe</label>
+										<input type="password" id="pass2" name="pass2" class="form-control">
+									</div>
+
+									<input class="btn btn-primary" type="submit" name="EditConnexion">
+									<a class="btn btn-primary" aria-current="page" href="{{ url('profile_company') }}">Retour</a>
+									{{ form_end(user_form) }}
+
+								</div>
+								<div class="tab-pane fade" id="vert-tabs-coordinate" role="tabpanel" aria-labelledby="vert-tabs-coordinate-tab">
+									<h3 class="mb-5">
+										<strong>Mes coordonnées</strong>
+									</h3>
+									<p>
+										<strong>Nom de l'entreprise :
+										</strong>
+										{{ app.user.userCompany.businessname }}</p>
+									<p>
+										<strong>Adresse :
+										</strong>
+										{{ app.user.userCompany.address }}</p>
+									<p>
+										<strong>Ville :
+										</strong>
+										{{ app.user.userCompany.zipcode }}
+										,{{ app.user.userCompany.city }}</p>
+								</div>
+								<div class="tab-pane fade" id="vert-tabs-delete" role="tabpanel" aria-labelledby="vert-tabs-delete-tab">
+									<h3 class="mb-5">
+										<strong>Supprimer mon compte</strong>
+									</h3>
+									<p>Cette action supprimera définitivement votre compte.</p>
+									<a class="btn btn-primary" href="" title="DeleteAccount" alt="Delete">Suppression du compte</a>
+								</div>
+								<div class="tab-pane fade" id="vert-tabs-create_announcement" role="tabpanel" aria-labelledby="vert-tabs-create_announcement-tab">
+									<h3>Création d'une annonce</h3>
+								</div>
+								<div class="tab-pane fade" id="vert-tabs-announcement" role="tabpanel" aria-labelledby="vert-tabs-announcement-tab">
+									<h3 class="mb-5">
+										<strong>Mes annonces</strong>
+									</h3>
+									{% if  app.user.userCompany.announcement %}
+										{% for annonce in app.user.userCompany.announcement %}
+											<div class="d-flex flex-row my-3 py-3 border-top border-2 border-primary">
+												<ul class="d-flex flex-row navbar-nav me-4 mb-md-0">
+													<div class="px-4">
+														<a class="fs-4 lh-lg" href="{{ path('announcement_read', {"id": annonce.id}) }}">{{annonce.title}}</a>
+														<p class="" href="{{ path('announcement_read', {"id": annonce.id}) }}">Date de création :
+															{{ annonce.createdAt|date("d/m/Y") }}</p>
+													</div>
+
+													<div class="d-flex flex-row me-4 m-auto">
+														<a class="btn btn-primary mx-3" aria-current="page" href="{{ path('announcement_edit', {"id" : annonce.id}) }}">Modifier</a>
+														<a class="btn btn-primary mx3" aria-current="page" href="{{ path('announcement_delete', {"id" : annonce.id}) }}">Supprimer</a>
+													</div>
+												</ul>
+											</div>
+										{% endfor %}
+									{% else %}
+										<p>Aucune annonce n'a été créée pour le moment.</p>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- /.card -->
+
+			</div>
+		</div>
+	</main>
+{% endblock %}
