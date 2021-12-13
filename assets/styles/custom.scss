@@ -479,6 +479,23 @@ h4 {
     transform: scale(1.05);
 }
 
+.registerbutton .registerbutton-form button {
+    margin-top: 10px;
+    background-color: #006fc5;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.registerbutton .registerbutton-form button:hover {
+    transform: scale(1.05);
+}
+
 .password-visibility {
     background-color: #FFF;
     border-radius: 10px;
@@ -583,8 +600,6 @@ h4 {
     outline: 2px solid;
     cursor: pointer;   
 }
-
-
 
 @media screen and (max-width: 1024px) {
     .contact .body-form .right {
