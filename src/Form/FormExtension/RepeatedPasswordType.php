@@ -23,21 +23,22 @@ class RepeatedPasswordType extends AbstractType
       // instead of being set onto the object directly,
       // this is read and encoded in the controller
       'mapped' => false,
-      'first_options'  => ['label' => 'Mot de passe *'],
+      'first_options'  => ['label' => 'Mot de passe *',
+      'help' => 'Au moins huit caractères, une lettre, un chiffre et un caractère spécial.'],
       'second_options' => ['label' => 'Confirmer le mot de passe *'],
 
       'attr' => ['autocomplete' => 'new-password'],
-      'constraints' => [
-          new NotBlank([
-              'message' => 'Minimum huit caractères, une lettre, un chiffre et un caractère spécial.',
-          ]),
-          new Length([
-              'min' => 6,
-              'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
-              // max length allowed by Symfony for security reasons
-              'max' => 4096,
-          ]),
-      ],
+      // 'constraints' => [
+      //     new NotBlank([
+      //         'message' => 'Minimum huit caractères, une lettre, un chiffre et un caractère spécial.',
+      //     ]),
+      //     new Length([
+      //         'min' => 6,
+      //         'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
+      //         // max length allowed by Symfony for security reasons
+      //         'max' => 4096,
+      //     ]),
+      // ],
   ]);
   }
 }
