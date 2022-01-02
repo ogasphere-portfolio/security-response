@@ -7,6 +7,8 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
 
 class RepeatedPasswordType extends AbstractType
 {
@@ -23,8 +25,14 @@ class RepeatedPasswordType extends AbstractType
       // instead of being set onto the object directly,
       // this is read and encoded in the controller
       'mapped' => false,
-      'first_options'  => ['label' => 'Mot de passe *',
-      'help' => 'Au moins huit caractères, une lettre, un chiffre et un caractère spécial.'],
+      'first_options'  => [
+        'constraints' => [
+          new NotBlank(),
+          new Regex('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&-\/])[A-Za-z\d@$!%*#?&-\/]{8,}$/'),
+      ],
+      'label' => 'Mot de passe *',
+      'help' => 'Au moins huit caractères, une lettre, un chiffre et un caractère spécial.'
+    ],
       'second_options' => ['label' => 'Confirmer le mot de passe *'],
 
       'attr' => ['autocomplete' => 'new-password'],
