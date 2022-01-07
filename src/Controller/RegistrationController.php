@@ -17,6 +17,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 class RegistrationController extends AbstractController
 {
@@ -78,6 +80,8 @@ class RegistrationController extends AbstractController
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
+            
+            $this->addFlash('success' , 'le compte a été créé');
 
             return $this->redirectToRoute('homepage');
         }
