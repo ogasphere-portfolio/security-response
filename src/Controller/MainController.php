@@ -71,7 +71,7 @@ class MainController extends AbstractController
             ];
             $mail->send(
                 $contact->get('email')->getData(),
-                'cskyzr@hotmail.com',
+                'securityresponse@gmail.com',
                 'Security Response - Contact',
                 'contact',
                 $context
@@ -79,7 +79,7 @@ class MainController extends AbstractController
             
             // accusé réception
             $mail->send(
-                'cskyzr@hotmail.com',
+                'securityresponse@gmail.com',
                 $contact->get('email')->getData(),
                 "Security Response - Nous avons bien reçu votre message",
                 'message_confirmation',
