@@ -19,7 +19,9 @@ class CompanyType extends AbstractType
             
             ->add('address')
 
-            ->add('address_more')
+            ->add('address_more',null, [
+                'label'=> 'Adresse complémentaire'
+            ])
 
             ->add('zip_code',null, [
                 'label'=> 'Code postal *'
