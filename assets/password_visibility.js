@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // et ensuite je choisi l'enfant qui correspond à l'input
   // j'utilise ensuite la méthode toggle que me permet d'ajouter ou d'enlever la classe en fonction
   // de si elle existe ou pas
-  const changeEye = (element) => {    
+  const changeEye = (element) => { 
+    console.log(password)   
     let password = element.previousElementSibling.children[1];
     element.classList.toggle('fa-eye-slash')
     element.classList.toggle('fa-eye')
