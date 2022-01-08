@@ -65,7 +65,7 @@ class ForgotPasswordController extends AbstractController
 
             $sendEmail->send(
                 $contact->get('email')->getData(),
-                'securityresponse@gmail.com',
+                'contact@security-response.fr',
                 'Security Response - Contact',
                 'forgot_password',
                 $context
