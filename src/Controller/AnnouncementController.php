@@ -39,15 +39,16 @@ class AnnouncementController extends AbstractController
         $user =  $security->getUser();
 
         if (isset($user)) {
-            if (empty($user->getUserEnterprise())) {
+
+            if (!empty($user->getUserEnterprise())) {
                 return $this->render('announcement/browse.html.twig', [
-                    'announcement_browse' => $announcementRepository->findByRecrutement(),
+                    'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
 
                 ]);
             }
-            if (empty($user->getUserMember())) {
+            if (!empty($user->getUserMember())) {
                 return $this->render('announcement/browse.html.twig', [
-                    'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
+                    'announcement_browse' => $announcementRepository->findByRecrutement(),
 
                 ]);
             }
