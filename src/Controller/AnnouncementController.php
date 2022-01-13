@@ -76,7 +76,7 @@ class AnnouncementController extends AbstractController
 
             // $answer = $form->getData();
             // On associe Réponse
-            $answer->setannouncement($announcement);
+            $answer->setAnnouncement($announcement);
 
             // On associe le user connecté à la réponse
             $answer->setUser($this->getUser());
@@ -204,6 +204,10 @@ class AnnouncementController extends AbstractController
     public function delete(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
 
+        foreach ($announcement->getAnswers() as $currentAnswer) {
+            // supprimer le currentAnswer
+            $entityManager->remove($currentAnswer);
+        }
         $entityManager->remove($announcement);
         $entityManager->flush();
 

@@ -126,6 +126,10 @@ class AnnouncementController extends AbstractController
     {
         $this->addFlash('success', "Announcement {$announcement->getTitle()} deleted");
 
+        foreach($announcement->getAnswers() as $currentAnswer) {
+            // supprimer le currentAnswer
+            $entityManager->remove($currentAnswer);
+            }
         $entityManager->remove($announcement);
         $entityManager->flush();
 
