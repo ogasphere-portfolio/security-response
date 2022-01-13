@@ -219,12 +219,12 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/{id}/postulate", name="postulate", methods={"GET"})
      */
-    public function postulate(Announcement $announcement, EntityManagerInterface $entityManager, Security $security): Response
+    public function postulate(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
         /**
          * @var User
          */
-        $user = $security->getUser();
+        $user = $this->getUser();
         $announcement->addMember($user->getUserMember());
 
         $entityManager->persist($announcement);
