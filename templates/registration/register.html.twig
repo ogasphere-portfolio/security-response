@@ -47,6 +47,7 @@
 							{{ form_row(registrationForm.userCompany) }} 
 						{% endif %}
 						{{ form_row(registrationForm._token) }}
+							<div class="h-captcha" align="center" data-sitekey="56635d34-b421-4c1b-9e4e-527468d00c0c"></div>
 							<div class="registerbutton-form" align="center">
 								<button class="btn btn-lg btn-primary" type="submit">
 									S'inscrire
@@ -59,4 +60,5 @@
 {% endblock %}
 {% block javascripts %}
 {# 	{{ encore_entry_script_tags('registration') }} #}
+	<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 {% endblock %}
