@@ -2,6 +2,10 @@
 
 {% block title %}Contact{% endblock %}
 
+{% block javascripts %}
+	<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+{% endblock %}
+
 {% block body %}
 
 	{% for message in app.flashes('success') %}
@@ -32,6 +36,8 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="h-captcha" align="center" data-sitekey="56635d34-b421-4c1b-9e4e-527468d00c0c"></div>
 
 						<div class="footer-form" align="center">
 							<button type="submit">Envoyer votre message</button>
