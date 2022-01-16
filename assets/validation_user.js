@@ -4,28 +4,28 @@ let formUsername = document.querySelector('#registration_form_username');
 //ecouter la modification du nom de l utilisateur
 formUsername.addEventListener('input', function(){
     validUsername(this);
-})
+});
 
 //Je selectionne mon input email
 let formEmail = document.querySelector('#registration_form_email');
 //ecouter la modification de l email
 formEmail.addEventListener('input', function(){
     validEmail(this);
-})
+});
 
 //Je selectionne mon input password_first
 let formPassword_first = document.querySelector('#registration_form_password_first');
 //ecouter la modification de mon password
 formPassword_first.addEventListener('input', function(){
    validpassword_first(this);
-})
+});
 
 //Je selectionne mon input password_second
 let formPassword_second = document.querySelector('#registration_form_password_second');
 //ecouter la modification de mon password 2
 formPassword_second.addEventListener('input', function(){
    validpassword_second(this);
-})
+});
 
 // let submitForm = document.forms['registration_form'];
 // submitForm.addEventListener('submit', function(e) {
@@ -161,7 +161,7 @@ const validEmail = function(inputEmail){
     return false;
  }
 
-}
+};
 
  //************* Validation PASSWORD *************
 
@@ -242,7 +242,7 @@ const validpassword_first = function(inputPassword_first){
     //on ajoute un border color
     formPassword_first.style.borderColor = 'red';
  
- }}
+ }};
 
 
 
@@ -295,4 +295,4 @@ const validpassword_first = function(inputPassword_first){
     return false;
   }
 
- }
+ };

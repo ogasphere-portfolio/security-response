@@ -37,7 +37,9 @@ class EnterpriseType extends AbstractType
                 ])
                 ->add('address')
 
-                ->add('address_more')
+                ->add('address_more', null,[
+                    'label'=> 'Adresse complémentaire'
+                ])
 
                 ->add('zip_code',null, [
                     'label'=> 'Code postal *'
@@ -48,7 +50,7 @@ class EnterpriseType extends AbstractType
                 ->add('phone_number',null, [
                     'label'=> 'Numéro de téléphone'
                 ])
-                ->add('logo')
+                // ->add('logo')
                 ->add('contact_mail',null, [
                     'label'=> 'Mail de contact'
                 ]);

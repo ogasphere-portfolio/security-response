@@ -32,7 +32,7 @@ class CompanyType extends AbstractType
             ->add('phone_number',null, [
                 'label'=> 'Numéro de téléphone'
             ])
-            ->add('logo')
+            // ->add('logo')
        
             ->add('contact_mail',null, [
                 'label'=> 'Mail de contact'
