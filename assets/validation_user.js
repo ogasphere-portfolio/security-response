@@ -2,36 +2,44 @@
 //Je selectionne mon input username
 let formUsername = document.querySelector('#registration_form_username');
 //ecouter la modification du nom de l utilisateur
-formUsername.addEventListener('change', function(){
+formUsername.addEventListener('input', function(){
     validUsername(this);
 })
 
 //Je selectionne mon input email
 let formEmail = document.querySelector('#registration_form_email');
 //ecouter la modification de l email
-formEmail.addEventListener('change', function(){
+formEmail.addEventListener('input', function(){
     validEmail(this);
 })
 
 //Je selectionne mon input password_first
 let formPassword_first = document.querySelector('#registration_form_password_first');
 //ecouter la modification de mon password
-formPassword_first.addEventListener('change', function(){
+formPassword_first.addEventListener('input', function(){
    validpassword_first(this);
 })
 
-//je selectionne mon bouton submit
-let buttonSubmit = document.querySelector('registration_form');
-//ecouter la soumission du formulaire
-buttonSubmit.addEventListener('submit', function(e){
-   e.preventDefault();
-   if(validUsername(formUsername)){
-      console.log('username valide');
-   }else{
-      console.log('username invalide');
-   }
-
+//Je selectionne mon input password_second
+let formPassword_second = document.querySelector('#registration_form_password_second');
+//ecouter la modification de mon password 2
+formPassword_second.addEventListener('input', function(){
+   validpassword_second(this);
 })
+
+// let submitForm = document.forms['registration_form'];
+// submitForm.addEventListener('submit', function(e) {
+//    e.preventDefault();
+//    if (validUsername(formUsername)) {
+//       console.log('username valide pour submit');
+//       submitForm.submit();
+//    }else{
+//       console.log('username non valide pour submit');
+//    }
+
+// });
+
+
 
 //************* Validation USERNAME *************
 
@@ -39,10 +47,9 @@ buttonSubmit.addEventListener('submit', function(e){
 
 
 const validUsername = function(inputUsername){
-    //je met en place ma regexp
- let usernameRegexp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+    
    //je teste mon input Username avec ma regexp
- let testUsername = usernameRegexp.test(inputUsername.value);
+ let testUsername = inputUsername.value.length > 3;
    
  
  
@@ -84,7 +91,7 @@ const validUsername = function(inputUsername){
    inputUsername.insertAdjacentElement('afterend', span);
    
    //on ajoute le text dans le span
-    span.innerHTML = 'Nom d\'utilisateur invalide';
+    span.innerHTML = 'Nom d\'utilisateur doit contenir 4 caractere minimum';
     //on remove la classe
     span.classList.remove('text-success');
     //on ajoute le classe
@@ -191,7 +198,7 @@ const validpassword_first = function(inputPassword_first){
       valid = true;
    }
 
-   console.log(msg);
+   
 
    if (valid) {
    //si le span est deja créé on le supprime
@@ -235,5 +242,57 @@ const validpassword_first = function(inputPassword_first){
     //on ajoute un border color
     formPassword_first.style.borderColor = 'red';
  
+ }}
+
+
+
+ //************* Validation PASSWORD 2 *************
+
+ const validpassword_second = function(inputPassword_second){
+   //si les deux password sont identique
+   if (formPassword_first.value == inputPassword_second.value) {
+
+   //si le span est deja créé on le supprime
+   if (inputPassword_second.nextElementSibling) {
+      inputPassword_second.nextElementSibling.remove();
+     } 
+
+    let span = document.createElement('span');
+    
+   //j ajoute le span apres mon input
+   inputPassword_second.insertAdjacentElement('afterend', span);
+   
+   //on ajoute le text dans le span
+    span.innerHTML = 'Mot de passe identique';
+    //on remove la classe
+    span.classList.remove('text-danger');
+    //on ajoute le classe
+    span.classList.add('text-success');
+    //on ajoute un border color
+    inputPassword_second.style.borderColor = 'green';
+     return true;
  }
-}
+  else{
+
+    //si le span est deja créé on le supprime
+   if (inputPassword_second.nextElementSibling) {
+    inputPassword_second.nextElementSibling.remove();
+   } 
+
+    let span = document.createElement('span');
+    
+   //j ajoute le span apres mon input
+   inputPassword_second.insertAdjacentElement('afterend', span);
+   
+   //on ajoute le text dans le span
+    span.innerHTML = 'Mot de passe incorrect';
+    //on remove la classe
+    span.classList.remove('text-success');
+    //on ajoute le classe
+    span.classList.add('text-danger');
+    //on ajoute un border color
+    inputPassword_second.style.borderColor = 'red';
+    return false;
+  }
+
+ }
