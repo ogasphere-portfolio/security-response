@@ -27,6 +27,8 @@ Encore
     .addEntry('validation_user', './assets/validation_user.js')
     .addEntry('validation_enterprise', './assets/validation_enterprise.js')
     .addEntry('validation_company', './assets/validation_company.js')
+    .addEntry('validation_member', './assets/validation_member.js')
+
     
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)

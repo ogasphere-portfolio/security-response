@@ -1,44 +1,50 @@
 //Je selectionne mon input business name
 let formBusinessNameCompany = document.querySelector('#registration_form_userCompany_business_name');
 //ecouter la modification du nom de l utilisateur
+if (formBusinessNameCompany) {
 formBusinessNameCompany.addEventListener('input', function(){
     validformBusinessNameCompany(this);
-});
+});}
 
 //Je selectionne mon input adress
 let formAdressCompany = document.querySelector('#registration_form_userCompany_address');
 //ecouter la modification du numero de siret
-formAdressCompany.addEventListener('input', function(){
-    validformAdressCompany(this);
-});
+if (formAdressCompany) {
+   formAdressCompany.addEventListener('input', function(){
+       validformAdressCompany(this);
+   });}
 
 //Je selectionne mon input zip code
 let formZipCodeCompany = document.querySelector('#registration_form_userCompany_zip_code');
 //ecouter la modification du numero de siret
-formZipCodeCompany.addEventListener('input', function(){
-    validformZipCodeCompany(this);
-});
+if (formZipCodeCompany) {
+   formZipCodeCompany.addEventListener('input', function(){
+       validformZipCodeCompany(this);
+   });}
 
 //Je selectionne mon input city
 let formCityCompany = document.querySelector('#registration_form_userCompany_city');
 //ecouter la modification du numero de siret
-formCityCompany.addEventListener('input', function(){
-    validformCityCompany(this);
-});
+if (formCityCompany) {
+   formCityCompany.addEventListener('input', function(){
+       validformCityCompany(this);
+   });}
 
 //Je selectionne mon input phone
 let formPhoneCompany = document.querySelector('#registration_form_userCompany_phone_number');
 //ecouter la modification du numero de siret
-formPhoneCompany.addEventListener('input', function(){
-    validformPhoneCompany(this);
-});
+if (formPhoneCompany) {
+   formPhoneCompany.addEventListener('input', function(){
+       validformPhoneCompany(this);
+   });}
 
 //Je selectionne mon input contact mail
 let formContactMailCompany = document.querySelector('#registration_form_userCompany_contact_mail');
 //ecouter la modification du numero de siret
-formContactMailCompany.addEventListener('input', function(){
-    validformContactMailCompany(this);
-});
+if (formContactMailCompany) {
+   formContactMailCompany.addEventListener('input', function(){
+       validformContactMailCompany(this);
+   });}
 
 
 

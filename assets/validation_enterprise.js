@@ -1,55 +1,62 @@
 //Je selectionne mon input business name
 let formBusinessName = document.querySelector('#registration_form_userEnterprise_business_name');
 //ecouter la modification du nom de l utilisateur
+if (formBusinessName) {
 formBusinessName.addEventListener('input', function(){
     validformBusinessName(this);
-});
+});}
 
 
 //Je selectionne mon input siret number
 let formSiretNumber = document.querySelector('#registration_form_userEnterprise_siret_number');
 //ecouter la modification du numero de siret
+if (formSiretNumber) {
 formSiretNumber.addEventListener('input', function(){
     validformSiretNumber(this);
-});
+});}
 
 
 //Je selectionne mon input adress
 let formAdress = document.querySelector('#registration_form_userEnterprise_address');
 //ecouter la modification du numero de siret
+if (formAdress) {
 formAdress.addEventListener('input', function(){
     validformAdress(this);
-});
+});}
 
 
 //Je selectionne mon input zip code
 let formZipCode = document.querySelector('#registration_form_userEnterprise_zip_code');
 //ecouter la modification du numero de siret
+if (formZipCode) {
 formZipCode.addEventListener('input', function(){
     validformZipCode(this);
-});
+});}
 
 
 //Je selectionne mon input city
 let formCity = document.querySelector('#registration_form_userEnterprise_city');
 //ecouter la modification du numero de siret
+if (formCity) {
 formCity.addEventListener('input', function(){
     validformCity(this);
-});
+});}
 
 //Je selectionne mon input phone
 let formPhone = document.querySelector('#registration_form_userEnterprise_phone_number');
 //ecouter la modification du numero de siret
+if (formPhone) {
 formPhone.addEventListener('input', function(){
     validformPhone(this);
-});
+});}
 
 //Je selectionne mon input contact mail
 let formContactMail = document.querySelector('#registration_form_userEnterprise_contact_mail');
 //ecouter la modification du numero de siret
+if (formContactMail) {
 formContactMail.addEventListener('input', function(){
     validformContactMail(this);
-});
+});}
 
 
 
