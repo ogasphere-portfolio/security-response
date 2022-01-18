@@ -14,10 +14,12 @@ class CompanyType extends AbstractType
         $builder
             // ->add('slug')
             ->add('business_name',null, [
-                "label" => "Nom de l'entreprise *",
+                "label" => "Nom de la société *",
             ])
             
-            ->add('address')
+            ->add('address',null, [
+                'label'=> 'Adresse *'
+            ])
 
             ->add('address_more',null, [
                 'label'=> 'Adresse complémentaire'
@@ -32,10 +34,10 @@ class CompanyType extends AbstractType
             ->add('phone_number',null, [
                 'label'=> 'Numéro de téléphone'
             ])
-            ->add('logo')
+            // ->add('logo')
        
             ->add('contact_mail',null, [
-                'label'=> 'Mail de contact'
+                'label'=> 'Mail de contact *'
             ]);
        
     }

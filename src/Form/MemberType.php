@@ -53,14 +53,14 @@ class MemberType extends AbstractType
                 ])
                 // ->add('slug')
                 ->add('description', null, [
-                    'label' => 'description *'
+                    'label' => 'Description *'
                 ])
                 // ->add('picture')
                 ->add('city', null, [
                     'label' => 'Ville *'
                 ])
                 ->add('job_status', ChoiceType::class, [
-                    "label" => "Statut profession *",
+                    "label" => "Statut professionnelle *",
                     'choices'  => [
                         'En poste' => 1,
                         'Recherche' => 2,

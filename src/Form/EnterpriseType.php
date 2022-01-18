@@ -35,9 +35,13 @@ class EnterpriseType extends AbstractType
                 ->add('siret_number',null, [
                     'label'=> 'Numéro de Siret *'
                 ])
-                ->add('address')
+                ->add('address',null, [
+                    'label'=> 'Adresse *'
+                ])
 
-                ->add('address_more')
+                ->add('address_more',null, [
+                    'label'=> 'Adresse complémentaire'
+                ])
 
                 ->add('zip_code',null, [
                     'label'=> 'Code postal *'
@@ -48,9 +52,9 @@ class EnterpriseType extends AbstractType
                 ->add('phone_number',null, [
                     'label'=> 'Numéro de téléphone'
                 ])
-                ->add('logo')
+                // ->add('logo')
                 ->add('contact_mail',null, [
-                    'label'=> 'Mail de contact'
+                    'label'=> 'Mail de contact *'
                 ]);
 
         }
