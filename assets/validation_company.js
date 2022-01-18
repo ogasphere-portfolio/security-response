@@ -132,7 +132,7 @@ const validformAdressCompany = function(inputAdressCompany){
      inputAdressCompany.insertAdjacentElement('afterend', span);
      
      //on ajoute le text dans le span
-      span.innerHTML = 'Adress valide';
+      span.innerHTML = 'Adresse valide';
       //on remove la classe
       span.classList.remove('text-danger');
       //on ajoute le classe
@@ -155,7 +155,7 @@ const validformAdressCompany = function(inputAdressCompany){
      inputAdressCompany.insertAdjacentElement('afterend', span);
      
      //on ajoute le text dans le span
-      span.innerHTML = 'Adress invalide';
+      span.innerHTML = 'Adresse invalide';
       //on remove la classe
       span.classList.remove('text-success');
       //on ajoute le classe
