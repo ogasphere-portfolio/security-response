@@ -9,6 +9,57 @@ $light: $gray-100 !default;
 $dark: $gray-900 !default;
 // scss-docs-end theme-color-variables
 
+@media screen and (max-width: 1024px) {
+    .contact .body-form .right {
+        margin-left: 0px;
+    }
+}
+
+
+
+/* Mobile M CSS*/
+@media (max-width: 375px) {
+    .logo-img {
+        display: none;
+    }
+
+    img.img-security-concept {
+        display: none;
+    }
+
+    li#nav-inscription.nav-item {
+        width: 90px;
+    }
+
+    #logo-name {
+        width: 75%;
+    }
+
+}
+
+/* Tablet CSS*/
+@media (max-width: 768px) {
+
+    img.img-security-concept {
+        display: none;
+    }
+
+    li#nav-inscription.nav-item {
+        width: 90px;
+    }
+
+
+}
+
+/* Laptop CSS*/
+@media (max-width: 992px) {
+
+    a.nav-link {
+        padding-left: 0;
+    }
+
+}
+
 .dropdown-menu>a:hover,
 .dropdown-menu>a:focus {
     background-color: #006fc5;
@@ -217,26 +268,26 @@ h4 {
     display: block;
 }
 
-.icon-info {   
-    display: flex;    
+.icon-info {
+    display: flex;
     padding-bottom: 1rem;
 }
 
-.info-block i{    
+.info-block i {
     color: #006fc5;
-    margin: auto;     
+    margin: auto;
 }
 
-.card-info {   
-   border-radius: 0.50rem;       
+.card-info {
+    border-radius: 0.50rem;
 }
 
 .header-card {
-    height: 9rem;    
+    height: 9rem;
 }
 
 .card-body {
-    height: 10rem;     
+    height: 10rem;
 }
 
 .info-block .register-form a {
@@ -288,7 +339,7 @@ h4 {
 
 .form-signin .form-control:focus {
     z-index: 2;
-}   
+}
 
 .form-signin input[type="text"] {
     margin-bottom: -1px;
@@ -559,7 +610,7 @@ h4 {
     transform: scale(1.05);
 }
 
-.announcement-form button{
+.announcement-form button {
     margin-top: 10px;
     background-color: #006fc5;
     color: #fff;
@@ -576,7 +627,7 @@ h4 {
     transform: scale(1.05);
 }
 
-.announcement-form a{
+.announcement-form a {
     margin-top: 10px;
     background-color: #006fc5;
     color: #fff;
@@ -598,10 +649,10 @@ h4 {
     padding: 10px 20px;
     border-radius: 5px;
     outline: 2px solid;
-    cursor: pointer;   
+    cursor: pointer;
 }
 
-.lost-page a{
+.lost-page a {
     margin-top: 10px;
     background-color: #006fc5;
     color: #fff;
@@ -614,14 +665,18 @@ h4 {
     transition: transform 0.5s;
 }
 
-@media screen and (max-width: 1024px) {
-    .contact .body-form .right {
-        margin-left: 0px;
-    }
-}
-
 /* Mobile S CSS*/
 @media (max-width: 320px) {
+
+    .cards {
+        flex-direction: column;
+    }
+
+    .info-block .register-form a {
+        margin-top: 5rem;
+    } 
+
+
     .logo-img {
         display: none;
     }
@@ -632,49 +687,6 @@ h4 {
 
     .img-security-concept {
         display: none;
-    }
-
-}
-
-/* Mobile M CSS*/
-@media (max-width: 375px) {
-    .logo-img {
-        display: none;
-    }
-
-    img.img-security-concept {
-        display: none;
-    }
-
-    li#nav-inscription.nav-item {
-        width: 90px;
-    }
-
-    #logo-name {
-        width: 75%;
-    }
-
-}
-
-/* Tablet CSS*/
-@media (max-width: 768px) {
-
-    img.img-security-concept {
-        display: none;
-    }
-
-    li#nav-inscription.nav-item {
-        width: 90px;
-    }
-
-
-}
-
-/* Laptop CSS*/
-@media (max-width: 992px) {
-
-    a.nav-link {
-        padding-left: 0;
     }
 
 }

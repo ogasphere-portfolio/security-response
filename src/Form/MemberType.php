@@ -46,21 +46,25 @@ class MemberType extends AbstractType
                     ]
                 ])
                 ->add('firstname', null, [
-                    "label" => "Prénom *",
+                    "label" => "Prénom",
+                    'required' => true
                 ])
                 ->add('lastname', null, [
-                    "label" => "Nom de famille *",
+                    "label" => "Nom de famille",
+                    'required' => true
                 ])
                 // ->add('slug')
                 ->add('description', null, [
-                    'label' => 'description *'
+                    'label' => 'Description',
+                    'required' => true
                 ])
                 // ->add('picture')
                 ->add('city', null, [
-                    'label' => 'Ville *'
+                    'label' => 'Ville',
+                    'required' => true
                 ])
                 ->add('job_status', ChoiceType::class, [
-                    "label" => "Statut profession *",
+                    "label" => "Statut professionnelle",
                     'choices'  => [
                         'En poste' => 1,
                         'Recherche' => 2,
@@ -68,6 +72,7 @@ class MemberType extends AbstractType
                     ],
                     'expanded' => false,
                     'multiple' => false,
+                    'required' => true
                 ]);
         }
 

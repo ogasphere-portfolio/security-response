@@ -39,15 +39,16 @@ class AnnouncementController extends AbstractController
         $user =  $security->getUser();
 
         if (isset($user)) {
-            if (empty($user->getUserEnterprise())) {
+
+            if (!empty($user->getUserEnterprise())) {
                 return $this->render('announcement/browse.html.twig', [
-                    'announcement_browse' => $announcementRepository->findByRecrutement(),
+                    'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
 
                 ]);
             }
-            if (empty($user->getUserMember())) {
+            if (!empty($user->getUserMember())) {
                 return $this->render('announcement/browse.html.twig', [
-                    'announcement_browse' => $announcementRepository->findByAnnouncementByEnterprise(),
+                    'announcement_browse' => $announcementRepository->findByRecrutement(),
 
                 ]);
             }
@@ -75,7 +76,7 @@ class AnnouncementController extends AbstractController
 
             // $answer = $form->getData();
             // On associe Réponse
-            $answer->setannouncement($announcement);
+            $answer->setAnnouncement($announcement);
 
             // On associe le user connecté à la réponse
             $answer->setUser($this->getUser());
@@ -203,6 +204,10 @@ class AnnouncementController extends AbstractController
     public function delete(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
 
+        foreach ($announcement->getAnswers() as $currentAnswer) {
+            // supprimer le currentAnswer
+            $entityManager->remove($currentAnswer);
+        }
         $entityManager->remove($announcement);
         $entityManager->flush();
 
@@ -214,12 +219,12 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/{id}/postulate", name="postulate", methods={"GET"})
      */
-    public function postulate(Announcement $announcement, EntityManagerInterface $entityManager, Security $security): Response
+    public function postulate(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
         /**
          * @var User
          */
-        $user = $security->getUser();
+        $user = $this->getUser();
         $announcement->addMember($user->getUserMember());
 
         $entityManager->persist($announcement);
