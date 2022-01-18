@@ -297,7 +297,23 @@ const validpassword_first = function(inputPassword_first){
 
  };
 
- // je sélectionne mes champs required et j'ajoute mon étoile
- const labels = document.querySelectorAll('.required');
+// je sélectionne tous mes labels, en fonction de l'URL j'ajoute mon étoile aux "required" et j'ajoute "required"="true" aux inputs associés
+const labels = document.querySelectorAll('label')
+   url = window.location.href.split('/'),
+   checkURL = url[url.length-1],
+   blueStar = "<span style='color:#006FC5'> *</span>"
 
-labels.forEach((label) => label.innerHTML += "<span style='color:#006FC5'> *</span>")
+labels.forEach((label) => {
+   const attributeFor = label.getAttribute('for')
+  
+   if (checkURL === 'entreprise' && !attributeFor.includes('address_more')) {
+      label.innerHTML += blueStar
+      label.nextElementSibling.setAttribute('required', 'true')
+   } else if (checkURL === 'societe'&& !attributeFor.includes('address_more') && !attributeFor.includes('phone_number')) {
+      label.innerHTML += blueStar
+      label.nextElementSibling.setAttribute('required', 'true')
+   } else if (checkURL === 'membre' && !attributeFor.includes('gender')) {
+      label.innerHTML += blueStar
+      label.nextElementSibling.setAttribute('required', 'true')
+   }
+})
