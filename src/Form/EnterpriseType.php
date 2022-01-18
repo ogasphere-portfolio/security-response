@@ -39,7 +39,7 @@ class EnterpriseType extends AbstractType
                     'label'=> 'Adresse *'
                 ])
 
-                ->add('address_more',null, [
+                ->add('address_more', null,[
                     'label'=> 'Adresse complémentaire'
                 ])
 
