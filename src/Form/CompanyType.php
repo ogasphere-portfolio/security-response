@@ -14,28 +14,35 @@ class CompanyType extends AbstractType
         $builder
             // ->add('slug')
             ->add('business_name',null, [
-                "label" => "Nom de l'entreprise *",
+                "label" => "Nom de la société",
+                'required' => true
             ])
             
-            ->add('address')
+            ->add('address',null, [
+                'label'=> 'Adresse',
+                'required' => true
+            ])
 
             ->add('address_more',null, [
                 'label'=> 'Adresse complémentaire'
             ])
 
             ->add('zip_code',null, [
-                'label'=> 'Code postal *'
+                'label'=> 'Code postal',
+                'required' => true
             ])
             ->add('city',null, [
-                'label'=>'Ville *'
+                'label'=>'Ville',
+                'required' => true
             ])
             ->add('phone_number',null, [
                 'label'=> 'Numéro de téléphone'
             ])
-            ->add('logo')
+            // ->add('logo')
        
             ->add('contact_mail',null, [
-                'label'=> 'Mail de contact'
+                'label'=> 'Mail de contact',
+                'required' => true
             ]);
        
     }
