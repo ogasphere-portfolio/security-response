@@ -31,6 +31,7 @@
 						{{ form_row(registrationForm.username) }}
 						{{ form_row(registrationForm.email) }}
 						{{ form_row(registrationForm.password) }}
+														
 					
 					
 					
@@ -58,7 +59,13 @@
 	</main>
 
 {% endblock %}
+
 {% block javascripts %}
 {# 	{{ encore_entry_script_tags('registration') }} #}
 	<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+	{{ encore_entry_script_tags('password_visibility') }}
+
 {% endblock %}
+
+
