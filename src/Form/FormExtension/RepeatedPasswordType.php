@@ -30,10 +30,10 @@ class RepeatedPasswordType extends AbstractType
           new NotBlank(),
           new Regex('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&-\/])[A-Za-z\d@$!%*#?&-\/]{8,}$/'),
       ],
-      'label' => 'Mot de passe *',
+      'label' => 'Mot de passe',
       'help' => 'Au moins huit caractères, une lettre, un chiffre et un caractère spécial.'
     ],
-      'second_options' => ['label' => 'Confirmer le mot de passe *'],
+      'second_options' => ['label' => 'Confirmer le mot de passe'],
 
       'attr' => ['autocomplete' => 'new-password'],
       // 'constraints' => [

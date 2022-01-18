@@ -296,3 +296,8 @@ const validpassword_first = function(inputPassword_first){
   }
 
  };
+
+ // je sélectionne mes champs required et j'ajoute mon étoile
+ const labels = document.querySelectorAll('.required');
+
+labels.forEach((label) => label.innerHTML += "<span style='color:#006FC5'> *</span>")

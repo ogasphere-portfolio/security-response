@@ -30,13 +30,16 @@ class EnterpriseType extends AbstractType
             $builder
                 // ->add('slug')
                 ->add('business_name',null, [
-                    "label" => "Nom de l'entreprise *",
+                    "label" => "Nom de l'entreprise",
+                    'required' => true
                 ])
                 ->add('siret_number',null, [
-                    'label'=> 'Numéro de Siret *'
+                    'label'=> 'Numéro de Siret',
+                    'required' => true
                 ])
                 ->add('address',null, [
-                    'label'=> 'Adresse *'
+                    'label'=> 'Adresse',
+                    'required' => true
                 ])
 
                 ->add('address_more', null,[
@@ -44,17 +47,20 @@ class EnterpriseType extends AbstractType
                 ])
 
                 ->add('zip_code',null, [
-                    'label'=> 'Code postal *'
+                    'label'=> 'Code postal',
+                    'required' => true
                 ])
                 ->add('city',null, [
-                    'label'=>'Ville *'
+                    'label'=>'Ville',
+                    'required' => true
                 ])
                 ->add('phone_number',null, [
                     'label'=> 'Numéro de téléphone'
                 ])
                 // ->add('logo')
                 ->add('contact_mail',null, [
-                    'label'=> 'Mail de contact *'
+                    'label'=> 'Mail de contact',
+                    'required' => true
                 ]);
 
         }
