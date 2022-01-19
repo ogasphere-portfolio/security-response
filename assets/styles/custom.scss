@@ -16,41 +16,6 @@ $dark: $gray-900 !default;
 }
 
 
-
-/* Mobile M CSS*/
-@media (max-width: 375px) {
-    .logo-img {
-        display: none;
-    }
-
-    img.img-security-concept {
-        display: none;
-    }
-
-    li#nav-inscription.nav-item {
-        width: 90px;
-    }
-
-    #logo-name {
-        width: 75%;
-    }
-
-}
-
-/* Tablet CSS*/
-@media (max-width: 768px) {
-
-    img.img-security-concept {
-        display: none;
-    }
-
-    li#nav-inscription.nav-item {
-        width: 90px;
-    }
-
-
-}
-
 /* Laptop CSS*/
 @media (max-width: 992px) {
 
@@ -688,5 +653,178 @@ h4 {
     .img-security-concept {
         display: none;
     }
+
+    .research {
+        flex-direction: column;
+        margin-top: 2rem;
+        
+
+        input{
+            margin-bottom: 2rem;
+        }
+    }
+
+    .intro {
+        padding-bottom: 0rem;
+    }
+
+    #home-announcement {
+
+        height: 15em;
+    }
+
+    #home-register {
+        height: 20em;
+    }
+
+    .block-buttom {
+
+        flex-direction: column;
+    }
+
+    .nav-footer {
+
+        align-items: center;
+    }
+
+    .intro-footer {
+        flex-direction: column;
+    }
+
+    .block-blue-end {
+        flex-direction: column;
+    }
+
+}
+
+/* Mobile M CSS*/
+@media (max-width: 375px) {
+    .cards {
+        flex-direction: column;
+    }
+
+    .info-block .register-form a {
+        margin-top: 5rem;
+    } 
+
+
+    .logo-img {
+        display: none;
+    }
+
+    li#nav-inscription.nav-item {
+        width: 90px;
+    }
+
+    .img-security-concept {
+        display: none;
+    }
+
+    .research {
+        flex-direction: column;
+        margin-top: 2rem;
+        
+
+        input{
+            margin-bottom: 2rem;
+        }
+    }
+
+    .intro {
+        padding-bottom: 0rem;
+    }
+
+    #home-announcement {
+
+        height: 15em;
+    }
+
+    #home-register {
+        height: 20em;
+    }
+
+    .block-buttom {
+
+        flex-direction: column;
+    }
+
+    .nav-footer {
+
+        align-items: center;
+    }
+
+    .intro-footer {
+        flex-direction: column;
+    }
+    .block-blue-end {
+        flex-direction: column;
+    }
+
+}
+
+/* Tablet CSS*/
+@media (max-width: 768px) {
+
+    .cards {
+        flex-direction: column;
+    }
+
+    .info-block .register-form a {
+        margin-top: 5rem;
+    } 
+
+
+    .logo-img {
+        display: none;
+    }
+
+    li#nav-inscription.nav-item {
+        width: 90px;
+    }
+
+    .img-security-concept {
+        display: none;
+    }
+
+    .research {
+        flex-direction: column;
+        margin-top: 2rem;
+        
+
+        input{
+            margin-bottom: 2rem;
+        }
+    }
+
+    .intro {
+        padding-bottom: 0rem;
+    }
+
+    #home-announcement {
+
+        height: 15em;
+    }
+
+    #home-register {
+        height: 20em;
+    }
+
+    .block-buttom {
+
+        flex-direction: column;
+    }
+
+    .nav-footer {
+
+        align-items: center;
+    }
+
+    .intro-footer {
+        flex-direction: column;
+    }
+    .block-blue-end {
+        flex-direction: column;
+    }
+
 
 }
