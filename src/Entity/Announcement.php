@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AnnouncementRepository;
@@ -388,7 +389,20 @@ class Announcement
         return $this;
     }
 
-    
+    /**
+     * Permet de savoir si cette annonce a été postulé par un utilisateur
+     *
+     * @param \App\Entity\User $user
+     * @return boolean
+     */
+    public function isPostulateByUser(User $user) : bool
+    {
+        foreach ($this->members as $member) {
+            if ($member->getUser() === $user) 
+            return true;
+        }
+        return false;
+    }
 
     
 }

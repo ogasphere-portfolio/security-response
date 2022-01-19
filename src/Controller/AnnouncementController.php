@@ -36,7 +36,7 @@ class AnnouncementController extends AbstractController
         /**
          * @var User
          */
-        $user =  $security->getUser();
+        $user =  $this->getUser();
 
         if (isset($user)) {
 
@@ -221,17 +221,46 @@ class AnnouncementController extends AbstractController
      */
     public function postulate(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
         /**
          * @var User
          */
-        $user = $this->getUser();
-        $announcement->addMember($user->getUserMember());
+        foreach ($announcement->getMembers() as $membrePostulate) {
+
+
+            if ($user->getUserMember() === $membrePostulate) {
+                $announcement->removeMember($user->getUserMember());
+                $entityManager->flush();
+                // dd($user->getUserMember());
+                $this->addFlash('success', "tu as deja postulé à l'annonce {$announcement->getTitle()} a postuler");
+                return $this->redirectToRoute('announcement_browse');
+            } else {
+
+                $announcement->addMember($user->getUserMember());
+            }
+        }
+        // dd($announcement->getMembers());
 
         $entityManager->persist($announcement);
         $entityManager->flush();
 
         $this->addFlash('success', "L'annonce {$announcement->getTitle()} a postuler");
 
+
         return $this->redirectToRoute('announcement_browse');
+    }
+
+    /**
+     * Permet de savoir si cette annonce a été postulé par un utilisateur
+     *
+     * @param \App\Entity\user $user
+     * @return boolean
+     */
+    public function isPostulateByUser(user $user): bool
+    {
+        foreach ($this->members as $member) {
+            if ($member->getUser() === $user) return true;
+        }
+        return false;
     }
 }
