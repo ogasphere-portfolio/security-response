@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\AnnouncementRepository;
 use App\Repository\AnswerRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\MemberRepository;
 use App\Security\Voter\AnnoucementVoter;
 use DateTime;
 use Symfony\Component\HttpFoundation\Request;
@@ -71,7 +72,6 @@ class AnnouncementController extends AbstractController
         $form->setData($answer);
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
             // $answer = $form->getData();
@@ -222,23 +222,25 @@ class AnnouncementController extends AbstractController
     public function postulate(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
+        // dd($announcementRepository->count(['members' => $announcement->getMembers()]));
+
         /**
          * @var User
          */
         foreach ($announcement->getMembers() as $membrePostulate) {
-
-
+            dd(count([$announcement->getMembers()]));
             if ($user->getUserMember() === $membrePostulate) {
                 $announcement->removeMember($user->getUserMember());
                 $entityManager->flush();
                 // dd($user->getUserMember());
                 $this->addFlash('success', "tu as deja postulé à l'annonce {$announcement->getTitle()} a postuler");
                 return $this->redirectToRoute('announcement_browse');
-            } else {
-
-                $announcement->addMember($user->getUserMember());
             }
         }
+
+        $announcement->addMember($user->getUserMember());
+
+
         // dd($announcement->getMembers());
 
         $entityManager->persist($announcement);
@@ -262,5 +264,52 @@ class AnnouncementController extends AbstractController
             if ($member->getUser() === $user) return true;
         }
         return false;
+    }
+
+
+    /**
+     * Undocumented function
+     * 
+     * @Route("/{id}/postulate_json", name="postulate_json", methods={"GET"})
+     *
+     * @param Announcement $announcement
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     */
+    public function postulateJson(Announcement $announcement, EntityManagerInterface $entityManager)
+    {
+
+        $user = $this->getUser();
+        
+        if (!$user) return $this->json([
+            'code' => 403,
+            'message' => 'Connectez-vous'
+        ], 403);
+
+        if ($announcement->isPostulateByUser($user)) {
+            $announcement->removeMember($user->getUserMember());
+            $postulant = count([$announcement->getMembers()]);
+            $entityManager->flush();
+
+            return $this->json([
+                'code' => 200,
+                'message' => 'Postulation supprimé',
+                'postulant' => $postulant
+            ], 200);
+        }
+
+        $announcement->addMember($user->getUserMember());
+        $postulant = count([$announcement->getMembers()]);
+        $entityManager->persist($announcement);
+        $entityManager->flush();
+
+
+        return $this->json([
+            'code' => 200,
+            'message' => 'J ai postulé',
+            'postulant' => $postulant
+            
+            
+        ], 200);
     }
 }
