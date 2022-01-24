@@ -11,17 +11,17 @@
 
 					<h1 class="fw-bold text-start">Détail de l'annonce</h1>
 					<a class="btn btn-primary" aria-current="page" href="
-																																																																																																																																																																																																																																																																																																																									{% if app.user is not empty %}
-																																																																																																																																																																																																																																																																																																																									{% if app.user.userMember == null %}
-																																																																																																																																																																																																																																																																																																																									{{ url('profile_enterprise') }}
-																																																																																																																																																																																																																																																																																																																									{% else %}
-																																																																																																																																																																																																																																																																																																																									{{ url('announcement_browse') }}
-																																																																																																																																																																																																																																																																																																																									{% endif %}">
-						Retour
-					{% else %}
-						{{ url('announcement_browse') }}">
-																																																																																																																																																																																																																																																																								retour
-					{% endif %}
+	{% if app.user is not empty %}
+	{% if app.user.userMember == null %}
+	{{ url('profile_enterprise') }}
+	{% else %}
+	{{ url('announcement_browse') }}
+	{% endif %}">
+		Retour
+	{% else %}
+		{{ url('announcement_browse') }}">
+		retour
+	{% endif %}
 				</a>
 
 			</div>
@@ -48,23 +48,19 @@
 					{% if app.user.userEnterprise == null %}
 						{% if app.user.userMember %}
 							<a class="postulate nav-link " href="{{ path('announcement_postulate_json', {"id": announcement_read.id}) }}">
-
-
-								{% if announcement_read.isPostulateByUser(app.user) %}
+								<span class="buttom-postulate btn bg-grey text-light position-relative ">
+									Postuler
+									{% if announcement_read.isPostulateByUser(app.user) %}
 									<i class="fas fa-thumbs-up"></i>
 								{% else %}
 									<i class="far fa-thumbs-up"></i>
 								{% endif %}
-
-
-								<span class="btn btn-success text-light position-relative ">
-									Postuler
-									{% if  announcement_read.members|length >0 %}
-										<span class="nb_postulant position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-											{{ announcement_read.members|length }}
+									
+										<span class="nb_candidats">
+											
 										</span>
 									</span>
-								{% endif %}
+								
 
 							</a>
 						{% endif %}

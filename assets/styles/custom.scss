@@ -630,6 +630,11 @@ h4 {
     transition: transform 0.5s;
 }
 
+.postulate {
+    display: inline;
+}
+
+
 /* Mobile S CSS*/
 @media (max-width: 320px) {
 
@@ -760,10 +765,181 @@ h4 {
         flex-direction: column;
     }
 
+    footer {
+        position: relative;
+    }
+    //MEMBRE
+    .profile_member {
+        flex-direction: column;
+        text-align: center;
+        
+        
+        .profile_member_header {
+            width: 100%;
+            padding-left: 3rem;
+            
+        }
+
+        .profile_member_footer {
+            width: 100%;
+        }
+    }
+
+    .profile_member_specialisation {
+        flex-direction: column;
+        text-align: center;
+        .profile_member_specialisation_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+        .profile_member_specialisation_footer {
+            width: 100%;
+        }
+    }
+
+    .profile_member_editperso {
+        flex-direction: column;
+        .profile_member_editperso_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+        .profile_member_editperso_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+        
+    }
+
+    .profile_member_edit_connexion {
+        flex-direction: column;
+        text-align: center;
+        .profile_member_edit_connexion_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+
+        .profile_member_edit_connexion_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+    //ENTERPRISE
+    .profile_enterprise {
+        flex-direction: column;
+        text-align: center;
+        
+        
+        .profile_enterprise_header {
+            width: 100%;
+            padding-left: 3rem;
+            
+        }
+
+        .profile_enterprise_footer {
+            width: 100%;
+        }
+    }
+
+    .profile_enterprise_certification {
+        flex-direction: column;
+        text-align: center;
+        
+        .profile_enterprise_certification_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+        .profile_enterprise_certification_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    .profile_enterprise_editperso {
+        flex-direction: column;
+        .profile_enterprise_editperso_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+        .profile_enterprise_editperso_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+        
+    }
+
+    .profile_enterprise_edit_connexion {
+        flex-direction: column;
+        text-align: center;
+        .profile_enterprise_edit_connexion_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+
+        .profile_enterprise_edit_connexion_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    //COMPANY
+
+    .profile_company {
+        flex-direction: column;
+        text-align: center;
+        
+        
+        .profile_company_header {
+            width: 100%;
+            padding-left: 3rem;
+            
+        }
+
+        .profile_company_footer {
+            width: 100%;
+        }
+    }
+
+    .profile_company_editperso {
+        flex-direction: column;
+        .profile_company_editperso_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+        .profile_company_editperso_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+        
+    }
+    .profile_company_edit_connexion {
+        flex-direction: column;
+        text-align: center;
+        .profile_company_edit_connexion_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+
+        .profile_company_edit_connexion_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
 }
 
 /* Tablet CSS*/
 @media (max-width: 768px) {
+
+    footer {
+        position: relative;
+    }
 
     .cards {
         flex-direction: column;
@@ -824,6 +1000,177 @@ h4 {
     }
     .block-blue-end {
         flex-direction: column;
+    }
+    //MEMBER
+    .profile_member {
+        flex-direction: column;
+        text-align: center;
+        
+        
+        .profile_member_header {
+            width: 100%;
+            padding-left: 3rem;
+            
+        }
+
+        .profile_member_footer {
+            width: 100%;
+        }
+    }
+
+    .profile_member_specialisation {
+        flex-direction: column;
+        text-align: center;
+        .profile_member_specialisation-header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+        .profile_member_specialisation_footer {
+            width: 100%;
+        }
+    }
+
+    .profile_member_editperso {
+        flex-direction: column;
+        .profile_member_editperso_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+        .profile_member_editperso_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+        
+    }
+    .profile_member_edit_connexion {
+        flex-direction: column;
+        text-align: center;
+        .profile_member_edit_connexion_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+
+        .profile_member_edit_connexion_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    //ENTERPRISE
+
+    .profile_enterprise {
+        flex-direction: column;
+        text-align: center;
+        
+        
+        .profile_enterprise_header {
+            width: 100%;
+            padding-left: 3rem;
+            
+        }
+
+        .profile_enterprise_footer {
+            width: 100%;
+        }
+    }
+
+    .profile_enterprise_specialisation {
+        flex-direction: column;
+        text-align: center;
+        .profile_enterprise_specialisation-header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+        .profile_enterprise_specialisation_footer {
+            width: 100%;
+        }
+    }
+
+    .profile_enterprise_editperso {
+        flex-direction: column;
+        .profile_enterprise_editperso_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+        .profile_enterprise_editperso_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+        
+    }
+    .profile_enterprise_edit_connexion {
+        flex-direction: column;
+        text-align: center;
+        .profile_enterprise_edit_connexion_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+
+        .profile_enterprise_edit_connexion_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    }
+
+    //COMPANY
+    .profile_company {
+        flex-direction: column;
+        text-align: center;
+        
+        
+        .profile_company_header {
+            width: 100%;
+            padding-left: 3rem;
+            
+        }
+
+        .profile_company_footer {
+            width: 100%;
+        }
+    }
+
+    .profile_company_specialisation {
+        flex-direction: column;
+        text-align: center;
+        .profile_company_specialisation-header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+        .profile_company_specialisation_footer {
+            width: 100%;
+        }
+    }
+
+    .profile_company_editperso {
+        flex-direction: column;
+        .profile_company_editperso_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+        .profile_company_editperso_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+        
+    }
+    .profile_company_edit_connexion {
+        flex-direction: column;
+        text-align: center;
+        .profile_company_edit_connexion_header {
+            width: 100%;
+            padding-left: 3rem;
+        }
+
+        .profile_company_edit_connexion_footer {
+            width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
     }
 
 

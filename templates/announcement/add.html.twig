@@ -19,9 +19,17 @@
 						<div class="announcement-form">
 							<a class="btn btn-primary" aria-current="page" href="{{ url('homepage') }}">Retour</a>
 						</div>
-					{% else %}
+					{% endif %}
+					{% if app.user.userEnterprise %}
+					
 						<div class="announcement-form">
 							<a class="btn btn-primary" aria-current="page" href="{{ url('profile_enterprise') }}">Retour</a>
+						</div>
+					{% endif %}
+					{% if app.user.userCompany %}
+					
+						<div class="announcement-form">
+							<a class="btn btn-primary" aria-current="page" href="{{ url('profile_company') }}">Retour</a>
 						</div>
 					{% endif %}
 				</div>

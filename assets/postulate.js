@@ -1,20 +1,20 @@
 let buttomPostulate = document.querySelectorAll('a.postulate').forEach(function (link) {
     link.addEventListener('click', oneClickPostulate);
 });
+let span = document.createElement('span');
 
 
 function oneClickPostulate(evt) {
     evt.preventDefault();
-    console.log('je suis dans ma fonction');
     const url = this.href;
 
-    const spanCount = this.querySelector('.nb_postulant')
+    const spanCount = this.querySelector('.nb_candidats')
     const icone = this.querySelector('i');
 
     axios.get(url).then(function (response) {
 
         console.log(response);
-        spanCount.textContent = response.data.postulant;
+        spanCount.textContent = response.data.candidats;
         if(icone.classList.contains('fas')) {
             icone.classList.replace('fas', 'far');
         } else {
@@ -22,7 +22,9 @@ function oneClickPostulate(evt) {
         }
     }).catch(function (error) {
         if(error.response.status === 403) {
-            windows.alert('vous ne passerais pas')
+            console.log('vous ne passerez pas');
+        }else{
+            console.log("une erreur s'est produite");
         }
     });
 };
