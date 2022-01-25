@@ -137,7 +137,7 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
-    public function add(Request $request, Security $security, CategoryRepository $cr, SluggerInterface $slugger): Response
+    public function add(Request $request, CategoryRepository $cr, SluggerInterface $slugger): Response
     {
         $announcement = new Announcement();
 
@@ -171,9 +171,16 @@ class AnnouncementController extends AbstractController
             /**
              * @var User
              */
-            $user = $security->getUser();
+            $user = $this->getUser();
+            
+
             $announcement->setSlug($slugger->slug($announcement->getTitle()));
-            // $announcement->setEnterprise($user->getUserEnterprise());
+            if ($user->getUserEnterprise()) {
+                $announcement->setEnterprise($user->getUserEnterprise());
+            }
+            if ($user->getUserCompany()) {
+                $announcement->setCompany($user->getUserCompany());
+            }
 
             // on ne demande l'entityManager que si on en a besoin
             $entityManager = $this->getDoctrine()->getManager();
@@ -183,12 +190,13 @@ class AnnouncementController extends AbstractController
 
             $this->addFlash('success', "L'annonce {$announcement->getTitle()} a été créée");
 
-            if (empty(($this->getUser()))) {
-                return $this->redirectToRoute('homepage');
-            }
 
-            // redirection
-            return $this->redirectToRoute('profile_enterprise');
+            if ($user->getUserEnterprise()) {
+                return $this->redirectToRoute('profile_enterprise');
+            }
+            if ($user->getUserCompany()) {
+                return $this->redirectToRoute('profile_company');
+            }
         }
 
         // on fournit ce formulaire à notre vue

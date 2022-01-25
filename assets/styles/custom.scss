@@ -22,6 +22,7 @@ $dark: $gray-900 !default;
     a.nav-link {
         padding-left: 0;
     }
+    
 
 }
 
@@ -839,6 +840,7 @@ h4 {
 
         .profile_enterprise_footer {
             width: 100%;
+            
         }
     }
 
@@ -929,6 +931,20 @@ h4 {
             width: 100%;
             padding-left: 3rem;
             padding-right: 3rem;
+        }
+    }
+
+    .manage_announcement_enterprise {
+        
+        ul {
+            flex-wrap: wrap;
+        }
+    }
+
+    .manage_announcement_company {
+        
+        ul {
+            flex-wrap: wrap;
         }
     }
 
@@ -1170,6 +1186,23 @@ h4 {
             width: 100%;
             padding-left: 3rem;
             padding-right: 3rem;
+        }
+    }
+
+    .manage_announcement_enterprise {
+        
+        ul {
+
+            flex-wrap: wrap;
+            padding-left: 2rem;
+        }
+    }
+    .manage_announcement_company {
+        
+        ul {
+
+            flex-wrap: wrap;
+            padding-left: 2rem;
         }
     }
 

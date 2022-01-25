@@ -87,7 +87,7 @@
 
 										{% for annonce in app.user.userCompany.announcement|sort((b, a) => a.createdAt <=> b.createdAt) %}
 
-											<div class="d-flex flex-row my-3 py-3 border-top border-2 border-primary">
+											<div class="manage_announcement_company d-flex flex-row my-3 py-3 border-top border-2 border-primary">
 												<ul class="d-flex flex-row navbar-nav me-4 mb-md-0">
 													<div class="px-4">
 														<a class="fs-4 lh-lg" href="{{ path('announcement_read', {"id": annonce.id}) }}">{{annonce.title}}</a>
