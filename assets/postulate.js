@@ -11,7 +11,7 @@ function oneClickPostulate(evt) {
     const spanCount = this.querySelector('.nb_candidats')
     const icone = this.querySelector('i');
 
-    axios.get(url).then(function (response) {
+    axios.post(url).then(function (response) {
 
         console.log(response);
         spanCount.textContent = response.data.candidats;
@@ -21,10 +21,7 @@ function oneClickPostulate(evt) {
             icone.classList.replace('far', 'fas');
         }
     }).catch(function (error) {
-        if(error.response.status === 403) {
-            console.log('vous ne passerez pas');
-        }else{
-            console.log("une erreur s'est produite");
-        }
+        console.log(error);
+        return false
     });
 };

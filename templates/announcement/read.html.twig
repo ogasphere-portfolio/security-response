@@ -47,7 +47,7 @@
 				{% if app.user %}
 					{% if app.user.userEnterprise == null %}
 						{% if app.user.userMember %}
-							<a class="postulate nav-link " href="{{ path('announcement_postulate_json', {"id": announcement_read.id}) }}">
+							<a class="postulate nav-link " href="{{ path('announcement_postulate', {"id": announcement_read.id}) }}">
 								<span class="buttom-postulate btn bg-grey text-light position-relative ">
 									Postuler
 									{% if announcement_read.isPostulateByUser(app.user) %}
