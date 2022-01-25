@@ -1092,15 +1092,18 @@ h4 {
         }
     }
 
-    .profile_enterprise_specialisation {
+    .profile_enterprise_certification {
         flex-direction: column;
         text-align: center;
-        .profile_enterprise_specialisation-header {
+        
+        .profile_enterprise_certification_header {
             width: 100%;
             padding-left: 3rem;
         }
-        .profile_enterprise_specialisation_footer {
+        .profile_enterprise_certification_footer {
             width: 100%;
+            padding-left: 3rem;
+            padding-right: 3rem;
         }
     }
 
