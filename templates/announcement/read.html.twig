@@ -11,17 +11,17 @@
 
 					<h1 class="fw-bold text-start">Détail de l'annonce</h1>
 					<a class="btn btn-primary" aria-current="page" href="
-	{% if app.user is not empty %}
-	{% if app.user.userMember == null %}
-	{{ url('profile_enterprise') }}
-	{% else %}
-	{{ url('announcement_browse') }}
-	{% endif %}">
-		Retour
-	{% else %}
-		{{ url('announcement_browse') }}">
-		retour
-	{% endif %}
+																													{% if app.user is not empty %}
+																													{% if app.user.userMember == null %}
+																													{{ url('profile_enterprise') }}
+																													{% else %}
+																													{{ url('announcement_browse') }}
+																													{% endif %}">
+						Retour
+					{% else %}
+						{{ url('announcement_browse') }}">
+																										retour
+					{% endif %}
 				</a>
 
 			</div>
@@ -51,17 +51,12 @@
 								<span class="buttom-postulate btn bg-grey text-light position-relative ">
 									Postuler
 									{% if announcement_read.isPostulateByUser(app.user) %}
-									<i class="fas fa-thumbs-up"></i>
-								{% else %}
-									<i class="far fa-thumbs-up"></i>
-								{% endif %}
-									
-										<span class="nb_candidats">{{ announcement_read.members|length }}
-											
-										</span>
-									</span>
-								
-
+										<i class="fas fa-thumbs-up"></i>
+									{% else %}
+										<i class="far fa-thumbs-up"></i>
+									{% endif %}
+									<span class="nb_candidats">{{ announcement_read.members|length }}</span>
+								</span>
 							</a>
 						{% endif %}
 					{% endif %}
@@ -104,15 +99,15 @@
 						{{ answer.body }}
 					</div>
 					{# <div>
-																																																																	
-																																							 {% if not question.isSolved %}
-																																							<a href="{{ path('answer_validate', {'id': answer.id}) }}" class="btn btn-sm btn-success">Accepter cette réponse</a>
-																																							{% endif %}
-																																							{% if is_granted('ROLE_MODERATOR') %}
-																																							{% set btnLabel = answer.isBlocked ? 'Débloquer cette réponse' : 'Bloquer cette réponse' %}
-																																							<a href="{{ path('admin_answer_toggle', {'id': answer.id}) }}" class="btn btn-sm btn-warning mr-2">{{ btnLabel }}</a>
-																																							{% endif %}
-																																							</div> #}
+																																																																																					
+																																																											 {% if not question.isSolved %}
+																																																											<a href="{{ path('answer_validate', {'id': answer.id}) }}" class="btn btn-sm btn-success">Accepter cette réponse</a>
+																																																											{% endif %}
+																																																											{% if is_granted('ROLE_MODERATOR') %}
+																																																											{% set btnLabel = answer.isBlocked ? 'Débloquer cette réponse' : 'Bloquer cette réponse' %}
+																																																											<a href="{{ path('admin_answer_toggle', {'id': answer.id}) }}" class="btn btn-sm btn-warning mr-2">{{ btnLabel }}</a>
+																																																											{% endif %}
+																																																											</div> #}
 					<div class="small-grey-text">
 						par
 						<b class="username">{{ answer.user.username }}</b>
@@ -135,8 +130,6 @@
 
 		</div>
 	</div>
-</main>{% endblock %}
-{% block javascripts %}
+</main>{% endblock %}{% block javascripts %}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-{{ encore_entry_script_tags('postulate') }}
-{% endblock %}
+{{ encore_entry_script_tags('postulate') }}{% endblock %}

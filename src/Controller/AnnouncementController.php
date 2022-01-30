@@ -284,7 +284,7 @@ class AnnouncementController extends AbstractController
      * @param EntityManagerInterface $entityManager
      * @return Response
      */
-    public function postulate(Announcement $announcement, EntityManagerInterface $entityManager)
+    public function postulate(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
 
         $user = $this->getUser();
@@ -296,9 +296,7 @@ class AnnouncementController extends AbstractController
 
         if ($announcement->isPostulateByUser($user)) {
             $announcement->removeMember($user->getUserMember());
-            $candidats = $announcement->getMembers();
-            $candidatsNb = $candidats->count();
-
+            $candidatsNb = $announcement->getMembers()->count();
             $entityManager->flush();
 
             return $this->json([
@@ -309,9 +307,7 @@ class AnnouncementController extends AbstractController
         }
 
         $announcement->addMember($user->getUserMember());
-        $candidats = $announcement->getMembers();
-        $candidatsNb = $candidats->count();
-
+        $candidatsNb = $announcement->getMembers()->count();
         $entityManager->persist($announcement);
         $entityManager->flush();
 

@@ -9,22 +9,6 @@ $light: $gray-100 !default;
 $dark: $gray-900 !default;
 // scss-docs-end theme-color-variables
 
-@media screen and (max-width: 1024px) {
-    .contact .body-form .right {
-        margin-left: 0px;
-    }
-}
-
-
-/* Laptop CSS*/
-@media (max-width: 992px) {
-
-    a.nav-link {
-        padding-left: 0;
-    }
-    
-
-}
 
 .dropdown-menu>a:hover,
 .dropdown-menu>a:focus {
@@ -1208,6 +1192,32 @@ h4 {
             padding-left: 2rem;
         }
     }
+    
+}
 
+/* Laptop CSS*/
+@media (max-width: 992px) {
+    
+    a.nav-link {
+        padding-left: 0;
+    }
+    
+    
+}
 
+@media screen and (max-width: 1024px) {
+    .contact .body-form .right {
+        margin-left: 0px;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+    .info-block{
+        .register-form{
+            a {
+                margin-top: 3rem;
+            }
+        } 
+    } 
 }
