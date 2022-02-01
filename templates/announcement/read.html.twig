@@ -8,25 +8,13 @@
 		<div class="container">
 			<section class="py-5 text-center container mt-">
 				<div class="d-flex py-lg-5 justify-content-between w-75 mx-auto">
-
 					<h1 class="fw-bold text-start">Détail de l'annonce</h1>
 					<a class="btn btn-primary" aria-current="page" href="
-																													{% if app.user is not empty %}
-																													{% if app.user.userMember == null %}
-																													{{ url('profile_enterprise') }}
-																													{% else %}
-																													{{ url('announcement_browse') }}
-																													{% endif %}">
+					{{ url('announcement_browse') }}">
 						Retour
-					{% else %}
-						{{ url('announcement_browse') }}">
-																										retour
-					{% endif %}
-				</a>
-
-			</div>
-		</section>
-
+				     </a>
+			       </div>
+		     </section>
 		<div class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">
 			<div class="">
 				<div class="d-flex flex-row my-2 justify-content-between">
@@ -34,7 +22,6 @@
 					<p class="bg-grey">Catégorie :
 						{{ announcement_read.category }}</p>
 				</div>
-
 				<div class="my-2">
 					<h5>Description</h5>
 					<thead>
