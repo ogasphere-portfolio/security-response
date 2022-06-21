@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\AnnouncementRepository;
 use App\Repository\AnswerRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\MemberRepository;
 use App\Security\Voter\AnnoucementVoter;
 use DateTime;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +37,7 @@ class AnnouncementController extends AbstractController
         /**
          * @var User
          */
-        $user =  $security->getUser();
+        $user =  $this->getUser();
 
         if (isset($user)) {
 
@@ -71,7 +72,6 @@ class AnnouncementController extends AbstractController
         $form->setData($answer);
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
             // $answer = $form->getData();
@@ -137,7 +137,7 @@ class AnnouncementController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"GET", "POST"})
      */
-    public function add(Request $request, Security $security, CategoryRepository $cr, SluggerInterface $slugger): Response
+    public function add(Request $request, CategoryRepository $cr, SluggerInterface $slugger): Response
     {
         $announcement = new Announcement();
 
@@ -171,9 +171,16 @@ class AnnouncementController extends AbstractController
             /**
              * @var User
              */
-            $user = $security->getUser();
+            $user = $this->getUser();
+            
+
             $announcement->setSlug($slugger->slug($announcement->getTitle()));
-            // $announcement->setEnterprise($user->getUserEnterprise());
+            if ($user->getUserEnterprise()) {
+                $announcement->setEnterprise($user->getUserEnterprise());
+            }
+            if ($user->getUserCompany()) {
+                $announcement->setCompany($user->getUserCompany());
+            }
 
             // on ne demande l'entityManager que si on en a besoin
             $entityManager = $this->getDoctrine()->getManager();
@@ -183,12 +190,13 @@ class AnnouncementController extends AbstractController
 
             $this->addFlash('success', "L'annonce {$announcement->getTitle()} a été créée");
 
-            if (empty(($this->getUser()))) {
-                return $this->redirectToRoute('homepage');
-            }
 
-            // redirection
-            return $this->redirectToRoute('profile_enterprise');
+            if ($user->getUserEnterprise()) {
+                return $this->redirectToRoute('profile_enterprise');
+            }
+            if ($user->getUserCompany()) {
+                return $this->redirectToRoute('profile_company');
+            }
         }
 
         // on fournit ce formulaire à notre vue
@@ -216,22 +224,100 @@ class AnnouncementController extends AbstractController
         return $this->redirectToRoute('profile_enterprise');
     }
 
+    // /**
+    //  * @Route("/{id}/postulate", name="postulate", methods={"GET"})
+    //  */
+    // public function postulate(Announcement $announcement, EntityManagerInterface $entityManager): Response
+    // {
+    //     $user = $this->getUser();
+    //     // dd($announcementRepository->count(['members' => $announcement->getMembers()]));
+
+    //     /**
+    //      * @var User
+    //      */
+    //     foreach ($announcement->getMembers() as $membrePostulate) {
+    //         dd(count([$announcement->getMembers()]));
+    //         if ($user->getUserMember() === $membrePostulate) {
+    //             $announcement->removeMember($user->getUserMember());
+    //             $entityManager->flush();
+    //             // dd($user->getUserMember());
+    //             $this->addFlash('success', "tu as deja postulé à l'annonce {$announcement->getTitle()} a postuler");
+    //             return $this->redirectToRoute('announcement_browse');
+    //         }
+    //     }
+
+    //     $announcement->addMember($user->getUserMember());
+
+
+    //     // dd($announcement->getMembers());
+
+    //     $entityManager->persist($announcement);
+    //     $entityManager->flush();
+
+    //     $this->addFlash('success', "L'annonce {$announcement->getTitle()} a postuler");
+
+
+    //     return $this->redirectToRoute('announcement_browse');
+    // }
+
     /**
-     * @Route("/{id}/postulate", name="postulate", methods={"GET"})
+     * Permet de savoir si cette annonce a été postulé par un utilisateur
+     *
+     * @param \App\Entity\user $user
+     * @return boolean
+     */
+    public function isPostulateByUser(user $user): bool
+    {
+        foreach ($this->members as $member) {
+            if ($member->getUser() === $user) return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * Undocumented function
+     * 
+     * @Route("/{id}/postulate", name="postulate", methods={"POST"})
+     *
+     * @param Announcement $announcement
+     * @param EntityManagerInterface $entityManager
+     * @return Response
      */
     public function postulate(Announcement $announcement, EntityManagerInterface $entityManager): Response
     {
-        /**
-         * @var User
-         */
-        $user = $this->getUser();
-        $announcement->addMember($user->getUserMember());
 
+        $user = $this->getUser();
+        
+        if (!$user) return $this->json([
+            'code' => 403,
+            'message' => 'Connectez-vous'
+        ], 403);
+
+        if ($announcement->isPostulateByUser($user)) {
+            $announcement->removeMember($user->getUserMember());
+            $candidatsNb = $announcement->getMembers()->count();
+            $entityManager->flush();
+
+            return $this->json([
+                'code' => 200,
+                'message' => 'Postulation supprimé',
+                'candidats' => $candidatsNb
+            ], 200);
+        }
+
+        $announcement->addMember($user->getUserMember());
+        $candidatsNb = $announcement->getMembers()->count();
         $entityManager->persist($announcement);
         $entityManager->flush();
 
-        $this->addFlash('success', "L'annonce {$announcement->getTitle()} a postuler");
 
-        return $this->redirectToRoute('announcement_browse');
+        return $this->json([
+            'code' => 200,
+            'message' => 'J ai postulé',
+            'candidats' => $candidatsNb
+            
+            
+        ], 200);
     }
 }

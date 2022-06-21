@@ -31,48 +31,43 @@
 						{{ form_row(registrationForm.username) }}
 						{{ form_row(registrationForm.email) }}
 						{{ form_row(registrationForm.password) }}
-														
-					
-					
-					
+
+
 						{% if app.request.get('role')=='membre' %}
 							{{ form_row(registrationForm.userMember) }}
 
 						{% endif %}
 						{% if app.request.get('role')=='entreprise' %}
-							{{ form_row(registrationForm.userEnterprise) }} 
+							{{ form_row(registrationForm.userEnterprise) }}
 
 
 						{% endif %}
 						{% if app.request.get('role')=='societe' %}
-							{{ form_row(registrationForm.userCompany) }} 
+							{{ form_row(registrationForm.userCompany) }}
 						{% endif %}
 						{{ form_row(registrationForm._token) }}
-							<div class="h-captcha" align="center" data-sitekey="56635d34-b421-4c1b-9e4e-527468d00c0c"></div>
-							<div class="registerbutton-form" align="center">
-								<button class="btn btn-lg btn-primary" type="submit">
-									S'inscrire
-								</button>
-							</div>   
-						{{ form_end(registrationForm,{render_rest: false}) }}	
-						
-	</main>
+						<div class="h-captcha" align="center" data-sitekey="56635d34-b421-4c1b-9e4e-527468d00c0c"></div>
+						<div class="registerbutton-form" align="center">
+							<button class="btn btn-lg btn-primary" type="submit">
+								S'inscrire
+							</button>
+						</div>
+						{{ form_end(registrationForm,{render_rest: false}) }}
 
-{% endblock %}
+					</main>
 
-{% block javascripts %}
-{# 	{{ encore_entry_script_tags('registration') }} #}
-{{ encore_entry_script_tags('validation_user') }}
-{{ encore_entry_script_tags('validation_enterprise') }}
-{{ encore_entry_script_tags('validation_company') }}
-{{ encore_entry_script_tags('validation_member') }}
+				{% endblock %}
 
-
-
-	<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-
-	{{ encore_entry_script_tags('password_visibility') }}
-
-{% endblock %}
+				{% block javascripts %}
+					{# 	{{ encore_entry_script_tags('registration') }} #}
+					{{ encore_entry_script_tags('validation_user') }}
+					{{ encore_entry_script_tags('validation_enterprise') }}
+					{{ encore_entry_script_tags('validation_company') }}
+					{{ encore_entry_script_tags('validation_member') }}
 
 
+					<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+					{{ encore_entry_script_tags('password_visibility') }}
+
+				{% endblock %}

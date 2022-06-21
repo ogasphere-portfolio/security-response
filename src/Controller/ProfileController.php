@@ -25,12 +25,12 @@ class ProfileController extends AbstractController
     /**
      * @Route("/entreprise/", name="enterprise", methods={"GET"})
      */
-    public function enterpriseHome(Security $security): Response
+    public function enterpriseHome(): Response
     {
         /**
          * @var User
          */
-        $userEnterprise =  $security->getUser();
+        $userEnterprise =  $this->getUser();
         $userEnterprise->getUserEnterprise()->getBusinessName();
 
         return $this->render('profile/enterprise/home.html.twig', [
@@ -40,12 +40,12 @@ class ProfileController extends AbstractController
     /**
      * @Route("/societe/", name="company", methods={"GET"})
      */
-    public function companyHome(Security $security): Response
+    public function companyHome(): Response
     {
         /**
          * @var User
          */
-        $userCompany =  $security->getUser();
+        $userCompany =  $this->getUser();
         $userCompany->getUserCompany()->getBusinessName();
 
         return $this->render('profile/company/home.html.twig', [
@@ -56,12 +56,12 @@ class ProfileController extends AbstractController
     /**
      * @Route("/membre", name="member", methods={"GET"})
      */
-    public function memberHome(Security $security): Response
+    public function memberHome(): Response
     {
         /**
          * @var User
          */
-        $userMember = $security->getUser();
+        $userMember = $this->getUser();
         $userMember->getUserMember()->getFirstName();
         return $this->render('profile/member/home.html.twig', [
             'member' => $userMember,

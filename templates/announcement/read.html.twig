@@ -8,25 +8,13 @@
 		<div class="container">
 			<section class="py-5 text-center container mt-">
 				<div class="d-flex py-lg-5 justify-content-between w-75 mx-auto">
-
 					<h1 class="fw-bold text-start">Détail de l'annonce</h1>
 					<a class="btn btn-primary" aria-current="page" href="
-																																																																																																																																																																																																																																																																																						{% if app.user is not empty %}
-																																																																																																																																																																																																																																																																																						{% if app.user.userMember == null %}
-																																																																																																																																																																																																																																																																																						{{ url('profile_enterprise') }}
-																																																																																																																																																																																																																																																																																						{% else %}
-																																																																																																																																																																																																																																																																																						{{ url('announcement_browse') }}
-																																																																																																																																																																																																																																																																																						{% endif %}">
+					{{ url('announcement_browse') }}">
 						Retour
-					{% else %}
-						{{ url('announcement_browse') }}">
-																																																																																																																																																																																																																																										retour
-					{% endif %}
-				</a>
-
-			</div>
-		</section>
-
+				     </a>
+			       </div>
+		     </section>
 		<div class="d-flex flex-column w-75 mx-auto my-3 p-3 bg-white rounded border">
 			<div class="">
 				<div class="d-flex flex-row my-2 justify-content-between">
@@ -34,7 +22,6 @@
 					<p class="bg-grey">Catégorie :
 						{{ announcement_read.category }}</p>
 				</div>
-
 				<div class="my-2">
 					<h5>Description</h5>
 					<thead>
@@ -47,18 +34,16 @@
 				{% if app.user %}
 					{% if app.user.userEnterprise == null %}
 						{% if app.user.userMember %}
-							<a class="nav-link " href="{{ path('announcement_postulate', {"id": announcement_read.id}) }}">
-
-
-								<span class="btn btn-success text-light position-relative ">
+							<a class="postulate nav-link " href="{{ path('announcement_postulate', {"id": announcement_read.id}) }}">
+								<span class="buttom-postulate btn bg-grey text-light position-relative ">
 									Postuler
-									{% if  announcement_read.members|length >0 %}
-										<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-											{{ announcement_read.members|length }}
-										</span>
-									</span>
-								{% endif %}
-
+									{% if announcement_read.isPostulateByUser(app.user) %}
+										<i class="fas fa-thumbs-up"></i>
+									{% else %}
+										<i class="far fa-thumbs-up"></i>
+									{% endif %}
+									<span class="nb_candidats">{{ announcement_read.members|length }}</span>
+								</span>
 							</a>
 						{% endif %}
 					{% endif %}
@@ -101,15 +86,15 @@
 						{{ answer.body }}
 					</div>
 					{# <div>
-																																								
-														 {% if not question.isSolved %}
-														<a href="{{ path('answer_validate', {'id': answer.id}) }}" class="btn btn-sm btn-success">Accepter cette réponse</a>
-														{% endif %}
-														{% if is_granted('ROLE_MODERATOR') %}
-														{% set btnLabel = answer.isBlocked ? 'Débloquer cette réponse' : 'Bloquer cette réponse' %}
-														<a href="{{ path('admin_answer_toggle', {'id': answer.id}) }}" class="btn btn-sm btn-warning mr-2">{{ btnLabel }}</a>
-														{% endif %}
-														</div> #}
+																																																																																					
+																																																											 {% if not question.isSolved %}
+																																																											<a href="{{ path('answer_validate', {'id': answer.id}) }}" class="btn btn-sm btn-success">Accepter cette réponse</a>
+																																																											{% endif %}
+																																																											{% if is_granted('ROLE_MODERATOR') %}
+																																																											{% set btnLabel = answer.isBlocked ? 'Débloquer cette réponse' : 'Bloquer cette réponse' %}
+																																																											<a href="{{ path('admin_answer_toggle', {'id': answer.id}) }}" class="btn btn-sm btn-warning mr-2">{{ btnLabel }}</a>
+																																																											{% endif %}
+																																																											</div> #}
 					<div class="small-grey-text">
 						par
 						<b class="username">{{ answer.user.username }}</b>
@@ -132,4 +117,6 @@
 
 		</div>
 	</div>
-</main>{% endblock %}
+</main>{% endblock %}{% block javascripts %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+{{ encore_entry_script_tags('postulate') }}{% endblock %}

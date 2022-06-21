@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MemberRepository;
@@ -378,4 +379,6 @@ class Member
 
         return $this;
     }
+
+    
 }

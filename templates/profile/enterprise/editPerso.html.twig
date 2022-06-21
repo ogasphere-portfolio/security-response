@@ -15,8 +15,8 @@
 			</div>
 			<div class="card" style="padding-bottom: 1rem;">
 				
-				<div class="row">
-					<div class="col-5 col-sm-3 text-center">
+				<div class="profile_enterprise_editperso row">
+					<div class="profile_enterprise_editperso_header col-5 col-sm-3 text-center">
 					<h4 class="px-0 py-2 text-left fw-bold pe-5">Mon compte</h4>
 						<h6 class="px-0 py-2 text-center pe-5">{{ app.user.userEnterprise }}</h6>
 						<div class="nav flex-column nav-pills pe-5 mx-auto" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
@@ -29,7 +29,7 @@
 							<a class="nav-link" id="vert-tabs-announcement-tab" data-toggle="pill" href="#vert-tabs-announcement" role="tab" aria-controls="vert-tabs-announcement" aria-selected="true">Gérer mes annonces</a>
 						</div>
 					</div>
-					<div class="col-7 col-sm-9">
+					<div class="profile_enterprise_editperso_footer col-7 col-sm-9">
 						<div class="tab-content" id="vert-tabs-tabContent">
             
 						<!--	<div class="tab-pane text-left fade active show" id="vert-tabs-connexion" role="tabpanel" aria-labelledby="vert-tabs-connexion-tab">
@@ -52,7 +52,6 @@
 																	{{ form_row(enterprise_form.city) }}
 																	{{ form_row(enterprise_form.siret_number) }}
 																	{{ form_row(enterprise_form.phone_number) }}
-																	{{ form_row(enterprise_form.logo) }}
 																	{{ form_row(enterprise_form.contact_mail) }}
 																	
 									<input class="btn btn-primary" type="submit" name="EditConnexion"> 																

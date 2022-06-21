@@ -28,6 +28,7 @@ Encore
     .addEntry('validation_enterprise', './assets/validation_enterprise.js')
     .addEntry('validation_company', './assets/validation_company.js')
     .addEntry('validation_member', './assets/validation_member.js')
+    .addEntry('postulate', './assets/postulate.js')
 
     
 

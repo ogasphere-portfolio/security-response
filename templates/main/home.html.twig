@@ -6,7 +6,7 @@
 	{% endfor %}
 	<main>
 
-		<section class="py-5 text-center container">
+		<section class="intro py-5 text-center container">
 			<div class="d-flex py-lg-5" id="home-top">
 				<div class="col-lg-6 col-md-8 mx-auto" id="home-top-left">
 					<h1 class="fw-bold text-start">Les experts en sécurité informatique proches de chez vous</h1>
@@ -22,7 +22,7 @@
 
 			</div>
 			<div class="w-50 mx-auto">
-				<form class="d-flex" method="GET" action="{{ path('enterprise_browse') }}">
+				<form class="research d-flex" method="GET" action="{{ path('enterprise_browse') }}">
 					<input name="searchEnterprise" class="form-control me-2" type="search" placeholder="Rechercher le nom d'une ville" aria-label="Search">
 					<div class="search-form">
 						<button class="d-flex" type="submit">Rechercher</button>
@@ -101,7 +101,7 @@
 		</section>
 
 		<section class="d-flex py-5 text-center bg-white">
-			<div class="container d-flex">
+			<div class="intro-footer container d-flex">
 				<div class="w-50 mx-auto">
 					<img class="w-50" src="{{ asset("img/shield.jpg") }}" alt="shield">
 				</div>
@@ -125,7 +125,7 @@
 		</section>
 
 		<section class="py-5 text-center container">
-			<div class="d-flex flex-sm-column flex-md-column flex-lg-row" id="home-register">
+			<div class="block-blue-end d-flex flex-sm-column flex-md-column flex-lg-row" id="home-register">
 				<div class="col-lg-6 col-md-8 ">
 					<h3 class="fw-bold text-start">Vous êtes un expert en cybersécurité ?</h3>
 					<p>Inscrivez-vous dès maintenant ! Vous pourrez ainsi répondre aux annonces des sociétés en demande de sécurité et vous pourrez recruter de nouveaux talents via notre liste de membres.</p>
@@ -142,7 +142,7 @@
 		<div class="album py-5 ">
 			<div class="container">
 
-				<div class="row row-cols-lg-3 row-cols-sm-1 row-cols-md-1 g-3">
+				<div class="block-buttom row row-cols-lg-3 row-cols-sm-1 row-cols-md-1 g-3">
 
 					<div class="card-info col card shadow-sm p-4">
 						<div class="header-card">
