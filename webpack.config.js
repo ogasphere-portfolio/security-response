@@ -10,9 +10,9 @@ Encore
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
-    .setPublicPath('/build')
+    .setPublicPath('./build')
     // only needed for CDN's or sub-directory deploy
-    //.setManifestKeyPrefix('build/')
+    .setManifestKeyPrefix('build/')
 
     /*
      * ENTRY CONFIG
@@ -55,7 +55,7 @@ Encore
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
-    .configureBabel((config) => {
+   /*  .configureBabel((config) => {
         config.plugins.push('@babel/plugin-proposal-class-properties');
     })
 
@@ -63,7 +63,32 @@ Encore
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = 3;
-    })
+    }) */
+
+
+
+/* 
+    .configureBabel(function(babelConfig) {
+        // add additional presets
+        babelConfig.presets.push('@babel/preset-flow');
+
+        // no plugins are added by default, but you can add some
+        babelConfig.plugins.push('styled-jsx/babel');
+    }, {
+        // node_modules is not processed through Babel by default
+        // but you can allow some specific modules to be processed
+        includeNodeModules: ['foundation-sites'],
+
+        // or completely control the exclude rule (note that you
+        // can't use both "includeNodeModules" and "exclude" at
+        // the same time)
+        exclude: /bower_components/
+    }) */
+
+
+
+
+
 
     // enables Sass/SCSS support
     .enableSassLoader()

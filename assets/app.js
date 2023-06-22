@@ -5,16 +5,3 @@ import Alert from 'bootstrap/js/dist/alert';
 import './bootstrap';
 
 
-const app = {
-
-
-    init: function () {
-       
-     
-    }
-  }
-  
-  
-  // On lance la fonction init uniquement quand le DOM aura terminé de se lancer
-  document.addEventListener('DOMContentLoaded', app.init);
-// any CSS you import will output into a single css file (app.css in this case)

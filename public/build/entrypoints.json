@@ -2,67 +2,60 @@
   "entrypoints": {
     "app": {
       "js": [
-        "/build/runtime.4d7bf541.js",
-        "/build/719.56a1bd4b.js",
-        "/build/223.656ea77e.js",
-        "/build/455.be22dda8.js",
-        "/build/app.825798bf.js"
+        "./build/runtime.js",
+        "./build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_bootstrap_js_dist_alert_js.js",
+        "./build/app.js"
       ],
       "css": [
-        "/build/app.4044bd15.css"
+        "./build/app.css"
       ]
     },
     "map": {
       "js": [
-        "/build/runtime.4d7bf541.js",
-        "/build/719.56a1bd4b.js",
-        "/build/223.656ea77e.js",
-        "/build/map.8fd542fe.js"
+        "./build/runtime.js",
+        "./build/map.js"
       ]
     },
     "registration": {
       "js": [
-        "/build/runtime.4d7bf541.js",
-        "/build/719.56a1bd4b.js",
-        "/build/registration.8a7dbf70.js"
+        "./build/runtime.js",
+        "./build/registration.js"
       ]
     },
     "password_visibility": {
       "js": [
-        "/build/runtime.4d7bf541.js",
-        "/build/719.56a1bd4b.js",
-        "/build/223.656ea77e.js",
-        "/build/password_visibility.3bf00098.js"
+        "./build/runtime.js",
+        "./build/password_visibility.js"
       ]
     },
     "validation_user": {
       "js": [
-        "/build/runtime.4d7bf541.js",
-        "/build/719.56a1bd4b.js",
-        "/build/307.70b30699.js",
-        "/build/validation_user.ddaf7d36.js"
+        "./build/runtime.js",
+        "./build/validation_user.js"
       ]
     },
     "validation_enterprise": {
       "js": [
-        "/build/runtime.4d7bf541.js",
-        "/build/719.56a1bd4b.js",
-        "/build/307.70b30699.js",
-        "/build/validation_enterprise.14c1b7f6.js"
+        "./build/runtime.js",
+        "./build/validation_enterprise.js"
       ]
     },
     "validation_company": {
       "js": [
-        "/build/runtime.4d7bf541.js",
-        "/build/719.56a1bd4b.js",
-        "/build/307.70b30699.js",
-        "/build/validation_company.5acfa792.js"
+        "./build/runtime.js",
+        "./build/validation_company.js"
       ]
     },
     "validation_member": {
       "js": [
-        "/build/runtime.4d7bf541.js",
-        "/build/validation_member.e82e3bc2.js"
+        "./build/runtime.js",
+        "./build/validation_member.js"
+      ]
+    },
+    "postulate": {
+      "js": [
+        "./build/runtime.js",
+        "./build/postulate.js"
       ]
     }
   }
