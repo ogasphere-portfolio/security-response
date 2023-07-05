@@ -1,0 +1,164 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-card-widget-plugin">title: Card Widget Plugin</h2>
+<p>The card widget plugin provides the functionality for collapsing, expanding and removing a card. </p>
+<h3 id="usage">Usage</h3>
+<p>This plugin can be activated as a jQuery plugin or using the data API. </p>
+<h4 id="data-api">Data API</h4>
+<p>This plugin provides two <code>data-api</code> attributes. Any element using one of the following attributes should be placed within the <code>.card-tools</code> div, which is usually in the card header. For more information about the [card HTML structure]({% link components/cards.md %}), visit the card component documentation </p>
+<h5 id="data-card-widgetcollapse"><code>data-card-widget="collapse"</code></h5>
+<p>This attribute, when attached to a button, allows the box to be collapsed/expanded when clicked. </p>
+<div class="row">
+  <div class="col-12 col-md-4">
+     <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Collapsible Card Example</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+        </div>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-8" markdown="1"><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-header&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-title&quot;</span>&gt;</span>Collapsible Card Example<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-tools&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- Collapse Button --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-tool&quot;</span> <span class="hljs-attr">data-card-widget</span>=<span class="hljs-string">&quot;collapse&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-minus&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.card-tools --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-header --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-body&quot;</span>&gt;</span>
+    The body of the card
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-body --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- /.card --&gt;</span>
+</code></pre>
+{: .max-height-300}
+  </div>
+</div>
+<h5 id="data-card-widgetremove"><code>data-card-widget="remove"</code></h5>
+<p>This attribute, when attached to a button, allows the box to be removed when clicked. </p>
+<div class="row">
+  <div class="col-12 col-md-4">
+     <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Removable Card Example</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-8" markdown="1"><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-header&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-title&quot;</span>&gt;</span>Removable Card Example<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-tools&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- Remove Button --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-tool&quot;</span> <span class="hljs-attr">data-card-widget</span>=<span class="hljs-string">&quot;remove&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-times&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.card-tools --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-header --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-body&quot;</span>&gt;</span>
+    The body of the card
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-body --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- /.card --&gt;</span>
+</code></pre>
+{: .max-height-300}
+  </div>
+</div>
+<h5 id="data-card-widgetmaximize"><code>data-card-widget="maximize"</code></h5>
+<p>This attribute, when attached to a button, allows the box to be maximize/minimize when clicked. </p>
+<div class="row">
+  <div class="col-12 col-md-4">
+     <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Maximizable Card Example</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
+        </div>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-8" markdown="1"><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-header&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-title&quot;</span>&gt;</span>Maximizable Card Example<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-tools&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- Maximize Button --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-tool&quot;</span> <span class="hljs-attr">data-card-widget</span>=<span class="hljs-string">&quot;maximize&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-expand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.card-tools --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-header --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-body&quot;</span>&gt;</span>
+    The body of the card
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-body --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- /.card --&gt;</span>
+</code></pre>
+{: .max-height-300}
+  </div>
+</div>
+<h6 id="jquery">jQuery</h6>
+<p>{: .text-bold }<br />
+To activate any button using jQuery, you must provide the removeTrigger and collapseTrigger options. Otherwise, the plugin will assume the default <code>data-card-widget</code> selectors. </p>
+<pre><code class="hljs js language-js">$(<span class="hljs-string">&#x27;#my-card&#x27;</span>).<span class="hljs-title class_">CardWidget</span>(options)
+</code></pre>
+<h5 id="options">Options</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Name | Type | Default | Description<br />
+|-|-|-|-<br />
+|animationSpeed | Number&nbsp;| 300 | Speed of slide down/up animation in milliseconds.<br />
+|collapseTrigger | String | <code>[data-card-widget="collapse"]</code> | jQuery selector to the element responsible for collapsing the box.<br />
+|removeTrigger | String&nbsp;| <code>[data-card-widget="remove"]</code> | jQuery selector to the element responsible for removing the box.<br />
+|maximizeTrigger | String&nbsp;| <code>[data-card-widget="maximize"]</code> | jQuery selector to the element responsible for maximizing the box.<br />
+{: .table .table-bordered .bg-light}</p>
+<blockquote>
+  <h5 id="tip">Tip!</h5>
+  <p>You can use any option via the data-attributes like this.</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-tool&quot;</span> <span class="hljs-attr">data-card-widget</span>=<span class="hljs-string">&quot;collapse&quot;</span> <span class="hljs-attr">data-animation-speed</span>=<span class="hljs-string">&quot;1000&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-minus&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+  <p>{: .quote-info}</p>
+</blockquote>
+<h5 id="events">Events</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Event Type&nbsp;| Description<br />
+|-|-<br />
+|expanded.lte.cardwidget |&nbsp;Triggered after a card expanded.<br />
+|collapsed.lte.cardwidget |&nbsp;Triggered after a card collapsed.<br />
+|maximized.lte.cardwidget |&nbsp;Triggered after a card maximized.<br />
+|minimized.lte.cardwidget |&nbsp;Triggered after a card minimized.<br />
+|removed.lte.cardwidget |&nbsp;Triggered after a card removed.<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('#my-card').on('expanded.lte.cardwidget', handleExpandedEvent)</code></p>
+<h5 id="methods">Methods</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Method | Description<br />
+|-|-<br />
+|collapse | Collapses the card<br />
+|expand | Expands the card<br />
+|remove | Removes the card<br />
+|toggle | Toggles the state of the card between expanded and collapsed<br />
+|maximize | Maximizes the card<br />
+|minimize | Minimizes the card<br />
+|toggleMaximize | Toggles the state of the card between maximized and minimized<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('#my-card-widget').CardWidget('toggle')</code> or <code>$('#my-card').CardWidget('toggle')</code></p>

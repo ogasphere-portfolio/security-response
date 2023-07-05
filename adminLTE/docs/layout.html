@@ -1,0 +1,150 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-layout">title: Layout</h2>
+<blockquote>
+  <h5 id="tip">Tip!</h5>
+  <p>The <a href="https://adminlte.io/themes/v3/starter.html">starter page</a> is a good place to start building your app if you'd like to start from scratch.<br />
+  {: .quote-info .mt-0}</p>
+</blockquote>
+<p>The layout consists of four major parts:</p>
+<ul>
+<li>Wrapper <code>.wrapper</code>. A div that wraps the whole site.</li>
+<li>Main Header <code>.main-header</code>. Contains the logo and navbar.</li>
+<li>Main Sidebar <code>.main-sidebar</code>. Contains the sidebar user panel, search form and menu.</li>
+<li>Content <code>.content-wrapper</code>. Contains the page header and content.</li>
+</ul>
+<h4 id="layout-options">Layout Options</h4>
+<p>{: .mt-4}</p>
+<blockquote>
+  <h5 id="note">Note!</h5>
+  <p>You cannot use both layout-boxed and layout-navbar-fixed or layout-footer-fixed at the same time. Anything else can be mixed together.<br />
+  {: .quote-danger}</p>
+</blockquote>
+<p>AdminLTE 3.1 provides a set of options to apply to your main layout. Each one of these classes can be added to the body tag to get the desired goal.</p>
+<ul>
+<li>Fixed Sidebar: use the class <code>.layout-fixed</code> to get a fixed sidebar.</li>
+<li>Fixed Navbar: use the class <code>.layout-navbar-fixed</code> to get a fixed navbar.</li>
+<li>Fixed Footer: use the class <code>.layout-footer-fixed</code> to get a fixed footer.</li>
+<li>Collapsed Sidebar: use the class <code>.sidebar-collapse</code> to have a collapsed sidebar upon loading.</li>
+<li>Boxed Layout: use the class <code>.layout-boxed</code> to get a boxed layout that stretches only to 1250px.</li>
+<li>Top Navigation: use the class <code>.layout-top-nav</code> to remove the sidebar and have your links at the top navbar.</li>
+</ul>
+<h5 id="responsive-variations">Responsive Variations</h5>
+<p>You can also use the following classes for responsive changes with placing</p>
+<ul>
+<li>Fixed Navbar: </li>
+<li>use the class <code>.layout-*-navbar-fixed</code> to get a fixed navbar.</li>
+<li>use the class <code>.layout-*-navbar-not-fixed</code> to get a not fixed navbar.</li>
+<li>Fixed Footer: </li>
+<li>use the class <code>.layout-*-footer-fixed</code> to get a fixed footer.</li>
+<li>use the class <code>.layout-*-footer-not-fixed</code> to get a not fixed footer.</li>
+</ul>
+<blockquote>
+  <h5 id="tip-1">Tip!</h5>
+  <p>If you want to use anchors with a fixed navbar, you need to add <code>.anchor</code> to you hidden anchor, e.g. <code>&lt;a id="testAnchor" class="anchor"&gt;&lt;/a&gt;</code>. </p>
+  <p>To get a smooth scrolling to the anchor you need to add <code>.scroll-smooth</code> to your HTML tag like this <code>&lt;html class="scroll-smooth"&gt;</code> otherwise it jumps directly to your anchor, <code>.scroll-smooth</code> can cause issues with a Chrome extension called ScrollAnywhere.<br />
+  {: .quote-info}</p>
+</blockquote>
+<h4 id="preloader">Preloader</h4>
+<p>Preloader to avoid <a href="https://github.com/ColorlibHQ/AdminLTE/discussions/3319">https://github.com/ColorlibHQ/AdminLTE/discussions/3319</a></p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wrapper&quot;</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Preloader --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;preloader&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;dist/img/AdminLTELogo.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;AdminLTELogo&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;60&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;60&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<ul>
+<li>Preloader elements should be added inside <code>.wrapper</code> element.</li>
+<li>You can replace image OR modify size OR include any preload items inside <code>.preloader</code> element.</li>
+</ul>
+<h4 id="dark-mode">Dark Mode</h4>
+<p>AdminLTE 3.1 provides a dark mode option. You can add in body tag:</p>
+<ul>
+<li><code>.dark-mode</code></li>
+</ul>
+<h4 id="color-variations">Color Variations</h4>
+<p>AdminLTE 3.1 provides a set of color variations to apply to your sidebar (light &amp; dark) &amp; navbar. You can combine any available color with these class prefixes:</p>
+<ul>
+<li><code>.navbar-*</code></li>
+<li><code>.sidebar-dark-*</code></li>
+<li><code>.sidebar-light-*</code></li>
+<li><code>.accent-*</code></li>
+</ul>
+<blockquote>
+  <h6 id="new">New</h6>
+  <p>You can use override the link/accent color in AdminLTE, you can add <code>.accent-*</code> to <code>body</code>.<br />
+  {: .quote-info}</p>
+  <h6 id="info">Info</h6>
+  <p>You can combine <code>.navbar-*</code> with <code>.navbar-light</code> or <code>.navbar-dark</code>.<br />
+  {: .quote-info}</p>
+  <h6 id="recommended-for-dark-mode">Recommended for Dark Mode</h6>
+  <p>You must use only <code>.navbar-dark</code> without only combination.<br />
+  {: .quote-info}</p>
+</blockquote>
+<p>The following colors are available:</p>
+<h5 id="theme-colors">Theme Colors</h5>
+<div class="row">
+  <div class="col-sm-4 col-lg-3 p-3 bg-primary"> Primary (primary) / Blue (blue)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-secondary"> Secondary (secondary)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-success"> Success (success) / Green (green)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-info"> Info (info) / Cyan (cyan)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-warning"> Warning (warning) / Yellow (yellow)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-danger"> Danger (danger) / Red (red)</div>
+</div>
+<h5 id="blackwhite-nuances">Black/White Nuances</h5>
+<p>{: .mt-4}</p>
+<div class="row">
+  <div class="col-sm-4 col-lg-3 p-3 bg-black"> Black (black)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-gray-dark"> Gray Dark (gray-dark)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-gray"> Gray (gray)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-light"> Light (light)</div>
+</div>
+<h5 id="colors">Colors</h5>
+<p>{: .mt-4}</p>
+<div class="row">
+  <div class="col-sm-4 col-lg-3 p-3 bg-indigo"> Indigo (indigo)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-navy"> Navy (navy)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-purple"> Purple (purple)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-fuchsia"> Fuchsia (fuchsia)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-pink"> Pink (pink)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-maroon"> Maroon (maroon)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-orange"> Orange (orange)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-lime"> Lime (lime)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-teal"> Teal (teal)</div>
+  <div class="col-sm-4 col-lg-3 p-3 bg-olive"> Olive (olive)</div>
+</div>
+<blockquote>
+  <h5 id="tip-2">Tip!</h5>
+  <p>You can use these color variations even with <code>.text-*</code>, <code>.bg-*</code> &amp; much more.<br />
+  {: .quote-info}</p>
+</blockquote>
+<h5 id="custom-range--switch">Custom Range / Switch</h5>
+<p>For custom colored custom-checkbox &amp; custom-radio you can add this classes:</p>
+<ul>
+<li><code>.custom-control-input-*</code></li>
+</ul>
+<p>You can also change the look to outlined checkbox &amp; radio with adding the <code>.custom-control-input-outline</code> on the custom control input.</p>
+<p>For custom colored custom-range you can add this classes:</p>
+<ul>
+<li><code>.custom-range-*</code></li>
+</ul>
+<p>For custom colored custom-range you can add this classes:</p>
+<ul>
+<li><code>.custom-range-*</code></li>
+</ul>
+<p>For custom colored custom-switch you can add this classes:</p>
+<ul>
+<li><code>.custom-switch-off-*</code> (for custom switch off)</li>
+<li><code>.custom-switch-on-*</code> (for custom switch on)</li>
+</ul>
+<h5 id="toasts">Toasts</h5>
+<p>You can also use <code>bg-*</code> beside the <code>.toast</code> to get a nice colored toast.</p>
+<h5 id="plugin-support">Plugin Support</h5>
+<p>You can use the all the colors above with these plugins:</p>
+<ul>
+<li>Bootstrap Slider</li>
+<li><code>.slider-*</code> (wrapped around the slider)</li>
+<li>iCheck-Bootstrap</li>
+<li><code>.icheck-*</code></li>
+</ul>

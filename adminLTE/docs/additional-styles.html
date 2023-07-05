@@ -1,0 +1,58 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-additional-styles--custom-skin">title: Additional Styles / Custom Skin</h2>
+<p>If you want to create additional styles like a company specific color for buttons, the background utility or something else you can simply create your own subversion of AdminLTE with the following SCSS template.</p>
+<p>In this example we create a custom button class called <code>.btn-custom-color</code> with an extra button style and a custom class called <code>.my-custom-style</code>.</p>
+<pre><code class="hljs scss language-scss"><span class="hljs-comment">// Bootstrap</span>
+<span class="hljs-comment">// ---------------------------------------------------</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~bootstrap/scss/functions&#x27;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~admin-lte/build/scss/bootstrap-variables&#x27;</span>;
+
+<span class="hljs-comment">// Custom Theme Color START</span>
+<span class="hljs-variable">$custom-color</span>: <span class="hljs-number">#00FF00</span>;
+<span class="hljs-variable">$theme-colors</span>: <span class="hljs-built_in">map-merge</span>((
+    <span class="hljs-string">&#x27;custom-color&#x27;</span>: <span class="hljs-variable">$custom-color</span>,
+), <span class="hljs-variable">$theme-colors</span>);
+<span class="hljs-comment">// Custom Theme Color END</span>
+
+<span class="hljs-comment">// Variables and Mixins</span>
+<span class="hljs-comment">// ---------------------------------------------------</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~admin-lte/build/scss/variables&#x27;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~admin-lte/build/scss/mixins&#x27;</span>;
+
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~bootstrap/scss/bootstrap&#x27;</span>;
+
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~admin-lte/build/scss/parts/core&#x27;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~admin-lte/build/scss/parts/components&#x27;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~admin-lte/build/scss/parts/extra-components&#x27;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~admin-lte/build/scss/parts/pages&#x27;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~admin-lte/build/scss/parts/plugins&#x27;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~admin-lte/build/scss/parts/miscellaneous&#x27;</span>;
+
+<span class="hljs-comment">// Custom Style START</span>
+<span class="hljs-selector-class">.my-custom-style</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$custom-color</span>;
+  <span class="hljs-attribute">padding</span>: .<span class="hljs-number">5rem</span> <span class="hljs-number">0</span>;
+}
+<span class="hljs-comment">// Custom Style END</span>
+</code></pre>
+<p>{: .max-height-300}</p>
+<p>You can also create a skin on top of AdminLTE with the following SCSS template.</p>
+<p>In this example we create a custom class called <code>.btn-custom-color</code> with a extra button style.</p>
+<pre><code class="hljs scss language-scss"><span class="hljs-comment">// Bootstrap</span>
+<span class="hljs-comment">// ---------------------------------------------------</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~bootstrap/scss/functions&#x27;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~admin-lte/build/scss/bootstrap-variables&#x27;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;~bootstrap/scss/mixins&#x27;</span>;
+
+<span class="hljs-variable">$custom-color</span>: <span class="hljs-number">#00FF00</span>;
+
+<span class="hljs-selector-class">.btn-custom-color</span> {
+    <span class="hljs-keyword">@include</span> button-variant(<span class="hljs-variable">$custom-color</span>, <span class="hljs-variable">$custom-color</span>);
+}
+</code></pre>
+<blockquote>
+  <h5 id="warning">Warning!</h5>
+  <p>These examples are only raw SCSS templates, you will still need a SCSS -&gt; CSS build script to compile the SCSS to CSS!<br />
+  {: .quote-warning}</p>
+</blockquote>

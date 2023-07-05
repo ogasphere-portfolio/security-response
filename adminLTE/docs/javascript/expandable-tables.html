@@ -1,0 +1,88 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-expandable-table-plugin">title: Expandable Table Plugin</h2>
+<p>The expandable table plugin provides simple functionality to create expandable tables. </p>
+<h5 id="example-code">Example Code</h5>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;table table-bordered table-hover&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;expandable-table&quot;</span> <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>183<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-body&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- YOUR EXPANDABLE TABLE BODY HERE --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;expandable-table&quot;</span> <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>219<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-body&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- YOUR EXPANDABLE TABLE BODY HERE --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;expandable-table&quot;</span> <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>657<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-body&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- YOUR EXPANDABLE TABLE BODY HERE --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</code></pre>
+<p>{: .max-height-300}</p>
+<blockquote>
+  <h5 id="tip">Tip!</h5>
+  <p>You can control the default visibility with <code>aria-expanded="false"</code>/<code>aria-expanded="true"</code> via the expandable table header.<br />
+  {: .quote-info}</p>
+</blockquote>
+<h5 id="usage">Usage</h5>
+<p>This plugin can be activated as a jQuery plugin or using the data api. </p>
+<h6 id="data-api">Data API</h6>
+<p>{: .text-bold }<br />
+Add <code>data-widget="expandable-table"</code> to a table row to activate the plugin and place a new table row below with the <code>.expandable-body</code>-class.</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;expandable-table&quot;</span> <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>657<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;expandable-body&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+</code></pre>
+<blockquote>
+  <h5 id="tip-1">Tip!</h5>
+  <p>To get the correct slide up/down animation place a <code>div</code> or <code>p</code>-tag inside your expandable table body.<br />
+  {: .quote-info}</p>
+</blockquote>
+<h6 id="jquery">jQuery</h6>
+<p>{: .text-bold }<br />
+The jQuery API provides more customizable options that allows the developer to toggle the visibilty state of one table row. </p>
+<pre><code class="hljs js language-js">$(<span class="hljs-string">&#x27;#expandable-table-header-row&#x27;</span>).<span class="hljs-title class_">ExpandableTable</span>(<span class="hljs-string">&#x27;toggleRow&#x27;</span>)
+</code></pre>
+<h5 id="methods">Methods</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Method | Description<br />
+|-|-<br />
+|toggleRow |&nbsp;Toggles the state of the expandable table body between hidden and visible.<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('#expandable-table-header-row').ExpandableTable('toggleRow')</code></p>
+<h5 id="events">Events</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Event Type&nbsp;| Description<br />
+|-|-<br />
+|expanded.lte.expandableTable |&nbsp;Triggered after a expandable table body is expanded.<br />
+|collapsed.lte.expandableTable |&nbsp;Triggered after a expandable table body is collapsed.<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('#expandable-table-header-row').on('expanded.lte.expandableTable', handleToggledEvent)</code></p>

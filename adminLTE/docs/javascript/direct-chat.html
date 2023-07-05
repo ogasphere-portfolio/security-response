@@ -1,0 +1,32 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-direct-chat-plugin">title: Direct Chat Plugin</h2>
+<p>The direct chat plugin provides simple functionality to the direct chat component. </p>
+<h5 id="usage">Usage</h5>
+<p>This plugin can be activated as a jQuery plugin or using the data api. </p>
+<h6 id="data-api">Data API</h6>
+<p>{: .text-bold }<br />
+Add <code>data-widget="chat-pane-toggle"</code> to a button to activate the plugin. </p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;chat-pane-toggle&quot;</span>&gt;</span>Toggle Chat Pane<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<h6 id="jquery">jQuery</h6>
+<p>{: .text-bold }<br />
+The jQuery API provides more customizable options that allows the developer to toggle the chat contact pane. </p>
+<pre><code class="hljs js language-js">$(<span class="hljs-string">&#x27;#chat-pane-toggle&#x27;</span>).<span class="hljs-title class_">DirectChat</span>(<span class="hljs-string">&#x27;toggle&#x27;</span>)
+</code></pre>
+<h5 id="methods">Methods</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Method | Description<br />
+|-|-<br />
+|toggle |&nbsp;Toggles the state of the chat pane between hidden and visible.<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('#chat-pane-toggle').DirectChat('toggle')</code></p>
+<h5 id="events">Events</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Event Type&nbsp;| Description<br />
+|-|-<br />
+|toggled.lte.directchat | Triggered after a direct chat contacts pane is toggled.<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('#toggle-button').on('toggled.lte.directchat', handleToggledEvent)</code></p>

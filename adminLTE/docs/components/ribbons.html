@@ -1,0 +1,154 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-ribbons-component">title: Ribbons Component</h2>
+<p>The ribbons component is a easy way to display informations above any content. The <code>.ribbon-warpper</code> needs to be inside a element with <em>position:relative;</em>. In this docs page we place the ribbon always inside <code>&lt;div class="position-relative p-3 bg-gray" style="height: 180px"&gt;&lt;/div&gt;</code> for demo purpose but it can placed inside cards, table rows &amp; many more.</p>
+<p>The ribbon comes in three sizes to display more text or use larger font sizes, default (only <code>.ribbon-wrapper</code>), large (<code>.ribbon-wrapper</code> with <code>.ribbon-lg</code>), extra large (<code>.ribbon-wrapper</code> with <code>.ribbon-xl</code>).</p>
+<h5 id="example-markup">Example Markup</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<div class="position-relative p-3 bg-gray" style="height: 180px">
+  <div class="ribbon-wrapper">
+    <div class="ribbon bg-primary">
+      Ribbon
+    </div>
+  </div>
+  Ribbon Default <br />
+  <small>.ribbon-wrapper.ribbon-lg .ribbon</small>
+</div>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon-wrapper&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon bg-primary&quot;</span>&gt;</span>
+    Ribbon
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>{: .max-height-300}</p>
+<h5 id="ribbon-size-variations">Ribbon Size Variations</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="position-relative p-3 bg-gray" style="height: 180px">
+      <div class="ribbon-wrapper">
+        <div class="ribbon bg-primary">
+          Ribbon
+        </div>
+      </div>
+      Ribbon Default <br />
+      <small>.ribbon-wrapper.ribbon-lg .ribbon</small>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="position-relative p-3 bg-gray" style="height: 180px">
+      <div class="ribbon-wrapper ribbon-lg">
+        <div class="ribbon bg-info">
+          Ribbon Large
+        </div>
+      </div>
+      Ribbon Large <br />
+      <small>.ribbon-wrapper.ribbon-lg .ribbon</small>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="position-relative p-3 bg-gray" style="height: 180px">
+      <div class="ribbon-wrapper ribbon-xl">
+        <div class="ribbon bg-secondary">
+          Ribbon Extra Large
+        </div>
+      </div>
+      Ribbon Extra Large <br />
+      <small>.ribbon-wrapper.ribbon-xl .ribbon</small>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4" markdown="1"><pre><code class="hljs html language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon-wrapper&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon bg-primary&quot;</span>&gt;</span>
+      Ribbon
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  </div>
+  <div class="col-sm-4" markdown="1"><pre><code class="hljs html language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon-wrapper ribbon-lg&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon bg-info&quot;</span>&gt;</span>
+      Ribbon Large
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  </div>
+  <div class="col-sm-4" markdown="1"><pre><code class="hljs html language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon-wrapper ribbon-xl&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon bg-secondary&quot;</span>&gt;</span>
+      Ribbon Extra Large
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  </div>
+</div>
+<h5 id="text-size-variations">Text Size Variations</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="position-relative p-3 bg-gray" style="height: 180px">
+      <div class="ribbon-wrapper ribbon-lg">
+        <div class="ribbon bg-success text-lg">
+          Ribbon
+        </div>
+      </div>
+      Ribbon Large <br /> with Large Text <br />
+      <small>.ribbon-wrapper.ribbon-lg .ribbon.text-lg</small>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="position-relative p-3 bg-gray" style="height: 180px">
+      <div class="ribbon-wrapper ribbon-xl">
+        <div class="ribbon bg-warning text-lg">
+          Ribbon
+        </div>
+      </div>
+      Ribbon Extra Large <br /> with Large Text <br />
+      <small>.ribbon-wrapper.ribbon-xl .ribbon.text-lg</small>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="position-relative p-3 bg-gray" style="height: 180px">
+      <div class="ribbon-wrapper ribbon-xl">
+        <div class="ribbon bg-danger text-xl">
+          Ribbon
+        </div>
+      </div>
+      Ribbon Extra Large <br /> with Extra Large Text <br />
+      <small>.ribbon-wrapper.ribbon-xl .ribbon.text-xl</small>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4" markdown="1"><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon-wrapper ribbon-lg&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon bg-success text-lg&quot;</span>&gt;</span>
+    Ribbon
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  </div>
+  <div class="col-sm-4" markdown="1"><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon-wrapper ribbon-xl&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon bg-warning text-lg&quot;</span>&gt;</span>
+    Ribbon
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  </div>
+  <div class="col-sm-4" markdown="1"><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon-wrapper ribbon-xl&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon bg-danger text-xl&quot;</span>&gt;</span>
+    Ribbon
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  </div>
+</div>
+<h5 id="image-example-code">Image Example Code</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;position-relative&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../../dist/img/photo1.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Photo 1&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;img-fluid&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon-wrapper ribbon-lg&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ribbon bg-success text-lg&quot;</span>&gt;</span>
+      Ribbon
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>

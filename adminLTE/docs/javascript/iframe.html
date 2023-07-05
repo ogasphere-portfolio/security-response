@@ -1,0 +1,107 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-iframe-plugin">title: IFrame Plugin</h2>
+<p>The iframe plugin provides the functionality to open sidebar &amp; navbar items in a tabbed iframe.</p>
+<h5 id="required-markup">Required Markup</h5>
+<p>To get the iframe 100% working you need the following content-wrapper markup:</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content-wrapper iframe-mode&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;iframe&quot;</span> <span class="hljs-attr">data-loading-screen</span>=<span class="hljs-string">&quot;750&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav navbar navbar-expand-lg navbar-white navbar-light border-bottom p-0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link bg-danger&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;iframe-close&quot;</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;navbar-nav&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;tablist&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab-empty&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;display-4&quot;</span>&gt;</span>No tab selected!<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab-loading&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;display-4&quot;</span>&gt;</span>Tab is loading <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fa fa-sync fa-spin&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h6 id="markup-with-default-iframe-tab">Markup with Default IFrame Tab</h6>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content-wrapper iframe-mode&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;iframe&quot;</span> <span class="hljs-attr">data-loading-screen</span>=<span class="hljs-string">&quot;750&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav navbar navbar-expand navbar-white navbar-light border-bottom p-0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-item dropdown&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link bg-danger dropdown-toggle&quot;</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">&quot;dropdown&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">aria-haspopup</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dropdown-menu mt-0&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dropdown-item&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;iframe-close&quot;</span> <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;all&quot;</span>&gt;</span>Close All<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dropdown-item&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;iframe-close&quot;</span> <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;all-other&quot;</span>&gt;</span>Close All Other<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link bg-light&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;iframe-scrollleft&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-angle-double-left&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;navbar-nav overflow-hidden&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;tablist&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-item active&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;presentation&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn-iframe-close&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;iframe-close&quot;</span> <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;only-this&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-times&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link active&quot;</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">&quot;row&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tab-index-html&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#panel-index-html&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;tab&quot;</span> <span class="hljs-attr">aria-controls</span>=<span class="hljs-string">&quot;panel-index-html&quot;</span> <span class="hljs-attr">aria-selected</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Dashboard v1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link bg-light&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;iframe-scrollright&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-angle-double-right&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link bg-light&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;iframe-fullscreen&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-expand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab-empty&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;display-4&quot;</span>&gt;</span>No tab selected!<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab-loading&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;display-4&quot;</span>&gt;</span>Tab is loading <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fa fa-sync fa-spin&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab-pane fade&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;panel-index-html&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;tabpanel&quot;</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;tab-index-html&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./index.html&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h5 id="usage">Usage</h5>
+<p>This plugin can be activated as a jQuery plugin or using the data api.</p>
+<h6 id="data-api">Data API</h6>
+<p>{: .text-bold }<br />
+Activate the plugin by adding <code>data-widget="iframe"</code> to the <code>.content-wrapper</code>. If you need to provide onCheck and onUncheck methods, please use the jQuery API.</p>
+<h6 id="jquery">jQuery</h6>
+<p>{: .text-bold }<br />
+The jQuery API provides more customizable options that allows the developer to handle checking and unchecking the todo list checkbox events.</p>
+<pre><code class="hljs js language-js">$(<span class="hljs-string">&#x27;.content-wrapper&#x27;</span>).<span class="hljs-title class_">IFrame</span>({
+  <span class="hljs-title function_">onTabClick</span>(<span class="hljs-params">item</span>) {
+    <span class="hljs-keyword">return</span> item
+  },
+  <span class="hljs-title function_">onTabChanged</span>(<span class="hljs-params">item</span>) {
+    <span class="hljs-keyword">return</span> item
+  },
+  <span class="hljs-title function_">onTabCreated</span>(<span class="hljs-params">item</span>) {
+    <span class="hljs-keyword">return</span> item
+  },
+  <span class="hljs-attr">autoIframeMode</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">autoItemActive</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">autoShowNewTab</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">autoDarkMode</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">allowDuplicates</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">loadingScreen</span>: <span class="hljs-number">750</span>,
+  <span class="hljs-attr">useNavbarItems</span>: <span class="hljs-literal">true</span>
+})
+</code></pre>
+<h5 id="options">Options</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Name | Type | Default | Description<br />
+|-|-|-|-<br />
+|onTabClick | Function | Anonymous Function | Handle tab click event.<br />
+|onTabChanged | Function | Anonymous Function | Handle tab changed event.<br />
+|onTabCreated | Function | Anonymous Function | Handle tab created event.<br />
+|autoIframeMode | Boolean | true&nbsp;| Whether to automatically add <code>.iframe-mode</code> to <code>body</code> if page is loaded via iframe.<br />
+|autoItemActive | Boolean | true&nbsp;| Whether to automatically set the sidebar menu item active based on the active iframe.<br />
+|autoShowNewTab | Boolean | true&nbsp;| Whether to automatically display created tab.<br />
+|autoDarkMode | Boolean | false | Whether to automatically enable dark-mode in iframe pages.<br />
+|allowDuplicates | Boolean | true&nbsp;| Whether to allow creation of duplicate tab/iframe.<br />
+|allowReload | Boolean | true&nbsp;| Whether to allow reload non duplicate tab/iframes.<br />
+|loadingScreen | Boolean/Number | true&nbsp;| [Boolean] Whether to enable iframe loading screen; [Number] Set loading screen hide delay.<br />
+|useNavbarItems | Boolean | true&nbsp;| Whether to open navbar menu items, instead of open only sidebar menu items.<br />
+|---<br />
+{: .table .table-bordered .bg-light}</p>
+<h5 id="methods">Methods</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Method | Description<br />
+|-|-<br />
+|createTab| Create tab by title, link &amp; uniqueName. Available arguments: title <code>String</code>, link <code>String</code>, uniqueName <code>String</code>, autoOpen <code>Boolean/Optional</code>.<br />
+|openTabSidebar| Create tab by sidebar menu item. Available arguments: item <code>String|jQuery Object</code>, autoOpen <code>Boolean/Optional</code>.<br />
+|switchTab| Switch tab by iframe tab navbar item. Available arguments: item <code>String|jQuery Object</code>.<br />
+|removeActiveTab| Remove active iframe tab.<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('.content-wrapper').IFrame('createTab', 'Home', 'index.html, 'index', true)</code></p>

@@ -1,0 +1,799 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-direct-chat-components">title: Direct Chat Components</h2>
+<p>The direct chat widget extends the card component to create a beautiful chat interface. This widget consists of a required messages pane and an <strong>optional</strong> contacts pane. Examples:</p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card card-primary direct-chat direct-chat-primary">
+      <div class="card-header">
+        <h3 class="card-title">Direct Chat</h3>
+        <div class="card-tools">
+          <span data-toggle="tooltip" title="3 New Messages" class="badge badge-light">3</span>
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
+            <i class="fas fa-comments"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="direct-chat-messages">
+          <div class="direct-chat-msg">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-left">Alexander Pierce</span>
+              <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              Is this template really for free? That's unbelievable!
+            </div>
+          </div>
+          <div class="direct-chat-msg right">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-right">Sarah Bullock</span>
+              <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              You better believe it!
+            </div>
+          </div>
+          <div class="direct-chat-msg">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-left">Alexander Pierce</span>
+              <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              Working with AdminLTE on a great new app! Wanna join?
+            </div>
+          </div>
+          <div class="direct-chat-msg right">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-right">Sarah Bullock</span>
+              <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              I would love to.
+            </div>
+          </div>
+        </div>
+        <!--/.direct-chat-messages-->
+        <div class="direct-chat-contacts">
+          <ul class="contacts-list">
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Count Dracula
+                    <small class="contacts-list-date float-right">2/28/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">How have you been? I was...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user7-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Sarah Doe
+                    <small class="contacts-list-date float-right">2/23/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">I will be waiting for...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Nadia Jolie
+                    <small class="contacts-list-date float-right">2/20/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">I'll call you back at...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user5-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Nora S. Vans
+                    <small class="contacts-list-date float-right">2/10/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Where is your new...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user6-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    John K.
+                    <small class="contacts-list-date float-right">1/27/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Can I take a look at...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user8-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Kenneth M.
+                    <small class="contacts-list-date float-right">1/4/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Never mind I found...</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <form action="#" method="post">
+          <div class="input-group">
+            <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+            <span class="input-group-append">
+              <button type="button" class="btn btn-primary">Send</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-danger direct-chat direct-chat-danger">
+      <div class="card-header">
+        <h3 class="card-title">Direct Chat</h3>
+        <div class="card-tools">
+          <span data-toggle="tooltip" title="3 New Messages" class="badge badge-light">3</span>
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
+            <i class="fas fa-comments"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="direct-chat-messages">
+          <div class="direct-chat-msg">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-left">Alexander Pierce</span>
+              <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              Is this template really for free? That's unbelievable!
+            </div>
+          </div>
+          <div class="direct-chat-msg right">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-right">Sarah Bullock</span>
+              <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              You better believe it!
+            </div>
+          </div>
+          <div class="direct-chat-msg">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-left">Alexander Pierce</span>
+              <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              Working with AdminLTE on a great new app! Wanna join?
+            </div>
+          </div>
+          <div class="direct-chat-msg right">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-right">Sarah Bullock</span>
+              <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              I would love to.
+            </div>
+          </div>
+        </div>
+        <!--/.direct-chat-messages-->
+        <div class="direct-chat-contacts">
+          <ul class="contacts-list">
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Count Dracula
+                    <small class="contacts-list-date float-right">2/28/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">How have you been? I was...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user7-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Sarah Doe
+                    <small class="contacts-list-date float-right">2/23/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">I will be waiting for...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Nadia Jolie
+                    <small class="contacts-list-date float-right">2/20/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">I'll call you back at...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user5-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Nora S. Vans
+                    <small class="contacts-list-date float-right">2/10/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Where is your new...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user6-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    John K.
+                    <small class="contacts-list-date float-right">1/27/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Can I take a look at...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user8-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Kenneth M.
+                    <small class="contacts-list-date float-right">1/4/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Never mind I found...</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <form action="#" method="post">
+          <div class="input-group">
+            <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+            <span class="input-group-append">
+              <button type="button" class="btn btn-primary">Send</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<pre><code class="hljs html language-html"><span class="hljs-comment">&lt;!-- Construct the card with style you want. Here we are using card-danger --&gt;</span>
+<span class="hljs-comment">&lt;!-- Then add the class direct-chat and choose the direct-chat-* contexual class --&gt;</span>
+<span class="hljs-comment">&lt;!-- The contextual class should match the card, so we are using direct-chat-danger --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-danger direct-chat direct-chat-danger&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-header&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-title&quot;</span>&gt;</span>Direct Chat<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-tools&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">&quot;tooltip&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;3 New Messages&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;badge badge-light&quot;</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-tool&quot;</span> <span class="hljs-attr">data-card-widget</span>=<span class="hljs-string">&quot;collapse&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-minus&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-tool&quot;</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">&quot;tooltip&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Contacts&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;chat-pane-toggle&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-comments&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-tool&quot;</span> <span class="hljs-attr">data-card-widget</span>=<span class="hljs-string">&quot;remove&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-times&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-header --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-body&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Conversations are loaded here --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-messages&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- Message. Default to the left --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-msg&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-infos clearfix&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-name float-left&quot;</span>&gt;</span>Alexander Pierce<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-timestamp float-right&quot;</span>&gt;</span>23 Jan 2:00 pm<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-infos --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-img&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/assets/img/user1-128x128.jpg&#x27; | prepend: site.baseurl }}&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;message user image&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-img --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-text&quot;</span>&gt;</span>
+          Is this template really for free? That&#x27;s unbelievable!
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-text --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- /.direct-chat-msg --&gt;</span>
+      <span class="hljs-comment">&lt;!-- Message to the right --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-msg right&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-infos clearfix&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-name float-right&quot;</span>&gt;</span>Sarah Bullock<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-timestamp float-left&quot;</span>&gt;</span>23 Jan 2:05 pm<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-infos --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-img&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/assets/img/user3-128x128.jpg&#x27; | prepend: site.baseurl }}&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;message user image&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-img --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-text&quot;</span>&gt;</span>
+          You better believe it!
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-text --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- /.direct-chat-msg --&gt;</span>
+      <span class="hljs-comment">&lt;!-- Message. Default to the left --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-msg&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-infos clearfix&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-name float-left&quot;</span>&gt;</span>Alexander Pierce<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-timestamp float-right&quot;</span>&gt;</span>23 Jan 5:37 pm<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-infos --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-img&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/assets/img/user1-128x128.jpg&#x27; | prepend: site.baseurl }}&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;message user image&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-img --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-text&quot;</span>&gt;</span>
+          Working with AdminLTE on a great new app! Wanna join?
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-text --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- /.direct-chat-msg --&gt;</span>
+      <span class="hljs-comment">&lt;!-- Message to the right --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-msg right&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-infos clearfix&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-name float-right&quot;</span>&gt;</span>Sarah Bullock<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-timestamp float-left&quot;</span>&gt;</span>23 Jan 6:10 pm<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-infos --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-img&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/assets/img/user3-128x128.jpg&#x27; | prepend: site.baseurl }}&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;message user image&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-img --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-text&quot;</span>&gt;</span>
+          I would love to.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.direct-chat-text --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- /.direct-chat-msg --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--/.direct-chat-messages--&gt;</span>
+    <span class="hljs-comment">&lt;!-- Contacts are loaded here --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;direct-chat-contacts&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-img&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/assets/img/user1-128x128.jpg&#x27; | prepend: site.baseurl }}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-info&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-name&quot;</span>&gt;</span>
+                Count Dracula
+                <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-date float-right&quot;</span>&gt;</span>2/28/2015<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-msg&quot;</span>&gt;</span>How have you been? I was...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.contacts-list-info --&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- End Contact Item --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-img&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/assets/img/user7-128x128.jpg&#x27; | prepend: site.baseurl }}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-info&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-name&quot;</span>&gt;</span>
+                Sarah Doe
+                <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-date float-right&quot;</span>&gt;</span>2/23/2015<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-msg&quot;</span>&gt;</span>I will be waiting for...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.contacts-list-info --&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- End Contact Item --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-img&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/assets/img/user3-128x128.jpg&#x27; | prepend: site.baseurl }}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-info&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-name&quot;</span>&gt;</span>
+                Nadia Jolie
+                <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-date float-right&quot;</span>&gt;</span>2/20/2015<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-msg&quot;</span>&gt;</span>I&#x27;ll call you back at...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.contacts-list-info --&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- End Contact Item --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-img&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/assets/img/user5-128x128.jpg&#x27; | prepend: site.baseurl }}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-info&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-name&quot;</span>&gt;</span>
+                Nora S. Vans
+                <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-date float-right&quot;</span>&gt;</span>2/10/2015<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-msg&quot;</span>&gt;</span>Where is your new...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.contacts-list-info --&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- End Contact Item --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-img&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/assets/img/user6-128x128.jpg&#x27; | prepend: site.baseurl }}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-info&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-name&quot;</span>&gt;</span>
+                John K.
+                <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-date float-right&quot;</span>&gt;</span>1/27/2015<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-msg&quot;</span>&gt;</span>Can I take a look at...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.contacts-list-info --&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- End Contact Item --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-img&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/assets/img/user8-128x128.jpg&#x27; | prepend: site.baseurl }}&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-info&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-name&quot;</span>&gt;</span>
+                Kenneth M.
+                <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-date float-right&quot;</span>&gt;</span>1/4/2015<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;contacts-list-msg&quot;</span>&gt;</span>Never mind I found...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- /.contacts-list-info --&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- End Contact Item --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- /.contacts-list --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.direct-chat-pane --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-body --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-footer&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;message&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Type Message ...&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group-append&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary&quot;</span>&gt;</span>Send<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-footer--&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!--/.direct-chat --&gt;</span>
+</code></pre>
+<p>{: .max-height-300}</p>
+<h5 id="outline-direct-chat">Outline Direct Chat</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<p>Of course you can use direct chat with a outline card by adding the class <code>.card-outline</code> to the card. Here are a couple of examples: </p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card card-primary card-outline direct-chat direct-chat-primary">
+      <div class="card-header">
+        <h3 class="card-title">Direct Chat</h3>
+        <div class="card-tools">
+          <span data-toggle="tooltip" title="3 New Messages" class="badge badge-light">3</span>
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
+            <i class="fas fa-comments"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="direct-chat-messages">
+          <div class="direct-chat-msg">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-left">Alexander Pierce</span>
+              <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              Is this template really for free? That's unbelievable!
+            </div>
+          </div>
+          <div class="direct-chat-msg right">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-right">Sarah Bullock</span>
+              <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              You better believe it!
+            </div>
+          </div>
+          <div class="direct-chat-msg">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-left">Alexander Pierce</span>
+              <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              Working with AdminLTE on a great new app! Wanna join?
+            </div>
+          </div>
+          <div class="direct-chat-msg right">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-right">Sarah Bullock</span>
+              <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              I would love to.
+            </div>
+          </div>
+        </div>
+        <!--/.direct-chat-messages-->
+        <div class="direct-chat-contacts">
+          <ul class="contacts-list">
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Count Dracula
+                    <small class="contacts-list-date float-right">2/28/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">How have you been? I was...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user7-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Sarah Doe
+                    <small class="contacts-list-date float-right">2/23/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">I will be waiting for...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Nadia Jolie
+                    <small class="contacts-list-date float-right">2/20/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">I'll call you back at...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user5-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Nora S. Vans
+                    <small class="contacts-list-date float-right">2/10/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Where is your new...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user6-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    John K.
+                    <small class="contacts-list-date float-right">1/27/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Can I take a look at...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user8-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Kenneth M.
+                    <small class="contacts-list-date float-right">1/4/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Never mind I found...</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <form action="#" method="post">
+          <div class="input-group">
+            <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+            <span class="input-group-append">
+              <button type="button" class="btn btn-primary">Send</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-danger card-outline direct-chat direct-chat-danger">
+      <div class="card-header">
+        <h3 class="card-title">Direct Chat</h3>
+        <div class="card-tools">
+          <span data-toggle="tooltip" title="3 New Messages" class="badge badge-light">3</span>
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
+            <i class="fas fa-comments"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="direct-chat-messages">
+          <div class="direct-chat-msg">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-left">Alexander Pierce</span>
+              <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              Is this template really for free? That's unbelievable!
+            </div>
+          </div>
+          <div class="direct-chat-msg right">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-right">Sarah Bullock</span>
+              <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              You better believe it!
+            </div>
+          </div>
+          <div class="direct-chat-msg">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-left">Alexander Pierce</span>
+              <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              Working with AdminLTE on a great new app! Wanna join?
+            </div>
+          </div>
+          <div class="direct-chat-msg right">
+            <div class="direct-chat-infos clearfix">
+              <span class="direct-chat-name float-right">Sarah Bullock</span>
+              <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
+            </div>
+            <img class="direct-chat-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+            <div class="direct-chat-text">
+              I would love to.
+            </div>
+          </div>
+        </div>
+        <!--/.direct-chat-messages-->
+        <div class="direct-chat-contacts">
+          <ul class="contacts-list">
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user1-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Count Dracula
+                    <small class="contacts-list-date float-right">2/28/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">How have you been? I was...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user7-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Sarah Doe
+                    <small class="contacts-list-date float-right">2/23/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">I will be waiting for...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user3-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Nadia Jolie
+                    <small class="contacts-list-date float-right">2/20/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">I'll call you back at...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user5-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Nora S. Vans
+                    <small class="contacts-list-date float-right">2/10/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Where is your new...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user6-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    John K.
+                    <small class="contacts-list-date float-right">1/27/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Can I take a look at...</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img class="contacts-list-img" src="{{ '/assets/img/user8-128x128.jpg' | prepend: site.baseurl }}" alt="message user image">
+                <div class="contacts-list-info">
+                  <span class="contacts-list-name">
+                    Kenneth M.
+                    <small class="contacts-list-date float-right">1/4/2015</small>
+                  </span>
+                  <span class="contacts-list-msg">Never mind I found...</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <form action="#" method="post">
+          <div class="input-group">
+            <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+            <span class="input-group-append">
+              <button type="button" class="btn btn-primary">Send</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

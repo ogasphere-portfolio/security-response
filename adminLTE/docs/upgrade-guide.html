@@ -1,0 +1,206 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-upgrade-guide">title: Upgrade Guide</h2>
+<h4 id="migration-from-v24x">Migration from v2.4.x</h4>
+<p>The first step to migrate AdminLTE v2.4.x to v3.0 is upgrade the Bootstrap 3 base code to Bootstrap 4, the full instruction <a href="https://getbootstrap.com/docs/4.4/migration/">here</a> after you upgraded the base code you need to update the markups.</p>
+<h4 id="css--js-files">CSS / JS Files</h4>
+<p>Since AdminLTE v3.0 Bootstrap 4 is complete included in AdminLTE's CSS file. You will not need to load the Bootstrap CSS file <code>bootstrap(.min).css</code>, but you will need the Bootstrap JS file <code>bootstrap(.min).js</code>.</p>
+<h5 id="main-header">Main Header</h5>
+<p>The biggest change in Main Header is the Logo is moved to Main Sidebar and the Main Header has now color variations, here are all changes:</p>
+<ol>
+<li>Logo</li>
+</ol>
+<ul>
+<li><code>&lt;a href="index2.html" class="logo"&gt;</code> moved &amp; rebuild to <code>.brand-link</code> inside <code>.main-sidebar</code></li>
+</ul>
+<ol>
+<li>Header / Nav</li>
+</ol>
+<ul>
+<li><code>&lt;header class="main-header"&gt;</code> &amp; <code>&lt;nav class="navbar navbar-static-top"&gt;</code> merged with <code>&lt;nav class="main-header navbar navbar-expand navbar-white navbar-light"&gt;</code></li>
+</ul>
+<ol>
+<li>Sidebar Toggle / Left Navbar</li>
+</ol>
+<ul>
+<li><code>&lt;a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button"&gt;&lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;&lt;/a&gt;</code> replaced with <code>&lt;ul class="navbar-nav"&gt;&lt;li class="nav-item"&gt;&lt;a class="nav-link" data-widget="pushmenu" href="#"&gt;&lt;i class="fas fa-bars"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</code></li>
+</ul>
+<ol>
+<li>Right Navbar</li>
+</ol>
+<ul>
+<li><code>&lt;div class="navbar-custom-menu"&gt;</code> &amp; <code>&lt;ul class="nav navbar-nav"&gt;</code> merged with <code>&lt;ul class="navbar-nav ml-auto"&gt;</code></li>
+</ul>
+<h5 id="main-sidebar">Main Sidebar</h5>
+<p>Like above the biggest change is the Main Sidebar contains now the Logo and the sidebar has now color variations, here all changes:</p>
+<ol>
+<li>Main Sidebar Color</li>
+</ol>
+<ul>
+<li><code>&lt;aside class="main-sidebar"&gt;</code> replaced with <code>&lt;aside class="main-sidebar sidebar-dark-primary"&gt;</code></li>
+</ul>
+<ol>
+<li>Logo / Brand Link</li>
+</ol>
+<ul>
+<li><code>&lt;a href="index3.html" class="brand-link"&gt;&lt;img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"&gt;&lt;span class="brand-text font-weight-light"&gt;AdminLTE 3&lt;/span&gt;&lt;/a&gt;</code> replaces the old logo</li>
+</ul>
+<ol>
+<li>Sidebar</li>
+</ol>
+<ul>
+<li><code>&lt;section class="sidebar"&gt;</code> replaced with <code>&lt;div class="sidebar"&gt;</code></li>
+</ul>
+<ol>
+<li>User Panel</li>
+</ol>
+<ul>
+<li><code>&lt;div class="user-panel"&gt;&lt;div class="pull-left image"&gt;&lt;img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"&gt;&lt;/div&gt;&lt;div class="pull-left info"&gt;&lt;p&gt;Alexander Pierce&lt;/p&gt;&lt;a href="#"&gt;&lt;i class="fa fa-circle text-success"&gt;&lt;/i&gt; Online&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;</code> replaced with <code>&lt;div class="user-panel mt-3 pb-3 mb-3 d-flex"&gt;&lt;div class="image"&gt;&lt;img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"&gt;&lt;/div&gt;&lt;div class="info"&gt;&lt;a href="#" class="d-block"&gt;Alexander Pierce&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;</code></li>
+</ul>
+<ol>
+<li>Sidebar Menu</li>
+</ol>
+<ul>
+<li><code>&lt;nav class="mt-2"&gt;</code> now around <code>&lt;ul class="sidebar-menu" data-widget="tree"&gt;</code></li>
+<li><code>&lt;ul class="sidebar-menu" data-widget="tree"&gt;</code> replaced with <code>&lt;ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"&gt;</code></li>
+<li><code>&lt;li class="header"&gt;</code> repalced with <code>&lt;li class="nav-header"&gt;</code></li>
+<li><code>&lt;li&gt;</code> need a new class <code>.nav-item</code></li>
+<li><code>&lt;li&gt; &lt;a&gt;</code> need a new class <code>.nav-link</code></li>
+<li><code>&lt;li&gt; &lt;a&gt; &lt;i&gt;</code> need a new class <code>.nav-icon</code></li>
+<li><code>&lt;li&gt; &lt;a&gt; &lt;span&gt;</code> replaced with <code>&lt;p&gt;</code></li>
+<li><code>&lt;span class="pull-right-container"&gt;</code> removed</li>
+<li><code>&lt;i class="fa fa-angle-left pull-right"&gt;&lt;/i&gt;</code> replaced with <code>&lt;i class="right fas fa-angle-left"&gt;&lt;/i&gt;</code></li>
+<li><code>&lt;small class="label pull-right bg-green"&gt;new&lt;/small&gt;</code> replaced with <code>&lt;span class="right badge badge-danger"&gt;New&lt;/span&gt;</code></li>
+<li><code>&lt;li&gt; &lt;ul class="treeview-menu"&gt;</code> replaced with <code>&lt;ul class="nav nav-treeview"&gt;</code></li>
+</ul>
+<div class="row">
+  <div class="col-md-6" markdown="1">
+Old sample entry<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;pages/widgets.html&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fa fa-th&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Widgets<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pull-right-container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label pull-right bg-green&quot;</span>&gt;</span>new<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+</code></pre>
+  </div>
+  <div class="col-md-6" markdown="1">
+New sample entry<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-item&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;pages/widgets.html&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-icon fas fa-th&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+      Widgets
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right badge badge-danger&quot;</span>&gt;</span>New<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+</code></pre>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6" markdown="1">
+Old sample entry (with tree menu)<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;treeview&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fa fa-dashboard&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Dashboard<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pull-right-container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fa fa-angle-left pull-right&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;treeview-menu&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;active&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;index.html&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fa fa-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> Dashboard v1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+</code></pre>
+  </div>
+  <div class="col-md-6" markdown="1">
+New sample entry (with tree menu)<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-item&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-icon fas fa-tachometer-alt&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+      Dashboard
+      <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right fas fa-angle-left&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav nav-treeview&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-item&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;index.html&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link active&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;far fa-circle nav-icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Dashboard v1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+</code></pre>
+  </div>
+</div>
+<h5 id="content-header">Content Header</h5>
+<p>The biggest change in content header is AdminLTE use here now <code>.container-fluid</code>, <code>.row</code> &amp; <code>.col-*</code> and the breadcrumb markup changed, here are all changes:</p>
+<ul>
+<li><code>&lt;section class="content-header"&gt;</code> replaced with <code>&lt;div class="content-header"&gt;</code></li>
+<li><code>&lt;div class="container-fluid"&gt;</code> added in <code>&lt;div class="content-header"&gt;</code></li>
+<li><code>&lt;h1&gt;</code> &amp; <code>&lt;ol class="breadcrumb"&gt;</code> rebuild in <code>&lt;div class="row"&gt;</code> &amp; <code>&lt;div class="col-sm-6"&gt;</code></li>
+<li><code>&lt;h1&gt;</code> replaced with <code>&lt;h1 class="m-0 text-dark"&gt;</code></li>
+<li><code>&lt;ol class="breadcrumb"&gt;</code> need new class <code>.float-sm-right</code></li>
+<li><code>&lt;ol class="breadcrumb"&gt; &lt;li&gt;</code> need new class <code>.breadcrumb-item</code></li>
+</ul>
+<div class="row">
+  <div class="col-md-6" markdown="1">
+Old Content Header Markup<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content-header&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+    Dashboard
+    <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span>Control panel<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;breadcrumb&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fa fa-dashboard&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> Home<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;active&quot;</span>&gt;</span>Dashboard<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+</code></pre>
+  </div>
+  <div class="col-md-6" markdown="1">
+New Content Header Markup<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content-header&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container-fluid&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row mb-2&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-sm-6&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-0 text-dark&quot;</span>&gt;</span>
+          Dashboard
+          <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span>Control panel<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col-sm-6&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;breadcrumb float-sm-right&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;breadcrumb-item&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;breadcrumb-item active&quot;</span>&gt;</span>Dashboard v1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  </div>
+</div>
+<h5 id="content">Content</h5>
+<p>The content has no change, we only split <code>&lt;section class="content container-fluid"&gt;</code> in two elements:</p>
+<ul>
+<li><code>&lt;section class="content"&gt;</code></li>
+<li><code>&lt;div class="container-fluid"&gt;</code></li>
+</ul>
+<h5 id="footer">Footer</h5>
+<p>The footer has only one little change for the right sided div.</p>
+<ul>
+<li><code>&lt;div class="pull-right hidden-xs"&gt;</code> changed to <code>&lt;div class="float-right d-none d-sm-inline"&gt;</code></li>
+</ul>
+<h5 id="miscellaneous">Miscellaneous</h5>
+<p>Here are some other little css/html changes since v3.0:</p>
+<ul>
+<li><code>.label</code> renamed to <code>.badge</code></li>
+</ul>
+<h5 id="javascript-plugins">JavaScript Plugins</h5>
+<p>Here are some other little JavaScript changes since v3.0:</p>
+<ul>
+<li><code>data-toggle="*"</code> renamed to <code>data-widget="*"</code> instead of CardWidget items</li>
+<li>for CardWidget it's now <code>data-card-widget="*"</code></li>
+</ul>

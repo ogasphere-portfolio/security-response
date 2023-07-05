@@ -1,0 +1,52 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-sidebar-search-plugin">title: Sidebar Search Plugin</h2>
+<p>The sidebar search plugin provides the functionality to search menu items from the sidebar menu entries. </p>
+<h5 id="usage">Usage</h5>
+<p>This plugin can be activated as a jQuery plugin or using the data API. </p>
+<h6 id="data-api">Data API</h6>
+<p>{: .text-bold }</p>
+<p>Activate the plugin by adding the following data-attribue <code>data-widget="sidebar-search"</code> to a input-group inside the sidebar. You can use the HTML Markup below for a quick start.</p>
+<h6 id="jquery">jQuery</h6>
+<p>{: .text-bold }</p>
+<p>The jQuery API provides more customizable options that allows the developer to pre-process the request before rendering and post-process it after rendering. </p>
+<pre><code class="hljs js language-js">(<span class="hljs-string">&quot;[data-widget=&quot;</span>sidebar-search<span class="hljs-string">&quot;]&quot;</span>).<span class="hljs-title class_">SidebarSearch</span>(options)
+</code></pre>
+<h5 id="html-markup">HTML Markup</h5>
+<p>Place this HTML Markup after <code>div.user-panel</code>.</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-inline&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;sidebar-search&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control form-control-sidebar&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Search&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Search&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group-append&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-sidebar&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-search fa-fw&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h5 id="options">Options</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Name | Type | Default | Description<br />
+|-|-|-|-<br />
+| arrowSign | String&nbsp;|&nbsp;'-&gt;' | Arrow Sign between the menu item path.<br />
+| minLength | Number |&nbsp;3 | Min search query length.<br />
+| maxResults | Number&nbsp;|&nbsp;7 | Max search results to display.<br />
+| highlightName | Boolean |&nbsp;TRUE | Whether to highlight menu item name.<br />
+| highlightPath | Boolean&nbsp;| FALSE  | Whether to highlight menu item path.<br />
+| highlightClass | String&nbsp;|&nbsp;'text-light' | Hightlight class.<br />
+| notFoundText | String&nbsp;|&nbsp;'No element found! | Response text if no menu item found.<br />
+{: .table .table-bordered .bg-light}</p>
+<h5 id="methods">Methods</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Method | Description<br />
+|-|-<br />
+|init | Init's the SidebarSearch Plugin and registers all visible menu items.<br />
+|toggle | Toggles the search dropdown list.<br />
+|close | Closes the search dropdown list.<br />
+|open | Opens the search dropdown list.<br />
+|search | Triggers a search.<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('[data-widget="sidebar-search"]').SidebarSearch('toggle')</code></p>

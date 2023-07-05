@@ -1,0 +1,337 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-boxes-components">title: Boxes Components</h2>
+<p>There are two types of boxes, info boxes &amp; small boxes. Both boxes are used to display statistical snippets. </p>
+<h5 id="info-box">Info Box</h5>
+<p>{: .text-bold .text-dark .mt-4}</p>
+<div class="row">
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Messages</span>
+        <span class="info-box-number">1,410</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="info-box bg-success">
+      <span class="info-box-icon"><i class="far fa-flag"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Bookmarks</span>
+        <span class="info-box-number">410</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="info-box bg-gradient-warning">
+      <span class="info-box-icon"><i class="far fa-copy"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Uploads</span>
+        <span class="info-box-number">13,648</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" markdown="1"><p><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-icon bg-info&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;far fa-envelope&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-text&quot;</span>&gt;</span>Messages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-number&quot;</span>&gt;</span>1,410<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre></p>
+<p>{: .col-md-4 .col-sm-6 .col-12}</p>
+<p><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box bg-success&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;far fa-flag&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-text&quot;</span>&gt;</span>Bookmarks<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-number&quot;</span>&gt;</span>410<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre></p>
+<p>{: .col-md-4 .col-sm-6 .col-12}</p>
+<p><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box bg-gradient-warning&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;far fa-copy&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-text&quot;</span>&gt;</span>Uploads<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-number&quot;</span>&gt;</span>13,648<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre></p>
+<p>{: .col-md-4 .col-sm-6 .col-12}</p></div>
+<blockquote>
+  <h5 id="note">Note!</h5>
+  <p>To wrap the text in to a new line add to the info-box-text the class text-wrap.<br />
+  To truncate the text with … add to the info-box-content the class text-truncate. (Here you should add a tooltip to display the whole pharse)<br />
+  {: .quote-danger}</p>
+</blockquote>
+<h5 id="info-box-with-progress-bar">Info Box with Progress Bar</h5>
+<p>{: .text-bold .text-dark .mt-4}</p>
+<div class="row">
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-info"><i class="far fa-bookmark"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Bookmarks</span>
+        <span class="info-box-number">41,410</span>
+        <div class="progress">
+          <div class="progress-bar bg-info" style="width: 70%"></div>
+        </div>
+        <span class="progress-description">
+          70% Increase in 30 Days
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="info-box bg-success">
+      <span class="info-box-icon"><i class="far fa-thumbs-up"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Likes</span>
+        <span class="info-box-number">41,410</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 70%"></div>
+        </div>
+        <span class="progress-description">
+          70% Increase in 30 Days
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="info-box bg-gradient-warning">
+      <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Events</span>
+        <span class="info-box-number">41,410</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 70%"></div>
+        </div>
+        <span class="progress-description">
+          70% Increase in 30 Days
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" markdown="1"><p><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-icon bg-info&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;far fa-bookmark&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-text&quot;</span>&gt;</span>Bookmarks<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-number&quot;</span>&gt;</span>41,410<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-bar bg-info&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 70%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-description&quot;</span>&gt;</span>
+      70% Increase in 30 Days
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre></p>
+<p>{: .col-md-4 .col-sm-6 .col-12 .max-height-300}</p>
+<p><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box bg-success&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;far fa-thumbs-up&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-text&quot;</span>&gt;</span>Likes<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-number&quot;</span>&gt;</span>41,410<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-bar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 70%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-description&quot;</span>&gt;</span>
+      70% Increase in 30 Days
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre></p>
+<p>{: .col-md-4 .col-sm-6 .col-12 .max-height-300}</p>
+<p><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box bg-gradient-warning&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;far fa-calendar-alt&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-text&quot;</span>&gt;</span>Events<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-box-number&quot;</span>&gt;</span>41,410<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-bar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 70%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-description&quot;</span>&gt;</span>
+      70% Increase in 30 Days
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre></p>
+<p>{: .col-md-4 .col-sm-6 .col-12 .max-height-300}</p></div>
+<h5 id="small-box">Small Box</h5>
+<p>{: .text-bold .text-dark .mt-4}</p>
+<div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>150</h3>
+        <p>New Orders</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
+      <a href="#" class="small-box-footer">
+        More info <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+    <div class="small-box bg-gradient-success">
+      <div class="inner">
+        <h3>44</h3>
+        <p>User Registrations</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-user-plus"></i>
+      </div>
+      <a href="#" class="small-box-footer">
+        More info <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="row" markdown="1"><p><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;small-box bg-info&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;inner&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>150<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>New Orders<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-shopping-cart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;small-box-footer&quot;</span>&gt;</span>
+    More info <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-arrow-circle-right&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre></p>
+<p>{: .col-md-4 .col-sm-6 .col-12 .max-height-300}</p>
+<p><pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;small-box bg-gradient-success&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;inner&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>44<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>User Registrations<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-user-plus&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;small-box-footer&quot;</span>&gt;</span>
+    More info <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-arrow-circle-right&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre></p>
+<p>{: .col-md-4 .col-sm-6 .col-12 .max-height-300}</p></div>
+<h5 id="loading-style">Loading Style</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<p>To simulate a loading state, simply place this code before the <code>.info-box</code> / <code>.small-box</code> closing tag. </p>
+<blockquote>
+  <h5 id="tip">Tip!</h5>
+  <p>We recommend <code>.fa-2x</code> for Info Boxes and <code>.fa-3x</code> for Small Boxes to get a nicely sized loading icon, <br> like in this documentation. <br />
+  {: .quote-info}</p>
+</blockquote>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;overlay&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-2x fa-sync-alt fa-spin&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<div class="row">
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="info-box clearfix">
+      <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Messages</span>
+        <span class="info-box-number">1,410</span>
+      </div>
+      <div class="overlay">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-info"><i class="far fa-bookmark"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Bookmarks</span>
+        <span class="info-box-number">41,410</span>
+        <div class="progress">
+          <div class="progress-bar bg-info" style="width: 70%"></div>
+        </div>
+        <span class="progress-description">
+          70% Increase in 30 Days
+        </span>
+      </div>
+      <div class="overlay">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>150</h3>
+        <p>New Orders</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
+      <a href="#" class="small-box-footer">
+        More info <i class="fas fa-arrow-circle-right"></i>
+      </a>
+      <div class="overlay">
+        <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<p>You can also use a dark loading style with adding <code>.dark</code> to <code>.overlay</code> like this code.</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;overlay dark&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-2x fa-sync-alt fa-spin&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<div class="row">
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="info-box clearfix">
+      <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Messages</span>
+        <span class="info-box-number">1,410</span>
+      </div>
+      <div class="overlay dark">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-info"><i class="far fa-bookmark"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Bookmarks</span>
+        <span class="info-box-number">41,410</span>
+        <div class="progress">
+          <div class="progress-bar bg-info" style="width: 70%"></div>
+        </div>
+        <span class="progress-description">
+          70% Increase in 30 Days
+        </span>
+      </div>
+      <div class="overlay dark">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>150</h3>
+        <p>New Orders</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
+      <a href="#" class="small-box-footer">
+        More info <i class="fas fa-arrow-circle-right"></i>
+      </a>
+      <div class="overlay dark">
+        <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-todo-list-plugin">title: Todo List Plugin</h2>
+<p>The todo list plugin provides simple functionality to the todo list component. </p>
+<h5 id="usage">Usage</h5>
+<p>This plugin can be activated as a jQuery plugin or using the data api. </p>
+<h6 id="data-api">Data API</h6>
+<p>{: .text-bold }<br />
+Activate the plugin by adding <code>data-widget="todo-list"</code> to the ul element. If you need to provide onCheck and onUncheck methods, please use the jQuery API. </p>
+<h6 id="jquery">jQuery</h6>
+<p>{: .text-bold }<br />
+The jQuery API provides more customizable options that allows the developer to handle checking and unchecking the todo list checkbox events. </p>
+<pre><code class="hljs js language-js">$(<span class="hljs-string">&#x27;#my-todo-list&#x27;</span>).<span class="hljs-title class_">TodoList</span>({
+  <span class="hljs-attr">onCheck</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">checkbox</span>) {
+    <span class="hljs-comment">// Do something when the checkbox is checked</span>
+  },
+  <span class="hljs-attr">onUnCheck</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">checkbox</span>) {
+    <span class="hljs-comment">// Do something after the checkbox has been unchecked</span>
+  }
+})
+</code></pre>
+<h5 id="options">Options</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Name | Type | Default | Description<br />
+|-|-|-|-<br />
+|onCheck | Function | Anonymous Function | Handle checkbox onCheck event. The checkbox is passed as parameter to the function.<br />
+|onUnCheck | Function | Anonymous Function | Handle checkbox onUnCheck event. The checkbox is passed as parameter to the function.<br />
+|---<br />
+{: .table .table-bordered .bg-light}</p>

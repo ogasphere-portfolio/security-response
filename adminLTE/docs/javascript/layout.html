@@ -1,0 +1,35 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-layout-plugin">title: Layout Plugin</h2>
+<p>The layout plugin manages the layout in case of css failure to reset the height or width of the content.</p>
+<h5 id="usage">Usage</h5>
+<p>This plugin is activated automatically upon window load.</p>
+<h5 id="options">Options</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Name | Type | Default | Description<br />
+|-|-|-|-<br />
+|scrollbarTheme | String | <code>os-theme-light</code> | Scrollbar Theme used while SideBar Fixed<br />
+|scrollbarAutoHide | String | <code>l</code> | Scrollbar auto-hide trigger<br />
+|panelAutoHeight | Boolean|Numeric | true | Panel Height Correction (<code>true</code> = default correction on load/resize; numeric = offset the correction on load/resize)<br />
+|panelAutoHeightMode | String | <code>min-height</code> | Panel Height Mode (<code>min-height</code> = sets the <code>min-height</code>-attribute to the content-wrapper; <code>height</code> = sets <code>height</code>-attribute to the content-wrapper)<br />
+|preloadDuration | Integer | 200 | Preloader Duration (Set in milliseconds)<br />
+|loginRegisterAutoHeight | Boolean|Integer | true | Login &amp; Register Height Correction (<code>true</code> = single correction on load; integer = correction with a interval based on the interger)<br />
+|---<br />
+{: .table .table-bordered .bg-light}</p>
+<blockquote>
+  <h5 id="tip">Tip!</h5>
+  <p>You can use any option via the data-attributes like this.</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">data-scrollbar-auto-hide</span>=<span class="hljs-string">&quot;n&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+  <p>{: .quote-info}</p>
+</blockquote>
+<h5 id="methods">Methods</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Method | Description<br />
+|-|-<br />
+|fixLayoutHeight |&nbsp;Fix the content / control sidebar height and activates OverlayScrollbars for sidebar / control sidebar<br />
+|fixLoginRegisterHeight |&nbsp;Fix the login &amp; register body height<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('body').Layout('fixLayoutHeight')</code></p>

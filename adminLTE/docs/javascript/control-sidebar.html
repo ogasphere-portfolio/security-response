@@ -1,0 +1,61 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-control-sidebar-plugin">title: Control Sidebar Plugin</h2>
+<p>The control sidebar component is part of AdminLTE's layout as the right sidebar. </p>
+<h5 id="usage">Usage</h5>
+<p>This plugin can be activated as a jQuery plugin or using the data api. To activate the plugin, you must first add the HTML markup to your layout, then create the toggle button as shown below. </p>
+<h6 id="html-markup">HTML Markup</h6>
+<p>{: .text-bold }</p>
+<pre><code class="hljs html language-html"><span class="hljs-comment">&lt;!-- Control Sidebar --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;control-sidebar control-sidebar-dark&quot;</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Control sidebar content goes here --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- /.control-sidebar --&gt;</span>
+</code></pre>
+<h6 id="data-api">Data api</h6>
+<p>{: .text-bold }<br />
+Add <code>data-widget="control-sidebar"</code> to any button or a element to activate the plugin.</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;control-sidebar&quot;</span>&gt;</span>Toggle Control Sidebar<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+<h6 id="jquery">jQuery</h6>
+<p>{: .text-bold }<br />
+Just like all other AdminLTE plugins, you can also activate the toggle button using jQuery by running the following example. </p>
+<pre><code class="hljs js language-js">$(<span class="hljs-string">&quot;#my-toggle-button&quot;</span>).<span class="hljs-title class_">ControlSidebar</span>(<span class="hljs-string">&#x27;toggle&#x27;</span>);
+</code></pre>
+<h5 id="options">Options</h5>
+<p>|---<br />
+| Name | Type | Default | Description<br />
+|-|-|-|-<br />
+|controlsidebarSlide | Boolean | TRUE | Whether the sidebar should slide over the content or push the content to make space for itself.<br />
+|scrollbarTheme | Boolean | <code>os-theme-light</code> | Scrollbar Theme used while SideBar Fixed<br />
+|scrollbarAutoHide | Boolean | <code>l</code> | Scrollbar auto-hide trigger<br />
+|target | String | <code>.control-sidebar</code> | Target control-sidebar to handle multiple control-sidebars.<br />
+|animationSpeed | Boolean | <code>300</code> | Set the animation/transition speed equals to the scss transition speed.<br />
+{: .table .table-bordered .bg-light}</p>
+<blockquote>
+  <h5 id="tip">Tip!</h5>
+  <p>You can use any option via the data-attributes like this to enable auto collapse sidebar on 768 pixels width.</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;control-sidebar&quot;</span> <span class="hljs-attr">data-controlsidebar-slide</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>Toggle Control Sidebar<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
+  <p>{: .quote-info}</p>
+</blockquote>
+<h5 id="events">Events</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Event Type&nbsp;| Description<br />
+|-|-<br />
+|expanded.lte.controlsidebar | Triggered after a control sidebar expands.<br />
+|collapsed.lte.controlsidebar | Triggered after a control sidebar collapses.<br />
+|collapsed-done.lte.controlsidebar | Triggered after a control sidebar is fully collapsed.<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('#toggle-button').on('expanded.lte.controlsidebar', handleExpandedEvent)</code></p>
+<h5 id="methods">Methods</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Method | Description<br />
+|-|-<br />
+|collapse | Collapses the control-sidebar<br />
+|show | Show's the control-sidebar<br />
+|toggle | Toggles the state of the control-sidebar expanded and collapsed<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('#toggle-button').ControlSidebar('toggle')</code></p>

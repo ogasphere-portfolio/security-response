@@ -1,0 +1,55 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-toasts-plugin">title: Toasts Plugin</h2>
+<p>The toasts plugin provides simple functionality to create easily a bootstrap toast.</p>
+<h5 id="usage">Usage</h5>
+<p>This plugin can be activated as a jQuery plugin.</p>
+<h6 id="jquery">jQuery</h6>
+<p>{: .text-bold }<br />
+The jQuery API provides more customizable options that allows the developer to handle checking and unchecking the todo list checkbox events. </p>
+<pre><code class="hljs js language-js">$(<span class="hljs-variable language_">document</span>).<span class="hljs-title class_">Toasts</span>(<span class="hljs-string">&#x27;create&#x27;</span>, {
+  <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Toast Title&#x27;</span>,
+  <span class="hljs-attr">body</span>: <span class="hljs-string">&#x27;Lorem ipsum dolor sit amet, consetetur sadipscing elitr.&#x27;</span>
+})
+</code></pre>
+<h5 id="options">Options</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Name | Type | Default | Description<br />
+|-|-|-|-<br />
+|position | String | Position.TOP_RIGHT | Position of the toast, available options: <code>topRight</code>, <code>topLeft</code>, <code>bottomRight</code> &amp; <code>bottomLeft</code><br />
+|fixed | Boolean | true | Whether to set toasts container fixed.<br />
+|autohide | Boolean | false | Whether to auto hide toast<br />
+|autoremove | Boolean | true | Whether to auto remove toast after closing <br />
+|delay | Integer | 1000 | Auto Hide delay<br />
+|fade | Boolean | true | Whether to fade toast<br />
+|icon | String | null | Icon class (e.g. <code>fas fa-exclamation-triangle</code>)<br />
+|image | String | null | Image url<br />
+|imageAlt | String | null | Image alt<br />
+|imageHeight | String | '25px' | Image size of toast<br />
+|title | String | null | Title of toast<br />
+|subtitle | String | null | Subtitle of toast<br />
+|close | Boolean | true | Whether to add close button to toast<br />
+|body | String | null | Body of toast<br />
+|class | String | null | Additional classes for the toast<br />
+|---<br />
+{: .table .table-bordered .bg-light}</p>
+<h5 id="events">Events</h5>
+<p>{: .mt-4}<br />
+All event are sent to <code>body</code>.</p>
+<p>|---<br />
+| Event Type&nbsp;| Description<br />
+|-|-<br />
+|init.lte.toasts&nbsp;|&nbsp;Fired when constructor is done<br />
+|created.lte.toasts&nbsp;|&nbsp;Fired when the toast is created<br />
+|removed.lte.toasts&nbsp;|&nbsp;Fired when the toast is removed<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('body').on('created.lte.toast', handleCreateEvent)</code></p>
+<h5 id="methods">Methods</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Method | Description<br />
+|-|-<br />
+|create |&nbsp;Creates a toast<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$(document).Toasts('create', {title: 'Toast Title'})</code></p>

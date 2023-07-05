@@ -1,0 +1,627 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-cards-component">title: Cards Component</h2>
+<p>The card component is the most widely used component through out this template. You can use it for anything from displaying charts to just blocks of text. It comes in many different styles that we will explore below.</p>
+<h5 id="default-card-markup">Default Card Markup</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Default Card Example</h3>
+    <div class="card-tools">
+      <span class="badge badge-primary">Label</span>
+    </div>
+  </div>
+  <div class="card-body">
+    The body of the card
+  </div>
+  <div class="card-footer">
+    The footer of the card
+  </div>
+</div>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-header&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-title&quot;</span>&gt;</span>Default Card Example<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-tools&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- Buttons, labels, and many other things can be placed here! --&gt;</span>
+      <span class="hljs-comment">&lt;!-- Here is a label for example --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;badge badge-primary&quot;</span>&gt;</span>Label<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.card-tools --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-header --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-body&quot;</span>&gt;</span>
+    The body of the card
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-body --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-footer&quot;</span>&gt;</span>
+    The footer of the card
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-footer --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- /.card --&gt;</span>
+</code></pre>
+<p>{: .max-height-300}</p>
+<h5 id="card-variants">Card Variants</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<p>You can change the style of the card by adding any of the contextual classes.</p>
+<h6 id="default">Default</h6>
+<p>{: .text-bold .text-dark}</p>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Default Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Primary Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card card-secondary">
+      <div class="card-header">
+        <h3 class="card-title">Secondary Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card card-success">
+      <div class="card-header">
+        <h3 class="card-title">Success Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card card-info">
+      <div class="card-header">
+        <h3 class="card-title">Info Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card card-warning">
+      <div class="card-header">
+        <h3 class="card-title">Warning Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card card-danger">
+      <div class="card-header">
+        <h3 class="card-title">Danger Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card card-dark">
+      <div class="card-header">
+        <h3 class="card-title">Dark Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+</div>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-primary&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-secondary&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-success&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-info&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-warning&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-danger&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-dark&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h6 id="outline">Outline</h6>
+<p>{: .text-bold .text-dark}</p>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card card-outline card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Primary Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card card-outline card-secondary">
+      <div class="card-header">
+        <h3 class="card-title">Secondary Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card card-outline card-success">
+      <div class="card-header">
+        <h3 class="card-title">Success Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card card-outline card-info">
+      <div class="card-header">
+        <h3 class="card-title">Info Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card card-outline card-warning">
+      <div class="card-header">
+        <h3 class="card-title">Warning Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card card-outline card-danger">
+      <div class="card-header">
+        <h3 class="card-title">Danger Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card card-outline card-dark">
+      <div class="card-header">
+        <h3 class="card-title">Dark Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+</div>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-outline card-primary&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-outline card-secondary&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-outline card-success&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-outline card-info&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-outline card-warning&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-outline card-danger&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-outline card-dark&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h6 id="background-color">Background Color</h6>
+<p>{: .text-bold .text-dark}</p>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card bg-primary">
+      <div class="card-header">
+        <h3 class="card-title">Primary Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card bg-secondary">
+      <div class="card-header">
+        <h3 class="card-title">Secondary Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card bg-success">
+      <div class="card-header">
+        <h3 class="card-title">Success Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card bg-info">
+      <div class="card-header">
+        <h3 class="card-title">Info Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card bg-warning">
+      <div class="card-header">
+        <h3 class="card-title">Warning Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card bg-danger">
+      <div class="card-header">
+        <h3 class="card-title">Danger Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card bg-dark">
+      <div class="card-header">
+        <h3 class="card-title">Dark Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+</div>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-primary&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-secondary&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-success&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-info&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-warning&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-danger&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-dark&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h6 id="gradient-background-color">Gradient Background Color</h6>
+<p>{: .text-bold .text-dark}</p>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card bg-gradient-primary">
+      <div class="card-header">
+        <h3 class="card-title">Primary Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card bg-gradient-secondary">
+      <div class="card-header">
+        <h3 class="card-title">Secondary Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card bg-gradient-success">
+      <div class="card-header">
+        <h3 class="card-title">Success Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card bg-gradient-info">
+      <div class="card-header">
+        <h3 class="card-title">Info Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card bg-gradient-warning">
+      <div class="card-header">
+        <h3 class="card-title">Warning Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card bg-gradient-danger">
+      <div class="card-header">
+        <h3 class="card-title">Danger Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card bg-gradient-dark">
+      <div class="card-header">
+        <h3 class="card-title">Dark Card Example</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="card-footer">
+        The footer of the card
+      </div>
+    </div>
+  </div>
+</div>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-gradient-primary&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-gradient-secondary&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-gradient-success&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-gradient-info&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-gradient-warning&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-gradient-danger&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card bg-gradient-dark&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h5 id="card-tools">Card Tools</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<p>Cards can contain tools to deploy a specific event or provide simple info. The following examples makes use of multiple AdminLTE components within the header of the card.</p>
+<p>AdminLTE data-card-widget attribute provides cards with the ability to collapse or be removed. The buttons are placed in the card-tools which is placed in the card-header. </p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card card-primary&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-header&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-title&quot;</span>&gt;</span>Card Tools<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-tools&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- This will cause the card to maximize when clicked --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-tool&quot;</span> <span class="hljs-attr">data-card-widget</span>=<span class="hljs-string">&quot;maximize&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-expand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- This will cause the card to collapse when clicked --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-tool&quot;</span> <span class="hljs-attr">data-card-widget</span>=<span class="hljs-string">&quot;collapse&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-minus&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- This will cause the card to be removed when clicked --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-tool&quot;</span> <span class="hljs-attr">data-card-widget</span>=<span class="hljs-string">&quot;remove&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-times&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.card-tools --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-header --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card-body&quot;</span>&gt;</span>
+    The body of the card
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.card-body --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- /.card --&gt;</span>
+</code></pre>
+<p>{: .max-height-300}</p>
+<h5 id="loading-style">Loading Style</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<p>To simulate a loading state, simply place this code before the <code>.card</code> closing tag. </p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;overlay&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-2x fa-sync-alt fa-spin&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<div class="row">
+  <div class="col-md-3">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Loading state</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="overlay">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-outline card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Loading state</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="overlay">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card bg-primary">
+      <div class="card-header">
+        <h3 class="card-title">Loading state</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="overlay">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card bg-gradient-primary">
+      <div class="card-header">
+        <h3 class="card-title">Loading state</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="overlay">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<p>You can also use a dark loading style with adding <code>.dark</code> to <code>.overlay</code> like this code.</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;overlay dark&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fas fa-2x fa-sync-alt fa-spin&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<div class="row">
+  <div class="col-md-3">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Loading state (dark)</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="overlay dark">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card card-outline card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Loading state (dark)</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="overlay dark">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card bg-primary">
+      <div class="card-header">
+        <h3 class="card-title">Loading state (dark)</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="overlay dark">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card bg-gradient-primary">
+      <div class="card-header">
+        <h3 class="card-title">Loading state (dark)</h3>
+      </div>
+      <div class="card-body">
+        The body of the card
+      </div>
+      <div class="overlay dark">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+      </div>
+    </div>
+  </div>
+</div>

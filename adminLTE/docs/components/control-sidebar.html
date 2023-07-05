@@ -1,0 +1,36 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-control-sidebar-component">title: Control Sidebar Component</h2>
+<p>Control sidebar is the right sidebar. It can be used for many purposes and is extremely easy to create. The sidebar ships with two different show/hide styles. The first allows the sidebar to slide over the content. The second pushes the content to make space for the sidebar. Either of these methods can be set through the [JavaScript options]({% link javascript/control-sidebar.md %}). </p>
+<p>The following code should be placed within the <code>.wrapper</code> div. I prefer to place it right after the footer.</p>
+<h5 id="control-sidebar-push">Control Sidebar Push</h5>
+<p>{: .text-bold .text-dark}</p>
+<p>By adding the <code>.control-sidebar-push</code> to <code>body</code>, the sidebar pushes the content away instead of overlaying the content.<br />
+You can also add <code>.control-sidebar-push-slide</code> to <code>body</code>, to push the content away with an transition.</p>
+<h5 id="dark-sidebar-markup">Dark Sidebar Markup</h5>
+<p>{: .text-bold .text-dark}</p>
+<pre><code class="hljs html language-html">  <span class="hljs-comment">&lt;!-- Control Sidebar --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;control-sidebar control-sidebar-dark&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Control sidebar content goes here --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;p-3&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- Content of the sidebar goes here --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.control-sidebar --&gt;</span>
+</code></pre>
+<h5 id="light-sidebar-markup">Light Sidebar Markup</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<pre><code class="hljs html language-html">  <span class="hljs-comment">&lt;!-- Control Sidebar --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;control-sidebar control-sidebar-light&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Control sidebar content goes here --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;p-3&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- Content of the sidebar goes here --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- /.control-sidebar --&gt;</span>
+</code></pre>
+<h5 id="control-sidebar-toggle-markup">Control Sidebar Toggle Markup</h5>
+<p>{: .text-bold .text-dark .mt-5}</p>
+<p>Once you create the sidebar, you will need a toggle button to open/close it. By adding the attribute data-toggle="control-sidebar" to any button, it will automatically act as the toggle button. </p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link&quot;</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;control-sidebar&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Toggle Control Sidebar<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>

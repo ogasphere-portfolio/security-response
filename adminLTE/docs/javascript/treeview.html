@@ -1,0 +1,57 @@
+<hr />
+<p>layout: page</p>
+<h2 id="title-treeview-plugin">title: Treeview Plugin</h2>
+<p>The Treeview plugin converts a nested list into a tree view where sub menus can be expanded. </p>
+<h5 id="usage">Usage</h5>
+<p>This plugin can be activated as a jQuery plugin or using the data api. </p>
+<h6 id="data-api">Data API</h6>
+<p>{: .text-bold }</p>
+<p>Add <code>data-widget="treeview"</code> to any <code>ul</code> or <code>ol</code> element to activate the plugin. </p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;treeview&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>One Level<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-item&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Multilevel<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav-treeview&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Level 2<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+<h6 id="jquery">jQuery</h6>
+<p>{: .text-bold }</p>
+<pre><code class="hljs js language-js">$(<span class="hljs-string">&#x27;ul&#x27;</span>).<span class="hljs-title class_">Treeview</span>(options)
+</code></pre>
+<h5 id="options">Options</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Name | Type | Default | Description<br />
+|-|-|-|-<br />
+|animationSpeed | Number&nbsp;| 300 | Speed of slide down/up animation in milliseconds.<br />
+|accordion | Boolean&nbsp;| TRUE | Whether to collapse the open menu when expanding another.<br />
+|trigger | String&nbsp;| <code>[data-widget="treeview"] .nav-link</code> |  Selector of the element that should respond to the click and result in expanding or collapsing it sibling sub menu. <br />
+|expandSidebar | Boolean&nbsp;| FALSE | Whether to expand sidebar on open menu.<br />
+|sidebarButtonSelector | String | <code>[data-widget="pushmenu"]</code> | Selector of the sidebar button.<br />
+{: .table .table-bordered .bg-light}</p>
+<blockquote>
+  <h5 id="tip">Tip!</h5>
+  <p>You can use any option via the data-attributes like this.</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;treeview&quot;</span> <span class="hljs-attr">data-accordion</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+  <p>{: .quote-info}</p>
+  <h5 id="important">IMPORTANT!</h5>
+  <p>If you want to use a multiple treeview's beside the main-sidebar treeview, <br />
+  then you need to add to all treeview's a ID-tag.</p>
+<pre><code class="hljs html language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">data-widget</span>=<span class="hljs-string">&quot;treeview&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;someIdNameOrSo&quot;</span> <span class="hljs-attr">data-accordion</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+  <p>{: .quote-danger}</p>
+</blockquote>
+<h5 id="events">Events</h5>
+<p>{: .mt-4}</p>
+<p>|---<br />
+| Event Type&nbsp;| Description<br />
+|-|-<br />
+|expanded.lte.treeview | Triggered after a sub menu expands.<br />
+|collapsed.lte.treeview | Triggered after a sub menu collapses.<br />
+|load.lte.treeview | Triggered after the plugin initialized via data api.<br />
+{: .table .table-bordered .bg-light}</p>
+<p>Example: <code>$('ul').on('expanded.lte.treeview', handleExpandedEvent)</code></p>
