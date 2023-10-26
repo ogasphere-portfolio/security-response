@@ -1,14 +1,14 @@
 {
-  "build/app.css": "/build/app.fd5fab25.css",
-  "build/app.js": "/build/app.72d08de3.js",
-  "build/map.js": "/build/map.c2684231.js",
-  "build/registration.js": "/build/registration.fddc8467.js",
-  "build/password_visibility.js": "/build/password_visibility.8e7e6993.js",
-  "build/validation_user.js": "/build/validation_user.0904bc95.js",
-  "build/validation_enterprise.js": "/build/validation_enterprise.47e314eb.js",
-  "build/validation_company.js": "/build/validation_company.a756d8a9.js",
-  "build/validation_member.js": "/build/validation_member.d667d309.js",
-  "build/postulate.js": "/build/postulate.c0395330.js",
-  "build/runtime.js": "/build/runtime.3a00a185.js",
-  "build/180.c3731300.js": "/build/180.c3731300.js"
+  "build/app.css": "./build/app.fd5fab25.css",
+  "build/app.js": "./build/app.72d08de3.js",
+  "build/map.js": "./build/map.c2684231.js",
+  "build/registration.js": "./build/registration.fddc8467.js",
+  "build/password_visibility.js": "./build/password_visibility.8e7e6993.js",
+  "build/validation_user.js": "./build/validation_user.0904bc95.js",
+  "build/validation_enterprise.js": "./build/validation_enterprise.47e314eb.js",
+  "build/validation_company.js": "./build/validation_company.a756d8a9.js",
+  "build/validation_member.js": "./build/validation_member.d667d309.js",
+  "build/postulate.js": "./build/postulate.c0395330.js",
+  "build/runtime.js": "./build/runtime.3a00a185.js",
+  "build/180.c3731300.js": "./build/180.c3731300.js"
 }
