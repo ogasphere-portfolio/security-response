@@ -72,7 +72,7 @@ class MemberController extends AbstractController
             // Verification if the two submit password are equal
             if($request->request->get('pass') == $request->request->get('pass2')) {
 
-                $hashedPassword = $passwordHasher->hash($userMember, $request->request->get('pass'));
+                $hashedPassword = $passwordHasher->hashPassword($userMember, $request->request->get('pass'));
                 $userMember->setPassword($hashedPassword);
 
                 $this->getDoctrine()->getManager()->flush();

@@ -75,7 +75,7 @@ class RegistrationController extends AbstractController
                 'app_verify_email',
                 $user,
                 (new TemplatedEmail())
-                    ->from(new Address('contact@security-response.fr', 'Security Response Bot'))
+                    ->from(new Address('info@ogasphere.com', 'Security Response Bot'))
                     ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
